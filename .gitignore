@@ -1,6 +1,11 @@
-# Local Netlify folder
+# Netlify
 .netlify
+.netlifyignore
+netlify.toml
 
 # Documents sensibles — ne pas publier
 fiche_mission*
 *.pdf
+
+# Document interne formateur (usage pédagogique ESRP — non destiné à être public)
+cours/speech-formateur-s1-s2.md

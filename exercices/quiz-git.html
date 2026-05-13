@@ -750,7 +750,9 @@
           const fc = document.getElementById("flashcard");
           fc.classList.remove("flipped");
           // Reset result color on back face
-          document.querySelector(".flashcard-back").classList.remove("result-knew", "result-didnt");
+          document
+            .querySelector(".flashcard-back")
+            .classList.remove("result-knew", "result-didnt");
           document.getElementById("self-eval").classList.remove("visible");
 
           // Reset eval buttons
@@ -763,7 +765,8 @@
 
           // Nav buttons
           document.getElementById("btn-prev").disabled = idx === 0;
-          document.getElementById("btn-next").disabled = idx === cards.length - 1;
+          document.getElementById("btn-next").disabled =
+            idx === cards.length - 1;
 
           buildDots();
           updateStats();
@@ -806,8 +809,12 @@
           buildDots();
           updateStats();
 
-          localStorage.setItem("ppni_quiz_git_score",
-            evaluations.filter((e) => e === true || e === false).length + "/" + cards.length);
+          localStorage.setItem(
+            "ppni_quiz_git_score",
+            evaluations.filter((e) => e === true || e === false).length +
+              "/" +
+              cards.length,
+          );
 
           // Bilan final si toutes les cartes ont été évaluées
           const done = evaluations.every((e) => e === true || e === false);
