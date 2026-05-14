@@ -10,1238 +10,1440 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-<script>(function(){var t=localStorage.getItem('ppni-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
     <link rel="stylesheet" href="../css/shared.css" />
     <style>
       /* Glassmorphism 2026 — override legacy hardcoded inline colors */
-      h4[style*="#1a3a5c"]          { color: var(--text) !important; }
-      a[href][style*="#1a3a5c"]     { color: var(--text) !important; border-color: var(--border) !important; background: var(--surface-2) !important; }
-      a[href][style*="#e8eef7"]     { color: var(--text) !important; border-color: var(--border) !important; background: var(--surface-2) !important; }
+      h4[style*="#1a3a5c"] {
+        color: var(--text) !important;
+      }
+      a[href][style*="#1a3a5c"] {
+        color: var(--text) !important;
+        border-color: var(--border) !important;
+        background: var(--surface-2) !important;
+      }
+      a[href][style*="#e8eef7"] {
+        color: var(--text) !important;
+        border-color: var(--border) !important;
+        background: var(--surface-2) !important;
+      }
     </style>
   </head>
   <body>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-brand">
-        <div class="brand-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg></div>
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
         <span class="brand-text">PPNI 2026</span>
       </div>
       <nav class="sidebar-nav">
         <a href="../index.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
           <span>Accueil</span>
         </a>
         <a href="../planning.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
           <span>Planning</span>
         </a>
         <a href="../previsionnel.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
           <span>Pr&#233;visionnel</span>
         </a>
         <a href="../previsionnel_stagiaire.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
           <span>Stagiaires</span>
         </a>
         <a href="../ressources/index.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
           <span>Ressources</span>
         </a>
         <a href="../exercices/index.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
           <span>Exercices</span>
         </a>
       </nav>
       <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()" title="Changer le th&#232;me">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le th&#232;me"
+        >
           <span class="theme-icon">&#127769;</span>
         </button>
         <span class="sidebar-version">v2026</span>
       </div>
     </aside>
     <main class="main-content">
-    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
-    <header class="mobile-topbar">
-      <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-      <span class="mobile-brand">PPNI 2026</span>
-    </header>
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
 
-    <div class="page-wrapper">
-      <!-- ═══ HEADER ═══ -->
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 18px;
-          flex-wrap: wrap;
-          gap: 10px;
-        "
-      >
-        <div class="doc-header" style="flex: 1; margin-bottom: 0">
-          <h1>🔐 S1-S2 — Cybersécurité basics & GitHub</h1>
-          <div class="meta">
-            <strong>Phase 1 — Fondamentaux &amp; Orientation</strong>
-            &nbsp;|&nbsp; 11 mai → 22 mai 2026 — 2 semaines &nbsp;|&nbsp; 10,5h
-            de formation &nbsp;|&nbsp;
-            <strong>Niveau : Débutant complet</strong>
-            &nbsp;|&nbsp; Méthode : 70% Pratique · 20% Collaboration · 10%
-            Théorie
-          </div>
-        </div>
+      <div class="page-wrapper">
+        <!-- ═══ HEADER ═══ -->
         <div
           style="
             display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-            align-self: flex-start;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
             flex-wrap: wrap;
+            gap: 10px;
           "
         >
-          <a
-            href="../previsionnel_stagiaire.html"
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 6px;
-              padding: 9px 16px;
-              background: #e8eef7;
-              color: #1a3a5c;
-              border: 1px solid #c5d3e8;
-              border-radius: 8px;
-              font-size: 12px;
-              font-weight: 600;
-              text-decoration: none;
-            "
-            >← Retour au prévisionnel</a
-          >
-          <button class="print-btn" onclick="window.print()">
-            🖨️ Imprimer / PDF
-          </button>
-        </div>
-      </div>
-
-      <!-- ═══ RÉSUMÉ OBJECTIFS ═══ -->
-      <div class="axes-summary">
-        <div class="axe-card phase1">
-          <h3>🎯 Objectif S1-S2</h3>
-          <p>
-            À la fin de ces 2 semaines, chaque stagiaire sait
-            <strong>protéger ses comptes en ligne</strong>, reconnaître un piège
-            numérique, et a publié son
-            <strong
-              >premier dépôt GitHub avec un README de sensibilisation</strong
-            >.
-          </p>
-        </div>
-        <div class="axe-card phase2-axe1">
-          <h3>📦 Livrable attendu (S2)</h3>
-          <p>
-            Un dépôt GitHub public · Un fichier <code>README.md</code> · 3
-            bonnes pratiques cybersécurité rédigées · Au moins 1 commit pushé ·
-            Dépôt partagé avec le formateur.
-          </p>
-        </div>
-        <div class="axe-card phase2-axe2">
-          <h3>📐 Méthode 70-20-10</h3>
-          <p>
-            <strong>70%</strong> — Ateliers pratiques, exercices réels,
-            manipulation directe.<br />
-            <strong>20%</strong> — Travail en binôme, revue croisée, discussion
-            collective.<br />
-            <strong>10%</strong> — Notions théoriques clés, fiches synthèse,
-            schémas.
-          </p>
-        </div>
-      </div>
-
-      <!-- ═══ SOMMAIRE ═══ -->
-      <div class="section-box">
-        <h2>📋 Plan des 2 semaines</h2>
-        <div class="cours-sommaire">
-          <h3>Arborescence du cours</h3>
-          <ol>
-            <li>
-              <a href="#s1-lundi"
-                >S1 — Lundi 11 mai (7h) · Cybersécurité : menaces, mots de
-                passe, phishing + Intro GitHub</a
-              >
-            </li>
-            <li>
-              <a href="#s1-vendredi"
-                >S1 — Vendredi 15 mai (3,5h) · Cybersécurité : pratique + 1er
-                dépôt GitHub</a
-              >
-            </li>
-            <li>
-              <a href="#s2-lundi"
-                >S2 — Lundi 18 mai (7h) · GitHub : flux complet, branches,
-                README structuré</a
-              >
-            </li>
-            <li>
-              <a href="#s2-vendredi"
-                >S2 — Vendredi 22 mai (3,5h) · Mise en commun + Livrable
-                final</a
-              >
-            </li>
-            <li>
-              <a href="#livrable"
-                >Livrable S2 — 1er commit GitHub + README cybersécurité</a
-              >
-            </li>
-            <li><a href="#ressources">Ressources & supports imprimables</a></li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- ═══════════════════════════════ -->
-      <!-- ═══ S1 — LUNDI 11 MAI ═══ -->
-      <!-- ═══════════════════════════════ -->
-      <div class="section-box" id="s1-lundi">
-        <h2>🟢 S1 · Lundi 11 mai — 09h00 → 17h00 (7h)</h2>
-
-        <!-- Accroche FALC -->
-        <div class="cours-section">
-          <div class="falc-intro">
-            <strong>🚀 Bienvenue dans le PPNI 2026 !</strong>
-            Aujourd'hui, on commence par le plus important :
-            <em>rester en sécurité sur Internet</em>. Internet n'est pas sûr par
-            défaut. Chaque jour, des millions de personnes se font voler leur
-            mot de passe, leurs données, ou leur argent — pas parce qu'elles
-            sont stupides, mais parce qu'elles ne connaissent pas les bons
-            réflexes. Ce cours, c'est ton bouclier.
-          </div>
-        </div>
-
-        <!-- SÉANCE 1 : 09h00 - 10h30 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">09h00 – 10h30</span>
-          <span class="seance-info"
-            >Accueil · Tour de table · Présentation du parcours · Test de
-            positionnement</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>🤝 Lancement du groupe</h3>
-          <p class="section-meta">Durée : 1h30 — Format collectif</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Quiz de positionnement</h4>
-              <ul>
-                <li>10 questions sur le numérique et la sécurité</li>
-                <li>
-                  Pas de mauvaises réponses — c'est pour calibrer le groupe
-                </li>
-                <li>
-                  Chaque stagiaire remplit individuellement (papier ou
-                  formulaire en ligne)
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Tour de table</h4>
-              <ul>
-                <li>Prénom + pourquoi être là</li>
-                <li>Ce que je connais déjà (ou pas) du numérique</li>
-                <li>Ce que j'espère apprendre d'ici fin octobre</li>
-              </ul>
-              <span class="duree">⏱ 30 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Présentation du parcours PPNI</h4>
-              <ul>
-                <li>Les 3 phases : Fondamentaux → Axe 1 ou 2 → Portfolio</li>
-                <li>
-                  Les règles du groupe : bienveillance, confidentialité,
-                  assiduité
-                </li>
-                <li>Remise du programme et du livret stagiaire</li>
-              </ul>
-              <span class="duree">⏱ 40 min</span>
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>🔐 S1-S2 — Cybersécurité basics & GitHub</h1>
+            <div class="meta">
+              <strong>Phase 1 — Fondamentaux &amp; Orientation</strong>
+              &nbsp;|&nbsp; 11 mai → 22 mai 2026 — 2 semaines &nbsp;|&nbsp;
+              10,5h de formation &nbsp;|&nbsp;
+              <strong>Niveau : Débutant complet</strong>
+              &nbsp;|&nbsp; Méthode : 70% Pratique · 20% Collaboration · 10%
+              Théorie
             </div>
           </div>
-        </div>
-
-        <!-- SÉANCE 2 : 10h30 - 12h30 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">10h30 – 12h30</span>
-          <span class="seance-info"
-            >Cybersécurité : menaces, mots de passe, MFA</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>🔐 Séquence 1.1 — Comprendre les menaces</h3>
-          <p class="section-meta">
-            Durée : 2h — 3 notions essentielles + atelier
-          </p>
-          <div class="falc-intro">
-            <strong>💡 Idée clé :</strong>
-            Une menace, c'est ce qui peut t'arriver. Un risque, c'est la
-            probabilité que ça arrive. Une vulnérabilité, c'est la porte ouverte
-            par où ça rentre. On apprend à fermer les portes.
-          </div>
-          <div class="module-grid">
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Vocabulaire essentiel</h4>
-              <ul>
-                <li>
-                  <strong>Menace</strong> : virus, hacker, phishing, ransomware
-                </li>
-                <li>
-                  <strong>Risque</strong> : probabilité + impact d'une attaque
-                </li>
-                <li>
-                  <strong>Vulnérabilité</strong> : mot de passe faible, Wi-Fi
-                  public, logiciel non mis à jour
-                </li>
-                <li>
-                  <strong>Vecteur d'attaque</strong> : e-mail, lien, clé USB,
-                  faux site
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Atelier : le mot de passe parfait</h4>
-              <ul>
-                <li>
-                  Tester son mot de passe sur <em>howsecureismypassword.net</em>
-                </li>
-                <li>
-                  Créer une phrase de passe forte (méthode des 4 mots
-                  aléatoires)
-                </li>
-                <li>
-                  Installer et tester un gestionnaire de mots de passe
-                  (Bitwarden)
-                </li>
-                <li>Activer le MFA sur son compte Google ou GitHub</li>
-              </ul>
-              <span class="duree">⏱ 55 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Discussion collective : vos habitudes</h4>
-              <ul>
-                <li>Combien de mots de passe différents utilisez-vous ?</li>
-                <li>Avez-vous déjà reçu un e-mail suspect ?</li>
-                <li>
-                  Partage d'expériences (sans honte — tout le monde apprend)
-                </li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PAUSE DÉJEUNER -->
-        <div
-          style="
-            background-color: var(--surface-2);
-            text-align: center;
-            padding: 10px;
-            font-style: italic;
-            color: var(--text-faint);
-            font-size: 12px;
-          "
-        >
-          🍽️ Pause déjeuner — 12h30 → 13h20
-        </div>
-
-        <!-- SÉANCE 3 : 13h20 - 15h00 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">13h20 – 15h00</span>
-          <span class="seance-info">Phishing : reconnaître et réagir</span>
-        </div>
-        <div class="cours-section">
-          <h3>🎣 Séquence 1.2 — Détecter le phishing</h3>
-          <p class="section-meta">Durée : 1h40 — Cas réels + quiz interactif</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Quiz phishing — vrai ou faux ?</h4>
-              <ul>
-                <li>10 e-mails présentés : repérer les indices suspects</li>
-                <li>
-                  Indices à chercher : expéditeur, lien, ton urgent, fautes,
-                  logo
-                </li>
-                <li>Correction collective avec explications</li>
-                <li>Cas réel : faux e-mail "Votre compte sera supprimé"</li>
-              </ul>
-              <span class="duree">⏱ 50 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>En binôme : analyser un e-mail</h4>
-              <ul>
-                <li>Chaque binôme reçoit 2 e-mails (1 vrai, 1 phishing)</li>
-                <li>Lister 3 preuves qui permettent de distinguer les deux</li>
-                <li>Présentation de 2 min par binôme</li>
-              </ul>
-              <span class="duree">⏱ 30 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Réflexes en cas d'attaque</h4>
-              <ul>
-                <li>Ne jamais cliquer sans vérifier l'URL</li>
-                <li>Signaler à l'ANSSI (cybermalveillance.gouv.fr)</li>
-                <li>Que faire si on a cliqué : démarche en 5 étapes</li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 4 : 15h00 - 17h00 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">15h00 – 17h00</span>
-          <span class="seance-info"
-            >Intro GitHub : créer son espace de travail numérique</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>🐙 Séquence 1.3 — Découverte de GitHub</h3>
-          <p class="section-meta">Durée : 2h — Guidé pas à pas</p>
-          <div class="falc-intro">
-            <strong>💡 GitHub c'est quoi ?</strong>
-            Imagine un Google Drive, mais pour du code. Tu peux sauvegarder tes
-            fichiers, suivre toutes les modifications, travailler à plusieurs,
-            et montrer ton travail au monde entier. C'est la vitrine de tout
-            développeur ou technicien numérique.
-          </div>
-          <div class="module-grid">
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Vocabulaire Git/GitHub</h4>
-              <ul>
-                <li>
-                  <strong>Repository (repo)</strong> : ton dossier de projet
-                </li>
-                <li><strong>Commit</strong> : une sauvegarde commentée</li>
-                <li><strong>Push</strong> : envoyer ses commits sur GitHub</li>
-                <li>
-                  <strong>README.md</strong> : la page d'accueil du projet
-                </li>
-                <li>
-                  <strong>Local / Remote</strong> : ton ordi / le serveur GitHub
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Créer son compte GitHub</h4>
-              <ul>
-                <li>
-                  Aller sur github.com → créer un compte (e-mail pro ou perso)
-                </li>
-                <li>Activer le MFA sur son compte GitHub</li>
-                <li>Personnaliser son profil (photo, bio courte)</li>
-                <li>Explorer l'interface : repos, explore, profil public</li>
-                <li>
-                  Installer GitHub Desktop (outil graphique pour débutants)
-                </li>
-              </ul>
-              <span class="duree">⏱ 60 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Trouver le compte des autres</h4>
-              <ul>
-                <li>
-                  Chaque stagiaire partage son URL GitHub dans le chat de groupe
-                </li>
-                <li>Suivre le compte du formateur (Follow)</li>
-                <li>Explorer 2 repos publics de développeurs connus</li>
-              </ul>
-              <span class="duree">⏱ 40 min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════ -->
-      <!-- ═══ S1 — VENDREDI 15 MAI ═══ -->
-      <!-- ══════════════════════════════════ -->
-      <div class="section-box" id="s1-vendredi">
-        <h2>🔵 S1 · Vendredi 15 mai — 09h00 → 15h00 (3,5h)</h2>
-
-        <div class="cours-section">
-          <div class="falc-intro">
-            <strong>📌 L'objectif de ce vendredi :</strong>
-            Consolider ce qu'on a vu lundi, compléter ta checklist de sécurité
-            personnelle, et créer ton premier dépôt GitHub avec son README.
-            C'est ton premier livrable professionnel.
-          </div>
-        </div>
-
-        <!-- SÉANCE 1 : 09h00 - 10h30 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">09h00 – 10h30</span>
-          <span class="seance-info"
-            >Révision cybersécurité + Checklist personnelle</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>🔄 Séquence 1.4 — Bilan de sécurité personnelle</h3>
-          <p class="section-meta">Durée : 1h30</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Atelier : ma checklist de sécurité</h4>
-              <ul>
-                <li>
-                  Compléter une fiche : 10 points de sécurité à vérifier sur son
-                  ordi et ses comptes
-                </li>
-                <li>Vérifier son gestionnaire de mots de passe (Bitwarden)</li>
-                <li>Audit rapide de son compte Google (sécurité > activité)</li>
-                <li>Mettre à jour les logiciels si nécessaire</li>
-              </ul>
-              <span class="duree">⏱ 60 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Quiz flash collectif</h4>
-              <ul>
-                <li>
-                  8 questions rapides sur la cybersécurité (lundi revisited)
-                </li>
-                <li>Format Kahoot ou papier — résultats commentés ensemble</li>
-                <li>Clarification des points mal compris</li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Les bons réflexes au quotidien</h4>
-              <ul>
-                <li>Règle des 3 : je sauvegarde, je chiffre, je vérifie</li>
-                <li>Wi-Fi public : ne jamais saisir un mot de passe</li>
-                <li>VPN : quand l'utiliser (démo rapide)</li>
-              </ul>
-              <span class="duree">⏱ 10 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 2 : 10h30 - 12h30 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">10h30 – 12h30</span>
-          <span class="seance-info">Premier dépôt GitHub + README</span>
-        </div>
-        <div class="cours-section">
-          <h3>🐙 Séquence 1.5 — Mon premier repo GitHub</h3>
-          <p class="section-meta">Durée : 2h — Guidé étape par étape</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Créer le repo + rédiger le README</h4>
-              <ul>
-                <li>
-                  Créer un repository nommé
-                  <code>ppni-cybersecurite</code> (public)
-                </li>
-                <li>Initialiser avec un <code>README.md</code></li>
-                <li>
-                  Rédiger le README en Markdown : titre, 3 sections, listes
-                </li>
-                <li>
-                  Structure attendue : Pourquoi / 3 bonnes pratiques /
-                  Ressources utiles
-                </li>
-                <li>Committer et pusher via GitHub Desktop</li>
-              </ul>
-              <span class="duree">⏱ 80 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Revue croisée en binôme</h4>
-              <ul>
-                <li>Chaque binôme visite le repo GitHub de l'autre</li>
-                <li>Donner 1 point positif + 1 suggestion d'amélioration</li>
-                <li>Améliorer son README suite aux retours</li>
-              </ul>
-              <span class="duree">⏱ 30 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Markdown en 5 minutes</h4>
-              <ul>
-                <li><code># Titre</code>, <code>## Sous-titre</code></li>
-                <li><code>**gras**</code>, <code>*italique*</code></li>
-                <li><code>- liste</code>, <code>[lien](url)</code></li>
-                <li>Fiche de référence distribuée</li>
-              </ul>
-              <span class="duree">⏱ 10 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 3 : 13h20 - 15h00 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">13h20 – 15h00</span>
-          <span class="seance-info"
-            >Accompagnement projet pro + débriefing S1</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>💼 Séquence 1.6 — Clôture de S1</h3>
-          <p class="section-meta">Durée : 1h40</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Finalisation du README</h4>
-              <ul>
-                <li>Chaque stagiaire complète et améliore son README</li>
-                <li>Vérifier : commit, push, URL publique accessible</li>
-                <li>Envoyer le lien GitHub au formateur (email ou chat)</li>
-              </ul>
-              <span class="duree">⏱ 50 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Tour de table de clôture</h4>
-              <ul>
-                <li>
-                  Ce que j'ai appris cette semaine (1 phrase par stagiaire)
-                </li>
-                <li>Ce qui m'a surpris / ce que je veux creuser</li>
-                <li>Question ouverte pour lundi prochain</li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Annonce S2</h4>
-              <ul>
-                <li>
-                  Preview de la semaine 2 : Git en profondeur, branches,
-                  workflow
-                </li>
-                <li>
-                  Défi optionnel pour le week-end : écrire 1 section de plus
-                  dans le README
-                </li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════ -->
-      <!-- ═══ S2 — LUNDI 18 MAI ═══ -->
-      <!-- ══════════════════════════════════ -->
-      <div class="section-box" id="s2-lundi">
-        <h2>🟢 S2 · Lundi 18 mai — 09h00 → 17h00 (7h)</h2>
-
-        <div class="cours-section">
-          <div class="falc-intro">
-            <strong>🐙 Cette semaine : GitHub comme un pro.</strong>
-            Tu as ton compte et ton premier repo. Maintenant on apprend le vrai
-            flux de travail : cloner, modifier, committer, pusher — et
-            travailler avec des branches pour ne jamais casser ce qui
-            fonctionne. C'est ce que font tous les développeurs professionnels
-            chaque jour.
-          </div>
-        </div>
-
-        <!-- SÉANCE 1 : 09h00 - 10h30 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">09h00 – 10h30</span>
-          <span class="seance-info">Retour sur S1 + flux Git complet</span>
-        </div>
-        <div class="cours-section">
-          <h3>🔁 Séquence 2.1 — Le flux Git de A à Z</h3>
-          <p class="section-meta">Durée : 1h30</p>
-          <div class="module-grid">
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Schéma du flux Git</h4>
-              <ul>
-                <li>
-                  <strong>Espace de travail</strong> (ton ordi) →
-                  <code>git add</code> → Staging area
-                </li>
-                <li>Staging area → <code>git commit</code> → Repo local</li>
-                <li>Repo local → <code>git push</code> → GitHub (remote)</li>
-                <li>
-                  GitHub → <code>git pull</code> → Repo local (récupérer les
-                  mises à jour)
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Atelier flux complet avec GitHub Desktop</h4>
-              <ul>
-                <li>
-                  Cloner son propre repo <code>ppni-cybersecurite</code> en
-                  local
-                </li>
-                <li>Modifier le README dans un éditeur (VS Code ou Notepad)</li>
-                <li>Observer le changement dans GitHub Desktop (diff)</li>
-                <li>Écrire un message de commit clair et committer</li>
-                <li>
-                  Pusher et vérifier sur github.com que le changement apparaît
-                </li>
-              </ul>
-              <span class="duree">⏱ 55 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Revue des repos de la semaine dernière</h4>
-              <ul>
-                <li>Le formateur montre 2-3 README d'exemples (anonymisés)</li>
-                <li>
-                  Collectivement : qu'est-ce qui est bien ? Qu'est-ce qui manque
-                  ?
-                </li>
-              </ul>
-              <span class="duree">⏱ 15 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 2 : 10h30 - 12h30 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">10h30 – 12h30</span>
-          <span class="seance-info">Branches Git : travailler sans risque</span>
-        </div>
-        <div class="cours-section">
-          <h3>🌿 Séquence 2.2 — Les branches Git</h3>
-          <p class="section-meta">Durée : 2h</p>
-          <div class="falc-intro">
-            <strong>💡 Pourquoi des branches ?</strong>
-            Imagine que tu travailles sur un document Word important. Tu veux
-            tester une nouvelle version sans risquer de perdre l'original. Une
-            branche, c'est exactement ça : une copie parallèle où tu
-            expérimentes, et tu fusionnes quand c'est prêt.
-          </div>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Créer et fusionner une branche</h4>
-              <ul>
-                <li>
-                  Créer une branche <code>amelioration-readme</code> depuis
-                  GitHub Desktop
-                </li>
-                <li>
-                  Ajouter une nouvelle section dans le README sur cette branche
-                </li>
-                <li>Committer et pusher la branche</li>
-                <li>Ouvrir une Pull Request sur GitHub.com</li>
-                <li>Merger la PR dans <code>main</code></li>
-                <li>Vérifier que <code>main</code> est bien à jour</li>
-              </ul>
-              <span class="duree">⏱ 70 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Code review croisée</h4>
-              <ul>
-                <li>
-                  Chaque stagiaire laisse un commentaire sur la PR d'un camarade
-                </li>
-                <li>Le formateur montre comment lire une diff</li>
-                <li>Discussion : qu'est-ce qu'un bon message de commit ?</li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Bonnes pratiques Git</h4>
-              <ul>
-                <li>
-                  Messages de commit : verbe à l'infinitif, clair et court
-                </li>
-                <li>
-                  1 commit = 1 action précise (pas "modifications diverses")
-                </li>
-                <li>
-                  Ne jamais forcer un push sur <code>main</code> sans revue
-                </li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PAUSE DÉJEUNER -->
-        <div
-          style="
-            background-color: var(--surface-2);
-            text-align: center;
-            padding: 10px;
-            font-style: italic;
-            color: var(--text-faint);
-            font-size: 12px;
-          "
-        >
-          🍽️ Pause déjeuner — 12h30 → 13h20
-        </div>
-
-        <!-- SÉANCE 3 : 13h20 - 15h00 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">13h20 – 15h00</span>
-          <span class="seance-info"
-            >README professionnel + structure Markdown avancée</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>📝 Séquence 2.3 — README niveau pro</h3>
-          <p class="section-meta">Durée : 1h40</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Enrichir son README</h4>
-              <ul>
-                <li>
-                  Ajouter un badge (ex: "En cours de formation PPNI 2026")
-                </li>
-                <li>Structurer avec des titres H1, H2, H3</li>
-                <li>Ajouter un tableau Markdown (| colonne | colonne |)</li>
-                <li>
-                  Insérer un lien et une citation (<code>&gt; texte</code>)
-                </li>
-                <li>
-                  Committer avec un message clair : "Améliorer structure README"
-                </li>
-              </ul>
-              <span class="duree">⏱ 65 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Pitch de 2 minutes par stagiaire</h4>
-              <ul>
-                <li>Chaque stagiaire présente son README à voix haute</li>
-                <li>Le groupe pose 1 question ou donne 1 retour positif</li>
-                <li>
-                  Formateur donne un feedback structuré (méthode sandwich)
-                </li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Le README, carte de visite pro</h4>
-              <ul>
-                <li>
-                  Un recruteur passe en moyenne 30 secondes sur un profil GitHub
-                </li>
-                <li>
-                  Un bon README = accroche + compétences + projets + contact
-                </li>
-                <li>Exemples de profils GitHub qui impressionnent</li>
-              </ul>
-              <span class="duree">⏱ 10 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 4 : 15h00 - 17h00 -->
-        <div class="seance-header">
-          <span class="seance-badge lundi">15h00 – 17h00</span>
-          <span class="seance-info"
-            >Sécurité GitHub + bonnes pratiques de dépôt</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>🔒 Séquence 2.4 — GitHub en toute sécurité</h3>
-          <p class="section-meta">Durée : 2h</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Sécuriser son compte GitHub</h4>
-              <ul>
-                <li>Vérifier les paramètres de sécurité du compte GitHub</li>
-                <li>Comprendre les repos privés vs publics (cas d'usage)</li>
-                <li>
-                  Ne jamais committer de mot de passe ou clé API (démo de
-                  l'erreur à éviter)
-                </li>
-                <li>
-                  Ajouter un fichier <code>.gitignore</code> basique à son repo
-                </li>
-                <li>Configurer les notifications e-mail GitHub</li>
-              </ul>
-              <span class="duree">⏱ 70 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Scénario de groupe</h4>
-              <ul>
-                <li>
-                  Cas pratique : "Un stagiaire a commité son mot de passe par
-                  erreur — que faire ?"
-                </li>
-                <li>
-                  Discussion collective : retrouver la solution (git revert,
-                  contacter GitHub)
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Les secrets ne vont pas sur GitHub</h4>
-              <ul>
-                <li>
-                  Règle absolue : jamais de mot de passe, token API, clé SSH en
-                  clair dans un commit
-                </li>
-                <li>
-                  Utiliser des variables d'environnement (<code>.env</code>) +
-                  <code>.gitignore</code>
-                </li>
-                <li>GitHub Secrets pour les projets avancés (mention)</li>
-              </ul>
-              <span class="duree">⏱ 10 min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ════════════════════════════════════ -->
-      <!-- ═══ S2 — VENDREDI 22 MAI ═══ -->
-      <!-- ════════════════════════════════════ -->
-      <div class="section-box" id="s2-vendredi">
-        <h2>🔵 S2 · Vendredi 22 mai — 09h00 → 15h00 (3,5h)</h2>
-
-        <div class="cours-section">
-          <div class="falc-intro">
-            <strong>🏁 Jour du livrable !</strong>
-            Ce vendredi est dédié à la finalisation de ton premier livrable
-            professionnel : un dépôt GitHub propre avec un README de qualité.
-            C'est un moment important — c'est la première page de ton portfolio
-            numérique.
-          </div>
-        </div>
-
-        <!-- SÉANCE 1 : 09h00 - 10h30 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">09h00 – 10h30</span>
-          <span class="seance-info">Révision Git + finalisation README</span>
-        </div>
-        <div class="cours-section">
-          <h3>🔁 Séquence 2.5 — Consolidation du flux Git</h3>
-          <p class="section-meta">Durée : 1h30</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Cheat sheet Git en pratique</h4>
-              <ul>
-                <li>
-                  Reproduire le flux complet de mémoire : clone → edit → commit
-                  → push
-                </li>
-                <li>Créer une branche, modifier, merger</li>
-                <li>Répondre à un commentaire de code review (simulation)</li>
-                <li>
-                  Consulter l'historique des commits (<code>git log</code> ou
-                  GitHub Desktop)
-                </li>
-              </ul>
-              <span class="duree">⏱ 60 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Entraide entre stagiaires</h4>
-              <ul>
-                <li>Ceux qui maîtrisent aident ceux qui bloquent</li>
-                <li>
-                  Le formateur circule et observe les difficultés récurrentes
-                </li>
-                <li>Point collectif si plusieurs ont le même blocage</li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Récap des commandes essentielles</h4>
-              <ul>
-                <li><code>git clone [url]</code> — copier un repo en local</li>
-                <li><code>git status</code> — voir ce qui a changé</li>
-                <li><code>git add .</code> — préparer les fichiers</li>
-                <li><code>git commit -m "message"</code> — sauvegarder</li>
-                <li><code>git push</code> — envoyer sur GitHub</li>
-              </ul>
-              <span class="duree">⏱ 10 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 2 : 10h30 - 12h30 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">10h30 – 12h30</span>
-          <span class="seance-info"
-            >Livrable final S1-S2 — Validation formateur</span
-          >
-        </div>
-        <div class="cours-section">
-          <h3>
-            🏆 Séquence 2.6 — Livrable : 1er commit + README cybersécurité
-          </h3>
-          <p class="section-meta">Durée : 2h</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Finalisation du livrable</h4>
-              <ul>
-                <li>README final avec toutes les sections attendues</li>
-                <li>
-                  Au moins 3 commits avec des messages clairs dans l'historique
-                </li>
-                <li>Repo public, accessible sans connexion</li>
-                <li>
-                  Auto-évaluation : remplir sa checklist de livrable (voir
-                  section ci-dessous)
-                </li>
-                <li>Envoyer le lien GitHub au formateur avant 12h30</li>
-              </ul>
-              <span class="duree">⏱ 80 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Présentation flash (2 min / stagiaire)</h4>
-              <ul>
-                <li>Montrer son dépôt GitHub à l'écran</li>
-                <li>
-                  Expliquer ce qu'il contient et ce qu'on a appris en le faisant
-                </li>
-                <li>1 retour positif du groupe</li>
-              </ul>
-              <span class="duree">⏱ 25 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Feedback formateur</h4>
-              <ul>
-                <li>
-                  Retour individuel écrit sur le README (grille de validation)
-                </li>
-                <li>Points forts collectifs identifiés</li>
-                <li>Axes d'amélioration pour la suite (S3-S4)</li>
-              </ul>
-              <span class="duree">⏱ 15 min</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SÉANCE 3 : 13h20 - 15h00 -->
-        <div class="seance-header">
-          <span class="seance-badge vendredi">13h20 – 15h00</span>
-          <span class="seance-info">Débriefing S1-S2 + preview S3-S4</span>
-        </div>
-        <div class="cours-section">
-          <h3>🔮 Séquence 2.7 — Clôture et projection</h3>
-          <p class="section-meta">Durée : 1h40</p>
-          <div class="module-grid">
-            <div class="module-card pratique">
-              <span class="module-tag pratique">70% — Pratique</span>
-              <h4>Exercice de projection personnelle</h4>
-              <ul>
-                <li>
-                  Rédiger dans son README une section "Ce que je veux apprendre
-                  ensuite"
-                </li>
-                <li>
-                  Committer et pusher cette section (entraînement du réflexe
-                  Git)
-                </li>
-                <li>
-                  Explorer GitHub Explore : trouver 1 projet inspirant lié au
-                  numérique
-                </li>
-              </ul>
-              <span class="duree">⏱ 50 min</span>
-            </div>
-            <div class="module-card collaboration">
-              <span class="module-tag collaboration">20% — Collaboration</span>
-              <h4>Bilan collectif S1-S2</h4>
-              <ul>
-                <li>
-                  Tour de table : 1 chose apprise + 1 chose qui me tient à cœur
-                </li>
-                <li>
-                  Vote : sujet qui me motive le plus pour la suite (réseau, web,
-                  marketing, IA)
-                </li>
-                <li>
-                  Formateur : quel axe choisir ? (annonce du processus
-                  d'orientation S7-S8)
-                </li>
-              </ul>
-              <span class="duree">⏱ 30 min</span>
-            </div>
-            <div class="module-card theorie">
-              <span class="module-tag theorie">10% — Théorie</span>
-              <h4>Preview S3-S4 : Réseau & HTML/CSS</h4>
-              <ul>
-                <li>
-                  La semaine prochaine : comment Internet fonctionne (IP, DNS,
-                  HTTP)
-                </li>
-                <li>Puis : créer sa première page web responsive</li>
-                <li>
-                  Défi optionnel : regarder une vidéo de 10 min sur les réseaux
-                  informatiques
-                </li>
-              </ul>
-              <span class="duree">⏱ 20 min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══ LIVRABLE FINAL ═══ -->
-      <div class="section-box" id="livrable">
-        <h2>🚩 Livrable S1-S2 — Critères de validation</h2>
-        <div class="cours-section">
-          <p class="section-meta">
-            À compléter par le stagiaire puis validé par le formateur — Date
-            limite : Vendredi 22 mai, 12h30
-          </p>
           <div
             style="
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 18px;
-              margin-top: 8px;
+              display: flex;
+              gap: 8px;
+              flex-shrink: 0;
+              align-self: flex-start;
+              flex-wrap: wrap;
             "
           >
-            <div>
-              <h4
-                style="
-                  font-size: 12px;
-                  font-weight: 700;
-                  margin-bottom: 10px;
-                  color: #1a3a5c;
-                "
-              >
-                ✅ Cybersécurité
-              </h4>
-              <ul class="checklist">
-                <li>J'ai un gestionnaire de mots de passe installé et actif</li>
-                <li>Mon compte GitHub a le MFA activé</li>
-                <li>
-                  Je sais identifier au moins 3 signes d'un e-mail phishing
-                </li>
-                <li>J'ai complété ma checklist de sécurité personnelle</li>
-                <li>
-                  Je connais la règle du mot de passe fort (phrase de passe)
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4
-                style="
-                  font-size: 12px;
-                  font-weight: 700;
-                  margin-bottom: 10px;
-                  color: #1a3a5c;
-                "
-              >
-                ✅ GitHub
-              </h4>
-              <ul class="checklist">
-                <li>Mon compte GitHub est créé et sécurisé (MFA)</li>
-                <li>
-                  Le dépôt <code>ppni-cybersecurite</code> est public et
-                  accessible
-                </li>
-                <li>
-                  Le README contient un titre, 3 sections, et au moins 3 bonnes
-                  pratiques
-                </li>
-                <li>
-                  L'historique montre au moins 3 commits avec des messages
-                  clairs
-                </li>
-                <li>J'ai réalisé au moins 1 branche et 1 merge</li>
-                <li>Lien du dépôt envoyé au formateur</li>
-              </ul>
-            </div>
+            <a
+              href="../previsionnel_stagiaire.html"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 9px 16px;
+                background: #e8eef7;
+                color: #1a3a5c;
+                border: 1px solid #c5d3e8;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: 600;
+                text-decoration: none;
+              "
+              >← Retour au prévisionnel</a
+            >
+            <button class="print-btn" onclick="window.print()">
+              🖨️ Imprimer / PDF
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- ═══ RESSOURCES ═══ -->
-      <div class="section-box" id="ressources">
-        <h2>📚 Ressources & Supports</h2>
-        <div class="ressource-grid">
-          <div class="ressource-card">
-            <h4>📄 Modèle README.md</h4>
+        <!-- ═══ RÉSUMÉ OBJECTIFS ═══ -->
+        <div class="axes-summary">
+          <div class="axe-card phase1">
+            <h3>🎯 Objectif S1-S2</h3>
             <p>
-              Structure prête à l'emploi avec les 4 sections attendues. À
-              personnaliser avec ses propres informations.
+              À la fin de ces 2 semaines, chaque stagiaire sait
+              <strong>protéger ses comptes en ligne</strong>, reconnaître un
+              piège numérique, et a publié son
+              <strong
+                >premier dépôt GitHub avec un README de sensibilisation</strong
+              >.
             </p>
           </div>
-          <div class="ressource-card">
-            <h4>📋 Cheat sheet Git</h4>
+          <div class="axe-card phase2-axe1">
+            <h3>📦 Livrable attendu (S2)</h3>
             <p>
-              Les 10 commandes Git essentielles + explication en français
-              simple. Format A5 imprimable.
+              Un dépôt GitHub public · Un fichier <code>README.md</code> · 3
+              bonnes pratiques cybersécurité rédigées · Au moins 1 commit pushé
+              · Dépôt partagé avec le formateur.
             </p>
           </div>
-          <div class="ressource-card">
-            <h4>🎣 Fiche phishing</h4>
+          <div class="axe-card phase2-axe2">
+            <h3>📐 Méthode 70-20-10</h3>
             <p>
-              10 signes qui trahissent un e-mail frauduleux. Exemples visuels
-              annotés. Format A4 imprimable.
-            </p>
-          </div>
-          <div class="ressource-card">
-            <h4>🔐 Checklist sécurité</h4>
-            <p>
-              10 points à vérifier sur son ordinateur et ses comptes. À cocher
-              et à garder sur soi.
-            </p>
-          </div>
-          <div class="ressource-card">
-            <h4>🔗 Liens utiles</h4>
-            <p>
-              <strong>cybermalveillance.gouv.fr</strong> — signaler une
-              attaque<br />
-              <strong>howsecureismypassword.net</strong> — tester son mot de
-              passe<br />
-              <strong>bitwarden.com</strong> — gestionnaire de mots de passe<br />
-              <strong>github.com/explore</strong> — découvrir des projets
-            </p>
-          </div>
-          <div class="ressource-card">
-            <h4>📐 Référence Markdown</h4>
-            <p>
-              Syntaxe Markdown en 1 page : titres, listes, gras, liens,
-              tableaux, citations, code.
+              <strong>70%</strong> — Ateliers pratiques, exercices réels,
+              manipulation directe.<br />
+              <strong>20%</strong> — Travail en binôme, revue croisée,
+              discussion collective.<br />
+              <strong>10%</strong> — Notions théoriques clés, fiches synthèse,
+              schémas.
             </p>
           </div>
         </div>
-      </div>
 
-      <!-- ═══ FOOTER ═══ -->
-      <div class="footer">
-        Cours S1-S2 — Cybersécurité basics &amp; GitHub · PPNI 2026<br />
-        11 mai → 22 mai 2026 — 10,5h de formation — Méthode 70-20-10<br />
-        <strong>Phase 1 — Fondamentaux &amp; Orientation</strong>
-        &nbsp;|&nbsp;
-        <a href="../previsionnel_stagiaire.html" style="color: inherit"
-          >← Retour au prévisionnel</a
-        >
+        <!-- ═══ SOMMAIRE ═══ -->
+        <div class="section-box">
+          <h2>📋 Plan des 2 semaines</h2>
+          <div class="cours-sommaire">
+            <h3>Arborescence du cours</h3>
+            <ol>
+              <li>
+                <a href="#s1-lundi"
+                  >S1 — Lundi 11 mai (7h) · Cybersécurité : menaces, mots de
+                  passe, phishing + Intro GitHub</a
+                >
+              </li>
+              <li>
+                <a href="#s1-vendredi"
+                  >S1 — Vendredi 15 mai (3,5h) · Cybersécurité : pratique + 1er
+                  dépôt GitHub</a
+                >
+              </li>
+              <li>
+                <a href="#s2-lundi"
+                  >S2 — Lundi 18 mai (7h) · GitHub : flux complet, branches,
+                  README structuré</a
+                >
+              </li>
+              <li>
+                <a href="#s2-vendredi"
+                  >S2 — Vendredi 22 mai (3,5h) · Mise en commun + Livrable
+                  final</a
+                >
+              </li>
+              <li>
+                <a href="#livrable"
+                  >Livrable S2 — 1er commit GitHub + README cybersécurité</a
+                >
+              </li>
+              <li>
+                <a href="#ressources">Ressources & supports imprimables</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════ -->
+        <!-- ═══ S1 — LUNDI 11 MAI ═══ -->
+        <!-- ═══════════════════════════════ -->
+        <div class="section-box" id="s1-lundi">
+          <h2>🟢 S1 · Lundi 11 mai — 09h00 → 17h00 (7h)</h2>
+
+          <!-- Accroche FALC -->
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🚀 Bienvenue dans le PPNI 2026 !</strong>
+              Aujourd'hui, on commence par le plus important :
+              <em>rester en sécurité sur Internet</em>. Internet n'est pas sûr
+              par défaut. Chaque jour, des millions de personnes se font voler
+              leur mot de passe, leurs données, ou leur argent — pas parce
+              qu'elles sont stupides, mais parce qu'elles ne connaissent pas les
+              bons réflexes. Ce cours, c'est ton bouclier.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Accueil · Tour de table · Présentation du parcours · Test de
+              positionnement</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🤝 Lancement du groupe</h3>
+            <p class="section-meta">Durée : 1h30 — Format collectif</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Quiz de positionnement</h4>
+                <ul>
+                  <li>10 questions sur le numérique et la sécurité</li>
+                  <li>
+                    Pas de mauvaises réponses — c'est pour calibrer le groupe
+                  </li>
+                  <li>
+                    Chaque stagiaire remplit individuellement (papier ou
+                    formulaire en ligne)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Tour de table</h4>
+                <ul>
+                  <li>Prénom + pourquoi être là</li>
+                  <li>Ce que je connais déjà (ou pas) du numérique</li>
+                  <li>Ce que j'espère apprendre d'ici fin octobre</li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Présentation du parcours PPNI</h4>
+                <ul>
+                  <li>Les 3 phases : Fondamentaux → Axe 1 ou 2 → Portfolio</li>
+                  <li>
+                    Les règles du groupe : bienveillance, confidentialité,
+                    assiduité
+                  </li>
+                  <li>Remise du programme et du livret stagiaire</li>
+                </ul>
+                <span class="duree">⏱ 40 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Cybersécurité : menaces, mots de passe, MFA</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔐 Séquence 1.1 — Comprendre les menaces</h3>
+            <p class="section-meta">
+              Durée : 2h — 3 notions essentielles + atelier
+            </p>
+            <div class="falc-intro">
+              <strong>💡 Idée clé :</strong>
+              Une menace, c'est ce qui peut t'arriver. Un risque, c'est la
+              probabilité que ça arrive. Une vulnérabilité, c'est la porte
+              ouverte par où ça rentre. On apprend à fermer les portes.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Vocabulaire essentiel</h4>
+                <ul>
+                  <li>
+                    <strong>Menace</strong> : virus, hacker, phishing,
+                    ransomware
+                  </li>
+                  <li>
+                    <strong>Risque</strong> : probabilité + impact d'une attaque
+                  </li>
+                  <li>
+                    <strong>Vulnérabilité</strong> : mot de passe faible, Wi-Fi
+                    public, logiciel non mis à jour
+                  </li>
+                  <li>
+                    <strong>Vecteur d'attaque</strong> : e-mail, lien, clé USB,
+                    faux site
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Atelier : le mot de passe parfait</h4>
+                <ul>
+                  <li>
+                    Tester son mot de passe sur
+                    <em>howsecureismypassword.net</em>
+                  </li>
+                  <li>
+                    Créer une phrase de passe forte (méthode des 4 mots
+                    aléatoires)
+                  </li>
+                  <li>
+                    Installer et tester un gestionnaire de mots de passe
+                    (Bitwarden)
+                  </li>
+                  <li>Activer le MFA sur son compte Google ou GitHub</li>
+                </ul>
+                <span class="duree">⏱ 55 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Discussion collective : vos habitudes</h4>
+                <ul>
+                  <li>Combien de mots de passe différents utilisez-vous ?</li>
+                  <li>Avez-vous déjà reçu un e-mail suspect ?</li>
+                  <li>
+                    Partage d'expériences (sans honte — tout le monde apprend)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 15h00</span>
+            <span class="seance-info">Phishing : reconnaître et réagir</span>
+          </div>
+          <div class="cours-section">
+            <h3>🎣 Séquence 1.2 — Détecter le phishing</h3>
+            <p class="section-meta">
+              Durée : 1h40 — Cas réels + quiz interactif
+            </p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Quiz phishing — vrai ou faux ?</h4>
+                <ul>
+                  <li>10 e-mails présentés : repérer les indices suspects</li>
+                  <li>
+                    Indices à chercher : expéditeur, lien, ton urgent, fautes,
+                    logo
+                  </li>
+                  <li>Correction collective avec explications</li>
+                  <li>Cas réel : faux e-mail "Votre compte sera supprimé"</li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>En binôme : analyser un e-mail</h4>
+                <ul>
+                  <li>Chaque binôme reçoit 2 e-mails (1 vrai, 1 phishing)</li>
+                  <li>
+                    Lister 3 preuves qui permettent de distinguer les deux
+                  </li>
+                  <li>Présentation de 2 min par binôme</li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Réflexes en cas d'attaque</h4>
+                <ul>
+                  <li>Ne jamais cliquer sans vérifier l'URL</li>
+                  <li>Signaler à l'ANSSI (cybermalveillance.gouv.fr)</li>
+                  <li>Que faire si on a cliqué : démarche en 5 étapes</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 4 : 15h00 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">15h00 – 17h00</span>
+            <span class="seance-info"
+              >Intro GitHub : créer son espace de travail numérique</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🐙 Séquence 1.3 — Découverte de GitHub</h3>
+            <p class="section-meta">Durée : 2h — Guidé pas à pas</p>
+            <div class="falc-intro">
+              <strong>💡 GitHub c'est quoi ?</strong>
+              Imagine un Google Drive, mais pour du code. Tu peux sauvegarder
+              tes fichiers, suivre toutes les modifications, travailler à
+              plusieurs, et montrer ton travail au monde entier. C'est la
+              vitrine de tout développeur ou technicien numérique.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Vocabulaire Git/GitHub</h4>
+                <ul>
+                  <li>
+                    <strong>Repository (repo)</strong> : ton dossier de projet
+                  </li>
+                  <li><strong>Commit</strong> : une sauvegarde commentée</li>
+                  <li>
+                    <strong>Push</strong> : envoyer ses commits sur GitHub
+                  </li>
+                  <li>
+                    <strong>README.md</strong> : la page d'accueil du projet
+                  </li>
+                  <li>
+                    <strong>Local / Remote</strong> : ton ordi / le serveur
+                    GitHub
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Créer son compte GitHub</h4>
+                <ul>
+                  <li>
+                    Aller sur github.com → créer un compte (e-mail pro ou perso)
+                  </li>
+                  <li>Activer le MFA sur son compte GitHub</li>
+                  <li>Personnaliser son profil (photo, bio courte)</li>
+                  <li>Explorer l'interface : repos, explore, profil public</li>
+                  <li>
+                    Installer GitHub Desktop (outil graphique pour débutants)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 60 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Trouver le compte des autres</h4>
+                <ul>
+                  <li>
+                    Chaque stagiaire partage son URL GitHub dans le chat de
+                    groupe
+                  </li>
+                  <li>Suivre le compte du formateur (Follow)</li>
+                  <li>Explorer 2 repos publics de développeurs connus</li>
+                </ul>
+                <span class="duree">⏱ 40 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ═══ S1 — VENDREDI 15 MAI ═══ -->
+        <!-- ══════════════════════════════════ -->
+        <div class="section-box" id="s1-vendredi">
+          <h2>🔵 S1 · Vendredi 15 mai — 09h00 → 15h00 (3,5h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>📌 L'objectif de ce vendredi :</strong>
+              Consolider ce qu'on a vu lundi, compléter ta checklist de sécurité
+              personnelle, et créer ton premier dépôt GitHub avec son README.
+              C'est ton premier livrable professionnel.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Révision cybersécurité + Checklist personnelle</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔄 Séquence 1.4 — Bilan de sécurité personnelle</h3>
+            <p class="section-meta">Durée : 1h30</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Atelier : ma checklist de sécurité</h4>
+                <ul>
+                  <li>
+                    Compléter une fiche : 10 points de sécurité à vérifier sur
+                    son ordi et ses comptes
+                  </li>
+                  <li>
+                    Vérifier son gestionnaire de mots de passe (Bitwarden)
+                  </li>
+                  <li>
+                    Audit rapide de son compte Google (sécurité > activité)
+                  </li>
+                  <li>Mettre à jour les logiciels si nécessaire</li>
+                </ul>
+                <span class="duree">⏱ 60 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Quiz flash collectif</h4>
+                <ul>
+                  <li>
+                    8 questions rapides sur la cybersécurité (lundi revisited)
+                  </li>
+                  <li>
+                    Format Kahoot ou papier — résultats commentés ensemble
+                  </li>
+                  <li>Clarification des points mal compris</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Les bons réflexes au quotidien</h4>
+                <ul>
+                  <li>Règle des 3 : je sauvegarde, je chiffre, je vérifie</li>
+                  <li>Wi-Fi public : ne jamais saisir un mot de passe</li>
+                  <li>VPN : quand l'utiliser (démo rapide)</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">10h30 – 12h30</span>
+            <span class="seance-info">Premier dépôt GitHub + README</span>
+          </div>
+          <div class="cours-section">
+            <h3>🐙 Séquence 1.5 — Mon premier repo GitHub</h3>
+            <p class="section-meta">Durée : 2h — Guidé étape par étape</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Créer le repo + rédiger le README</h4>
+                <ul>
+                  <li>
+                    Créer un repository nommé
+                    <code>ppni-cybersecurite</code> (public)
+                  </li>
+                  <li>Initialiser avec un <code>README.md</code></li>
+                  <li>
+                    Rédiger le README en Markdown : titre, 3 sections, listes
+                  </li>
+                  <li>
+                    Structure attendue : Pourquoi / 3 bonnes pratiques /
+                    Ressources utiles
+                  </li>
+                  <li>Committer et pusher via GitHub Desktop</li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Revue croisée en binôme</h4>
+                <ul>
+                  <li>Chaque binôme visite le repo GitHub de l'autre</li>
+                  <li>Donner 1 point positif + 1 suggestion d'amélioration</li>
+                  <li>Améliorer son README suite aux retours</li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Markdown en 5 minutes</h4>
+                <ul>
+                  <li><code># Titre</code>, <code>## Sous-titre</code></li>
+                  <li><code>**gras**</code>, <code>*italique*</code></li>
+                  <li><code>- liste</code>, <code>[lien](url)</code></li>
+                  <li>Fiche de référence distribuée</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >Accompagnement projet pro + débriefing S1</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>💼 Séquence 1.6 — Clôture de S1</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Finalisation du README</h4>
+                <ul>
+                  <li>Chaque stagiaire complète et améliore son README</li>
+                  <li>Vérifier : commit, push, URL publique accessible</li>
+                  <li>Envoyer le lien GitHub au formateur (email ou chat)</li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Tour de table de clôture</h4>
+                <ul>
+                  <li>
+                    Ce que j'ai appris cette semaine (1 phrase par stagiaire)
+                  </li>
+                  <li>Ce qui m'a surpris / ce que je veux creuser</li>
+                  <li>Question ouverte pour lundi prochain</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Annonce S2</h4>
+                <ul>
+                  <li>
+                    Preview de la semaine 2 : Git en profondeur, branches,
+                    workflow
+                  </li>
+                  <li>
+                    Défi optionnel pour le week-end : écrire 1 section de plus
+                    dans le README
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ═══ S2 — LUNDI 18 MAI ═══ -->
+        <!-- ══════════════════════════════════ -->
+        <div class="section-box" id="s2-lundi">
+          <h2>🟢 S2 · Lundi 18 mai — 09h00 → 17h00 (7h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🐙 Cette semaine : GitHub comme un pro.</strong>
+              Tu as ton compte et ton premier repo. Maintenant on apprend le
+              vrai flux de travail : cloner, modifier, committer, pusher — et
+              travailler avec des branches pour ne jamais casser ce qui
+              fonctionne. C'est ce que font tous les développeurs professionnels
+              chaque jour.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 10h30</span>
+            <span class="seance-info">Retour sur S1 + flux Git complet</span>
+          </div>
+          <div class="cours-section">
+            <h3>🔁 Séquence 2.1 — Le flux Git de A à Z</h3>
+            <p class="section-meta">Durée : 1h30</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Schéma du flux Git</h4>
+                <ul>
+                  <li>
+                    <strong>Espace de travail</strong> (ton ordi) →
+                    <code>git add</code> → Staging area
+                  </li>
+                  <li>Staging area → <code>git commit</code> → Repo local</li>
+                  <li>Repo local → <code>git push</code> → GitHub (remote)</li>
+                  <li>
+                    GitHub → <code>git pull</code> → Repo local (récupérer les
+                    mises à jour)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Atelier flux complet avec GitHub Desktop</h4>
+                <ul>
+                  <li>
+                    Cloner son propre repo <code>ppni-cybersecurite</code> en
+                    local
+                  </li>
+                  <li>
+                    Modifier le README dans un éditeur (VS Code ou Notepad)
+                  </li>
+                  <li>Observer le changement dans GitHub Desktop (diff)</li>
+                  <li>Écrire un message de commit clair et committer</li>
+                  <li>
+                    Pusher et vérifier sur github.com que le changement apparaît
+                  </li>
+                </ul>
+                <span class="duree">⏱ 55 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Revue des repos de la semaine dernière</h4>
+                <ul>
+                  <li>
+                    Le formateur montre 2-3 README d'exemples (anonymisés)
+                  </li>
+                  <li>
+                    Collectivement : qu'est-ce qui est bien ? Qu'est-ce qui
+                    manque ?
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Branches Git : travailler sans risque</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🌿 Séquence 2.2 — Les branches Git</h3>
+            <p class="section-meta">Durée : 2h</p>
+            <div class="falc-intro">
+              <strong>💡 Pourquoi des branches ?</strong>
+              Imagine que tu travailles sur un document Word important. Tu veux
+              tester une nouvelle version sans risquer de perdre l'original. Une
+              branche, c'est exactement ça : une copie parallèle où tu
+              expérimentes, et tu fusionnes quand c'est prêt.
+            </div>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Créer et fusionner une branche</h4>
+                <ul>
+                  <li>
+                    Créer une branche <code>amelioration-readme</code> depuis
+                    GitHub Desktop
+                  </li>
+                  <li>
+                    Ajouter une nouvelle section dans le README sur cette
+                    branche
+                  </li>
+                  <li>Committer et pusher la branche</li>
+                  <li>Ouvrir une Pull Request sur GitHub.com</li>
+                  <li>Merger la PR dans <code>main</code></li>
+                  <li>Vérifier que <code>main</code> est bien à jour</li>
+                </ul>
+                <span class="duree">⏱ 70 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Code review croisée</h4>
+                <ul>
+                  <li>
+                    Chaque stagiaire laisse un commentaire sur la PR d'un
+                    camarade
+                  </li>
+                  <li>Le formateur montre comment lire une diff</li>
+                  <li>Discussion : qu'est-ce qu'un bon message de commit ?</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Bonnes pratiques Git</h4>
+                <ul>
+                  <li>
+                    Messages de commit : verbe à l'infinitif, clair et court
+                  </li>
+                  <li>
+                    1 commit = 1 action précise (pas "modifications diverses")
+                  </li>
+                  <li>
+                    Ne jamais forcer un push sur <code>main</code> sans revue
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >README professionnel + structure Markdown avancée</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>📝 Séquence 2.3 — README niveau pro</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Enrichir son README</h4>
+                <ul>
+                  <li>
+                    Ajouter un badge (ex: "En cours de formation PPNI 2026")
+                  </li>
+                  <li>Structurer avec des titres H1, H2, H3</li>
+                  <li>Ajouter un tableau Markdown (| colonne | colonne |)</li>
+                  <li>
+                    Insérer un lien et une citation (<code>&gt; texte</code>)
+                  </li>
+                  <li>
+                    Committer avec un message clair : "Améliorer structure
+                    README"
+                  </li>
+                </ul>
+                <span class="duree">⏱ 65 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Pitch de 2 minutes par stagiaire</h4>
+                <ul>
+                  <li>Chaque stagiaire présente son README à voix haute</li>
+                  <li>Le groupe pose 1 question ou donne 1 retour positif</li>
+                  <li>
+                    Formateur donne un feedback structuré (méthode sandwich)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Le README, carte de visite pro</h4>
+                <ul>
+                  <li>
+                    Un recruteur passe en moyenne 30 secondes sur un profil
+                    GitHub
+                  </li>
+                  <li>
+                    Un bon README = accroche + compétences + projets + contact
+                  </li>
+                  <li>Exemples de profils GitHub qui impressionnent</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 4 : 15h00 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">15h00 – 17h00</span>
+            <span class="seance-info"
+              >Sécurité GitHub + bonnes pratiques de dépôt</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔒 Séquence 2.4 — GitHub en toute sécurité</h3>
+            <p class="section-meta">Durée : 2h</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Sécuriser son compte GitHub</h4>
+                <ul>
+                  <li>Vérifier les paramètres de sécurité du compte GitHub</li>
+                  <li>Comprendre les repos privés vs publics (cas d'usage)</li>
+                  <li>
+                    Ne jamais committer de mot de passe ou clé API (démo de
+                    l'erreur à éviter)
+                  </li>
+                  <li>
+                    Ajouter un fichier <code>.gitignore</code> basique à son
+                    repo
+                  </li>
+                  <li>Configurer les notifications e-mail GitHub</li>
+                </ul>
+                <span class="duree">⏱ 70 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Scénario de groupe</h4>
+                <ul>
+                  <li>
+                    Cas pratique : "Un stagiaire a commité son mot de passe par
+                    erreur — que faire ?"
+                  </li>
+                  <li>
+                    Discussion collective : retrouver la solution (git revert,
+                    contacter GitHub)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Les secrets ne vont pas sur GitHub</h4>
+                <ul>
+                  <li>
+                    Règle absolue : jamais de mot de passe, token API, clé SSH
+                    en clair dans un commit
+                  </li>
+                  <li>
+                    Utiliser des variables d'environnement (<code>.env</code>) +
+                    <code>.gitignore</code>
+                  </li>
+                  <li>GitHub Secrets pour les projets avancés (mention)</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════ -->
+        <!-- ═══ S2 — VENDREDI 22 MAI ═══ -->
+        <!-- ════════════════════════════════════ -->
+        <div class="section-box" id="s2-vendredi">
+          <h2>🔵 S2 · Vendredi 22 mai — 09h00 → 15h00 (3,5h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🏁 Jour du livrable !</strong>
+              Ce vendredi est dédié à la finalisation de ton premier livrable
+              professionnel : un dépôt GitHub propre avec un README de qualité.
+              C'est un moment important — c'est la première page de ton
+              portfolio numérique.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 10h30</span>
+            <span class="seance-info">Révision Git + finalisation README</span>
+          </div>
+          <div class="cours-section">
+            <h3>🔁 Séquence 2.5 — Consolidation du flux Git</h3>
+            <p class="section-meta">Durée : 1h30</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Cheat sheet Git en pratique</h4>
+                <ul>
+                  <li>
+                    Reproduire le flux complet de mémoire : clone → edit →
+                    commit → push
+                  </li>
+                  <li>Créer une branche, modifier, merger</li>
+                  <li>Répondre à un commentaire de code review (simulation)</li>
+                  <li>
+                    Consulter l'historique des commits (<code>git log</code> ou
+                    GitHub Desktop)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 60 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Entraide entre stagiaires</h4>
+                <ul>
+                  <li>Ceux qui maîtrisent aident ceux qui bloquent</li>
+                  <li>
+                    Le formateur circule et observe les difficultés récurrentes
+                  </li>
+                  <li>Point collectif si plusieurs ont le même blocage</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Récap des commandes essentielles</h4>
+                <ul>
+                  <li>
+                    <code>git clone [url]</code> — copier un repo en local
+                  </li>
+                  <li><code>git status</code> — voir ce qui a changé</li>
+                  <li><code>git add .</code> — préparer les fichiers</li>
+                  <li><code>git commit -m "message"</code> — sauvegarder</li>
+                  <li><code>git push</code> — envoyer sur GitHub</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Livrable final S1-S2 — Validation formateur</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>
+              🏆 Séquence 2.6 — Livrable : 1er commit + README cybersécurité
+            </h3>
+            <p class="section-meta">Durée : 2h</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Finalisation du livrable</h4>
+                <ul>
+                  <li>README final avec toutes les sections attendues</li>
+                  <li>
+                    Au moins 3 commits avec des messages clairs dans
+                    l'historique
+                  </li>
+                  <li>Repo public, accessible sans connexion</li>
+                  <li>
+                    Auto-évaluation : remplir sa checklist de livrable (voir
+                    section ci-dessous)
+                  </li>
+                  <li>Envoyer le lien GitHub au formateur avant 12h30</li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Présentation flash (2 min / stagiaire)</h4>
+                <ul>
+                  <li>Montrer son dépôt GitHub à l'écran</li>
+                  <li>
+                    Expliquer ce qu'il contient et ce qu'on a appris en le
+                    faisant
+                  </li>
+                  <li>1 retour positif du groupe</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Feedback formateur</h4>
+                <ul>
+                  <li>
+                    Retour individuel écrit sur le README (grille de validation)
+                  </li>
+                  <li>Points forts collectifs identifiés</li>
+                  <li>Axes d'amélioration pour la suite (S3-S4)</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">13h20 – 15h00</span>
+            <span class="seance-info">Débriefing S1-S2 + preview S3-S4</span>
+          </div>
+          <div class="cours-section">
+            <h3>🔮 Séquence 2.7 — Clôture et projection</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Exercice de projection personnelle</h4>
+                <ul>
+                  <li>
+                    Rédiger dans son README une section "Ce que je veux
+                    apprendre ensuite"
+                  </li>
+                  <li>
+                    Committer et pusher cette section (entraînement du réflexe
+                    Git)
+                  </li>
+                  <li>
+                    Explorer GitHub Explore : trouver 1 projet inspirant lié au
+                    numérique
+                  </li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Bilan collectif S1-S2</h4>
+                <ul>
+                  <li>
+                    Tour de table : 1 chose apprise + 1 chose qui me tient à
+                    cœur
+                  </li>
+                  <li>
+                    Vote : sujet qui me motive le plus pour la suite (réseau,
+                    web, marketing, IA)
+                  </li>
+                  <li>
+                    Formateur : quel axe choisir ? (annonce du processus
+                    d'orientation S7-S8)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Preview S3-S4 : Réseau & HTML/CSS</h4>
+                <ul>
+                  <li>
+                    La semaine prochaine : comment Internet fonctionne (IP, DNS,
+                    HTTP)
+                  </li>
+                  <li>Puis : créer sa première page web responsive</li>
+                  <li>
+                    Défi optionnel : regarder une vidéo de 10 min sur les
+                    réseaux informatiques
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ LIVRABLE FINAL ═══ -->
+        <div class="section-box" id="livrable">
+          <h2>🚩 Livrable S1-S2 — Critères de validation</h2>
+          <div class="cours-section">
+            <p class="section-meta">
+              À compléter par le stagiaire puis validé par le formateur — Date
+              limite : Vendredi 22 mai, 12h30
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+                margin-top: 8px;
+              "
+            >
+              <div>
+                <h4
+                  style="
+                    font-size: 12px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #1a3a5c;
+                  "
+                >
+                  ✅ Cybersécurité
+                </h4>
+                <ul class="checklist">
+                  <li>
+                    J'ai un gestionnaire de mots de passe installé et actif
+                  </li>
+                  <li>Mon compte GitHub a le MFA activé</li>
+                  <li>
+                    Je sais identifier au moins 3 signes d'un e-mail phishing
+                  </li>
+                  <li>J'ai complété ma checklist de sécurité personnelle</li>
+                  <li>
+                    Je connais la règle du mot de passe fort (phrase de passe)
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  style="
+                    font-size: 12px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #1a3a5c;
+                  "
+                >
+                  ✅ GitHub
+                </h4>
+                <ul class="checklist">
+                  <li>Mon compte GitHub est créé et sécurisé (MFA)</li>
+                  <li>
+                    Le dépôt <code>ppni-cybersecurite</code> est public et
+                    accessible
+                  </li>
+                  <li>
+                    Le README contient un titre, 3 sections, et au moins 3
+                    bonnes pratiques
+                  </li>
+                  <li>
+                    L'historique montre au moins 3 commits avec des messages
+                    clairs
+                  </li>
+                  <li>J'ai réalisé au moins 1 branche et 1 merge</li>
+                  <li>Lien du dépôt envoyé au formateur</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ RESSOURCES ═══ -->
+        <div class="section-box" id="ressources">
+          <h2>📚 Ressources & Supports</h2>
+          <div class="ressource-grid">
+            <div class="ressource-card">
+              <h4>📄 Modèle README.md</h4>
+              <p>
+                Structure prête à l'emploi avec les 4 sections attendues. À
+                personnaliser avec ses propres informations.
+              </p>
+            </div>
+            <div class="ressource-card">
+              <h4>📋 Cheat sheet Git</h4>
+              <p>
+                Les 10 commandes Git essentielles + explication en français
+                simple. Format A5 imprimable.
+              </p>
+            </div>
+            <div class="ressource-card">
+              <h4>🎣 Fiche phishing</h4>
+              <p>
+                10 signes qui trahissent un e-mail frauduleux. Exemples visuels
+                annotés. Format A4 imprimable.
+              </p>
+            </div>
+            <div class="ressource-card">
+              <h4>🔐 Checklist sécurité</h4>
+              <p>
+                10 points à vérifier sur son ordinateur et ses comptes. À cocher
+                et à garder sur soi.
+              </p>
+            </div>
+            <div class="ressource-card">
+              <h4>🔗 Liens utiles</h4>
+              <p>
+                <strong>cybermalveillance.gouv.fr</strong> — signaler une
+                attaque<br />
+                <strong>howsecureismypassword.net</strong> — tester son mot de
+                passe<br />
+                <strong>bitwarden.com</strong> — gestionnaire de mots de
+                passe<br />
+                <strong>github.com/explore</strong> — découvrir des projets
+              </p>
+            </div>
+            <div class="ressource-card">
+              <h4>📐 Référence Markdown</h4>
+              <p>
+                Syntaxe Markdown en 1 page : titres, listes, gras, liens,
+                tableaux, citations, code.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ FOOTER ═══ -->
+        <div class="footer">
+          Cours S1-S2 — Cybersécurité basics &amp; GitHub · PPNI 2026<br />
+          11 mai → 22 mai 2026 — 10,5h de formation — Méthode 70-20-10<br />
+          <strong>Phase 1 — Fondamentaux &amp; Orientation</strong>
+          &nbsp;|&nbsp;
+          <a href="../previsionnel_stagiaire.html" style="color: inherit"
+            >← Retour au prévisionnel</a
+          >
+        </div>
       </div>
-    </div>
-    <!-- /page-wrapper -->
+      <!-- /page-wrapper -->
     </main>
     <script src="../js/app.js"></script>
   </body>

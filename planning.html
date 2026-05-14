@@ -20,7 +20,12 @@
     <style>
       /* planning specifics */
       .planning-wrap {
-        background: white;
+        background-color: var(--surface);
+        background-image: var(--noise);
+        background-size: 200px 200px;
+        border: 1px solid var(--border);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        backdrop-filter: blur(20px) saturate(180%);
         border-radius: var(--radius);
         box-shadow: var(--shadow-md);
         overflow: hidden;
@@ -31,16 +36,16 @@
         border-collapse: collapse;
       }
       .planning-wrap th {
-        background: var(--brand-dark);
+        background: var(--accent);
         color: white;
         padding: 11px 8px;
         text-align: center;
         font-size: 13px;
         font-weight: 600;
-        border: 1px solid #0d2540;
+        border: 1px solid var(--border);
       }
       .planning-wrap td {
-        border: 1px solid #d1d5db;
+        border: 1px solid var(--border);
         padding: 10px 8px;
         vertical-align: top;
         font-size: 12px;
@@ -68,25 +73,20 @@
         border-left: 4px solid var(--orange);
       }
       .pause {
-        background: #f4f4f4;
-        color: #888;
+        background: var(--surface-2);
+        color: var(--text-faint);
         text-align: center;
         font-style: italic;
         vertical-align: middle;
       }
-      .vide {
-        background: #fafafa;
-      }
+      .vide { background: transparent; }
       .activite {
         font-weight: 700;
         display: block;
         margin-bottom: 3px;
         font-size: 12px;
       }
-      .detail {
-        font-size: 11px;
-        color: #4b5563;
-      }
+      .detail { font-size: 11px; color: var(--text-muted); }
 
       .legende {
         display: flex;
@@ -112,7 +112,12 @@
       }
 
       .recap {
-        background: white;
+        background-color: var(--surface);
+        background-image: var(--noise);
+        background-size: 200px 200px;
+        border: 1px solid var(--border);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        backdrop-filter: blur(20px) saturate(180%);
         border-radius: var(--radius);
         box-shadow: var(--shadow-md);
         margin-bottom: 18px;
@@ -130,12 +135,12 @@
         border-collapse: collapse;
       }
       .recap th {
-        background: #f5f5f5;
-        color: #333;
+        background: var(--surface-2);
+        color: var(--text-muted);
         padding: 9px 12px;
         font-size: 11px;
         font-weight: 600;
-        border-bottom: 2px solid var(--brand-dark);
+        border-bottom: 2px solid var(--accent);
         text-align: left;
       }
       .recap td {
@@ -143,9 +148,7 @@
         font-size: 11px;
         border-bottom: 1px solid var(--gray-border);
       }
-      .recap tr:nth-child(even) td {
-        background: #f9fafb;
-      }
+      .recap tr:nth-child(even) td { background-color: var(--surface-2); }
 
       @media print {
         .planning-wrap th {

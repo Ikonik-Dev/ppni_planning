@@ -19,22 +19,22 @@
         font-size: 13px;
       }
       .md-table th {
-        background: #2c6fad;
-        color: #fff;
+        background: var(--accent);
+        color: white;
         padding: 10px 14px;
         text-align: left;
         font-size: 12px;
       }
       .md-table td {
         padding: 10px 14px;
-        border-bottom: 1px solid #e8eef7;
+        border-bottom: 1px solid var(--border);
         vertical-align: middle;
       }
       .md-table tr:hover td {
-        background: #f5f8fc;
+        background-color: var(--accent-subtle);
       }
       .md-table code {
-        background: #1e293b;
+        background: rgba(15,23,42,0.88);
         color: #7dd3fc;
         padding: 2px 8px;
         border-radius: 4px;
@@ -65,7 +65,7 @@
         margin-top: 12px;
       }
       .editor-pane {
-        border: 2px solid #e0e0e0;
+        border: 2px solid var(--border);
         border-radius: 8px;
         overflow: hidden;
       }
@@ -107,20 +107,21 @@
         overflow-y: auto;
         max-height: 400px;
       }
+      /* Preview zone simulates browser rendering — intentionally keeps light colors */
       .editor-pane-preview h1 {
         font-size: 20px;
-        color: #1a3a5c;
-        border-bottom: 2px solid #e8eef7;
+        color: #1e3a8a;
+        border-bottom: 2px solid #e2e8f0;
         padding-bottom: 6px;
       }
       .editor-pane-preview h2 {
         font-size: 16px;
-        color: #2c6fad;
+        color: #2563eb;
         margin-top: 14px;
       }
       .editor-pane-preview h3 {
         font-size: 14px;
-        color: #444;
+        color: #374151;
       }
       .editor-pane-preview code {
         background: #f1f5f9;
@@ -147,16 +148,16 @@
         width: 100%;
       }
       .editor-pane-preview th {
-        background: #1a3a5c;
+        background: #1e3a8a;
         color: #fff;
         padding: 6px 10px;
       }
       .editor-pane-preview td {
         padding: 6px 10px;
-        border: 1px solid #e0e0e0;
+        border: 1px solid #e2e8f0;
       }
       .editor-pane-preview a {
-        color: #2980b9;
+        color: #2563eb;
       }
       .editor-pane-preview img {
         max-width: 100%;

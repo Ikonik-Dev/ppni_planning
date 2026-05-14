@@ -43,7 +43,11 @@
       }
 
       /* â”€â”€ Ressources â”€â”€ */
-      .ressources-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+      .ressources-bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
       .ressource-link {
         display: inline-flex;
         align-items: center;
@@ -56,9 +60,14 @@
         font-weight: 600;
         color: var(--accent);
         text-decoration: none;
-        transition: background 0.15s, box-shadow 0.15s;
+        transition:
+          background 0.15s,
+          box-shadow 0.15s;
       }
-      .ressource-link:hover { background: rgba(129, 140, 248, 0.22); box-shadow: 0 0 12px var(--accent-glow); }
+      .ressource-link:hover {
+        background: rgba(129, 140, 248, 0.22);
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
       .ressource-inline {
         display: inline-flex;
         align-items: center;
@@ -73,10 +82,18 @@
         margin-top: 10px;
         transition: background 0.15s;
       }
-      .ressource-inline:hover { background: rgba(129, 140, 248, 0.22); }
+      .ressource-inline:hover {
+        background: rgba(129, 140, 248, 0.22);
+      }
 
       /* â”€â”€ Ã‰tapes â”€â”€ */
-      .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+      .step-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
       .step-number {
         width: 42px;
         height: 42px;
@@ -91,7 +108,12 @@
         flex-shrink: 0;
         box-shadow: 0 0 16px var(--accent-glow);
       }
-      .step-title { font-size: 20px; font-weight: 700; color: var(--text); flex: 1; }
+      .step-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        flex: 1;
+      }
       .step-timing {
         font-size: 12px;
         font-weight: 600;
@@ -104,7 +126,14 @@
       }
 
       /* â”€â”€ Sous-Ã©tapes â”€â”€ */
-      .substep-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+      .substep-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
       .substep-item {
         display: flex;
         align-items: flex-start;
@@ -118,10 +147,20 @@
         cursor: pointer;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
-        transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
+        transition:
+          background-color 0.15s,
+          border-color 0.15s,
+          transform 0.15s;
       }
-      .substep-item:hover { background-color: var(--accent-subtle); border-color: rgba(129, 140, 248, 0.30); transform: translateX(2px); }
-      .substep-item.done  { background-color: var(--green-subtle);  border-color: rgba(52, 211, 153, 0.30); }
+      .substep-item:hover {
+        background-color: var(--accent-subtle);
+        border-color: rgba(129, 140, 248, 0.3);
+        transform: translateX(2px);
+      }
+      .substep-item.done {
+        background-color: var(--green-subtle);
+        border-color: rgba(52, 211, 153, 0.3);
+      }
       .substep-cb {
         width: 20px;
         height: 20px;
@@ -134,35 +173,92 @@
         -webkit-appearance: none;
         appearance: none;
         position: relative;
-        transition: background 0.15s, border-color 0.15s;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
       }
-      .substep-cb:checked { background: var(--green); border-color: var(--green); }
-      .substep-cb:checked::after { content: "âœ“"; color: #0f172a; font-size: 13px; font-weight: 700; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-      .substep-text { font-size: 14px; line-height: 1.6; flex: 1; color: var(--text); }
-      .substep-text strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-      .substep-text .hint { font-size: 13px; color: var(--text-muted); display: block; }
+      .substep-cb:checked {
+        background: var(--green);
+        border-color: var(--green);
+      }
+      .substep-cb:checked::after {
+        content: "âœ“";
+        color: #0f172a;
+        font-size: 13px;
+        font-weight: 700;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .substep-text {
+        font-size: 14px;
+        line-height: 1.6;
+        flex: 1;
+        color: var(--text);
+      }
+      .substep-text strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .substep-text .hint {
+        font-size: 13px;
+        color: var(--text-muted);
+        display: block;
+      }
 
       /* â”€â”€ Checkpoints â”€â”€ */
       .check-point {
-        background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.08));
-        border: 2px solid rgba(245, 158, 11, 0.50);
+        background: linear-gradient(
+          135deg,
+          rgba(251, 191, 36, 0.12),
+          rgba(245, 158, 11, 0.08)
+        );
+        border: 2px solid rgba(245, 158, 11, 0.5);
         border-radius: 12px;
         padding: 20px 24px;
         -webkit-backdrop-filter: blur(16px);
         backdrop-filter: blur(16px);
       }
-      .check-point-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-      .check-point-icon { font-size: 26px; line-height: 1; }
-      .check-point-title { font-size: 17px; font-weight: 700; color: var(--yellow); flex: 1; }
-      .check-point-timing { font-size: 12px; font-weight: 700; color: #0f172a; background: var(--yellow); padding: 4px 12px; border-radius: 20px; }
-      .check-point-body { font-size: 14px; line-height: 1.8; color: var(--text); }
+      .check-point-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      .check-point-icon {
+        font-size: 26px;
+        line-height: 1;
+      }
+      .check-point-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--yellow);
+        flex: 1;
+      }
+      .check-point-timing {
+        font-size: 12px;
+        font-weight: 700;
+        color: #0f172a;
+        background: var(--yellow);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .check-point-body {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text);
+      }
       .check-point-action {
         display: block;
         margin-top: 12px;
         padding: 14px 18px;
         background: rgba(251, 191, 36, 0.08);
         border-radius: 8px;
-        border: 1.5px dashed rgba(245, 158, 11, 0.50);
+        border: 1.5px dashed rgba(245, 158, 11, 0.5);
         font-size: 14px;
         color: var(--text);
         line-height: 1.8;
@@ -191,7 +287,12 @@
         color: var(--text);
         margin-bottom: 14px;
       }
-      .def-block strong { font-size: 14px; display: block; margin-bottom: 6px; color: var(--cyan); }
+      .def-block strong {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 6px;
+        color: var(--cyan);
+      }
 
       /* â”€â”€ Code inline â”€â”€ */
       .ic {
@@ -203,7 +304,10 @@
         font-family: "Courier New", monospace;
         white-space: nowrap;
       }
-      html[data-theme="light"] .ic { background: rgba(226, 232, 240, 0.90); color: #0369a1; }
+      html[data-theme="light"] .ic {
+        background: rgba(226, 232, 240, 0.9);
+        color: #0369a1;
+      }
 
       /* â”€â”€ Template README â”€â”€ */
       .readme-template {
@@ -218,11 +322,14 @@
         border: 1px solid #30363d;
         white-space: pre;
       }
-      .readme-comment { color: #8b949e; font-style: italic; }
+      .readme-comment {
+        color: #8b949e;
+        font-style: italic;
+      }
 
       /* â”€â”€ Pause â”€â”€ */
       .pause-banner {
-        background: rgba(251, 146, 60, 0.10);
+        background: rgba(251, 146, 60, 0.1);
         border: 2px solid rgba(251, 146, 60, 0.45);
         border-radius: 12px;
         padding: 20px 24px;
@@ -230,12 +337,34 @@
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
       }
-      .pause-banner-title { font-size: 20px; font-weight: 700; color: var(--orange); margin-bottom: 6px; }
-      .pause-banner-sub   { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+      .pause-banner-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--orange);
+        margin-bottom: 6px;
+      }
+      .pause-banner-sub {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
 
       /* â”€â”€ Diviseur timing â”€â”€ */
-      .timing-divider { display: flex; align-items: center; gap: 10px; color: var(--text-faint); font-size: 13px; font-weight: 600; margin-bottom: 16px; }
-      .timing-divider::before, .timing-divider::after { content: ""; flex: 1; border-top: 1px solid var(--border); }
+      .timing-divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-faint);
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .timing-divider::before,
+      .timing-divider::after {
+        content: "";
+        flex: 1;
+        border-top: 1px solid var(--border);
+      }
 
       /* â”€â”€ Bravo â”€â”€ */
       .bravo-box {
@@ -247,12 +376,33 @@
         -webkit-backdrop-filter: blur(16px);
         backdrop-filter: blur(16px);
       }
-      .bravo-title { font-size: 20px; font-weight: 700; color: var(--green); margin-bottom: 14px; }
-      .bravo-list  { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2.1; color: var(--text); }
+      .bravo-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--green);
+        margin-bottom: 14px;
+      }
+      .bravo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        line-height: 2.1;
+        color: var(--text);
+      }
 
       /* â”€â”€ Deux chemins â”€â”€ */
-      .two-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
-      @media (max-width: 680px) { .two-paths { grid-template-columns: 1fr; } }
+      .two-paths {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 4px;
+      }
+      @media (max-width: 680px) {
+        .two-paths {
+          grid-template-columns: 1fr;
+        }
+      }
       .path-card {
         background-color: var(--surface-2);
         background-image: var(--noise);
@@ -263,10 +413,21 @@
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
       }
-      .path-card-header { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+      .path-card-header {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
 
       /* â”€â”€ Planning overview â”€â”€ */
-      .planning-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; font-size: 13px; line-height: 1.9; }
+      .planning-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.9;
+      }
       .planning-cell {
         padding: 14px 16px;
         background-color: var(--surface-2);
@@ -278,13 +439,31 @@
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
       }
-      .planning-cell.pause-cell { background-color: var(--orange-subtle); border-color: rgba(251, 146, 60, 0.30); }
+      .planning-cell.pause-cell {
+        background-color: var(--orange-subtle);
+        border-color: rgba(251, 146, 60, 0.3);
+      }
 
       /* â”€â”€ Sections verrouillÃ©es â”€â”€ */
-      .locked { filter: blur(3px); opacity: 0.25; pointer-events: none; -webkit-user-select: none; user-select: none; transition: filter 0.6s ease, opacity 0.6s ease; }
+      .locked {
+        filter: blur(3px);
+        opacity: 0.25;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+        transition:
+          filter 0.6s ease,
+          opacity 0.6s ease;
+      }
       @keyframes sectionIn {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* â”€â”€ Bouton dÃ©verrouillage â”€â”€ */
@@ -304,12 +483,19 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        transition: transform 0.15s, box-shadow 0.15s;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
         letter-spacing: 0.2px;
         box-shadow: 0 0 20px var(--accent-glow);
       }
-      .unlock-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 28px var(--accent-glow); }
-      .unlock-btn:active { transform: translateY(0); }
+      .unlock-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px var(--accent-glow);
+      }
+      .unlock-btn:active {
+        transform: translateY(0);
+      }
 
       /* â”€â”€ Modal overlay â”€â”€ */
       .modal-overlay {
@@ -324,7 +510,9 @@
         -webkit-backdrop-filter: blur(6px);
         backdrop-filter: blur(6px);
       }
-      .modal-overlay.open { display: flex; }
+      .modal-overlay.open {
+        display: flex;
+      }
       .modal-box {
         background-color: var(--surface);
         background-image: var(--noise);
@@ -341,22 +529,76 @@
         animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
       }
       @keyframes modalIn {
-        from { transform: scale(0.78) translateY(24px); opacity: 0; }
-        to   { transform: scale(1) translateY(0);       opacity: 1; }
+        from {
+          transform: scale(0.78) translateY(24px);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
       }
-      .modal-emoji { font-size: 58px; display: block; margin-bottom: 6px; animation: emojiPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both; }
+      .modal-emoji {
+        font-size: 58px;
+        display: block;
+        margin-bottom: 6px;
+        animation: emojiPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+      }
       @keyframes emojiPop {
-        from { transform: scale(0); }
-        to   { transform: scale(1); }
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
       }
-      .modal-dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; }
-      .modal-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.25s; }
-      .modal-dot.active { background: var(--accent); }
-      .modal-progress { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 8px; }
-      .modal-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
-      .modal-body  { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 24px; }
-      .modal-btns  { display: flex; gap: 10px; flex-direction: column; }
-      @media (min-width: 400px) { .modal-btns { flex-direction: row; } }
+      .modal-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .modal-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--border);
+        transition: background 0.25s;
+      }
+      .modal-dot.active {
+        background: var(--accent);
+      }
+      .modal-progress {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 8px;
+      }
+      .modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      .modal-body {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+      }
+      .modal-btns {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+      }
+      @media (min-width: 400px) {
+        .modal-btns {
+          flex-direction: row;
+        }
+      }
       .modal-btn-no {
         flex: 1;
         padding: 12px 16px;
@@ -370,7 +612,9 @@
         color: var(--text-muted);
         transition: background 0.15s;
       }
-      .modal-btn-no:hover { background: var(--surface-3); }
+      .modal-btn-no:hover {
+        background: var(--surface-3);
+      }
       .modal-btn-yes {
         flex: 2;
         padding: 12px 16px;
@@ -382,11 +626,15 @@
         font-family: inherit;
         cursor: pointer;
         color: #0f172a;
-        transition: transform 0.15s, box-shadow 0.15s;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
       }
-      .modal-btn-yes:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(52, 211, 153, 0.45); }
+      .modal-btn-yes:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(52, 211, 153, 0.45);
+      }
     </style>
-
   </head>
   <body>
     <aside class="sidebar" id="sidebar">
@@ -564,8 +812,8 @@
         <div class="doc-header">
           <h1>ðŸ™ TP â€” Mon premier projet GitHub</h1>
           <div class="meta">
-            Distanciel Â· Discord Â· BinÃ´mes Â· FALC Â· S1 â€” SÃ©quence 1.3 Â· PPNI
-            2026
+            Distanciel Â· Discord Â· BinÃ´mes Â· FALC Â· S1 â€” SÃ©quence 1.3 Â·
+            PPNI 2026
           </div>
         </div>
 
@@ -586,7 +834,8 @@
             On avance une Ã©tape Ã  la fois.<br />
             Chaque Ã©tape est numÃ©rotÃ©e.<br />
             Coche la case âœ… quand c'est fait.<br />
-            Si tu es bloquÃ©Â·e â†’ demande Ã  ton binÃ´me d'abord. Puis au formateur.
+            Si tu es bloquÃ©Â·e â†’ demande Ã  ton binÃ´me d'abord. Puis au
+            formateur.
           </div>
         </div>
 
@@ -603,10 +852,10 @@
             âœ¦ Ton binÃ´me est annoncÃ© par le formateur Ã 
             <strong>9h00</strong> sur Discord.<br />
             âœ¦ Contacte ton binÃ´me en message privÃ© dÃ¨s l'annonce.<br />
-            âœ¦ Travaillez ensemble : partagez votre Ã©cran ou dÃ©crivez ce que vous
-            voyez.<br />
-            âœ¦ Si tu es bloquÃ©Â·e : ton binÃ´me d'abord â†’ puis le formateur en
-            DM.<br />
+            âœ¦ Travaillez ensemble : partagez votre Ã©cran ou dÃ©crivez ce que
+            vous voyez.<br />
+            âœ¦ Si tu es bloquÃ©Â·e : ton binÃ´me d'abord â†’ puis le formateur
+            en DM.<br />
             <br />
             âš ï¸ <strong>Important :</strong> chacun envoie
             <u>ses propres rÃ©sultats</u> en DM au formateur.<br />
@@ -998,8 +1247,8 @@
               <div class="substep-text">
                 <strong>6. Coche "Add a README file"</strong>
                 <span class="hint"
-                  >Ã‡a crÃ©e automatiquement ton fichier de prÃ©sentation. On va le
-                  modifier juste aprÃ¨s.</span
+                  >Ã‡a crÃ©e automatiquement ton fichier de prÃ©sentation. On va
+                  le modifier juste aprÃ¨s.</span
                 >
               </div>
             </li>
@@ -1082,7 +1331,8 @@
             repo.<br />
             C'est ta prÃ©sentation. Tu parles de toi et de ce que tu fais.<br />
             <em
-              >C'est la couverture d'un livre â€” mais pour ton projet GitHub.</em
+              >C'est la couverture d'un livre â€” mais pour ton projet
+              GitHub.</em
             >
           </div>
 
@@ -1098,8 +1348,8 @@
             sous-titre<br />
             Tu Ã©cris <span class="ic">**mot**</span> â†’ Ã§a devient du
             <strong>texte en gras</strong><br />
-            Tu Ã©cris <span class="ic">- Ã©lÃ©ment</span> â†’ Ã§a devient une liste Ã 
-            puces
+            Tu Ã©cris <span class="ic">- Ã©lÃ©ment</span> â†’ Ã§a devient une
+            liste Ã  puces
           </div>
 
           <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
@@ -1117,10 +1367,10 @@
             le programme PPNI 2026. J'apprends le numÃ©rique avec Auxilia
             Formation. ## Ce que j'apprends cette semaine
             <span class="readme-comment">- â† CrÃ©e une liste Ã  puces</span>
-            - La cybersÃ©curitÃ© - Comment crÃ©er un compte GitHub - Comment Ã©crire
-            un README ## Une chose que j'aime [Ã‰cris une chose que tu aimes â€” un
-            loisir, une passion, n'importe quoi !] ## Mon profil GitHub
-            Retrouve-moi ici : [ton lien github.com/ton-prenom]
+            - La cybersÃ©curitÃ© - Comment crÃ©er un compte GitHub - Comment
+            Ã©crire un README ## Une chose que j'aime [Ã‰cris une chose que tu
+            aimes â€” un loisir, une passion, n'importe quoi !] ## Mon profil
+            GitHub Retrouve-moi ici : [ton lien github.com/ton-prenom]
           </div>
 
           <a
@@ -1159,8 +1409,8 @@
               <div class="substep-text">
                 <strong>2. Clique sur le crayon âœï¸</strong>
                 <span class="hint"
-                  >Il est en haut Ã  droite du fichier README. Il ouvre l'Ã©diteur
-                  de texte.</span
+                  >Il est en haut Ã  droite du fichier README. Il ouvre
+                  l'Ã©diteur de texte.</span
                 >
               </div>
             </li>
@@ -1173,9 +1423,9 @@
               <div class="substep-text">
                 <strong>3. SÃ©lectionne tout et efface</strong>
                 <span class="hint"
-                  >Clique dans le texte â†’ <span class="ic">Ctrl + A</span> pour
-                  tout sÃ©lectionner â†’ <span class="ic">Suppr</span> pour
-                  effacer.</span
+                  >Clique dans le texte â†’
+                  <span class="ic">Ctrl + A</span> pour tout sÃ©lectionner â†’
+                  <span class="ic">Suppr</span> pour effacer.</span
                 >
               </div>
             </li>
@@ -1280,8 +1530,8 @@
               <div class="substep-text">
                 <strong>8. Clique sur "Commit changesâ€¦"</strong>
                 <span class="hint"
-                  >C'est le bouton vert en haut Ã  droite de l'Ã©diteur. "Commit"
-                  = sauvegarder officiellement.</span
+                  >C'est le bouton vert en haut Ã  droite de l'Ã©diteur.
+                  "Commit" = sauvegarder officiellement.</span
                 >
               </div>
             </li>
@@ -1368,8 +1618,8 @@
                 + une <strong>capture d'Ã©cran</strong> de ton README tel qu'il
                 s'affiche sur GitHub<br />
                 <span style="font-size: 12px; opacity: 0.85"
-                  >(Clique sur ton repo â†’ le README s'affiche en bas de la page
-                  d'accueil)</span
+                  >(Clique sur ton repo â†’ le README s'affiche en bas de la
+                  page d'accueil)</span
                 >
               </span>
             </div>
@@ -1415,7 +1665,9 @@
 
         <div class="footer">
           TP GitHub Â· S1 â€” SÃ©quence 1.3 Â· PPNI 2026 &nbsp;|&nbsp;
-          <a href="index.html" style="color: inherit">â† Retour aux exercices</a>
+          <a href="index.html" style="color: inherit"
+            >â† Retour aux exercices</a
+          >
         </div>
       </div>
     </main>
