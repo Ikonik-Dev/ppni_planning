@@ -1,0 +1,2027 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TP GitHub — Mon premier projet · PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      /* ── Intro FALC ── */
+      .falc-intro {
+        background: #d1fae5;
+        border-left: 4px solid #059669;
+        border-radius: 0 10px 10px 0;
+        padding: 18px 20px;
+        font-size: 15px;
+        line-height: 1.9;
+        color: #064e3b;
+      }
+      [data-theme="dark"] .falc-intro {
+        background: #022c22;
+        color: #6ee7b7;
+        border-color: #059669;
+      }
+
+      /* ── Discord ── */
+      .discord-box {
+        background: #eef0fb;
+        border-left: 4px solid #5865f2;
+        border-radius: 0 10px 10px 0;
+        padding: 16px 20px;
+        font-size: 13px;
+        color: #3730a3;
+        line-height: 1.8;
+      }
+      [data-theme="dark"] .discord-box {
+        background: #1a1c2e;
+        color: #a5b4fc;
+        border-color: #5865f2;
+      }
+
+      /* ── Ressources ── */
+      .ressources-bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .ressource-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 16px;
+        background: #dbeafe;
+        border: 1px solid #93c5fd;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1e40af;
+        text-decoration: none;
+        transition: background 0.15s;
+      }
+      .ressource-link:hover {
+        background: #bfdbfe;
+      }
+      [data-theme="dark"] .ressource-link {
+        background: #1e3a5f;
+        border-color: #2563eb;
+        color: #93c5fd;
+      }
+      .ressource-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: #dbeafe;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #1e40af;
+        text-decoration: none;
+        margin-top: 10px;
+      }
+      .ressource-inline:hover {
+        background: #bfdbfe;
+      }
+      [data-theme="dark"] .ressource-inline {
+        background: #1e3a5f;
+        color: #93c5fd;
+      }
+
+      /* ── Étapes ── */
+      .step-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+      .step-number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #1a3a5c;
+        color: #fff;
+        font-size: 19px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .step-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a3a5c;
+        flex: 1;
+      }
+      [data-theme="dark"] .step-title {
+        color: #93c5fd;
+      }
+      .step-timing {
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        background: #2c6fad;
+        padding: 4px 12px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+
+      /* ── Sous-étapes ── */
+      .substep-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .substep-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      .substep-item:hover {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+      }
+      [data-theme="dark"] .substep-item {
+        background: #1e293b;
+        border-color: #334155;
+      }
+      [data-theme="dark"] .substep-item:hover {
+        background: #1e3a5f;
+        border-color: #2563eb;
+      }
+      .substep-item.done {
+        background: #f0fdf4;
+        border-color: #86efac;
+      }
+      [data-theme="dark"] .substep-item.done {
+        background: #052e16;
+        border-color: #166534;
+      }
+      .substep-cb {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #94a3b8;
+        border-radius: 5px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        background: #fff;
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      .substep-cb:checked {
+        background: #059669;
+        border-color: #059669;
+      }
+      .substep-cb:checked::after {
+        content: "✓";
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      [data-theme="dark"] .substep-cb {
+        background: #1e293b;
+        border-color: #475569;
+      }
+      .substep-text {
+        font-size: 14px;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .substep-text strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .substep-text .hint {
+        font-size: 13px;
+        color: #64748b;
+        display: block;
+      }
+      [data-theme="dark"] .substep-text .hint {
+        color: #94a3b8;
+      }
+
+      /* ── Checkpoints ── */
+      .check-point {
+        background: linear-gradient(135deg, #fffbeb, #fef3c7);
+        border: 2px solid #f59e0b;
+        border-radius: 12px;
+        padding: 20px 24px;
+      }
+      [data-theme="dark"] .check-point {
+        background: linear-gradient(135deg, #1a1000, #211500);
+        border-color: #d97706;
+      }
+      .check-point-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      .check-point-icon {
+        font-size: 26px;
+        line-height: 1;
+      }
+      .check-point-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #92400e;
+        flex: 1;
+      }
+      [data-theme="dark"] .check-point-title {
+        color: #fbbf24;
+      }
+      .check-point-timing {
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        background: #f59e0b;
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .check-point-body {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #78350f;
+      }
+      [data-theme="dark"] .check-point-body {
+        color: #fde68a;
+      }
+      .check-point-action {
+        display: block;
+        margin-top: 12px;
+        padding: 14px 18px;
+        background: #fffef0;
+        border-radius: 8px;
+        border: 1.5px dashed #f59e0b;
+        font-size: 14px;
+        color: #78350f;
+        line-height: 1.8;
+      }
+      [data-theme="dark"] .check-point-action {
+        background: #1a1000;
+        color: #fde68a;
+      }
+
+      /* ── Binôme ── */
+      .binome-box {
+        background: #f5f3ff;
+        border-left: 4px solid #7c3aed;
+        border-radius: 0 10px 10px 0;
+        padding: 14px 18px;
+        font-size: 13px;
+        color: #4c1d95;
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      [data-theme="dark"] .binome-box {
+        background: #180d33;
+        color: #c4b5fd;
+        border-color: #7c3aed;
+      }
+
+      /* ── Définition ── */
+      .def-block {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-size: 13px;
+        line-height: 1.8;
+        color: #0c4a6e;
+        margin-bottom: 14px;
+      }
+      [data-theme="dark"] .def-block {
+        background: #071524;
+        border-color: #0369a1;
+        color: #7dd3fc;
+      }
+      .def-block strong {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 6px;
+        color: #0369a1;
+      }
+      [data-theme="dark"] .def-block strong {
+        color: #38bdf8;
+      }
+
+      /* ── Code inline ── */
+      .ic {
+        background: #1e293b;
+        color: #7dd3fc;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Courier New", monospace;
+        white-space: nowrap;
+      }
+      [data-theme="dark"] .ic {
+        background: #0f172a;
+      }
+
+      /* ── Template README ── */
+      .readme-template {
+        background: #0d1117;
+        color: #e6edf3;
+        border-radius: 10px;
+        padding: 20px 24px;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.9;
+        overflow-x: auto;
+        border: 1px solid #30363d;
+        white-space: pre;
+      }
+      .readme-comment {
+        color: #8b949e;
+        font-style: italic;
+      }
+
+      /* ── Pause ── */
+      .pause-banner {
+        background: #fff7ed;
+        border: 2px solid #fb923c;
+        border-radius: 12px;
+        padding: 20px 24px;
+        text-align: center;
+      }
+      [data-theme="dark"] .pause-banner {
+        background: #1c0900;
+        border-color: #ea580c;
+      }
+      .pause-banner-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #c2410c;
+        margin-bottom: 6px;
+      }
+      [data-theme="dark"] .pause-banner-title {
+        color: #fb923c;
+      }
+      .pause-banner-sub {
+        font-size: 13px;
+        color: #9a3412;
+        line-height: 1.7;
+      }
+      [data-theme="dark"] .pause-banner-sub {
+        color: #fdba74;
+      }
+
+      /* ── Diviseur timing ── */
+      .timing-divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .timing-divider::before,
+      .timing-divider::after {
+        content: "";
+        flex: 1;
+        border-top: 1px solid #e2e8f0;
+      }
+      [data-theme="dark"] .timing-divider {
+        color: #475569;
+      }
+      [data-theme="dark"] .timing-divider::before,
+      [data-theme="dark"] .timing-divider::after {
+        border-color: #334155;
+      }
+
+      /* ── Bravo ── */
+      .bravo-box {
+        background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        border: 2px solid #34d399;
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin-bottom: 14px;
+      }
+      [data-theme="dark"] .bravo-box {
+        background: linear-gradient(135deg, #052e16, #022c22);
+        border-color: #059669;
+      }
+      .bravo-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 14px;
+      }
+      [data-theme="dark"] .bravo-title {
+        color: #6ee7b7;
+      }
+      .bravo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        line-height: 2.1;
+        color: #047857;
+      }
+      [data-theme="dark"] .bravo-list {
+        color: #a7f3d0;
+      }
+
+      /* ── Deux chemins ── */
+      .two-paths {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 4px;
+      }
+      @media (max-width: 680px) {
+        .two-paths {
+          grid-template-columns: 1fr;
+        }
+      }
+      .path-card {
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+      [data-theme="dark"] .path-card {
+        border-color: #334155;
+      }
+      .path-card-header {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #1a3a5c;
+      }
+      [data-theme="dark"] .path-card-header {
+        color: #93c5fd;
+      }
+
+      /* ── Planning overview ── */
+      .planning-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .planning-cell {
+        padding: 14px 16px;
+        background: #f8fafc;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+      }
+      [data-theme="dark"] .planning-cell {
+        background: #1e293b;
+        border-color: #334155;
+      }
+      .planning-cell.pause-cell {
+        background: #fff7ed;
+        border-color: #fed7aa;
+      }
+      [data-theme="dark"] .planning-cell.pause-cell {
+        background: #1c0900;
+        border-color: #7c2d12;
+      }
+
+      /* ── Sections verrouillées ── */
+      .locked {
+        filter: blur(3px);
+        opacity: 0.25;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+        transition:
+          filter 0.6s ease,
+          opacity 0.6s ease;
+      }
+      @keyframes sectionIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── Bouton déverrouillage ── */
+      .unlock-btn {
+        width: 100%;
+        margin-top: 16px;
+        padding: 16px 24px;
+        background: linear-gradient(135deg, #1a3a5c, #2c6fad);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        letter-spacing: 0.2px;
+      }
+      .unlock-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(44, 111, 173, 0.38);
+      }
+      .unlock-btn:active {
+        transform: translateY(0);
+      }
+
+      /* ── Modal overlay ── */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal-box {
+        background: #fff;
+        border-radius: 20px;
+        padding: 32px 28px 28px;
+        max-width: 460px;
+        width: 100%;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+      [data-theme="dark"] .modal-box {
+        background: #1e293b;
+      }
+      @keyframes modalIn {
+        from {
+          transform: scale(0.78) translateY(24px);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+      .modal-emoji {
+        font-size: 58px;
+        display: block;
+        margin-bottom: 6px;
+        animation: emojiPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+      }
+      @keyframes emojiPop {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .modal-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .modal-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        transition: background 0.25s;
+      }
+      .modal-dot.active {
+        background: #2c6fad;
+      }
+      [data-theme="dark"] .modal-dot {
+        background: #334155;
+      }
+      [data-theme="dark"] .modal-dot.active {
+        background: #60a5fa;
+      }
+      .modal-progress {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #94a3b8;
+        margin-bottom: 8px;
+      }
+      [data-theme="dark"] .modal-progress {
+        color: #475569;
+      }
+      .modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a3a5c;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      [data-theme="dark"] .modal-title {
+        color: #93c5fd;
+      }
+      .modal-body {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #475569;
+        margin-bottom: 24px;
+      }
+      [data-theme="dark"] .modal-body {
+        color: #94a3b8;
+      }
+      .modal-btns {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+      }
+      @media (min-width: 400px) {
+        .modal-btns {
+          flex-direction: row;
+        }
+      }
+      .modal-btn-no {
+        flex: 1;
+        padding: 12px 16px;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        color: #475569;
+        transition: background 0.15s;
+      }
+      .modal-btn-no:hover {
+        background: #e2e8f0;
+      }
+      [data-theme="dark"] .modal-btn-no {
+        background: #334155;
+        border-color: #475569;
+        color: #94a3b8;
+      }
+      [data-theme="dark"] .modal-btn-no:hover {
+        background: #475569;
+      }
+      .modal-btn-yes {
+        flex: 2;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #059669, #10b981);
+        border: none;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+        color: #fff;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+      }
+      .modal-btn-yes:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="../ressources/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <!-- ════════════════════════════════════════
+             EN-TÊTE
+             ════════════════════════════════════════ -->
+        <div class="doc-header">
+          <h1>🐙 TP — Mon premier projet GitHub</h1>
+          <div class="meta">
+            Distanciel · Discord · Binômes · FALC · S1 — Séquence 1.3 · PPNI
+            2026
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             INTRO FALC
+             ════════════════════════════════════════ -->
+        <div class="section-box">
+          <div class="falc-intro">
+            <strong style="font-size: 17px; display: block; margin-bottom: 10px"
+              >📌 Ce que tu vas faire aujourd'hui</strong
+            >
+            Tu vas créer ton premier projet sur GitHub.<br />
+            Ce projet, c'est le tien. Il restera en ligne.<br />
+            Tu vas écrire un texte de présentation. On appelle ça un
+            <strong>README</strong>.<br />
+            <br />
+            <strong>Pas de panique.</strong><br />
+            On avance une étape à la fois.<br />
+            Chaque étape est numérotée.<br />
+            Coche la case ✅ quand c'est fait.<br />
+            Si tu es bloqué·e → demande à ton binôme d'abord. Puis au formateur.
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             ORGANISATION
+             ════════════════════════════════════════ -->
+        <div class="section-box">
+          <h2>👥 Organisation de la journée</h2>
+
+          <div class="discord-box" style="margin-bottom: 14px">
+            <strong style="font-size: 14px; display: block; margin-bottom: 8px"
+              >📲 Tu travailles à distance aujourd'hui (Discord)</strong
+            >
+            ✦ Ton binôme est annoncé par le formateur à
+            <strong>9h00</strong> sur Discord.<br />
+            ✦ Contacte ton binôme en message privé dès l'annonce.<br />
+            ✦ Travaillez ensemble : partagez votre écran ou décrivez ce que vous
+            voyez.<br />
+            ✦ Si tu es bloqué·e : ton binôme d'abord → puis le formateur en
+            DM.<br />
+            <br />
+            ⚠️ <strong>Important :</strong> chacun envoie
+            <u>ses propres résultats</u> en DM au formateur.<br />
+            Tu ne partages pas le travail de ton binôme. Tu partages le tien.
+          </div>
+
+          <div class="binome-box">
+            <strong>👥 Rôle du binôme</strong><br />
+            Ton binôme ne fait pas le travail à ta place.<br />
+            Il t'aide quand tu es bloqué·e. Tu l'aides quand c'est lui qui est
+            bloqué·e.<br />
+            Si l'un avance plus vite → il explique à l'autre. C'est comme ça
+            qu'on apprend mieux.
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             RESSOURCES APP
+             ════════════════════════════════════════ -->
+        <div class="section-box">
+          <h2>📚 Ressources disponibles dans l'app</h2>
+          <p style="font-size: 14px; margin-bottom: 14px">
+            Tu peux ouvrir ces fiches à tout moment. Elles répondent à la
+            plupart des questions.
+          </p>
+          <div class="ressources-bar">
+            <a
+              href="../ressources/fiche-git.html"
+              target="_blank"
+              class="ressource-link"
+            >
+              📖 Fiche Git &amp; GitHub
+              <span style="font-size: 11px; font-weight: 400; opacity: 0.75"
+                >— concepts, vocabulaire, étapes</span
+              >
+            </a>
+            <a
+              href="../ressources/fiche-markdown.html"
+              target="_blank"
+              class="ressource-link"
+            >
+              📝 Fiche Markdown
+              <span style="font-size: 11px; font-weight: 400; opacity: 0.75"
+                >— mise en forme du README</span
+              >
+            </a>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             PLANNING
+             ════════════════════════════════════════ -->
+        <div class="section-box">
+          <h2>⏰ Planning de la journée</h2>
+          <div class="planning-grid">
+            <div class="planning-cell">
+              <strong>☀️ Matin (9h00 → 12h00)</strong><br />
+              9h00 → Étape 0 : mon compte<br />
+              9h30 → Étape 1 : créer le repo<br />
+              11h00 → Étape 2 : débuter le README<br />
+              <br />
+              📍 Point de contrôle 1 → 9h30<br />
+              📍 Point de contrôle 2 → 11h00
+            </div>
+            <div class="planning-cell pause-cell">
+              <strong>🍽 Pause déjeuner</strong><br />
+              12h00 → 13h30<br />
+              <br />
+              Garde ton onglet GitHub ouvert<br />
+              si possible.
+            </div>
+            <div class="planning-cell">
+              <strong>🌤 Après-midi (13h30 → 15h00)</strong><br />
+              13h30 → Suite README<br />
+              14h30 → Finaliser &amp; sauvegarder<br />
+              14h45 → Livraison finale<br />
+              15h00 → Bilan Discord<br />
+              <br />
+              📍 Point de contrôle 3 → 14h45
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             ÉTAPE 0 — MON COMPTE
+             ════════════════════════════════════════ -->
+        <div class="section-box">
+          <div class="step-header">
+            <div class="step-number">0</div>
+            <div class="step-title">Mon compte GitHub</div>
+            <span class="step-timing">9h00 → 9h30</span>
+          </div>
+
+          <div class="def-block">
+            <strong>🐙 C'est quoi GitHub ?</strong>
+            GitHub, c'est un site web. Il sert à stocker des projets
+            informatiques.<br />
+            Ton projet sera visible par tout le monde. C'est une vitrine
+            professionnelle.<br />
+            Beaucoup d'employeurs regardent GitHub avant un entretien
+            d'embauche.<br />
+            <em
+              >C'est comme un portfolio en ligne — mais pour tes projets
+              numériques.</em
+            >
+          </div>
+
+          <p style="font-size: 14px; font-weight: 600; margin-bottom: 14px">
+            Deux situations → lis la tienne :
+          </p>
+
+          <div class="two-paths">
+            <!-- Chemin A -->
+            <div class="path-card">
+              <div class="path-card-header">
+                🆕 Je n'ai pas encore de compte
+              </div>
+              <ul class="substep-list">
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>1. Va sur github.com</strong>
+                    <span class="hint"
+                      >Ouvre un nouvel onglet. Tape l'adresse dans la
+                      barre.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>2. Clique sur "Sign up"</strong>
+                    <span class="hint"
+                      >"Sign up" = "S'inscrire". C'est le bouton en haut à
+                      droite.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>3. Entre ton adresse e-mail</strong>
+                    <span class="hint"
+                      >Utilise une adresse que tu consultes vraiment.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong
+                      >4. Choisis un nom d'utilisateur professionnel</strong
+                    >
+                    <span class="hint"
+                      >Exemples : <span class="ic">prenom-nom</span> ou
+                      <span class="ic">prenomN</span>.<br />Pas de surnom de jeu
+                      vidéo — c'est ta carte de visite.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>5. Confirme ton e-mail</strong>
+                    <span class="hint"
+                      >GitHub t'envoie un code par e-mail. Ouvre ta boîte mail.
+                      Tape le code.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+              <a
+                href="../ressources/fiche-git.html"
+                target="_blank"
+                class="ressource-inline"
+              >
+                📖 Fiche Git → Créer son compte
+              </a>
+            </div>
+
+            <!-- Chemin B -->
+            <div class="path-card">
+              <div class="path-card-header">✅ J'ai déjà un compte</div>
+              <ul class="substep-list">
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>1. Va sur github.com</strong>
+                    <span class="hint"
+                      >Ouvre un nouvel onglet. Tape l'adresse.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>2. Clique sur "Sign in"</strong>
+                    <span class="hint"
+                      >"Sign in" = "Se connecter". Entre ton nom d'utilisateur
+                      et ton mot de passe.</span
+                    >
+                  </div>
+                </li>
+                <li class="substep-item" onclick="toggleStep(this)">
+                  <input
+                    type="checkbox"
+                    class="substep-cb"
+                    onclick="event.stopPropagation()"
+                  />
+                  <div class="substep-text">
+                    <strong>3. Vérifie que tu es connecté·e</strong>
+                    <span class="hint"
+                      >Ton avatar doit apparaître en haut à droite de la
+                      page.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button class="unlock-btn" id="unlock-0">
+            ✅ Mon compte est prêt — passer à l'étape suivante
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             CHECK POINT 1
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-check1">
+          <div class="check-point">
+            <div class="check-point-header">
+              <span class="check-point-icon">📍</span>
+              <span class="check-point-title">Point de contrôle 1 / 3</span>
+              <span class="check-point-timing">9h30</span>
+            </div>
+            <div class="check-point-body">
+              Tu as ton compte GitHub et tu es connecté·e. Très bien !<br />
+              Maintenant envoie un message en
+              <strong>DM (message privé)</strong> au formateur sur Discord.
+              <span class="check-point-action">
+                💬 <strong>Message à envoyer en DM au formateur :</strong
+                ><br /><br />
+                <em>"Compte prêt ✅"</em><br /><br />
+                + une <strong>capture d'écran</strong> de ta page de profil
+                GitHub<br />
+                <span style="font-size: 12px; opacity: 0.85"
+                  >(L'adresse de la page ressemble à :
+                  <span class="ic">github.com/ton-prenom</span>)</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <button class="unlock-btn" id="unlock-check1">
+            📲 DM envoyé au formateur — débloquer la prochaine étape
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             ÉTAPE 1 — CRÉER LE REPO
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-etape1">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <div class="step-title">Créer mon repository</div>
+            <span class="step-timing">9h30 → 11h00</span>
+          </div>
+
+          <div class="def-block">
+            <strong>📁 C'est quoi un repository ?</strong>
+            Un repository (on dit "re-po"), c'est un dossier en ligne.<br />
+            C'est là où GitHub range ton projet.<br />
+            Tout le monde peut voir ton dossier. C'est fait pour ça.<br />
+            <em>C'est comme un classeur partagé — mais sur Internet.</em>
+          </div>
+
+          <div class="binome-box">
+            👥 <strong>En binôme :</strong><br />
+            Une personne suit les étapes sur son ordinateur.<br />
+            L'autre observe via Discord et dit si elle voit la même chose.<br />
+            Ensuite vous inversez les rôles pour l'étape suivante.
+          </div>
+
+          <ul class="substep-list">
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>1. Clique sur le "+" en haut à droite</strong>
+                <span class="hint"
+                  >Tu le vois sur toutes les pages GitHub une fois
+                  connecté·e.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>2. Clique sur "New repository"</strong>
+                <span class="hint"
+                  >"New repository" = "Nouveau dossier de projet".</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>3. Dans "Repository name", tape exactement :</strong>
+                <span class="hint"
+                  ><span class="ic">mon-premier-repo</span>&emsp;(tout en
+                  minuscules, pas d'espaces, tirets seulement)</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>4. Dans "Description", écris une phrase courte</strong>
+                <span class="hint"
+                  >Exemple :
+                  <em>Mon premier projet GitHub — PPNI 2026</em></span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>5. Sélectionne "Public"</strong>
+                <span class="hint"
+                  >Ton projet sera visible en ligne. C'est ta vitrine
+                  professionnelle.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>6. Coche "Add a README file"</strong>
+                <span class="hint"
+                  >Ça crée automatiquement ton fichier de présentation. On va le
+                  modifier juste après.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>7. Clique sur "Create repository"</strong>
+                <span class="hint"
+                  >Ton projet est créé ! Tu dois voir une page avec un fichier
+                  <span class="ic">README.md</span> dedans.</span
+                >
+              </div>
+            </li>
+          </ul>
+
+          <a
+            href="../ressources/fiche-git.html"
+            target="_blank"
+            class="ressource-inline"
+            style="display: inline-flex"
+          >
+            📖 Fiche Git → Section "Créer un repository"
+          </a>
+
+          <button class="unlock-btn" id="unlock-1">
+            ✅ Repository créé — passer au point de contrôle
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             CHECK POINT 2
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-check2">
+          <div class="check-point">
+            <div class="check-point-header">
+              <span class="check-point-icon">📍</span>
+              <span class="check-point-title">Point de contrôle 2 / 3</span>
+              <span class="check-point-timing">11h00</span>
+            </div>
+            <div class="check-point-body">
+              Ton repository est en ligne. Excellent travail !<br />
+              Envoie un message en <strong>DM</strong> au formateur sur Discord.
+              <span class="check-point-action">
+                💬 <strong>Message à envoyer en DM au formateur :</strong
+                ><br /><br />
+                <em>"Repo créé ✅"</em><br /><br />
+                + le <strong>lien</strong> de ton repository<br />
+                <span style="font-size: 12px; opacity: 0.85"
+                  >(Ressemble à :
+                  <span class="ic">github.com/ton-prenom/mon-premier-repo</span
+                  >)</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <button class="unlock-btn" id="unlock-check2">
+            📲 DM envoyé — débloquer la rédaction du README
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             ÉTAPE 2 — README (matin)
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-etape2-matin">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <div class="step-title">Écrire mon README</div>
+            <span class="step-timing">11h00 → 12h00</span>
+          </div>
+
+          <div class="def-block">
+            <strong>📄 C'est quoi un README ?</strong>
+            Un README, c'est la page d'accueil de ton projet.<br />
+            C'est la première chose que les gens voient quand ils ouvrent ton
+            repo.<br />
+            C'est ta présentation. Tu parles de toi et de ce que tu fais.<br />
+            <em
+              >C'est la couverture d'un livre — mais pour ton projet GitHub.</em
+            >
+          </div>
+
+          <div class="def-block">
+            <strong>✍️ C'est quoi le Markdown ?</strong>
+            Le Markdown, c'est une façon d'écrire du texte mis en forme.<br />
+            Tu utilises des petits symboles. Le site les transforme en joli
+            texte.<br />
+            <br />
+            Tu écris <span class="ic"># Bonjour</span> → ça devient un gros
+            titre<br />
+            Tu écris <span class="ic">## Titre 2</span> → ça devient un
+            sous-titre<br />
+            Tu écris <span class="ic">**mot**</span> → ça devient du
+            <strong>texte en gras</strong><br />
+            Tu écris <span class="ic">- élément</span> → ça devient une liste à
+            puces
+          </div>
+
+          <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
+            🧩 Modèle à copier dans ton README :
+          </p>
+
+          <div class="readme-template">
+            <span class="readme-comment"
+              ># ← Ce symbole crée un gros titre</span
+            >
+            # 👋 Bonjour, je suis [ton prénom] !
+
+            <span class="readme-comment">## ← Sous-titre</span>
+            ## Qui suis-je ? Je m'appelle [ton prénom]. Je suis stagiaire dans
+            le programme PPNI 2026. J'apprends le numérique avec Auxilia
+            Formation. ## Ce que j'apprends cette semaine
+            <span class="readme-comment">- ← Crée une liste à puces</span>
+            - La cybersécurité - Comment créer un compte GitHub - Comment écrire
+            un README ## Une chose que j'aime [Écris une chose que tu aimes — un
+            loisir, une passion, n'importe quoi !] ## Mon profil GitHub
+            Retrouve-moi ici : [ton lien github.com/ton-prenom]
+          </div>
+
+          <a
+            href="../ressources/fiche-markdown.html"
+            target="_blank"
+            class="ressource-inline"
+            style="display: inline-flex; margin-bottom: 16px"
+          >
+            📝 Fiche Markdown → Tous les symboles expliqués
+          </a>
+
+          <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
+            Étapes pour écrire :
+          </p>
+          <ul class="substep-list">
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>1. Ouvre ton repository sur GitHub</strong>
+                <span class="hint"
+                  >Tu vois un fichier <span class="ic">README.md</span> sur la
+                  page d'accueil du repo.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>2. Clique sur le crayon ✏️</strong>
+                <span class="hint"
+                  >Il est en haut à droite du fichier README. Il ouvre l'éditeur
+                  de texte.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>3. Sélectionne tout et efface</strong>
+                <span class="hint"
+                  >Clique dans le texte → <span class="ic">Ctrl + A</span> pour
+                  tout sélectionner → <span class="ic">Suppr</span> pour
+                  effacer.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>4. Copie-colle le modèle ci-dessus</strong>
+                <span class="hint"
+                  >Remplace ensuite chaque <span class="ic">[...]</span> par tes
+                  vraies informations.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>5. Clique sur "Preview" pour voir le résultat</strong>
+                <span class="hint"
+                  >Tu vois comment ça s'affichera vraiment. Si quelque chose
+                  semble bizarre, reviens en mode édition.</span
+                >
+              </div>
+            </li>
+          </ul>
+
+          <button class="unlock-btn" id="unlock-2-matin">
+            🍽 J'ai bien avancé sur le README — je pars en pause
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             PAUSE DÉJEUNER
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-pause">
+          <div class="pause-banner">
+            <div class="pause-banner-title">
+              🍽 Pause déjeuner — 12h00 → 13h30
+            </div>
+            <div class="pause-banner-sub">
+              Ne ferme pas ton onglet GitHub si tu peux.<br />
+              Tu reprends la rédaction de ton README à 13h30.
+            </div>
+          </div>
+
+          <button class="unlock-btn" id="unlock-pause">
+            ☀️ Je suis de retour — reprendre le README
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             ÉTAPE 2 — README (après-midi, suite)
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-etape2-pm">
+          <div class="timing-divider">▶ Reprise — 13h30</div>
+
+          <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
+            Suite de l'étape 2 — Finalise et sauvegarde ton README :
+          </p>
+          <ul class="substep-list">
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>6. Relis ton README depuis le début</strong>
+                <span class="hint"
+                  >Corrige les fautes. Vérifie que les informations sont
+                  exactes. C'est un document public.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>7. Ajoute une chose personnelle si tu veux</strong>
+                <span class="hint"
+                  >Un emoji, une citation, une photo — c'est ton projet,
+                  exprime-toi.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>8. Clique sur "Commit changes…"</strong>
+                <span class="hint"
+                  >C'est le bouton vert en haut à droite de l'éditeur. "Commit"
+                  = sauvegarder officiellement.</span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong>9. Écris un message de commit</strong>
+                <span class="hint"
+                  >Dans le champ "Commit message", écris :
+                  <span class="ic"
+                    >Rédiger mon README de présentation</span
+                  ></span
+                >
+              </div>
+            </li>
+            <li class="substep-item" onclick="toggleStep(this)">
+              <input
+                type="checkbox"
+                class="substep-cb"
+                onclick="event.stopPropagation()"
+              />
+              <div class="substep-text">
+                <strong
+                  >10. Clique sur "Commit changes" (le bouton de
+                  confirmation)</strong
+                >
+                <span class="hint"
+                  >Ton README est sauvegardé et visible en ligne. Ton premier
+                  commit est fait !</span
+                >
+              </div>
+            </li>
+          </ul>
+
+          <div class="def-block" style="margin-top: 16px">
+            <strong>📸 C'est quoi un commit ?</strong>
+            Un commit, c'est une sauvegarde officielle de ton travail.<br />
+            GitHub garde l'historique de toutes tes sauvegardes.<br />
+            Tu peux toujours revenir à une version précédente.<br />
+            <em
+              >C'est comme une sauvegarde de jeu vidéo — avec une
+              description.</em
+            >
+          </div>
+
+          <a
+            href="../ressources/fiche-git.html"
+            target="_blank"
+            class="ressource-inline"
+            style="display: inline-flex"
+          >
+            📖 Fiche Git → Section "Commit"
+          </a>
+
+          <button class="unlock-btn" id="unlock-2-pm">
+            💾 README commité — passer à la livraison finale
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             CHECK POINT 3 — LIVRAISON
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-check3">
+          <div class="check-point">
+            <div class="check-point-header">
+              <span class="check-point-icon">📍</span>
+              <span class="check-point-title"
+                >Point de contrôle 3 / 3 — Livraison finale</span
+              >
+              <span class="check-point-timing">14h45</span>
+            </div>
+            <div class="check-point-body">
+              Ton README est en ligne. Tu as réussi le TP !<br />
+              Envoie un message en <strong>DM</strong> au formateur sur Discord.
+              <span class="check-point-action">
+                💬 <strong>Message à envoyer en DM au formateur :</strong
+                ><br /><br />
+                <em>"README terminé ✅"</em><br /><br />
+                + le <strong>lien</strong> de ton repository<br />
+                + une <strong>capture d'écran</strong> de ton README tel qu'il
+                s'affiche sur GitHub<br />
+                <span style="font-size: 12px; opacity: 0.85"
+                  >(Clique sur ton repo → le README s'affiche en bas de la page
+                  d'accueil)</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <button class="unlock-btn" id="unlock-check3">
+            📤 Livraison envoyée — voir le bilan 🏆
+          </button>
+        </div>
+
+        <!-- ════════════════════════════════════════
+             BILAN
+             ════════════════════════════════════════ -->
+        <div class="section-box locked" id="section-bilan">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <div class="step-title">Bilan de la journée</div>
+            <span class="step-timing">14h45 → 15h00</span>
+          </div>
+
+          <div class="bravo-box">
+            <div class="bravo-title">
+              🎉 Bravo — regarde ce que tu as accompli aujourd'hui !
+            </div>
+            <ul class="bravo-list">
+              <li>✅ Tu as créé (ou accédé à) ton compte GitHub</li>
+              <li>✅ Tu as créé un repository public</li>
+              <li>✅ Tu as écrit un README en Markdown</li>
+              <li>✅ Tu as fait ton premier commit</li>
+              <li>✅ Ton projet est en ligne — visible par tout le monde</li>
+            </ul>
+          </div>
+
+          <div class="discord-box">
+            📲 Le formateur partagera un message de clôture sur Discord à
+            <strong>15h00</strong>.<br />
+            Si tu as fini en avance : aide ton binôme ou explore ton profil
+            GitHub.<br />
+            Tu peux ajouter une photo de profil, une bio courte, explorer
+            d'autres repos.
+          </div>
+        </div>
+
+        <div class="footer">
+          TP GitHub · S1 — Séquence 1.3 · PPNI 2026 &nbsp;|&nbsp;
+          <a href="index.html" style="color: inherit">← Retour aux exercices</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- ════ MODAL CONFIRMATION ════ -->
+    <div
+      class="modal-overlay"
+      id="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-box">
+        <span class="modal-emoji" id="modal-emoji" aria-hidden="true"></span>
+        <div class="modal-dots">
+          <div class="modal-dot active" id="modal-dot-1"></div>
+          <div class="modal-dot" id="modal-dot-2"></div>
+        </div>
+        <div class="modal-progress" id="modal-progress">Confirmation 1 / 2</div>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-btns">
+          <button class="modal-btn-no" id="modal-btn-no"></button>
+          <button class="modal-btn-yes" id="modal-btn-yes"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+      /* ══════════════════════════════════════════
+         Système de déverrouillage progressif
+         avec confirmation modale x2 (humour inclus)
+         ══════════════════════════════════════════ */
+      var STEPS = [
+        {
+          trigger: "unlock-0",
+          target: "section-check1",
+          emoji1: "🤔",
+          title1: "T'as vraiment créé ton compte ?",
+          body1:
+            "GitHub te reconnaît maintenant ? T'as pas mis « SuperGamer_42 » comme nom d'utilisateur, j'espère ? 😅",
+          no1: "Laisse-moi revérifier...",
+          yes1: "Oui, c'est pro ! →",
+          emoji2: "👀",
+          title2: "OK... mais t'es vraiment connecté·e ?",
+          body2:
+            "Connecté·e dans le navigateur, hein. Pas juste dans ta tête. L'avatar en haut à droite, tu le vois ?",
+          no2: "Ah non, j'avais rêvé",
+          yes2: "Je le vois, on avance ! 🚀",
+        },
+        {
+          trigger: "unlock-check1",
+          target: "section-etape1",
+          emoji1: "📲",
+          title1: "Le DM est bien envoyé ?",
+          body1:
+            "T'as tapé « Compte prêt ✅ » + la capture d'écran au formateur. Tout ça. Pas juste pensé à le faire.",
+          no1: "Euh, j'allais le faire...",
+          yes1: "DM envoyé ! →",
+          emoji2: "🧐",
+          title2: "La capture, c'était bien TON profil ?",
+          body2:
+            "Pas la photo de ton chat. Pas un fond d'écran. Ton. Vrai. Profil. GitHub. 🐙",
+          no2: "Je vais renvoyer...",
+          yes2: "Oui, c'était moi en vrai !",
+        },
+        {
+          trigger: "unlock-1",
+          target: "section-check2",
+          emoji1: "🏗️",
+          title1: "Ton repo existe vraiment ?",
+          body1:
+            "L'adresse github.com/ton-prenom/mon-premier-repo s'ouvre ? Avec un fichier README.md dedans ?",
+          no1: "Hmm, pas sûr·e...",
+          yes1: "Oui, je le vois ! →",
+          emoji2: "📦",
+          title2: "T'as bien coché la case README ?",
+          body2:
+            "Celle qui crée le fichier README.md automatiquement. La case 6. Numéro. Six. (Si non, c'est pas grave — on peut ajouter le fichier.)",
+          no2: "Ooops...",
+          yes2: "Oui, il est là !",
+        },
+        {
+          trigger: "unlock-check2",
+          target: "section-etape2-matin",
+          emoji1: "📤",
+          title1: "T'as envoyé le lien du repo ?",
+          body1:
+            "En DM au formateur. Un lien complet. Pas juste « c'est sur GitHub quelque part ».",
+          no1: "Je vais le faire maintenant",
+          yes1: "Lien envoyé ! →",
+          emoji2: "✍️",
+          title2: "Prêt·e pour le grand README ?",
+          body2:
+            "Tu vas écrire ta présentation. En ligne. Pour toujours. Les recruteurs du futur comptent sur toi. Pas de pression. 😄",
+          no2: "Stressant tout à coup...",
+          yes2: "Allons-y, je me lance !",
+        },
+        {
+          trigger: "unlock-2-matin",
+          target: "section-pause",
+          emoji1: "🍽️",
+          title1: "Tu pars vraiment déjeuner ?",
+          body1:
+            "T'as laissé l'onglet GitHub ouvert ? Et t'as arrêté de modifier avant de partir ? Le contenu non sauvegardé, c'est comme un château de sable à marée montante.",
+          no1: "Attends, je sauvegarde d'abord",
+          yes1: "Onglet ouvert, je pars ! →",
+          emoji2: "🎒",
+          title2: "Allez, bon appétit !",
+          body2:
+            "Mange bien. Repose-toi. Ton README t'attend patiemment. (Lui aussi il a faim — de contenu.)",
+          no2: "...",
+          yes2: "À toute à l'heure ! 🙌",
+        },
+        {
+          trigger: "unlock-pause",
+          target: "section-etape2-pm",
+          emoji1: "👋",
+          title1: "T'es de retour ? Déjà ?",
+          body1:
+            "On te croyait perdu·e. Le README commençait à se sentir abandonné. Bienvenue, tu nous as manqué.",
+          no1: "Je suis encore en train de manger",
+          yes1: "Oui, je suis là ! →",
+          emoji2: "☕",
+          title2: "T'as mangé quelque chose de bien ?",
+          body2:
+            "On demande juste pour savoir. (Les fautes d'orthographe augmentent de 47% quand on tape README le ventre vide. C'est une stat inventée, mais elle semble vraie.)",
+          no2: "J'aurais dû manger...",
+          yes2: "Plein·e d'énergie, on y va ! 🚀",
+        },
+        {
+          trigger: "unlock-2-pm",
+          target: "section-check3",
+          emoji1: "💾",
+          title1: "T'as bien cliqué sur Commit ?",
+          body1:
+            "Parce que penser à sauvegarder, ça ne sauvegarde pas. Le bouton « Commit changes » a été cliqué ? Vraiment cliqué ?",
+          no1: "Ah zut, j'avais oublié !",
+          yes1: "Commit fait ! →",
+          emoji2: "🕵️",
+          title2: "Et le message de commit ?",
+          body2:
+            "T'as écrit quelque chose de clair comme « Rédiger mon README de présentation » ? Pas « aaa » ni « modif » ? Git garde tout. Pour l'éternité.",
+          no2: "Je corrige le message...",
+          yes2: "Message propre, c'est bon !",
+        },
+        {
+          trigger: "unlock-check3",
+          target: "section-bilan",
+          emoji1: "📸",
+          title1: "T'as tout envoyé au formateur ?",
+          body1:
+            "Le lien DU repo ET la capture d'écran. Les deux. Pas l'un ou l'autre. LES DEUX. (On insiste parce qu'on t'aime.)",
+          no1: "J'en avais oublié un...",
+          yes1: "Tout envoyé ! →",
+          emoji2: "🏆",
+          title2: "Tu mérites un oscar !",
+          body2:
+            "Vraiment. T'as créé un compte GitHub, un repo, un README en Markdown, et ton premier commit. En une journée. En télétravail. Sur Discord. C'est énorme.",
+          no2: "Bon ok j'exagère un peu",
+          yes2: "C'est vrai, je suis génial·e ! 🎉",
+        },
+      ];
+
+      var _step = null;
+      var _phase = 1;
+
+      function _render(emoji, title, body, noTxt, yesTxt, phase) {
+        document.getElementById("modal-emoji").textContent = emoji;
+        document.getElementById("modal-title").textContent = title;
+        document.getElementById("modal-body").textContent = body;
+        document.getElementById("modal-btn-no").textContent = noTxt;
+        document.getElementById("modal-btn-yes").textContent = yesTxt;
+        document.getElementById("modal-progress").textContent =
+          "Confirmation " + phase + " / 2";
+        document.getElementById("modal-dot-1").className = "modal-dot active";
+        document.getElementById("modal-dot-2").className =
+          "modal-dot" + (phase === 2 ? " active" : "");
+      }
+
+      function _openModal(idx) {
+        _step = STEPS[idx];
+        _phase = 1;
+        _render(
+          _step.emoji1,
+          _step.title1,
+          _step.body1,
+          _step.no1,
+          _step.yes1,
+          1,
+        );
+        document.getElementById("modal-overlay").classList.add("open");
+      }
+
+      function _confirm() {
+        if (_phase === 1) {
+          _phase = 2;
+          _render(
+            _step.emoji2,
+            _step.title2,
+            _step.body2,
+            _step.no2,
+            _step.yes2,
+            2,
+          );
+        } else {
+          var targetId = _step.target;
+          _closeModal();
+          _unlock(targetId);
+        }
+      }
+
+      function _cancel() {
+        _closeModal();
+      }
+
+      function _closeModal() {
+        document.getElementById("modal-overlay").classList.remove("open");
+        _step = null;
+        _phase = 1;
+      }
+
+      function _unlock(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove("locked");
+        el.style.animation = "sectionIn 0.5s ease both";
+        setTimeout(function () {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 160);
+      }
+
+      function toggleStep(item) {
+        var cb = item.querySelector(".substep-cb");
+        cb.checked = !cb.checked;
+        item.classList.toggle("done", cb.checked);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".substep-cb").forEach(function (cb) {
+          cb.setAttribute("aria-label", "Marquer cette étape comme terminée");
+        });
+        document
+          .getElementById("modal-btn-yes")
+          .addEventListener("click", _confirm);
+        document
+          .getElementById("modal-btn-no")
+          .addEventListener("click", _cancel);
+        document
+          .getElementById("modal-overlay")
+          .addEventListener("click", function (e) {
+            if (e.target === this) _cancel();
+          });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") _cancel();
+        });
+        STEPS.forEach(function (s, i) {
+          var btn = document.getElementById(s.trigger);
+          if (btn)
+            btn.addEventListener("click", function () {
+              _openModal(i);
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
