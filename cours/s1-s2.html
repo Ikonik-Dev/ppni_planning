@@ -12,6 +12,12 @@
     />
 <script>(function(){var t=localStorage.getItem('ppni-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
     <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      /* Glassmorphism 2026 — override legacy hardcoded inline colors */
+      h4[style*="#1a3a5c"]          { color: var(--text) !important; }
+      a[href][style*="#1a3a5c"]     { color: var(--text) !important; border-color: var(--border) !important; background: var(--surface-2) !important; }
+      a[href][style*="#e8eef7"]     { color: var(--text) !important; border-color: var(--border) !important; background: var(--surface-2) !important; }
+    </style>
   </head>
   <body>
     <aside class="sidebar" id="sidebar">
@@ -337,11 +343,11 @@
         <!-- PAUSE DÉJEUNER -->
         <div
           style="
-            background: #f4f4f4;
+            background-color: var(--surface-2);
             text-align: center;
             padding: 10px;
             font-style: italic;
-            color: #888;
+            color: var(--text-faint);
             font-size: 12px;
           "
         >
@@ -775,11 +781,11 @@
         <!-- PAUSE DÉJEUNER -->
         <div
           style="
-            background: #f4f4f4;
+            background-color: var(--surface-2);
             text-align: center;
             padding: 10px;
             font-style: italic;
-            color: #888;
+            color: var(--text-faint);
             font-size: 12px;
           "
         >

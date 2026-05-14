@@ -12,6 +12,16 @@
     />
 <script>(function(){var t=localStorage.getItem('ppni-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
     <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      /* Glassmorphism 2026 — override legacy hardcoded inline colors */
+      .section-box > p[style],
+      .module-card p[style]          { color: var(--text-muted) !important; }
+      .section-box > h3              { color: var(--text) !important; }
+      .module-card a[href]           { background: var(--accent) !important; color: white !important; border-color: transparent !important; transition: opacity 0.15s; }
+      .module-card a[href]:hover     { opacity: 0.85; }
+      .ressource-card a[href]        { color: var(--accent) !important; font-weight: 600; text-decoration: none; }
+      .ressource-card a[href]:hover  { text-decoration: underline; }
+    </style>
   </head>
   <body>
     <aside class="sidebar" id="sidebar">
