@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TP GitHub â€” Mon premier projet Â· PPNI 2026</title>
+    <title>TP GitHub — Mon premier projet · PPNI 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +18,9 @@
     </script>
     <link rel="stylesheet" href="../css/shared.css" />
     <style>
-      /* â”€â”€ Glassmorphism 2026 â€” TP GitHub â”€â”€ */
+      /* ── Glassmorphism 2026 — TP GitHub ── */
 
-      /* â”€â”€ Intro FALC â”€â”€ */
+      /* ── Intro FALC ── */
       .falc-intro {
         background: var(--cyan-subtle);
         border-left: 4px solid var(--cyan);
@@ -31,7 +31,7 @@
         color: var(--text);
       }
 
-      /* â”€â”€ Discord â”€â”€ */
+      /* ── Discord ── */
       .discord-box {
         background: var(--accent-subtle);
         border-left: 4px solid #5865f2;
@@ -42,7 +42,7 @@
         line-height: 1.8;
       }
 
-      /* â”€â”€ Ressources â”€â”€ */
+      /* ── Ressources ── */
       .ressources-bar {
         display: flex;
         gap: 10px;
@@ -86,7 +86,7 @@
         background: rgba(129, 140, 248, 0.22);
       }
 
-      /* â”€â”€ Ã‰tapes â”€â”€ */
+      /* ── Étapes ── */
       .step-header {
         display: flex;
         align-items: center;
@@ -125,7 +125,7 @@
         box-shadow: 0 0 10px var(--accent-glow);
       }
 
-      /* â”€â”€ Sous-Ã©tapes â”€â”€ */
+      /* ── Sous-étapes ── */
       .substep-list {
         list-style: none;
         padding: 0;
@@ -182,7 +182,7 @@
         border-color: var(--green);
       }
       .substep-cb:checked::after {
-        content: "âœ“";
+        content: "✓";
         color: #0f172a;
         font-size: 13px;
         font-weight: 700;
@@ -209,7 +209,7 @@
         display: block;
       }
 
-      /* â”€â”€ Checkpoints â”€â”€ */
+      /* ── Checkpoints ── */
       .check-point {
         background: linear-gradient(
           135deg,
@@ -264,7 +264,7 @@
         line-height: 1.8;
       }
 
-      /* â”€â”€ BinÃ´me â”€â”€ */
+      /* ── Binôme ── */
       .binome-box {
         background: var(--accent-subtle);
         border-left: 4px solid var(--accent);
@@ -276,7 +276,7 @@
         margin-bottom: 16px;
       }
 
-      /* â”€â”€ DÃ©finition â”€â”€ */
+      /* ── Définition ── */
       .def-block {
         background: var(--cyan-subtle);
         border: 1px solid rgba(34, 211, 238, 0.25);
@@ -294,7 +294,7 @@
         color: var(--cyan);
       }
 
-      /* â”€â”€ Code inline â”€â”€ */
+      /* ── Code inline ── */
       .ic {
         background: rgba(15, 23, 42, 0.88);
         color: #7dd3fc;
@@ -309,7 +309,7 @@
         color: #0369a1;
       }
 
-      /* â”€â”€ Template README â”€â”€ */
+      /* ── Template README ── */
       .readme-template {
         background: #0d1117;
         color: #e6edf3;
@@ -327,7 +327,7 @@
         font-style: italic;
       }
 
-      /* â”€â”€ Pause â”€â”€ */
+      /* ── Pause ── */
       .pause-banner {
         background: rgba(251, 146, 60, 0.1);
         border: 2px solid rgba(251, 146, 60, 0.45);
@@ -349,7 +349,7 @@
         line-height: 1.7;
       }
 
-      /* â”€â”€ Diviseur timing â”€â”€ */
+      /* ── Diviseur timing ── */
       .timing-divider {
         display: flex;
         align-items: center;
@@ -366,7 +366,7 @@
         border-top: 1px solid var(--border);
       }
 
-      /* â”€â”€ Bravo â”€â”€ */
+      /* ── Bravo ── */
       .bravo-box {
         background: var(--green-subtle);
         border: 2px solid rgba(52, 211, 153, 0.45);
@@ -391,7 +391,7 @@
         color: var(--text);
       }
 
-      /* â”€â”€ Deux chemins â”€â”€ */
+      /* ── Deux chemins ── */
       .two-paths {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -420,7 +420,7 @@
         color: var(--text);
       }
 
-      /* â”€â”€ Planning overview â”€â”€ */
+      /* ── Planning overview ── */
       .planning-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -444,7 +444,7 @@
         border-color: rgba(251, 146, 60, 0.3);
       }
 
-      /* â”€â”€ Sections verrouillÃ©es â”€â”€ */
+      /* ── Sections verrouillées ── */
       .locked {
         filter: blur(3px);
         opacity: 0.25;
@@ -466,7 +466,7 @@
         }
       }
 
-      /* â”€â”€ Bouton dÃ©verrouillage â”€â”€ */
+      /* ── Bouton déverrouillage ── */
       .unlock-btn {
         width: 100%;
         margin-top: 16px;
@@ -497,7 +497,7 @@
         transform: translateY(0);
       }
 
-      /* â”€â”€ Modal overlay â”€â”€ */
+      /* ── Modal overlay ── */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -709,7 +709,7 @@
               <line x1="6" y1="20" x2="6" y2="14" />
               <line x1="2" y1="20" x2="22" y2="20" /></svg
           ></span>
-          <span>PrÃ©visionnel</span>
+          <span>Prévisionnel</span>
         </a>
         <a href="../previsionnel_stagiaire.html" class="nav-item">
           <span class="nav-icon"
@@ -775,9 +775,9 @@
         <button
           class="theme-toggle"
           onclick="toggleTheme()"
-          title="Changer le thÃ¨me"
+          title="Changer le thème"
         >
-          <span class="theme-icon">ðŸŒ™</span>
+          <span class="theme-icon">🌙</span>
         </button>
         <span class="sidebar-version">v2026</span>
       </div>
@@ -806,79 +806,79 @@
       </header>
 
       <div class="page-wrapper">
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             EN-TÃŠTE
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             EN-TÊTE
+             ════════════════════════════════════════ -->
         <div class="doc-header">
-          <h1>ðŸ™ TP â€” Mon premier projet GitHub</h1>
+          <h1>🐙 TP — Mon premier projet GitHub</h1>
           <div class="meta">
-            Distanciel Â· Discord Â· BinÃ´mes Â· FALC Â· S1 â€” SÃ©quence 1.3 Â·
+            Distanciel · Discord · Binômes · FALC · S1 — Séquence 1.3 ·
             PPNI 2026
           </div>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              INTRO FALC
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box">
           <div class="falc-intro">
             <strong style="font-size: 17px; display: block; margin-bottom: 10px"
-              >ðŸ“Œ Ce que tu vas faire aujourd'hui</strong
+              >📌 Ce que tu vas faire aujourd'hui</strong
             >
-            Tu vas crÃ©er ton premier projet sur GitHub.<br />
+            Tu vas créer ton premier projet sur GitHub.<br />
             Ce projet, c'est le tien. Il restera en ligne.<br />
-            Tu vas Ã©crire un texte de prÃ©sentation. On appelle Ã§a un
+            Tu vas écrire un texte de présentation. On appelle ça un
             <strong>README</strong>.<br />
             <br />
             <strong>Pas de panique.</strong><br />
-            On avance une Ã©tape Ã  la fois.<br />
-            Chaque Ã©tape est numÃ©rotÃ©e.<br />
-            Coche la case âœ… quand c'est fait.<br />
-            Si tu es bloquÃ©Â·e â†’ demande Ã  ton binÃ´me d'abord. Puis au
+            On avance une étape à la fois.<br />
+            Chaque étape est numérotée.<br />
+            Coche la case ✅ quand c'est fait.<br />
+            Si tu es bloqué·e → demande à ton binôme d'abord. Puis au
             formateur.
           </div>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              ORGANISATION
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box">
-          <h2>ðŸ‘¥ Organisation de la journÃ©e</h2>
+          <h2>👥 Organisation de la journée</h2>
 
           <div class="discord-box" style="margin-bottom: 14px">
             <strong style="font-size: 14px; display: block; margin-bottom: 8px"
-              >ðŸ“² Tu travailles Ã  distance aujourd'hui (Discord)</strong
+              >📲 Tu travailles à distance aujourd'hui (Discord)</strong
             >
-            âœ¦ Ton binÃ´me est annoncÃ© par le formateur Ã 
+            ✦ Ton binôme est annoncé par le formateur à
             <strong>9h00</strong> sur Discord.<br />
-            âœ¦ Contacte ton binÃ´me en message privÃ© dÃ¨s l'annonce.<br />
-            âœ¦ Travaillez ensemble : partagez votre Ã©cran ou dÃ©crivez ce que
+            ✦ Contacte ton binôme en message privé dès l'annonce.<br />
+            ✦ Travaillez ensemble : partagez votre écran ou décrivez ce que
             vous voyez.<br />
-            âœ¦ Si tu es bloquÃ©Â·e : ton binÃ´me d'abord â†’ puis le formateur
+            ✦ Si tu es bloqué·e : ton binôme d'abord → puis le formateur
             en DM.<br />
             <br />
-            âš ï¸ <strong>Important :</strong> chacun envoie
-            <u>ses propres rÃ©sultats</u> en DM au formateur.<br />
-            Tu ne partages pas le travail de ton binÃ´me. Tu partages le tien.
+            ⚠️ <strong>Important :</strong> chacun envoie
+            <u>ses propres résultats</u> en DM au formateur.<br />
+            Tu ne partages pas le travail de ton binôme. Tu partages le tien.
           </div>
 
           <div class="binome-box">
-            <strong>ðŸ‘¥ RÃ´le du binÃ´me</strong><br />
-            Ton binÃ´me ne fait pas le travail Ã  ta place.<br />
-            Il t'aide quand tu es bloquÃ©Â·e. Tu l'aides quand c'est lui qui est
-            bloquÃ©Â·e.<br />
-            Si l'un avance plus vite â†’ il explique Ã  l'autre. C'est comme Ã§a
+            <strong>👥 Rôle du binôme</strong><br />
+            Ton binôme ne fait pas le travail à ta place.<br />
+            Il t'aide quand tu es bloqué·e. Tu l'aides quand c'est lui qui est
+            bloqué·e.<br />
+            Si l'un avance plus vite → il explique à l'autre. C'est comme ça
             qu'on apprend mieux.
           </div>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              RESSOURCES APP
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box">
-          <h2>ðŸ“š Ressources disponibles dans l'app</h2>
+          <h2>📚 Ressources disponibles dans l'app</h2>
           <p style="font-size: 14px; margin-bottom: 14px">
-            Tu peux ouvrir ces fiches Ã  tout moment. Elles rÃ©pondent Ã  la
+            Tu peux ouvrir ces fiches à tout moment. Elles répondent à la
             plupart des questions.
           </p>
           <div class="ressources-bar">
@@ -887,9 +887,9 @@
               target="_blank"
               class="ressource-link"
             >
-              ðŸ“– Fiche Git &amp; GitHub
+              📖 Fiche Git &amp; GitHub
               <span style="font-size: 11px; font-weight: 400; opacity: 0.75"
-                >â€” concepts, vocabulaire, Ã©tapes</span
+                >— concepts, vocabulaire, étapes</span
               >
             </a>
             <a
@@ -897,81 +897,81 @@
               target="_blank"
               class="ressource-link"
             >
-              ðŸ“ Fiche Markdown
+              📝 Fiche Markdown
               <span style="font-size: 11px; font-weight: 400; opacity: 0.75"
-                >â€” mise en forme du README</span
+                >— mise en forme du README</span
               >
             </a>
           </div>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              PLANNING
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box">
-          <h2>â° Planning de la journÃ©e</h2>
+          <h2>⏰ Planning de la journée</h2>
           <div class="planning-grid">
             <div class="planning-cell">
-              <strong>â˜€ï¸ Matin (9h00 â†’ 12h00)</strong><br />
-              9h00 â†’ Ã‰tape 0 : mon compte<br />
-              9h30 â†’ Ã‰tape 1 : crÃ©er le repo<br />
-              11h00 â†’ Ã‰tape 2 : dÃ©buter le README<br />
+              <strong>☀️ Matin (9h00 → 12h00)</strong><br />
+              9h00 → Étape 0 : mon compte<br />
+              9h30 → Étape 1 : créer le repo<br />
+              11h00 → Étape 2 : débuter le README<br />
               <br />
-              ðŸ“ Point de contrÃ´le 1 â†’ 9h30<br />
-              ðŸ“ Point de contrÃ´le 2 â†’ 11h00
+              📍 Point de contrôle 1 → 9h30<br />
+              📍 Point de contrôle 2 → 11h00
             </div>
             <div class="planning-cell pause-cell">
-              <strong>ðŸ½ Pause dÃ©jeuner</strong><br />
-              12h00 â†’ 13h30<br />
+              <strong>🍽 Pause déjeuner</strong><br />
+              12h00 → 13h30<br />
               <br />
               Garde ton onglet GitHub ouvert<br />
               si possible.
             </div>
             <div class="planning-cell">
-              <strong>ðŸŒ¤ AprÃ¨s-midi (13h30 â†’ 15h00)</strong><br />
-              13h30 â†’ Suite README<br />
-              14h30 â†’ Finaliser &amp; sauvegarder<br />
-              14h45 â†’ Livraison finale<br />
-              15h00 â†’ Bilan Discord<br />
+              <strong>🌤 Après-midi (13h30 → 15h00)</strong><br />
+              13h30 → Suite README<br />
+              14h30 → Finaliser &amp; sauvegarder<br />
+              14h45 → Livraison finale<br />
+              15h00 → Bilan Discord<br />
               <br />
-              ðŸ“ Point de contrÃ´le 3 â†’ 14h45
+              📍 Point de contrôle 3 → 14h45
             </div>
           </div>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             Ã‰TAPE 0 â€” MON COMPTE
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             ÉTAPE 0 — MON COMPTE
+             ════════════════════════════════════════ -->
         <div class="section-box">
           <div class="step-header">
             <div class="step-number">0</div>
             <div class="step-title">Mon compte GitHub</div>
-            <span class="step-timing">9h00 â†’ 9h30</span>
+            <span class="step-timing">9h00 → 9h30</span>
           </div>
 
           <div class="def-block">
-            <strong>ðŸ™ C'est quoi GitHub ?</strong>
-            GitHub, c'est un site web. Il sert Ã  stocker des projets
+            <strong>🐙 C'est quoi GitHub ?</strong>
+            GitHub, c'est un site web. Il sert à stocker des projets
             informatiques.<br />
             Ton projet sera visible par tout le monde. C'est une vitrine
             professionnelle.<br />
             Beaucoup d'employeurs regardent GitHub avant un entretien
             d'embauche.<br />
             <em
-              >C'est comme un portfolio en ligne â€” mais pour tes projets
-              numÃ©riques.</em
+              >C'est comme un portfolio en ligne — mais pour tes projets
+              numériques.</em
             >
           </div>
 
           <p style="font-size: 14px; font-weight: 600; margin-bottom: 14px">
-            Deux situations â†’ lis la tienne :
+            Deux situations → lis la tienne :
           </p>
 
           <div class="two-paths">
             <!-- Chemin A -->
             <div class="path-card">
               <div class="path-card-header">
-                ðŸ†• Je n'ai pas encore de compte
+                🆕 Je n'ai pas encore de compte
               </div>
               <ul class="substep-list">
                 <li class="substep-item" onclick="toggleStep(this)">
@@ -997,7 +997,7 @@
                   <div class="substep-text">
                     <strong>2. Clique sur "Sign up"</strong>
                     <span class="hint"
-                      >"Sign up" = "S'inscrire". C'est le bouton en haut Ã 
+                      >"Sign up" = "S'inscrire". C'est le bouton en haut à
                       droite.</span
                     >
                   </div>
@@ -1028,7 +1028,7 @@
                     <span class="hint"
                       >Exemples : <span class="ic">prenom-nom</span> ou
                       <span class="ic">prenomN</span>.<br />Pas de surnom de jeu
-                      vidÃ©o â€” c'est ta carte de visite.</span
+                      vidéo — c'est ta carte de visite.</span
                     >
                   </div>
                 </li>
@@ -1041,7 +1041,7 @@
                   <div class="substep-text">
                     <strong>5. Confirme ton e-mail</strong>
                     <span class="hint"
-                      >GitHub t'envoie un code par e-mail. Ouvre ta boÃ®te mail.
+                      >GitHub t'envoie un code par e-mail. Ouvre ta boîte mail.
                       Tape le code.</span
                     >
                   </div>
@@ -1052,13 +1052,13 @@
                 target="_blank"
                 class="ressource-inline"
               >
-                ðŸ“– Fiche Git â†’ CrÃ©er son compte
+                📖 Fiche Git → Créer son compte
               </a>
             </div>
 
             <!-- Chemin B -->
             <div class="path-card">
-              <div class="path-card-header">âœ… J'ai dÃ©jÃ  un compte</div>
+              <div class="path-card-header">✅ J'ai déjà un compte</div>
               <ul class="substep-list">
                 <li class="substep-item" onclick="toggleStep(this)">
                   <input
@@ -1094,9 +1094,9 @@
                     onclick="event.stopPropagation()"
                   />
                   <div class="substep-text">
-                    <strong>3. VÃ©rifie que tu es connectÃ©Â·e</strong>
+                    <strong>3. Vérifie que tu es connecté·e</strong>
                     <span class="hint"
-                      >Ton avatar doit apparaÃ®tre en haut Ã  droite de la
+                      >Ton avatar doit apparaître en haut à droite de la
                       page.</span
                     >
                   </div>
@@ -1106,32 +1106,32 @@
           </div>
 
           <button class="unlock-btn" id="unlock-0">
-            âœ… Mon compte est prÃªt â€” passer Ã  l'Ã©tape suivante
+            ✅ Mon compte est prêt — passer à l'étape suivante
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              CHECK POINT 1
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-check1">
           <div class="check-point">
             <div class="check-point-header">
-              <span class="check-point-icon">ðŸ“</span>
-              <span class="check-point-title">Point de contrÃ´le 1 / 3</span>
+              <span class="check-point-icon">📍</span>
+              <span class="check-point-title">Point de contrôle 1 / 3</span>
               <span class="check-point-timing">9h30</span>
             </div>
             <div class="check-point-body">
-              Tu as ton compte GitHub et tu es connectÃ©Â·e. TrÃ¨s bien !<br />
+              Tu as ton compte GitHub et tu es connecté·e. Très bien !<br />
               Maintenant envoie un message en
-              <strong>DM (message privÃ©)</strong> au formateur sur Discord.
+              <strong>DM (message privé)</strong> au formateur sur Discord.
               <span class="check-point-action">
-                ðŸ’¬ <strong>Message Ã  envoyer en DM au formateur :</strong
+                💬 <strong>Message à envoyer en DM au formateur :</strong
                 ><br /><br />
-                <em>"Compte prÃªt âœ…"</em><br /><br />
-                + une <strong>capture d'Ã©cran</strong> de ta page de profil
+                <em>"Compte prêt ✅"</em><br /><br />
+                + une <strong>capture d'écran</strong> de ta page de profil
                 GitHub<br />
                 <span style="font-size: 12px; opacity: 0.85"
-                  >(L'adresse de la page ressemble Ã  :
+                  >(L'adresse de la page ressemble à :
                   <span class="ic">github.com/ton-prenom</span>)</span
                 >
               </span>
@@ -1139,33 +1139,33 @@
           </div>
 
           <button class="unlock-btn" id="unlock-check1">
-            ðŸ“² DM envoyÃ© au formateur â€” dÃ©bloquer la prochaine Ã©tape
+            📲 DM envoyé au formateur — débloquer la prochaine étape
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             Ã‰TAPE 1 â€” CRÃ‰ER LE REPO
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             ÉTAPE 1 — CRÉER LE REPO
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-etape1">
           <div class="step-header">
             <div class="step-number">1</div>
-            <div class="step-title">CrÃ©er mon repository</div>
-            <span class="step-timing">9h30 â†’ 11h00</span>
+            <div class="step-title">Créer mon repository</div>
+            <span class="step-timing">9h30 → 11h00</span>
           </div>
 
           <div class="def-block">
-            <strong>ðŸ“ C'est quoi un repository ?</strong>
+            <strong>📁 C'est quoi un repository ?</strong>
             Un repository (on dit "re-po"), c'est un dossier en ligne.<br />
-            C'est lÃ  oÃ¹ GitHub range ton projet.<br />
-            Tout le monde peut voir ton dossier. C'est fait pour Ã§a.<br />
-            <em>C'est comme un classeur partagÃ© â€” mais sur Internet.</em>
+            C'est là où GitHub range ton projet.<br />
+            Tout le monde peut voir ton dossier. C'est fait pour ça.<br />
+            <em>C'est comme un classeur partagé — mais sur Internet.</em>
           </div>
 
           <div class="binome-box">
-            ðŸ‘¥ <strong>En binÃ´me :</strong><br />
-            Une personne suit les Ã©tapes sur son ordinateur.<br />
-            L'autre observe via Discord et dit si elle voit la mÃªme chose.<br />
-            Ensuite vous inversez les rÃ´les pour l'Ã©tape suivante.
+            👥 <strong>En binôme :</strong><br />
+            Une personne suit les étapes sur son ordinateur.<br />
+            L'autre observe via Discord et dit si elle voit la même chose.<br />
+            Ensuite vous inversez les rôles pour l'étape suivante.
           </div>
 
           <ul class="substep-list">
@@ -1176,10 +1176,10 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>1. Clique sur le "+" en haut Ã  droite</strong>
+                <strong>1. Clique sur le "+" en haut à droite</strong>
                 <span class="hint"
                   >Tu le vois sur toutes les pages GitHub une fois
-                  connectÃ©Â·e.</span
+                  connecté·e.</span
                 >
               </div>
             </li>
@@ -1217,10 +1217,10 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>4. Dans "Description", Ã©cris une phrase courte</strong>
+                <strong>4. Dans "Description", écris une phrase courte</strong>
                 <span class="hint"
                   >Exemple :
-                  <em>Mon premier projet GitHub â€” PPNI 2026</em></span
+                  <em>Mon premier projet GitHub — PPNI 2026</em></span
                 >
               </div>
             </li>
@@ -1231,7 +1231,7 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>5. SÃ©lectionne "Public"</strong>
+                <strong>5. Sélectionne "Public"</strong>
                 <span class="hint"
                   >Ton projet sera visible en ligne. C'est ta vitrine
                   professionnelle.</span
@@ -1247,8 +1247,8 @@
               <div class="substep-text">
                 <strong>6. Coche "Add a README file"</strong>
                 <span class="hint"
-                  >Ã‡a crÃ©e automatiquement ton fichier de prÃ©sentation. On va
-                  le modifier juste aprÃ¨s.</span
+                  >Ça crée automatiquement ton fichier de présentation. On va
+                  le modifier juste après.</span
                 >
               </div>
             </li>
@@ -1261,7 +1261,7 @@
               <div class="substep-text">
                 <strong>7. Clique sur "Create repository"</strong>
                 <span class="hint"
-                  >Ton projet est crÃ©Ã© ! Tu dois voir une page avec un fichier
+                  >Ton projet est créé ! Tu dois voir une page avec un fichier
                   <span class="ic">README.md</span> dedans.</span
                 >
               </div>
@@ -1274,34 +1274,34 @@
             class="ressource-inline"
             style="display: inline-flex"
           >
-            ðŸ“– Fiche Git â†’ Section "CrÃ©er un repository"
+            📖 Fiche Git → Section "Créer un repository"
           </a>
 
           <button class="unlock-btn" id="unlock-1">
-            âœ… Repository crÃ©Ã© â€” passer au point de contrÃ´le
+            ✅ Repository créé — passer au point de contrôle
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              CHECK POINT 2
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-check2">
           <div class="check-point">
             <div class="check-point-header">
-              <span class="check-point-icon">ðŸ“</span>
-              <span class="check-point-title">Point de contrÃ´le 2 / 3</span>
+              <span class="check-point-icon">📍</span>
+              <span class="check-point-title">Point de contrôle 2 / 3</span>
               <span class="check-point-timing">11h00</span>
             </div>
             <div class="check-point-body">
               Ton repository est en ligne. Excellent travail !<br />
               Envoie un message en <strong>DM</strong> au formateur sur Discord.
               <span class="check-point-action">
-                ðŸ’¬ <strong>Message Ã  envoyer en DM au formateur :</strong
+                💬 <strong>Message à envoyer en DM au formateur :</strong
                 ><br /><br />
-                <em>"Repo crÃ©Ã© âœ…"</em><br /><br />
+                <em>"Repo créé ✅"</em><br /><br />
                 + le <strong>lien</strong> de ton repository<br />
                 <span style="font-size: 12px; opacity: 0.85"
-                  >(Ressemble Ã  :
+                  >(Ressemble à :
                   <span class="ic">github.com/ton-prenom/mon-premier-repo</span
                   >)</span
                 >
@@ -1310,66 +1310,66 @@
           </div>
 
           <button class="unlock-btn" id="unlock-check2">
-            ðŸ“² DM envoyÃ© â€” dÃ©bloquer la rÃ©daction du README
+            📲 DM envoyé — débloquer la rédaction du README
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             Ã‰TAPE 2 â€” README (matin)
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             ÉTAPE 2 — README (matin)
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-etape2-matin">
           <div class="step-header">
             <div class="step-number">2</div>
-            <div class="step-title">Ã‰crire mon README</div>
-            <span class="step-timing">11h00 â†’ 12h00</span>
+            <div class="step-title">Écrire mon README</div>
+            <span class="step-timing">11h00 → 12h00</span>
           </div>
 
           <div class="def-block">
-            <strong>ðŸ“„ C'est quoi un README ?</strong>
+            <strong>📄 C'est quoi un README ?</strong>
             Un README, c'est la page d'accueil de ton projet.<br />
-            C'est la premiÃ¨re chose que les gens voient quand ils ouvrent ton
+            C'est la première chose que les gens voient quand ils ouvrent ton
             repo.<br />
-            C'est ta prÃ©sentation. Tu parles de toi et de ce que tu fais.<br />
+            C'est ta présentation. Tu parles de toi et de ce que tu fais.<br />
             <em
-              >C'est la couverture d'un livre â€” mais pour ton projet
+              >C'est la couverture d'un livre — mais pour ton projet
               GitHub.</em
             >
           </div>
 
           <div class="def-block">
-            <strong>âœï¸ C'est quoi le Markdown ?</strong>
-            Le Markdown, c'est une faÃ§on d'Ã©crire du texte mis en forme.<br />
+            <strong>✍️ C'est quoi le Markdown ?</strong>
+            Le Markdown, c'est une façon d'écrire du texte mis en forme.<br />
             Tu utilises des petits symboles. Le site les transforme en joli
             texte.<br />
             <br />
-            Tu Ã©cris <span class="ic"># Bonjour</span> â†’ Ã§a devient un gros
+            Tu écris <span class="ic"># Bonjour</span> → ça devient un gros
             titre<br />
-            Tu Ã©cris <span class="ic">## Titre 2</span> â†’ Ã§a devient un
+            Tu écris <span class="ic">## Titre 2</span> → ça devient un
             sous-titre<br />
-            Tu Ã©cris <span class="ic">**mot**</span> â†’ Ã§a devient du
+            Tu écris <span class="ic">**mot**</span> → ça devient du
             <strong>texte en gras</strong><br />
-            Tu Ã©cris <span class="ic">- Ã©lÃ©ment</span> â†’ Ã§a devient une
-            liste Ã  puces
+            Tu écris <span class="ic">- élément</span> → ça devient une
+            liste à puces
           </div>
 
           <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
-            ðŸ§© ModÃ¨le Ã  copier dans ton README :
+            🧩 Modèle à copier dans ton README :
           </p>
 
           <div class="readme-template">
             <span class="readme-comment"
-              ># â† Ce symbole crÃ©e un gros titre</span
+              ># ← Ce symbole crée un gros titre</span
             >
-            # ðŸ‘‹ Bonjour, je suis [ton prÃ©nom] !
+            # 👋 Bonjour, je suis [ton prénom] !
 
-            <span class="readme-comment">## â† Sous-titre</span>
-            ## Qui suis-je ? Je m'appelle [ton prÃ©nom]. Je suis stagiaire dans
-            le programme PPNI 2026. J'apprends le numÃ©rique avec Auxilia
+            <span class="readme-comment">## ← Sous-titre</span>
+            ## Qui suis-je ? Je m'appelle [ton prénom]. Je suis stagiaire dans
+            le programme PPNI 2026. J'apprends le numérique avec Auxilia
             Formation. ## Ce que j'apprends cette semaine
-            <span class="readme-comment">- â† CrÃ©e une liste Ã  puces</span>
-            - La cybersÃ©curitÃ© - Comment crÃ©er un compte GitHub - Comment
-            Ã©crire un README ## Une chose que j'aime [Ã‰cris une chose que tu
-            aimes â€” un loisir, une passion, n'importe quoi !] ## Mon profil
+            <span class="readme-comment">- ← Crée une liste à puces</span>
+            - La cybersécurité - Comment créer un compte GitHub - Comment
+            écrire un README ## Une chose que j'aime [Écris une chose que tu
+            aimes — un loisir, une passion, n'importe quoi !] ## Mon profil
             GitHub Retrouve-moi ici : [ton lien github.com/ton-prenom]
           </div>
 
@@ -1379,11 +1379,11 @@
             class="ressource-inline"
             style="display: inline-flex; margin-bottom: 16px"
           >
-            ðŸ“ Fiche Markdown â†’ Tous les symboles expliquÃ©s
+            📝 Fiche Markdown → Tous les symboles expliqués
           </a>
 
           <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
-            Ã‰tapes pour Ã©crire :
+            Étapes pour écrire :
           </p>
           <ul class="substep-list">
             <li class="substep-item" onclick="toggleStep(this)">
@@ -1407,10 +1407,10 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>2. Clique sur le crayon âœï¸</strong>
+                <strong>2. Clique sur le crayon ✏️</strong>
                 <span class="hint"
-                  >Il est en haut Ã  droite du fichier README. Il ouvre
-                  l'Ã©diteur de texte.</span
+                  >Il est en haut à droite du fichier README. Il ouvre
+                  l'éditeur de texte.</span
                 >
               </div>
             </li>
@@ -1421,10 +1421,10 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>3. SÃ©lectionne tout et efface</strong>
+                <strong>3. Sélectionne tout et efface</strong>
                 <span class="hint"
-                  >Clique dans le texte â†’
-                  <span class="ic">Ctrl + A</span> pour tout sÃ©lectionner â†’
+                  >Clique dans le texte →
+                  <span class="ic">Ctrl + A</span> pour tout sélectionner →
                   <span class="ic">Suppr</span> pour effacer.</span
                 >
               </div>
@@ -1436,7 +1436,7 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>4. Copie-colle le modÃ¨le ci-dessus</strong>
+                <strong>4. Copie-colle le modèle ci-dessus</strong>
                 <span class="hint"
                   >Remplace ensuite chaque <span class="ic">[...]</span> par tes
                   vraies informations.</span
@@ -1450,47 +1450,47 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>5. Clique sur "Preview" pour voir le rÃ©sultat</strong>
+                <strong>5. Clique sur "Preview" pour voir le résultat</strong>
                 <span class="hint"
-                  >Tu vois comment Ã§a s'affichera vraiment. Si quelque chose
-                  semble bizarre, reviens en mode Ã©dition.</span
+                  >Tu vois comment ça s'affichera vraiment. Si quelque chose
+                  semble bizarre, reviens en mode édition.</span
                 >
               </div>
             </li>
           </ul>
 
           <button class="unlock-btn" id="unlock-2-matin">
-            ðŸ½ J'ai bien avancÃ© sur le README â€” je pars en pause
+            🍽 J'ai bien avancé sur le README — je pars en pause
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             PAUSE DÃ‰JEUNER
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             PAUSE DÉJEUNER
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-pause">
           <div class="pause-banner">
             <div class="pause-banner-title">
-              ðŸ½ Pause dÃ©jeuner â€” 12h00 â†’ 13h30
+              🍽 Pause déjeuner — 12h00 → 13h30
             </div>
             <div class="pause-banner-sub">
               Ne ferme pas ton onglet GitHub si tu peux.<br />
-              Tu reprends la rÃ©daction de ton README Ã  13h30.
+              Tu reprends la rédaction de ton README à 13h30.
             </div>
           </div>
 
           <button class="unlock-btn" id="unlock-pause">
-            â˜€ï¸ Je suis de retour â€” reprendre le README
+            ☀️ Je suis de retour — reprendre le README
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             Ã‰TAPE 2 â€” README (aprÃ¨s-midi, suite)
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             ÉTAPE 2 — README (après-midi, suite)
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-etape2-pm">
-          <div class="timing-divider">â–¶ Reprise â€” 13h30</div>
+          <div class="timing-divider">▶ Reprise — 13h30</div>
 
           <p style="font-size: 14px; font-weight: 600; margin-bottom: 10px">
-            Suite de l'Ã©tape 2 â€” Finalise et sauvegarde ton README :
+            Suite de l'étape 2 — Finalise et sauvegarde ton README :
           </p>
           <ul class="substep-list">
             <li class="substep-item" onclick="toggleStep(this)">
@@ -1500,9 +1500,9 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>6. Relis ton README depuis le dÃ©but</strong>
+                <strong>6. Relis ton README depuis le début</strong>
                 <span class="hint"
-                  >Corrige les fautes. VÃ©rifie que les informations sont
+                  >Corrige les fautes. Vérifie que les informations sont
                   exactes. C'est un document public.</span
                 >
               </div>
@@ -1516,7 +1516,7 @@
               <div class="substep-text">
                 <strong>7. Ajoute une chose personnelle si tu veux</strong>
                 <span class="hint"
-                  >Un emoji, une citation, une photo â€” c'est ton projet,
+                  >Un emoji, une citation, une photo — c'est ton projet,
                   exprime-toi.</span
                 >
               </div>
@@ -1528,9 +1528,9 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>8. Clique sur "Commit changesâ€¦"</strong>
+                <strong>8. Clique sur "Commit changes…"</strong>
                 <span class="hint"
-                  >C'est le bouton vert en haut Ã  droite de l'Ã©diteur.
+                  >C'est le bouton vert en haut à droite de l'éditeur.
                   "Commit" = sauvegarder officiellement.</span
                 >
               </div>
@@ -1542,11 +1542,11 @@
                 onclick="event.stopPropagation()"
               />
               <div class="substep-text">
-                <strong>9. Ã‰cris un message de commit</strong>
+                <strong>9. Écris un message de commit</strong>
                 <span class="hint"
-                  >Dans le champ "Commit message", Ã©cris :
+                  >Dans le champ "Commit message", écris :
                   <span class="ic"
-                    >RÃ©diger mon README de prÃ©sentation</span
+                    >Rédiger mon README de présentation</span
                   ></span
                 >
               </div>
@@ -1563,7 +1563,7 @@
                   confirmation)</strong
                 >
                 <span class="hint"
-                  >Ton README est sauvegardÃ© et visible en ligne. Ton premier
+                  >Ton README est sauvegardé et visible en ligne. Ton premier
                   commit est fait !</span
                 >
               </div>
@@ -1571,12 +1571,12 @@
           </ul>
 
           <div class="def-block" style="margin-top: 16px">
-            <strong>ðŸ“¸ C'est quoi un commit ?</strong>
+            <strong>📸 C'est quoi un commit ?</strong>
             Un commit, c'est une sauvegarde officielle de ton travail.<br />
             GitHub garde l'historique de toutes tes sauvegardes.<br />
-            Tu peux toujours revenir Ã  une version prÃ©cÃ©dente.<br />
+            Tu peux toujours revenir à une version précédente.<br />
             <em
-              >C'est comme une sauvegarde de jeu vidÃ©o â€” avec une
+              >C'est comme une sauvegarde de jeu vidéo — avec une
               description.</em
             >
           </div>
@@ -1587,38 +1587,38 @@
             class="ressource-inline"
             style="display: inline-flex"
           >
-            ðŸ“– Fiche Git â†’ Section "Commit"
+            📖 Fiche Git → Section "Commit"
           </a>
 
           <button class="unlock-btn" id="unlock-2-pm">
-            ðŸ’¾ README commitÃ© â€” passer Ã  la livraison finale
+            💾 README commité — passer à la livraison finale
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-             CHECK POINT 3 â€” LIVRAISON
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- ════════════════════════════════════════
+             CHECK POINT 3 — LIVRAISON
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-check3">
           <div class="check-point">
             <div class="check-point-header">
-              <span class="check-point-icon">ðŸ“</span>
+              <span class="check-point-icon">📍</span>
               <span class="check-point-title"
-                >Point de contrÃ´le 3 / 3 â€” Livraison finale</span
+                >Point de contrôle 3 / 3 — Livraison finale</span
               >
               <span class="check-point-timing">14h45</span>
             </div>
             <div class="check-point-body">
-              Ton README est en ligne. Tu as rÃ©ussi le TP !<br />
+              Ton README est en ligne. Tu as réussi le TP !<br />
               Envoie un message en <strong>DM</strong> au formateur sur Discord.
               <span class="check-point-action">
-                ðŸ’¬ <strong>Message Ã  envoyer en DM au formateur :</strong
+                💬 <strong>Message à envoyer en DM au formateur :</strong
                 ><br /><br />
-                <em>"README terminÃ© âœ…"</em><br /><br />
+                <em>"README terminé ✅"</em><br /><br />
                 + le <strong>lien</strong> de ton repository<br />
-                + une <strong>capture d'Ã©cran</strong> de ton README tel qu'il
+                + une <strong>capture d'écran</strong> de ton README tel qu'il
                 s'affiche sur GitHub<br />
                 <span style="font-size: 12px; opacity: 0.85"
-                  >(Clique sur ton repo â†’ le README s'affiche en bas de la
+                  >(Clique sur ton repo → le README s'affiche en bas de la
                   page d'accueil)</span
                 >
               </span>
@@ -1626,37 +1626,37 @@
           </div>
 
           <button class="unlock-btn" id="unlock-check3">
-            ðŸ“¤ Livraison envoyÃ©e â€” voir le bilan ðŸ†
+            📤 Livraison envoyée — voir le bilan 🏆
           </button>
         </div>
 
-        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        <!-- ════════════════════════════════════════
              BILAN
-             â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+             ════════════════════════════════════════ -->
         <div class="section-box locked" id="section-bilan">
           <div class="step-header">
             <div class="step-number">3</div>
-            <div class="step-title">Bilan de la journÃ©e</div>
-            <span class="step-timing">14h45 â†’ 15h00</span>
+            <div class="step-title">Bilan de la journée</div>
+            <span class="step-timing">14h45 → 15h00</span>
           </div>
 
           <div class="bravo-box">
             <div class="bravo-title">
-              ðŸŽ‰ Bravo â€” regarde ce que tu as accompli aujourd'hui !
+              🎉 Bravo — regarde ce que tu as accompli aujourd'hui !
             </div>
             <ul class="bravo-list">
-              <li>âœ… Tu as crÃ©Ã© (ou accÃ©dÃ© Ã ) ton compte GitHub</li>
-              <li>âœ… Tu as crÃ©Ã© un repository public</li>
-              <li>âœ… Tu as Ã©crit un README en Markdown</li>
-              <li>âœ… Tu as fait ton premier commit</li>
-              <li>âœ… Ton projet est en ligne â€” visible par tout le monde</li>
+              <li>✅ Tu as créé (ou accédé à) ton compte GitHub</li>
+              <li>✅ Tu as créé un repository public</li>
+              <li>✅ Tu as écrit un README en Markdown</li>
+              <li>✅ Tu as fait ton premier commit</li>
+              <li>✅ Ton projet est en ligne — visible par tout le monde</li>
             </ul>
           </div>
 
           <div class="discord-box">
-            ðŸ“² Le formateur partagera un message de clÃ´ture sur Discord Ã 
+            📲 Le formateur partagera un message de clôture sur Discord à
             <strong>15h00</strong>.<br />
-            Si tu as fini en avance : aide ton binÃ´me ou explore ton profil
+            Si tu as fini en avance : aide ton binôme ou explore ton profil
             GitHub.<br />
             Tu peux ajouter une photo de profil, une bio courte, explorer
             d'autres repos.
@@ -1664,15 +1664,15 @@
         </div>
 
         <div class="footer">
-          TP GitHub Â· S1 â€” SÃ©quence 1.3 Â· PPNI 2026 &nbsp;|&nbsp;
+          TP GitHub · S1 — Séquence 1.3 · PPNI 2026 &nbsp;|&nbsp;
           <a href="index.html" style="color: inherit"
-            >â† Retour aux exercices</a
+            >← Retour aux exercices</a
           >
         </div>
       </div>
     </main>
 
-    <!-- â•â•â•â• MODAL CONFIRMATION â•â•â•â• -->
+    <!-- ════ MODAL CONFIRMATION ════ -->
     <div
       class="modal-overlay"
       id="modal-overlay"
@@ -1698,138 +1698,138 @@
 
     <script src="../js/app.js"></script>
     <script>
-      /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-         SystÃ¨me de dÃ©verrouillage progressif
+      /* ══════════════════════════════════════════
+         Système de déverrouillage progressif
          avec confirmation modale x2 (humour inclus)
-         â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+         ══════════════════════════════════════════ */
       var STEPS = [
         {
           trigger: "unlock-0",
           target: "section-check1",
-          emoji1: "ðŸ¤”",
-          title1: "T'as vraiment crÃ©Ã© ton compte ?",
+          emoji1: "🤔",
+          title1: "T'as vraiment créé ton compte ?",
           body1:
-            "GitHub te reconnaÃ®t maintenant ? T'as pas mis Â« SuperGamer_42 Â» comme nom d'utilisateur, j'espÃ¨re ? ðŸ˜…",
-          no1: "Laisse-moi revÃ©rifier...",
-          yes1: "Oui, c'est pro ! â†’",
-          emoji2: "ðŸ‘€",
-          title2: "OK... mais t'es vraiment connectÃ©Â·e ?",
+            "GitHub te reconnaît maintenant ? T'as pas mis « SuperGamer_42 » comme nom d'utilisateur, j'espère ? 😅",
+          no1: "Laisse-moi revérifier...",
+          yes1: "Oui, c'est pro ! →",
+          emoji2: "👀",
+          title2: "OK... mais t'es vraiment connecté·e ?",
           body2:
-            "ConnectÃ©Â·e dans le navigateur, hein. Pas juste dans ta tÃªte. L'avatar en haut Ã  droite, tu le vois ?",
-          no2: "Ah non, j'avais rÃªvÃ©",
-          yes2: "Je le vois, on avance ! ðŸš€",
+            "Connecté·e dans le navigateur, hein. Pas juste dans ta tête. L'avatar en haut à droite, tu le vois ?",
+          no2: "Ah non, j'avais rêvé",
+          yes2: "Je le vois, on avance ! 🚀",
         },
         {
           trigger: "unlock-check1",
           target: "section-etape1",
-          emoji1: "ðŸ“²",
-          title1: "Le DM est bien envoyÃ© ?",
+          emoji1: "📲",
+          title1: "Le DM est bien envoyé ?",
           body1:
-            "T'as tapÃ© Â« Compte prÃªt âœ… Â» + la capture d'Ã©cran au formateur. Tout Ã§a. Pas juste pensÃ© Ã  le faire.",
+            "T'as tapé « Compte prêt ✅ » + la capture d'écran au formateur. Tout ça. Pas juste pensé à le faire.",
           no1: "Euh, j'allais le faire...",
-          yes1: "DM envoyÃ© ! â†’",
-          emoji2: "ðŸ§",
-          title2: "La capture, c'Ã©tait bien TON profil ?",
+          yes1: "DM envoyé ! →",
+          emoji2: "🧐",
+          title2: "La capture, c'était bien TON profil ?",
           body2:
-            "Pas la photo de ton chat. Pas un fond d'Ã©cran. Ton. Vrai. Profil. GitHub. ðŸ™",
+            "Pas la photo de ton chat. Pas un fond d'écran. Ton. Vrai. Profil. GitHub. 🐙",
           no2: "Je vais renvoyer...",
-          yes2: "Oui, c'Ã©tait moi en vrai !",
+          yes2: "Oui, c'était moi en vrai !",
         },
         {
           trigger: "unlock-1",
           target: "section-check2",
-          emoji1: "ðŸ—ï¸",
+          emoji1: "🏗️",
           title1: "Ton repo existe vraiment ?",
           body1:
             "L'adresse github.com/ton-prenom/mon-premier-repo s'ouvre ? Avec un fichier README.md dedans ?",
-          no1: "Hmm, pas sÃ»rÂ·e...",
-          yes1: "Oui, je le vois ! â†’",
-          emoji2: "ðŸ“¦",
-          title2: "T'as bien cochÃ© la case README ?",
+          no1: "Hmm, pas sûr·e...",
+          yes1: "Oui, je le vois ! →",
+          emoji2: "📦",
+          title2: "T'as bien coché la case README ?",
           body2:
-            "Celle qui crÃ©e le fichier README.md automatiquement. La case 6. NumÃ©ro. Six. (Si non, c'est pas grave â€” on peut ajouter le fichier.)",
+            "Celle qui crée le fichier README.md automatiquement. La case 6. Numéro. Six. (Si non, c'est pas grave — on peut ajouter le fichier.)",
           no2: "Ooops...",
-          yes2: "Oui, il est lÃ  !",
+          yes2: "Oui, il est là !",
         },
         {
           trigger: "unlock-check2",
           target: "section-etape2-matin",
-          emoji1: "ðŸ“¤",
-          title1: "T'as envoyÃ© le lien du repo ?",
+          emoji1: "📤",
+          title1: "T'as envoyé le lien du repo ?",
           body1:
-            "En DM au formateur. Un lien complet. Pas juste Â« c'est sur GitHub quelque part Â».",
+            "En DM au formateur. Un lien complet. Pas juste « c'est sur GitHub quelque part ».",
           no1: "Je vais le faire maintenant",
-          yes1: "Lien envoyÃ© ! â†’",
-          emoji2: "âœï¸",
-          title2: "PrÃªtÂ·e pour le grand README ?",
+          yes1: "Lien envoyé ! →",
+          emoji2: "✍️",
+          title2: "Prêt·e pour le grand README ?",
           body2:
-            "Tu vas Ã©crire ta prÃ©sentation. En ligne. Pour toujours. Les recruteurs du futur comptent sur toi. Pas de pression. ðŸ˜„",
-          no2: "Stressant tout Ã  coup...",
+            "Tu vas écrire ta présentation. En ligne. Pour toujours. Les recruteurs du futur comptent sur toi. Pas de pression. 😄",
+          no2: "Stressant tout à coup...",
           yes2: "Allons-y, je me lance !",
         },
         {
           trigger: "unlock-2-matin",
           target: "section-pause",
-          emoji1: "ðŸ½ï¸",
-          title1: "Tu pars vraiment dÃ©jeuner ?",
+          emoji1: "🍽️",
+          title1: "Tu pars vraiment déjeuner ?",
           body1:
-            "T'as laissÃ© l'onglet GitHub ouvert ? Et t'as arrÃªtÃ© de modifier avant de partir ? Le contenu non sauvegardÃ©, c'est comme un chÃ¢teau de sable Ã  marÃ©e montante.",
+            "T'as laissé l'onglet GitHub ouvert ? Et t'as arrêté de modifier avant de partir ? Le contenu non sauvegardé, c'est comme un château de sable à marée montante.",
           no1: "Attends, je sauvegarde d'abord",
-          yes1: "Onglet ouvert, je pars ! â†’",
-          emoji2: "ðŸŽ’",
-          title2: "Allez, bon appÃ©tit !",
+          yes1: "Onglet ouvert, je pars ! →",
+          emoji2: "🎒",
+          title2: "Allez, bon appétit !",
           body2:
-            "Mange bien. Repose-toi. Ton README t'attend patiemment. (Lui aussi il a faim â€” de contenu.)",
+            "Mange bien. Repose-toi. Ton README t'attend patiemment. (Lui aussi il a faim — de contenu.)",
           no2: "...",
-          yes2: "Ã€ toute Ã  l'heure ! ðŸ™Œ",
+          yes2: "À toute à l'heure ! 🙌",
         },
         {
           trigger: "unlock-pause",
           target: "section-etape2-pm",
-          emoji1: "ðŸ‘‹",
-          title1: "T'es de retour ? DÃ©jÃ  ?",
+          emoji1: "👋",
+          title1: "T'es de retour ? Déjà ?",
           body1:
-            "On te croyait perduÂ·e. Le README commenÃ§ait Ã  se sentir abandonnÃ©. Bienvenue, tu nous as manquÃ©.",
+            "On te croyait perdu·e. Le README commençait à se sentir abandonné. Bienvenue, tu nous as manqué.",
           no1: "Je suis encore en train de manger",
-          yes1: "Oui, je suis lÃ  ! â†’",
-          emoji2: "â˜•",
-          title2: "T'as mangÃ© quelque chose de bien ?",
+          yes1: "Oui, je suis là ! →",
+          emoji2: "☕",
+          title2: "T'as mangé quelque chose de bien ?",
           body2:
-            "On demande juste pour savoir. (Les fautes d'orthographe augmentent de 47% quand on tape README le ventre vide. C'est une stat inventÃ©e, mais elle semble vraie.)",
-          no2: "J'aurais dÃ» manger...",
-          yes2: "PleinÂ·e d'Ã©nergie, on y va ! ðŸš€",
+            "On demande juste pour savoir. (Les fautes d'orthographe augmentent de 47% quand on tape README le ventre vide. C'est une stat inventée, mais elle semble vraie.)",
+          no2: "J'aurais dû manger...",
+          yes2: "Plein·e d'énergie, on y va ! 🚀",
         },
         {
           trigger: "unlock-2-pm",
           target: "section-check3",
-          emoji1: "ðŸ’¾",
-          title1: "T'as bien cliquÃ© sur Commit ?",
+          emoji1: "💾",
+          title1: "T'as bien cliqué sur Commit ?",
           body1:
-            "Parce que penser Ã  sauvegarder, Ã§a ne sauvegarde pas. Le bouton Â« Commit changes Â» a Ã©tÃ© cliquÃ© ? Vraiment cliquÃ© ?",
-          no1: "Ah zut, j'avais oubliÃ© !",
-          yes1: "Commit fait ! â†’",
-          emoji2: "ðŸ•µï¸",
+            "Parce que penser à sauvegarder, ça ne sauvegarde pas. Le bouton « Commit changes » a été cliqué ? Vraiment cliqué ?",
+          no1: "Ah zut, j'avais oublié !",
+          yes1: "Commit fait ! →",
+          emoji2: "🕵️",
           title2: "Et le message de commit ?",
           body2:
-            "T'as Ã©crit quelque chose de clair comme Â« RÃ©diger mon README de prÃ©sentation Â» ? Pas Â« aaa Â» ni Â« modif Â» ? Git garde tout. Pour l'Ã©ternitÃ©.",
+            "T'as écrit quelque chose de clair comme « Rédiger mon README de présentation » ? Pas « aaa » ni « modif » ? Git garde tout. Pour l'éternité.",
           no2: "Je corrige le message...",
           yes2: "Message propre, c'est bon !",
         },
         {
           trigger: "unlock-check3",
           target: "section-bilan",
-          emoji1: "ðŸ“¸",
-          title1: "T'as tout envoyÃ© au formateur ?",
+          emoji1: "📸",
+          title1: "T'as tout envoyé au formateur ?",
           body1:
-            "Le lien DU repo ET la capture d'Ã©cran. Les deux. Pas l'un ou l'autre. LES DEUX. (On insiste parce qu'on t'aime.)",
-          no1: "J'en avais oubliÃ© un...",
-          yes1: "Tout envoyÃ© ! â†’",
-          emoji2: "ðŸ†",
-          title2: "Tu mÃ©rites un oscar !",
+            "Le lien DU repo ET la capture d'écran. Les deux. Pas l'un ou l'autre. LES DEUX. (On insiste parce qu'on t'aime.)",
+          no1: "J'en avais oublié un...",
+          yes1: "Tout envoyé ! →",
+          emoji2: "🏆",
+          title2: "Tu mérites un oscar !",
           body2:
-            "Vraiment. T'as crÃ©Ã© un compte GitHub, un repo, un README en Markdown, et ton premier commit. En une journÃ©e. En tÃ©lÃ©travail. Sur Discord. C'est Ã©norme.",
-          no2: "Bon ok j'exagÃ¨re un peu",
-          yes2: "C'est vrai, je suis gÃ©nialÂ·e ! ðŸŽ‰",
+            "Vraiment. T'as créé un compte GitHub, un repo, un README en Markdown, et ton premier commit. En une journée. En télétravail. Sur Discord. C'est énorme.",
+          no2: "Bon ok j'exagère un peu",
+          yes2: "C'est vrai, je suis génial·e ! 🎉",
         },
       ];
 
@@ -1909,7 +1909,7 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".substep-cb").forEach(function (cb) {
-          cb.setAttribute("aria-label", "Marquer cette Ã©tape comme terminÃ©e");
+          cb.setAttribute("aria-label", "Marquer cette étape comme terminée");
         });
         document
           .getElementById("modal-btn-yes")
