@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fiche N8N — Workflows, Nœuds, Expressions | PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      .net-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .net-table th {
+        background: var(--accent);
+        color: white;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 12px;
+      }
+      .net-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .net-table tr:last-child td {
+        border-bottom: none;
+      }
+      .net-table tr:hover td {
+        background-color: var(--accent-subtle);
+      }
+      .net-table code {
+        background: rgba(15, 23, 42, 0.88);
+        color: #7dd3fc;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Courier New", monospace;
+        white-space: nowrap;
+      }
+      .net-table .cat {
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      .cat-trigger { background: #e67e22; }
+      .cat-core { background: #2980b9; }
+      .cat-flow { background: #8e44ad; }
+      .cat-io { background: #27ae60; }
+      .cat-expr { background: #16a085; }
+      .cat-sec { background: #e74c3c; }
+      .cat-n8n { background: #ff6d5a; }
+
+      .cmd-block {
+        background: #0f172a;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 8px 0;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        overflow-x: auto;
+      }
+      .cmd-block .cmd {
+        color: #7dd3fc;
+        display: block;
+      }
+      .cmd-block .cmt {
+        color: #64748b;
+        font-style: italic;
+      }
+      .cmd-block .out {
+        color: #94a3b8;
+        display: block;
+        margin-left: 16px;
+      }
+      .cmd-block .expr {
+        color: #fbbf24;
+      }
+      .cmd-block .val {
+        color: #86efac;
+      }
+
+      .highlight-box {
+        background: var(--accent-subtle);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin: 12px 0;
+        line-height: 1.6;
+      }
+      .highlight-box strong {
+        color: var(--text);
+      }
+
+      .workflow-schema {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        flex-wrap: wrap;
+        margin: 16px 0;
+        font-size: 12px;
+      }
+      .wf-node {
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 10px 14px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--text);
+        min-width: 90px;
+      }
+      .wf-node .sub {
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--text-faint);
+        margin-top: 2px;
+      }
+      .wf-node.trigger {
+        background: rgba(230, 126, 34, 0.15);
+        border-color: #e67e22;
+      }
+      .wf-node.action {
+        background: rgba(41, 128, 185, 0.15);
+        border-color: #2980b9;
+      }
+      .wf-node.output {
+        background: rgba(39, 174, 96, 0.15);
+        border-color: #27ae60;
+      }
+      .wf-arrow {
+        padding: 0 8px;
+        color: var(--text-faint);
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      @media print {
+        .sidebar,
+        .mobile-topbar,
+        .print-btn {
+          display: none !important;
+        }
+        .main-content {
+          padding-left: 0 !important;
+        }
+        .section-box {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="../exercices/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>🤖 Fiche N8N</h1>
+            <div class="meta">
+              Workflows · Nœuds · Expressions · Export/Import · Sécurité
+              &nbsp;|&nbsp; <strong>S6 — Phase 3</strong>
+            </div>
+          </div>
+          <button class="print-btn" onclick="window.print()">
+            🖨️ Imprimer / PDF
+          </button>
+        </div>
+
+        <!-- ═══ CONCEPTS ═══ -->
+        <div class="section-box">
+          <h2>🧠 Concepts fondamentaux N8N</h2>
+          <div class="highlight-box">
+            <strong>N8N</strong> est un outil d'automatisation de workflows.
+            Tu connectes des nœuds (blocs) qui s'enchaînent : un déclencheur reçoit
+            un événement, des nœuds de traitement transforment les données, et un
+            nœud final envoie le résultat quelque part.
+          </div>
+
+          <h3 style="font-size: 14px; margin: 16px 0 10px">Schéma d'un workflow typique</h3>
+          <div class="workflow-schema">
+            <div class="wf-node trigger">
+              🔔 Trigger
+              <span class="sub">Déclenche l'exécution</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node action">
+              🔌 HTTP Request
+              <span class="sub">Appelle une API</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node action">
+              🔀 IF / Set
+              <span class="sub">Filtre / Transforme</span>
+            </div>
+            <div class="wf-arrow">→</div>
+            <div class="wf-node output">
+              ✅ Action finale
+              <span class="sub">Email, Webhook, DB…</span>
+            </div>
+          </div>
+
+          <table class="net-table">
+            <thead>
+              <tr><th>Concept</th><th>Définition</th><th>Analogie</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-n8n">Workflow</span></td>
+                <td>Enchaînement de nœuds connectés qui réalisent une automatisation</td>
+                <td>Une recette de cuisine avec des étapes</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-trigger">Trigger</span></td>
+                <td>Nœud de départ qui déclenche l'exécution (manuel, planifié, webhook…)</td>
+                <td>Un réveil qui démarre ta journée</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-core">Node</span></td>
+                <td>Un bloc fonctionnel qui réalise une action (requête, transformation, condition…)</td>
+                <td>Une machine-outil dans une usine</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-n8n">Connexion</span></td>
+                <td>La flèche qui relie deux nœuds et transmet les données du premier au second</td>
+                <td>Un tapis roulant entre les machines</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-n8n">Exécution</span></td>
+                <td>Une instance d'un workflow qui s'est lancée — succès, erreur ou en cours</td>
+                <td>Une production en usine (un run)</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-io">Item</span></td>
+                <td>Un enregistrement de données qui traverse le workflow (objet JSON)</td>
+                <td>Un colis sur le tapis roulant</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ NŒUDS ESSENTIELS ═══ -->
+        <div class="section-box">
+          <h2>🔧 Nœuds essentiels</h2>
+
+          <h3 style="font-size: 13px; font-weight: 700; color: #e67e22; margin: 12px 0 8px">Triggers — Déclencheurs</h3>
+          <table class="net-table">
+            <thead>
+              <tr><th>Nœud</th><th>Rôle</th><th>Quand l'utiliser</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-trigger">Manual Trigger</span></td>
+                <td>Lance le workflow manuellement en cliquant "Execute"</td>
+                <td>Tests, démos, workflows à lancer à la demande</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-trigger">Schedule Trigger</span></td>
+                <td>Lance selon une planification cron (toutes les heures, chaque lundi…)</td>
+                <td>Rapports automatiques, monitoring régulier</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-trigger">Webhook</span></td>
+                <td>Génère une URL qui écoute les requêtes HTTP entrantes</td>
+                <td>Formulaires web, GitHub events, Stripe paiements</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 13px; font-weight: 700; color: #2980b9; margin: 16px 0 8px">Core — Nœuds de traitement</h3>
+          <table class="net-table">
+            <thead>
+              <tr><th>Nœud</th><th>Rôle</th><th>Exemple d'usage</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-core">HTTP Request</span></td>
+                <td>Envoie une requête HTTP (GET, POST, PUT, DELETE…) vers n'importe quelle API</td>
+                <td>Récupérer des données JSONPlaceholder, appeler Open-Meteo</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-flow">IF</span></td>
+                <td>Branche le workflow selon une condition (true/false)</td>
+                <td>Si userId == 1 → aller à droite, sinon → aller à gauche</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-core">Set</span></td>
+                <td>Crée/renomme/transforme des champs dans les données</td>
+                <td>Renommer "body" en "description", calculer une valeur</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-core">Code</span></td>
+                <td>Exécuter du JavaScript personnalisé sur les données</td>
+                <td>Transformations complexes non couvertes par Set</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-flow">Switch</span></td>
+                <td>Branche sur plusieurs sorties selon une valeur</td>
+                <td>Router selon le type d'événement reçu</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-core">Merge</span></td>
+                <td>Fusionne les sorties de plusieurs branches</td>
+                <td>Rejoindre deux chemins IF après traitement</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 13px; font-weight: 700; color: #27ae60; margin: 16px 0 8px">Actions — Sorties</h3>
+          <table class="net-table">
+            <thead>
+              <tr><th>Nœud</th><th>Rôle</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-io">Respond to Webhook</span></td>
+                <td>Envoie une réponse HTTP au client qui a appelé le webhook</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-io">Send Email</span></td>
+                <td>Envoie un e-mail via Gmail, SMTP ou autres</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-io">Write Binary File</span></td>
+                <td>Écrit des données dans un fichier (CSV, JSON, texte)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ EXPRESSIONS ═══ -->
+        <div class="section-box">
+          <h2>✍️ Expressions N8N — accéder aux données</h2>
+          <div class="highlight-box">
+            Les expressions N8N utilisent la syntaxe <code>{{ expression }}</code>.
+            Elles permettent de référencer les données des nœuds précédents, créer
+            des valeurs dynamiques, et effectuer des transformations à la volée.
+          </div>
+
+          <div class="cmd-block">
+<span class="cmt">// Accéder aux données du nœud précédent ($json)</span>
+<span class="cmd"><span class="expr">{{ $json.title }}</span>         <span class="cmt">→ champ "title" du dernier nœud</span></span>
+<span class="cmd"><span class="expr">{{ $json.user.email }}</span>    <span class="cmt">→ champ imbriqué (objet dans objet)</span></span>
+<span class="cmd"><span class="expr">{{ $json.tags[0] }}</span>       <span class="cmt">→ premier élément d'un tableau</span></span>
+
+<span class="cmt">// Accéder aux données d'un nœud précis par nom</span>
+<span class="cmd"><span class="expr">{{ $('HTTP Request').item.json.id }}</span>   <span class="cmt">→ id du nœud "HTTP Request"</span></span>
+
+<span class="cmt">// Variables spéciales</span>
+<span class="cmd"><span class="expr">{{ $now }}</span>              <span class="cmt">→ date/heure actuelle (objet DateTime)</span></span>
+<span class="cmd"><span class="expr">{{ $now.toISO() }}</span>     <span class="cmt">→ format ISO 8601 : "2026-06-15T09:00:00.000Z"</span></span>
+<span class="cmd"><span class="expr">{{ $runIndex }}</span>        <span class="cmt">→ index de l'item courant (commence à 0)</span></span>
+<span class="cmd"><span class="expr">{{ $itemIndex }}</span>      <span class="cmt">→ position dans la liste d'items</span></span>
+
+<span class="cmt">// Manipulation de chaînes</span>
+<span class="cmd"><span class="expr">{{ $json.name.toUpperCase() }}</span>          <span class="cmt">→ ALICE</span></span>
+<span class="cmd"><span class="expr">{{ "Bonjour " + $json.prenom }}</span>        <span class="cmt">→ concaténation</span></span>
+<span class="cmd"><span class="expr">{{ $json.email.split("@")[1] }}</span>        <span class="cmt">→ domaine de l'email</span></span>
+
+<span class="cmt">// Conditions ternaires</span>
+<span class="cmd"><span class="expr">{{ $json.score >= 14 ? "Validé" : "À revoir" }}</span></span>
+          </div>
+
+          <table class="net-table" style="margin-top: 14px">
+            <thead>
+              <tr><th>Variable</th><th>Ce qu'elle contient</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>$json</code></td>
+                <td>Données JSON de l'item courant (dernier nœud)</td>
+              </tr>
+              <tr>
+                <td><code>$('NomDuNœud').item.json</code></td>
+                <td>Données d'un nœud précédent identifié par son nom</td>
+              </tr>
+              <tr>
+                <td><code>$now</code></td>
+                <td>DateTime actuel (méthodes : .toISO(), .toFormat('yyyy-MM-dd')…)</td>
+              </tr>
+              <tr>
+                <td><code>$env.NOM_VAR</code></td>
+                <td>Variable d'environnement N8N configurée dans les paramètres</td>
+              </tr>
+              <tr>
+                <td><code>$runIndex</code></td>
+                <td>Index d'exécution (0 pour le premier item traité)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ EXPORT / IMPORT ═══ -->
+        <div class="section-box">
+          <h2>📤 Export &amp; Import de workflows</h2>
+
+          <h3 style="font-size: 14px; margin: 12px 0 10px">Exporter un workflow (JSON)</h3>
+          <table class="net-table">
+            <thead>
+              <tr><th>Étape</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ouvrir le workflow dans N8N</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Cliquer sur les 3 points (⋮) en haut à droite → <strong>Download</strong></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Sauvegarder le fichier <code>My_workflow.json</code></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Committer le fichier JSON dans <code>workflows/</code> sur GitHub</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 14px; margin: 16px 0 10px">Importer un workflow</h3>
+          <table class="net-table">
+            <thead>
+              <tr><th>Étape</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Sur la page d'accueil N8N → cliquer <strong>Add workflow</strong></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Cliquer sur les 3 points (⋮) → <strong>Import from file</strong></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Sélectionner le fichier JSON</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Vérifier les credentials (tokens, clés API) — ils ne sont pas exportés !</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight-box">
+            <strong>Important :</strong> Les credentials (mots de passe, tokens API) ne sont
+            <strong>jamais</strong> inclus dans l'export JSON pour des raisons de sécurité.
+            Après import sur une nouvelle instance, reconfigurer tous les nœuds qui utilisent
+            une authentification.
+          </div>
+        </div>
+
+        <!-- ═══ SÉCURITÉ ═══ -->
+        <div class="section-box">
+          <h2>🔒 Bonnes pratiques sécurité N8N</h2>
+          <table class="net-table">
+            <thead>
+              <tr><th>Pratique</th><th>Pourquoi</th><th>Comment</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-sec">Credentials</span> — jamais en dur</td>
+                <td>Les tokens dans le workflow JSON seraient visibles à tous</td>
+                <td>Utiliser le gestionnaire de credentials N8N (section Credentials)</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">Variables d'env</span></td>
+                <td>Séparer la configuration du code</td>
+                <td>Settings → Variables → définir KEY=VALUE → accéder via <code>$env.KEY</code></td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">Webhook secret</span></td>
+                <td>N'importe qui avec l'URL peut déclencher le webhook</td>
+                <td>Activer "Webhook Auth" dans les paramètres du nœud Webhook</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">Validation d'entrée</span></td>
+                <td>Un webhook malveillant peut envoyer des données inattendues</td>
+                <td>Toujours valider les données reçues avec un nœud IF ou Code</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">Logs d'exécution</span></td>
+                <td>Les logs peuvent exposer des données sensibles</td>
+                <td>Éviter de logger des tokens ou PII dans les nœuds Set/Code</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">HTTPS uniquement</span></td>
+                <td>Les webhooks HTTP peuvent être interceptés</td>
+                <td>Toujours utiliser des URLs HTTPS pour les webhooks</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="cmd-block">
+<span class="cmt">// Exemple : nœud IF pour valider une donnée de webhook entrante</span>
+<span class="cmd">Condition : <span class="expr">{{ $json.secret }}</span> === <span class="val">"ma_valeur_secrete"</span></span>
+<span class="out">→ True  : continuer le traitement</span>
+<span class="out">→ False : ignorer / retourner 403</span>
+          </div>
+        </div>
+
+        <!-- ═══ RACCOURCIS CLAVIER ═══ -->
+        <div class="section-box">
+          <h2>⌨️ Raccourcis N8N utiles</h2>
+          <table class="net-table">
+            <thead>
+              <tr><th>Raccourci</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>Ctrl + S</code></td><td>Sauvegarder le workflow</td></tr>
+              <tr><td><code>Ctrl + Z</code></td><td>Annuler la dernière action</td></tr>
+              <tr><td><code>Ctrl + A</code></td><td>Sélectionner tous les nœuds</td></tr>
+              <tr><td><code>Tab</code></td><td>Ouvrir le panneau d'ajout de nœud</td></tr>
+              <tr><td><code>Suppr</code></td><td>Supprimer le(s) nœud(s) sélectionné(s)</td></tr>
+              <tr><td><code>Ctrl + clic</code></td><td>Sélectionner plusieurs nœuds</td></tr>
+              <tr><td><code>Double-clic canvas</code></td><td>Centrer la vue sur les nœuds</td></tr>
+              <tr><td><code>Ctrl + D</code></td><td>Dupliquer le nœud sélectionné</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footer">Fiche N8N · S6 · PPNI 2026</div>
+      </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>

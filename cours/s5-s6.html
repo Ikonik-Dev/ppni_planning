@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cours S5-S6 — Communication Tech &amp; Automatisation N8N | PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="../ressources/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="../exercices/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <!-- ═══ HEADER ═══ -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>⚡ S5-S6 — Communication Tech &amp; Automatisation N8N</h1>
+            <div class="meta">
+              <strong>Phase 3 — Communication Technique &amp; Automatisation</strong>
+              &nbsp;|&nbsp; 8 juin → 19 juin 2026 — 2 semaines &nbsp;|&nbsp; 21h
+              de formation &nbsp;|&nbsp;
+              <strong>Niveau : Débutant → Intermédiaire</strong>
+              &nbsp;|&nbsp; Méthode : 70% Pratique · 20% Collaboration · 10%
+              Théorie
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              flex-shrink: 0;
+              align-self: flex-start;
+              flex-wrap: wrap;
+            "
+          >
+            <a
+              href="../previsionnel_stagiaire.html"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 9px 16px;
+                background: #e8eef7;
+                color: #1a3a5c;
+                border: 1px solid #c5d3e8;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: 600;
+                text-decoration: none;
+              "
+              >← Retour au prévisionnel</a
+            >
+            <button class="print-btn" onclick="window.print()">
+              🖨️ Imprimer / PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- ═══ RÉSUMÉ OBJECTIFS ═══ -->
+        <div class="axes-summary">
+          <div class="axe-card phase1">
+            <h3>🎯 Objectif S5-S6</h3>
+            <p>
+              À la fin de ces 2 semaines, chaque stagiaire sait
+              <strong>consommer une API REST</strong> (JSON, méthodes HTTP, codes
+              statut), maîtrise Postman/cURL pour tester des requêtes, et a
+              <strong>construit un workflow N8N fonctionnel</strong> de 3 nœuds
+              minimum.
+            </p>
+          </div>
+          <div class="axe-card phase2-axe1">
+            <h3>📦 Livrable attendu (S6)</h3>
+            <p>
+              Un workflow N8N de 3 nœuds minimum (Trigger + HTTP Request + action) ·
+              Export JSON du workflow · README GitHub expliquant le fonctionnement ·
+              Démo binôme 5 minutes.
+            </p>
+          </div>
+          <div class="axe-card phase2-axe2">
+            <h3>📐 Méthode 70-20-10</h3>
+            <p>
+              <strong>70%</strong> — Ateliers pratiques, requêtes réelles sur JSONPlaceholder,
+              construction de workflows N8N.<br />
+              <strong>20%</strong> — Binômes, revue croisée de workflows, démos collectives.<br />
+              <strong>10%</strong> — Théorie JSON/HTTP, concepts N8N, schémas.
+            </p>
+          </div>
+        </div>
+
+        <!-- ═══ SOMMAIRE ═══ -->
+        <div class="section-box">
+          <h2>📋 Plan des 2 semaines</h2>
+          <div class="cours-sommaire">
+            <h3>Arborescence du cours</h3>
+            <ol>
+              <li>
+                <a href="#s5-lundi"
+                  >S5 — Lundi 8 juin (7h) · Git avancé + APIs REST : JSON, méthodes, Postman</a
+                >
+              </li>
+              <li>
+                <a href="#s5-vendredi"
+                  >S5 — Vendredi 12 juin (3,5h) · Révision APIs + Quiz + Découverte N8N</a
+                >
+              </li>
+              <li>
+                <a href="#s6-lundi"
+                  >S6 — Lundi 15 juin (7h) · N8N : HTTP Request, Webhooks, Projet libre</a
+                >
+              </li>
+              <li>
+                <a href="#s6-vendredi"
+                  >S6 — Vendredi 19 juin (3,5h) · Finalisation + Démos + Rétrospective</a
+                >
+              </li>
+              <li>
+                <a href="#livrable">Livrable S5-S6 — Critères de validation</a>
+              </li>
+              <li><a href="#ressources">Ressources &amp; supports</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- ═══ S5 — LUNDI 8 JUIN ═══ -->
+        <!-- ══════════════════════════════════════ -->
+        <div class="section-box" id="s5-lundi">
+          <h2>🟢 S5 · Lundi 8 juin — 09h00 → 17h00 (7h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>⚡ Cette semaine : parler la langue des services web.</strong>
+              Les APIs, c'est ce qui fait tenir Internet debout. Gmail, Météo,
+              Google Maps, Paiement en ligne — tout ça repose sur des échanges JSON
+              via HTTP. On va apprendre à lire, comprendre et envoyer ces messages.
+            </div>
+          </div>
+
+          <!-- SÉANCE 5.1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Git avancé — Markdown, Issues, Pull Requests</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>📝 Séquence 5.1 — Markdown avancé &amp; collaboration GitHub</h3>
+            <p class="section-meta">Durée : 1h30 — Issues, PR, revue de code</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Markdown avancé &amp; GitHub Flow</h4>
+                <ul>
+                  <li><strong>Tableaux Markdown</strong> : <code>| col | col |</code></li>
+                  <li><strong>Issues</strong> : signaler un bug, proposer une feature</li>
+                  <li><strong>Pull Request</strong> : soumettre des modifications pour revue</li>
+                  <li><strong>Review</strong> : commenter, approuver ou demander des changements</li>
+                  <li><strong>Merge</strong> : fusionner après validation</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Écrire un README professionnel</h4>
+                <ul>
+                  <li>Améliorer le README du projet S4 avec badges, tableau de contenu</li>
+                  <li>Ouvrir une Issue sur son propre dépôt (bug fictif ou amélioration)</li>
+                  <li>Créer une branche <code>feature/readme-update</code></li>
+                  <li>Faire un commit + push + ouvrir une PR vers <code>main</code></li>
+                  <li>Merger la PR depuis l'interface GitHub</li>
+                </ul>
+                <span class="duree">⏱ 65 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Revue croisée de README</h4>
+                <ul>
+                  <li>Chaque binôme ouvre une Issue sur le dépôt du voisin</li>
+                  <li>Commenter la PR du partenaire avec au moins 1 suggestion</li>
+                  <li>Discussion : à quoi sert vraiment un bon README ?</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 5.2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Workflow Git collaboratif — branche, PR, review, merge</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🌿 Séquence 5.2 — Workflow collaboratif complet</h3>
+            <p class="section-meta">Durée : 2h — Simulation d'équipe de 2</p>
+            <div class="falc-intro">
+              <strong>💡 Idée clé :</strong>
+              En entreprise, on ne travaille jamais directement sur <code>main</code>.
+              On crée une branche, on travaille dessus, on soumet une PR, un collègue
+              la relit, puis on merge. C'est ce cycle qu'on va simuler aujourd'hui.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Git Flow simplifié</h4>
+                <ul>
+                  <li><code>git checkout -b feature/nom</code> — créer une branche</li>
+                  <li><code>git push origin feature/nom</code> — pousser la branche</li>
+                  <li>Règles : 1 branche = 1 fonctionnalité</li>
+                  <li>Conflits de merge : causes + résolution manuelle</li>
+                  <li>Protection de branche <code>main</code> sur GitHub</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Simulation équipe en binôme</h4>
+                <ul>
+                  <li>Personne A : crée le dépôt, ajoute Personne B comme collaborateur</li>
+                  <li>Personne B : clone, crée une branche, ajoute une fonctionnalité</li>
+                  <li>Personne B : push + ouvre une PR vers <code>main</code></li>
+                  <li>Personne A : review, demande une modification, approuve, merge</li>
+                  <li>Les deux : <code>git pull</code> pour récupérer le merge</li>
+                  <li>Créer volontairement un conflit et le résoudre ensemble</li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Retour d'expérience collectif</h4>
+                <ul>
+                  <li>Tour de table : qu'est-ce qui était difficile ?</li>
+                  <li>Partage des astuces découvertes pendant l'exercice</li>
+                  <li>Quand utiliser <code>rebase</code> vs <code>merge</code> ?</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 5.3 : 13h20 - 15h20 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 15h20</span>
+            <span class="seance-info"
+              >APIs REST — JSON, méthodes HTTP, codes statut, JSONPlaceholder</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔌 Séquence 5.3 — Comprendre les APIs REST</h3>
+            <p class="section-meta">
+              Durée : 2h — JSON + 5 méthodes HTTP + codes statut + tests live
+            </p>
+            <div class="falc-intro">
+              <strong>💡 Idée clé :</strong>
+              Une API REST, c'est comme un menu de restaurant. Tu envoies une commande
+              (requête HTTP) au serveur (API), il te répond avec des données (JSON).
+              La méthode (GET/POST/PUT/DELETE) dit ce que tu veux faire, et le code
+              de réponse (200/404/500) dit si ça a marché.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>JSON &amp; méthodes HTTP</h4>
+                <ul>
+                  <li><strong>JSON</strong> : texte structuré <code>{"clé": "valeur"}</code></li>
+                  <li><strong>GET</strong> — lire des données (sans modifier)</li>
+                  <li><strong>POST</strong> — créer une nouvelle ressource</li>
+                  <li><strong>PUT</strong> — remplacer une ressource entière</li>
+                  <li><strong>PATCH</strong> — modifier partiellement</li>
+                  <li><strong>DELETE</strong> — supprimer une ressource</li>
+                  <li>Codes : 200 OK · 201 Created · 400 Bad Request · 401 Unauthorized · 404 Not Found · 500 Server Error</li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Explorer JSONPlaceholder en live</h4>
+                <ul>
+                  <li>Navigateur : <code>GET https://jsonplaceholder.typicode.com/posts</code></li>
+                  <li>Lire et comprendre la structure JSON retournée</li>
+                  <li><code>GET /posts/1</code> — un seul article</li>
+                  <li><code>GET /users/1/posts</code> — posts d'un utilisateur</li>
+                  <li>DevTools → onglet Réseau → observer headers + body</li>
+                  <li>Identifier : Content-Type, Status Code, Response Time</li>
+                </ul>
+                <span class="duree">⏱ 75 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Discussion : JSON dans la vraie vie</h4>
+                <ul>
+                  <li>Où avez-vous déjà croisé du JSON sans le savoir ?</li>
+                  <li>Pourquoi JSON a remplacé XML pour les APIs ?</li>
+                  <li>Recherche binôme : trouver 3 APIs publiques gratuites</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 5.4 : 15h20 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">15h20 – 17h00</span>
+            <span class="seance-info"
+              >Postman &amp; cURL — tester 5 types de requêtes</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🛠️ Séquence 5.4 — Postman et cURL</h3>
+            <p class="section-meta">Durée : 1h40 — 5 requêtes sur JSONPlaceholder</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Postman &amp; cURL en bref</h4>
+                <ul>
+                  <li><strong>Postman</strong> : interface graphique pour tester des APIs</li>
+                  <li><strong>cURL</strong> : outil ligne de commande universel</li>
+                  <li>Headers importants : <code>Content-Type: application/json</code></li>
+                  <li>Body : JSON envoyé dans POST/PUT/PATCH</li>
+                  <li>Variables d'environnement Postman pour les tokens</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>TP : 5 requêtes à valider</h4>
+                <ul>
+                  <li>1. <code>GET /posts?userId=1</code> — filtrer par utilisateur</li>
+                  <li>2. <code>POST /posts</code> avec body JSON (title, body, userId)</li>
+                  <li>3. <code>PUT /posts/1</code> — remplacement complet</li>
+                  <li>4. <code>PATCH /posts/1</code> — modifier seulement le title</li>
+                  <li>5. <code>DELETE /posts/1</code> — supprimer et vérifier 200</li>
+                  <li>Reproduire les mêmes en cURL depuis le terminal</li>
+                </ul>
+                <span class="duree">⏱ 75 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Partage de collection Postman</h4>
+                <ul>
+                  <li>Exporter sa collection Postman (JSON) et la partager</li>
+                  <li>Importer la collection d'un binôme et la tester</li>
+                  <li>Bilan : quelle requête était la plus délicate ?</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- ═══ S5 — VENDREDI 12 JUIN ═══ -->
+        <!-- ══════════════════════════════════════ -->
+        <div class="section-box" id="s5-vendredi">
+          <h2>🔵 S5 · Vendredi 12 juin — 09h00 → 12h30 (3,5h)</h2>
+
+          <!-- SÉANCE 5.5 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Révision APIs REST + Quiz APIs</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔄 Séquence 5.5 — Révision &amp; quiz interactif</h3>
+            <p class="section-meta">Durée : 1h30 — Révision collective + quiz en autonomie</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Points clés à retenir</h4>
+                <ul>
+                  <li>JSON : types de données (string, number, boolean, array, object, null)</li>
+                  <li>Idempotence : GET/PUT/DELETE = idempotents · POST = non</li>
+                  <li>Authentication : Bearer token dans le header <code>Authorization</code></li>
+                  <li>Rate limiting : les APIs limitent le nombre de requêtes/minute</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Quiz APIs en autonomie</h4>
+                <ul>
+                  <li>Compléter le <a href="quiz-apis.html">quiz interactif APIs</a> (20 questions)</li>
+                  <li>Score sauvegardé automatiquement</li>
+                  <li>Relire les explications pour chaque mauvaise réponse</li>
+                  <li>Objectif : 14/20 minimum</li>
+                </ul>
+                <span class="duree">⏱ 55 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Correction collective</h4>
+                <ul>
+                  <li>Les 3 questions les plus ratées : discussion en groupe</li>
+                  <li>Chaque binôme explique une réponse au groupe</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 5.6 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Découverte N8N cloud — premier workflow Hello World</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🤖 Séquence 5.6 — Premier workflow N8N</h3>
+            <p class="section-meta">Durée : 2h — Compte cloud + Hello World + HTTP Request</p>
+            <div class="falc-intro">
+              <strong>🤖 N8N, c'est quoi ?</strong>
+              N8N est un outil d'automatisation no-code/low-code. Tu connectes des
+              "nœuds" (blocs) qui s'enchaînent : un déclencheur (Trigger) → des
+              actions → un résultat. Comme des dominos, mais pour automatiser des
+              tâches répétitives.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Concepts N8N essentiels</h4>
+                <ul>
+                  <li><strong>Workflow</strong> : enchaînement de nœuds</li>
+                  <li><strong>Nœud (Node)</strong> : un bloc qui fait une action</li>
+                  <li><strong>Trigger</strong> : nœud de départ (Manuel, Schedule, Webhook)</li>
+                  <li><strong>Connexion</strong> : flèche entre deux nœuds</li>
+                  <li><strong>Exécution</strong> : run du workflow en entier</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Hello World N8N</h4>
+                <ul>
+                  <li>Créer un compte sur <a href="https://app.n8n.cloud" target="_blank" rel="noopener noreferrer">app.n8n.cloud</a></li>
+                  <li>Créer un nouveau workflow vide</li>
+                  <li>Ajouter un nœud <strong>Manual Trigger</strong></li>
+                  <li>Ajouter un nœud <strong>HTTP Request</strong> → GET JSONPlaceholder /posts/1</li>
+                  <li>Connecter les deux nœuds → cliquer "Execute"</li>
+                  <li>Observer les données JSON dans le panneau de résultat</li>
+                  <li>Sauvegarder et nommer le workflow "Hello World"</li>
+                </ul>
+                <span class="duree">⏱ 75 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Démo + partage d'écran</h4>
+                <ul>
+                  <li>Tour de table : partage d'écran de chaque workflow Hello World</li>
+                  <li>Questions / blocages collectifs</li>
+                  <li>Brainstorming : que pourrait-on automatiser avec N8N ?</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- ═══ S6 — LUNDI 15 JUIN ═══ -->
+        <!-- ══════════════════════════════════════ -->
+        <div class="section-box" id="s6-lundi">
+          <h2>🟢 S6 · Lundi 15 juin — 09h00 → 17h00 (7h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🔧 Cette semaine : construire de vrais workflows.</strong>
+              On monte en puissance dans N8N : HTTP Request avec traitement de données,
+              Webhooks pour recevoir des événements, puis chaque binôme choisit
+              son propre projet d'automatisation.
+            </div>
+          </div>
+
+          <!-- SÉANCE 6.1 : 09h00 - 11h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 11h00</span>
+            <span class="seance-info"
+              >N8N avancé — HTTP Request, JSONPath, nœud IF</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔀 Séquence 6.1 — Traiter et filtrer les données</h3>
+            <p class="section-meta">Durée : 2h — JSONPath + nœud IF + Set</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Expressions N8N</h4>
+                <ul>
+                  <li><code>{{ $json.title }}</code> — accéder à un champ JSON</li>
+                  <li><code>{{ $json.user.email }}</code> — champ imbriqué</li>
+                  <li><strong>Nœud Set</strong> : renommer/transformer des champs</li>
+                  <li><strong>Nœud IF</strong> : branchement conditionnel (true/false)</li>
+                  <li>Options HTTP Request : headers, params, body, auth</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>TP : workflow filtre de posts</h4>
+                <ul>
+                  <li>Manual Trigger → HTTP Request GET /posts (100 posts)</li>
+                  <li>Nœud IF : garder seulement les posts <code>userId = 1</code></li>
+                  <li>Nœud Set : reformater en <code>{ id, titre, auteur }</code></li>
+                  <li>Exécuter et vérifier le résultat dans le panneau</li>
+                  <li>Variation : filtrer par longueur de titre &gt; 50 caractères</li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Comparaison des workflows</h4>
+                <ul>
+                  <li>Chaque binôme explique sa logique de filtrage</li>
+                  <li>Y a-t-il plusieurs façons de faire la même chose ?</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 6.2 : 11h00 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">11h00 – 12h30</span>
+            <span class="seance-info"
+              >Webhooks N8N — recevoir des événements externes</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>📡 Séquence 6.2 — Webhooks</h3>
+            <p class="section-meta">Durée : 1h30 — Trigger Webhook + test avec cURL/Postman</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Qu'est-ce qu'un Webhook ?</h4>
+                <ul>
+                  <li>Un Webhook = URL qui écoute les événements entrants</li>
+                  <li>Différence polling (demander) vs webhook (recevoir)</li>
+                  <li>Cas d'usage : GitHub webhook, Stripe paiement, formulaire web</li>
+                  <li>N8N : nœud "Webhook" génère une URL unique</li>
+                  <li>Mode test vs mode production</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>TP : créer un webhook récepteur</h4>
+                <ul>
+                  <li>Ajouter un nœud Webhook Trigger dans N8N</li>
+                  <li>Copier l'URL de test générée</li>
+                  <li>Envoyer un POST depuis Postman/cURL vers cette URL</li>
+                  <li>Voir les données arriver en temps réel dans N8N</li>
+                  <li>Ajouter un nœud Set pour transformer les données reçues</li>
+                  <li>Ajouter "Respond to Webhook" avec une réponse JSON</li>
+                </ul>
+                <span class="duree">⏱ 60 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Simulation : A envoie, B reçoit</h4>
+                <ul>
+                  <li>Personne A envoie un POST au webhook de Personne B</li>
+                  <li>B traite et répond avec un résultat transformé</li>
+                  <li>Discussion : intérêt dans un vrai système distribué</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 6.3 : 13h20 - 16h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 16h00</span>
+            <span class="seance-info"
+              >Projet libre — choisir et construire son workflow</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🚀 Séquence 6.3 — Projet libre au choix</h3>
+            <p class="section-meta">
+              Durée : 2h40 — Travail en binôme, 5 options de projet
+            </p>
+            <div class="falc-intro">
+              <strong>🎯 À vous de jouer !</strong>
+              Chaque binôme choisit un projet parmi les 5 options ci-dessous.
+              L'objectif : avoir un workflow fonctionnel de 3 nœuds minimum, exportable
+              en JSON, avec un README qui explique ce qu'il fait.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">Les 5 projets au choix</span>
+                <h4>Options de projet</h4>
+                <ul>
+                  <li><strong>Option 1 — Météo automatique</strong> : récupérer la météo via Open-Meteo API + formater un rapport</li>
+                  <li><strong>Option 2 — Agrégateur d'actualités</strong> : RSS feed → filtrer → afficher les 5 dernières</li>
+                  <li><strong>Option 3 — Webhook formulaire</strong> : recevoir des soumissions + envoyer confirmation</li>
+                  <li><strong>Option 4 — Moniteur d'API</strong> : appeler une API toutes les X minutes + IF erreur → alerte</li>
+                  <li><strong>Option 5 — Data transformer</strong> : prendre du JSON complexe + reformater en CSV ou structure simple</li>
+                </ul>
+                <span class="duree">⏱ 10 min choix</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Construction du projet</h4>
+                <ul>
+                  <li>Planifier le workflow sur papier (nœuds + connexions)</li>
+                  <li>Implémenter dans N8N nœud par nœud</li>
+                  <li>Tester chaque nœud individuellement</li>
+                  <li>Exécuter le workflow complet</li>
+                  <li>Exporter en JSON (menu → Download)</li>
+                  <li>Pousser le JSON sur GitHub dans le dossier <code>workflows/</code></li>
+                </ul>
+                <span class="duree">⏱ 140 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Support entre binômes</h4>
+                <ul>
+                  <li>Si blocage : demander d'abord au binôme d'à côté</li>
+                  <li>Le formateur tourne pour débloquer</li>
+                  <li>Documenter les blocages rencontrés dans le README</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 6.4 : 16h00 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">16h00 – 17h00</span>
+            <span class="seance-info"
+              >Démos intermédiaires — présentation binôme</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🎤 Séquence 6.4 — Démos intermédiaires</h3>
+            <p class="section-meta">Durée : 1h — 5 min par binôme</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Présentation du workflow</h4>
+                <ul>
+                  <li>Chaque binôme partage son écran</li>
+                  <li>Expliquer : quel problème résout ce workflow ?</li>
+                  <li>Montrer l'exécution en direct</li>
+                  <li>Montrer le JSON exporté sur GitHub</li>
+                  <li>Temps restant : continuer l'amélioration</li>
+                </ul>
+                <span class="duree">⏱ 45 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Feedback croisé</h4>
+                <ul>
+                  <li>1 point fort + 1 amélioration possible par workflow</li>
+                  <li>Vote collectif : le workflow le plus utile</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ -->
+        <!-- ═══ S6 — VENDREDI 19 JUIN ═══ -->
+        <!-- ══════════════════════════════════════ -->
+        <div class="section-box" id="s6-vendredi">
+          <h2>🔵 S6 · Vendredi 19 juin — 09h00 → 12h30 (3,5h)</h2>
+
+          <!-- SÉANCE 6.5 : 09h00 - 11h00 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 11h00</span>
+            <span class="seance-info"
+              >Finalisation — checklist livraison + polish README</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>✅ Séquence 6.5 — Finalisation du livrable</h3>
+            <p class="section-meta">Durée : 2h — Checklist + README + export JSON</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Checklist livraison complète</h4>
+                <ul>
+                  <li>☐ Workflow N8N : 3 nœuds minimum, exécution sans erreur</li>
+                  <li>☐ Export JSON du workflow dans <code>workflows/</code> sur GitHub</li>
+                  <li>☐ README.md : titre, description, screenshot N8N, instructions import</li>
+                  <li>☐ Au moins 3 commits avec messages explicites</li>
+                  <li>☐ Lien GitHub partagé avec le formateur</li>
+                  <li>☐ Test final : importer le JSON sur une autre instance N8N</li>
+                </ul>
+                <span class="duree">⏱ 90 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Revue croisée finale</h4>
+                <ul>
+                  <li>Chaque binôme importe le workflow d'un autre binôme</li>
+                  <li>L'exécuter et valider qu'il fonctionne</li>
+                  <li>Retour : est-ce que le README était assez clair ?</li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 6.6 : 11h00 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">11h00 – 12h30</span>
+            <span class="seance-info"
+              >Présentations finales + rétrospective + aperçu S7-S8</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🎓 Séquence 6.6 — Clôture de phase</h3>
+            <p class="section-meta">
+              Durée : 1h30 — Présentations 5 min + rétrospective + teaser S7-S8
+            </p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Présentations finales</h4>
+                <ul>
+                  <li>5 minutes par binôme : démo live du workflow</li>
+                  <li>Expliquer les choix techniques</li>
+                  <li>Montrer le README sur GitHub</li>
+                  <li>Ce que j'aurais ajouté avec plus de temps</li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration">20% — Collaboration</span>
+                <h4>Rétrospective S5-S6 &amp; aperçu S7-S8</h4>
+                <ul>
+                  <li>Tour de table : 1 chose apprise, 1 chose difficile</li>
+                  <li>Bilan collectif : qu'est-ce qu'on sait faire maintenant ?</li>
+                  <li>Teaser S7-S8 : Introduction aux LLMs, prompting, IA générative</li>
+                  <li>Questions ouvertes avant la coupure</li>
+                </ul>
+                <span class="duree">⏱ 40 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ LIVRABLE ═══ -->
+        <div class="section-box" id="livrable">
+          <h2>📦 Livrable S5-S6 — Critères de validation</h2>
+          <div class="module-grid">
+            <div class="module-card pratique">
+              <span class="module-tag pratique">Obligatoire — Workflow</span>
+              <h4>Workflow N8N fonctionnel</h4>
+              <ul>
+                <li>✅ Minimum 3 nœuds connectés</li>
+                <li>✅ Au moins un nœud HTTP Request vers une vraie API</li>
+                <li>✅ Exécution complète sans erreur</li>
+                <li>✅ Export JSON dans le dépôt GitHub (<code>workflows/</code>)</li>
+                <li>✅ Nommage clair du workflow et des nœuds</li>
+              </ul>
+            </div>
+            <div class="module-card theorie">
+              <span class="module-tag theorie">Obligatoire — Documentation</span>
+              <h4>README GitHub complet</h4>
+              <ul>
+                <li>✅ Titre et description du projet</li>
+                <li>✅ Screenshot du workflow N8N</li>
+                <li>✅ Instructions d'import du JSON</li>
+                <li>✅ Liste des APIs utilisées</li>
+                <li>✅ Au moins 3 commits avec messages explicites</li>
+              </ul>
+            </div>
+            <div class="module-card collaboration">
+              <span class="module-tag collaboration">Bonus</span>
+              <h4>Aller plus loin</h4>
+              <ul>
+                <li>⭐ Webhook Trigger (au lieu de Manuel)</li>
+                <li>⭐ Nœud IF avec branchement logique</li>
+                <li>⭐ Gestion d'erreurs (Error Trigger)</li>
+                <li>⭐ Variables d'environnement pour les tokens</li>
+                <li>⭐ Démo vidéo de moins de 2 minutes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ RESSOURCES ═══ -->
+        <div class="section-box" id="ressources">
+          <h2>📚 Ressources &amp; supports</h2>
+          <div class="module-grid">
+            <div class="module-card pratique">
+              <span class="module-tag pratique">Exercices &amp; quiz</span>
+              <h4>Activités interactives</h4>
+              <ul>
+                <li>
+                  <a href="../exercices/quiz-apis.html">Quiz APIs REST</a>
+                  — 20 questions JSON + HTTP + codes statut
+                </li>
+                <li>
+                  <a href="../ressources/fiche-apis.html">Fiche mémo APIs</a>
+                  — JSON, méthodes, codes, cURL cheat sheet
+                </li>
+                <li>
+                  <a href="../ressources/fiche-n8n.html">Fiche mémo N8N</a>
+                  — nœuds essentiels, expressions, bonnes pratiques
+                </li>
+                <li>
+                  <a href="../ressources/fiche-html-css.html">Fiche HTML/CSS</a>
+                  — révision pour le README GitHub Pages
+                </li>
+              </ul>
+            </div>
+            <div class="module-card theorie">
+              <span class="module-tag theorie">Documentation officielle</span>
+              <h4>Liens essentiels</h4>
+              <ul>
+                <li>
+                  <a href="https://docs.n8n.io" target="_blank" rel="noopener noreferrer">docs.n8n.io</a>
+                  — documentation complète N8N
+                </li>
+                <li>
+                  <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer">jsonplaceholder.typicode.com</a>
+                  — API REST factice pour tester
+                </li>
+                <li>
+                  <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener noreferrer">Postman Downloads</a>
+                  — client API graphique
+                </li>
+                <li>
+                  <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo API</a>
+                  — météo gratuite, sans clé API
+                </li>
+                <li>
+                  <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Status" target="_blank" rel="noopener noreferrer">MDN — Codes de statut HTTP</a>
+                </li>
+              </ul>
+            </div>
+            <div class="module-card collaboration">
+              <span class="module-tag collaboration">Templates N8N</span>
+              <h4>Workflows de démarrage</h4>
+              <ul>
+                <li>
+                  <a href="https://n8n.io/workflows/" target="_blank" rel="noopener noreferrer">Bibliothèque de workflows N8N</a>
+                  — +1000 templates communautaires
+                </li>
+                <li>Chercher : "HTTP Request", "Webhook", "JSONPlaceholder"</li>
+                <li>Importer un template : cliquer "Use for free" → s'ouvre dans votre instance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">Cours S5-S6 · Communication Tech &amp; Automatisation N8N · PPNI 2026</div>
+      </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+  </body>
+</html>

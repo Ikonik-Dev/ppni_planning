@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiz APIs REST — PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      .quiz-section-header {
+        background: var(--accent);
+        color: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        margin: 28px 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .quiz-card {
+        background-color: var(--surface);
+        background-image: var(--noise);
+        background-size: 200px 200px;
+        border: 2px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin-bottom: 16px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: border-color 0.2s;
+      }
+      .quiz-card.correct {
+        border-color: rgba(52, 211, 153, 0.55);
+        background-color: var(--green-subtle);
+      }
+      .quiz-card.incorrect {
+        border-color: rgba(239, 68, 68, 0.55);
+        background-color: rgba(239, 68, 68, 0.08);
+      }
+      .quiz-number {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text-faint);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .quiz-question {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 14px;
+        line-height: 1.5;
+      }
+      .options-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .options-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .options-list label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        width: 100%;
+      }
+      .options-list input[type="radio"] {
+        margin-top: 2px;
+        accent-color: var(--accent);
+        flex-shrink: 0;
+        width: 15px;
+        height: 15px;
+      }
+      .quiz-card.answered label {
+        cursor: default;
+        pointer-events: none;
+      }
+      .option-correct {
+        color: var(--green) !important;
+        font-weight: 600 !important;
+      }
+      .option-wrong {
+        color: #ef4444 !important;
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+      .feedback-msg {
+        margin-top: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 8px 12px;
+        border-radius: 6px;
+        display: none;
+      }
+      .feedback-msg.show {
+        display: block;
+      }
+      .feedback-msg.ok {
+        background: rgba(52, 211, 153, 0.15);
+        color: var(--green);
+      }
+      .feedback-msg.ko {
+        background: rgba(239, 68, 68, 0.12);
+        color: #ef4444;
+      }
+
+      .progress-bar-wrapper {
+        background: var(--surface-2);
+        border-radius: 100px;
+        height: 6px;
+        margin-bottom: 28px;
+        overflow: hidden;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #a78bfa);
+        border-radius: 100px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+      .progress-label {
+        font-size: 11px;
+        color: var(--text-faint);
+        margin-bottom: 6px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .results-panel {
+        display: none;
+        background: var(--surface);
+        border: 2px solid var(--accent);
+        border-radius: 14px;
+        padding: 28px;
+        text-align: center;
+        margin-top: 28px;
+      }
+      .results-panel.show {
+        display: block;
+      }
+      .results-score-big {
+        font-size: 56px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .results-label {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+      .results-breakdown {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .breakdown-card {
+        background: var(--surface-2);
+        border-radius: 10px;
+        padding: 14px 10px;
+        font-size: 12px;
+      }
+      .breakdown-card .bc-score {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .breakdown-card .bc-label {
+        color: var(--text-secondary);
+      }
+      .results-msg {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 20px;
+        padding: 12px;
+        background: var(--accent-subtle);
+        border-radius: 8px;
+      }
+
+      .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        padding: 12px 28px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .btn-submit:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+      }
+      .btn-retry {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 10px 22px;
+        background: var(--surface-2);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-decoration: none;
+      }
+
+      @media print {
+        .sidebar,
+        .mobile-topbar,
+        .btn-submit,
+        .btn-retry {
+          display: none !important;
+        }
+        .main-content {
+          padding-left: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="../ressources/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <div class="doc-header">
+          <h1>🔌 Quiz APIs REST</h1>
+          <div class="meta">
+            <strong>S5 — Phase 3</strong> &nbsp;|&nbsp; 20 questions
+            &nbsp;|&nbsp; JSON · Méthodes HTTP · Codes statut · Sécurité · Postman/cURL &nbsp;|&nbsp;
+            Score immédiat
+          </div>
+        </div>
+
+        <div class="section-box">
+          <p
+            style="
+              font-size: 13px;
+              color: var(--text-secondary);
+              margin-bottom: 16px;
+            "
+          >
+            Ce quiz couvre les notions vues en S5 : JSON, méthodes HTTP (GET/POST/PUT/PATCH/DELETE),
+            codes de statut, authentification par token et utilisation de Postman/cURL.
+            Réponds à toutes les questions, puis clique sur
+            <strong>Valider mes réponses</strong> pour voir ton score. Une seule bonne réponse par question.
+          </p>
+
+          <div class="progress-label">
+            <span id="progress-text">0 / 20 questions répondues</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+          </div>
+
+          <form id="quiz-form" onsubmit="return false;">
+
+            <!-- ══════════ SECTION A ══════════ -->
+            <div class="quiz-section-header">
+              📦 Section A — JSON (Q1 à Q7)
+            </div>
+
+            <!-- Q1 -->
+            <div class="quiz-card" id="card-1">
+              <div class="quiz-number">Question 1 / 20</div>
+              <div class="quiz-question">Que signifie l'acronyme JSON ?</div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q1" value="a" onchange="onAnswer(1)" />
+                    JavaScript Ordered String Notation</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q1" value="b" onchange="onAnswer(1)" />
+                    JavaScript Object Notation</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q1" value="c" onchange="onAnswer(1)" />
+                    Java Standard Object Name</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q1" value="d" onchange="onAnswer(1)" />
+                    JSON Script Object Notation</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-card" id="card-2">
+              <div class="quiz-number">Question 2 / 20</div>
+              <div class="quiz-question">
+                Quel est le type de donnée JSON de la valeur dans <code>{"actif": true}</code> ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q2" value="a" onchange="onAnswer(2)" />
+                    String</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q2" value="b" onchange="onAnswer(2)" />
+                    Number</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q2" value="c" onchange="onAnswer(2)" />
+                    Boolean</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q2" value="d" onchange="onAnswer(2)" />
+                    Object</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-card" id="card-3">
+              <div class="quiz-number">Question 3 / 20</div>
+              <div class="quiz-question">
+                Laquelle de ces syntaxes JSON est valide ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q3" value="a" onchange="onAnswer(3)" />
+                    <code>{name: "Alice"}</code> — clés sans guillemets</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q3" value="b" onchange="onAnswer(3)" />
+                    <code>{"name": "Alice"}</code> — clés et valeurs string entre guillemets doubles</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q3" value="c" onchange="onAnswer(3)" />
+                    <code>{"name": Alice}</code> — valeur sans guillemets</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q3" value="d" onchange="onAnswer(3)" />
+                    <code>{'name': 'Alice'}</code> — guillemets simples</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-card" id="card-4">
+              <div class="quiz-number">Question 4 / 20</div>
+              <div class="quiz-question">
+                Quel est le type de la valeur dans <code>{"scores": [10, 20, 30]}</code> ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q4" value="a" onchange="onAnswer(4)" />
+                    Object</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q4" value="b" onchange="onAnswer(4)" />
+                    String</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q4" value="c" onchange="onAnswer(4)" />
+                    Number</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q4" value="d" onchange="onAnswer(4)" />
+                    Array</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-4"></div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-card" id="card-5">
+              <div class="quiz-number">Question 5 / 20</div>
+              <div class="quiz-question">
+                En JavaScript, comment convertit-on une chaîne JSON en objet manipulable ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q5" value="a" onchange="onAnswer(5)" />
+                    <code>JSON.parse()</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q5" value="b" onchange="onAnswer(5)" />
+                    <code>JSON.stringify()</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q5" value="c" onchange="onAnswer(5)" />
+                    <code>JSON.decode()</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q5" value="d" onchange="onAnswer(5)" />
+                    <code>JSON.convert()</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-5"></div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-card" id="card-6">
+              <div class="quiz-number">Question 6 / 20</div>
+              <div class="quiz-question">
+                Quelle valeur JSON représente explicitement "aucune valeur / absence de donnée" ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q6" value="a" onchange="onAnswer(6)" />
+                    <code>undefined</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q6" value="b" onchange="onAnswer(6)" />
+                    <code>false</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q6" value="c" onchange="onAnswer(6)" />
+                    <code>0</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q6" value="d" onchange="onAnswer(6)" />
+                    <code>null</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-6"></div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="quiz-card" id="card-7">
+              <div class="quiz-number">Question 7 / 20</div>
+              <div class="quiz-question">
+                Dans N8N, quelle expression permet d'accéder au champ <code>email</code>
+                d'une réponse JSON ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q7" value="a" onchange="onAnswer(7)" />
+                    <code>{{ json.email }}</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q7" value="b" onchange="onAnswer(7)" />
+                    <code>{{ $json.email }}</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q7" value="c" onchange="onAnswer(7)" />
+                    <code>{{ data.email }}</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q7" value="d" onchange="onAnswer(7)" />
+                    <code>{{ response.email }}</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-7"></div>
+            </div>
+
+            <!-- ══════════ SECTION B ══════════ -->
+            <div class="quiz-section-header">
+              🔀 Section B — Méthodes HTTP &amp; Codes statut (Q8 à Q14)
+            </div>
+
+            <!-- Q8 -->
+            <div class="quiz-card" id="card-8">
+              <div class="quiz-number">Question 8 / 20</div>
+              <div class="quiz-question">
+                Quelle méthode HTTP utilise-t-on pour récupérer des données sans les modifier ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q8" value="a" onchange="onAnswer(8)" />
+                    POST</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q8" value="b" onchange="onAnswer(8)" />
+                    PUT</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q8" value="c" onchange="onAnswer(8)" />
+                    GET</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q8" value="d" onchange="onAnswer(8)" />
+                    DELETE</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-8"></div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="quiz-card" id="card-9">
+              <div class="quiz-number">Question 9 / 20</div>
+              <div class="quiz-question">
+                Quelle méthode HTTP crée une nouvelle ressource sur le serveur ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q9" value="a" onchange="onAnswer(9)" />
+                    GET</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q9" value="b" onchange="onAnswer(9)" />
+                    POST</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q9" value="c" onchange="onAnswer(9)" />
+                    PATCH</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q9" value="d" onchange="onAnswer(9)" />
+                    OPTIONS</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-9"></div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="quiz-card" id="card-10">
+              <div class="quiz-number">Question 10 / 20</div>
+              <div class="quiz-question">
+                Quelle est la différence principale entre PUT et PATCH ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q10" value="a" onchange="onAnswer(10)" />
+                    PUT supprime la ressource, PATCH la crée</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q10" value="b" onchange="onAnswer(10)" />
+                    PUT remplace la ressource entière, PATCH modifie seulement les champs envoyés</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q10" value="c" onchange="onAnswer(10)" />
+                    PUT est plus rapide que PATCH</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q10" value="d" onchange="onAnswer(10)" />
+                    PUT et PATCH font exactement la même chose</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-10"></div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="quiz-card" id="card-11">
+              <div class="quiz-number">Question 11 / 20</div>
+              <div class="quiz-question">
+                Qu'est-ce qu'une méthode HTTP "idempotente" ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q11" value="a" onchange="onAnswer(11)" />
+                    Une méthode qui crée toujours une nouvelle ressource à chaque appel</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q11" value="b" onchange="onAnswer(11)" />
+                    Une méthode dont le résultat est le même si on l'appelle une ou plusieurs fois</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q11" value="c" onchange="onAnswer(11)" />
+                    Une méthode protégée contre les injections SQL</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q11" value="d" onchange="onAnswer(11)" />
+                    Une méthode utilisée uniquement pour les APIs publiques</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-11"></div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="quiz-card" id="card-12">
+              <div class="quiz-number">Question 12 / 20</div>
+              <div class="quiz-question">
+                Que signifie le code HTTP 201 en réponse à un POST ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q12" value="a" onchange="onAnswer(12)" />
+                    La ressource n'a pas été trouvée</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q12" value="b" onchange="onAnswer(12)" />
+                    La requête a réussi et aucun contenu n'est retourné</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q12" value="c" onchange="onAnswer(12)" />
+                    La ressource a été créée avec succès</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q12" value="d" onchange="onAnswer(12)" />
+                    Le serveur a rencontré une erreur interne</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-12"></div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="quiz-card" id="card-13">
+              <div class="quiz-number">Question 13 / 20</div>
+              <div class="quiz-question">
+                Quelle est la différence entre le code 401 et le code 403 ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q13" value="a" onchange="onAnswer(13)" />
+                    401 = ressource non trouvée, 403 = erreur serveur</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q13" value="b" onchange="onAnswer(13)" />
+                    401 = non authentifié (pas de credentials fournis), 403 = authentifié mais pas autorisé</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q13" value="c" onchange="onAnswer(13)" />
+                    401 et 403 signifient exactement la même chose</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q13" value="d" onchange="onAnswer(13)" />
+                    401 = trop de requêtes, 403 = requête invalide</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-13"></div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="quiz-card" id="card-14">
+              <div class="quiz-number">Question 14 / 20</div>
+              <div class="quiz-question">
+                Que signifie le code HTTP 429 ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q14" value="a" onchange="onAnswer(14)" />
+                    Requête invalide — paramètre manquant ou mal formé</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q14" value="b" onchange="onAnswer(14)" />
+                    Ressource déplacée définitivement</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q14" value="c" onchange="onAnswer(14)" />
+                    Service temporairement indisponible</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q14" value="d" onchange="onAnswer(14)" />
+                    Trop de requêtes envoyées (rate limiting dépassé)</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-14"></div>
+            </div>
+
+            <!-- ══════════ SECTION C ══════════ -->
+            <div class="quiz-section-header">
+              🛠️ Section C — Auth, Postman &amp; Pratique (Q15 à Q20)
+            </div>
+
+            <!-- Q15 -->
+            <div class="quiz-card" id="card-15">
+              <div class="quiz-number">Question 15 / 20</div>
+              <div class="quiz-question">
+                Comment s'authentifie-t-on auprès d'une API avec un Bearer token ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q15" value="a" onchange="onAnswer(15)" />
+                    En ajoutant le token comme paramètre d'URL : <code>?token=abc</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q15" value="b" onchange="onAnswer(15)" />
+                    En ajoutant le header <code>Authorization: Bearer &lt;token&gt;</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q15" value="c" onchange="onAnswer(15)" />
+                    En mettant le token dans le body JSON sous la clé "token"</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q15" value="d" onchange="onAnswer(15)" />
+                    En ajoutant un cookie nommé "bearer_token"</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-15"></div>
+            </div>
+
+            <!-- Q16 -->
+            <div class="quiz-card" id="card-16">
+              <div class="quiz-number">Question 16 / 20</div>
+              <div class="quiz-question">
+                Qu'est-ce que le "rate limiting" d'une API ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q16" value="a" onchange="onAnswer(16)" />
+                    La vitesse maximale de la connexion Internet du client</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q16" value="b" onchange="onAnswer(16)" />
+                    La limitation du nombre de requêtes autorisées par période de temps</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q16" value="c" onchange="onAnswer(16)" />
+                    La taille maximale du body JSON accepté</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q16" value="d" onchange="onAnswer(16)" />
+                    Le délai de réponse maximum garanti par l'API</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-16"></div>
+            </div>
+
+            <!-- Q17 -->
+            <div class="quiz-card" id="card-17">
+              <div class="quiz-number">Question 17 / 20</div>
+              <div class="quiz-question">
+                Quel header HTTP indique le format des données envoyées dans le body d'une requête ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q17" value="a" onchange="onAnswer(17)" />
+                    <code>Accept</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q17" value="b" onchange="onAnswer(17)" />
+                    <code>Authorization</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q17" value="c" onchange="onAnswer(17)" />
+                    <code>Content-Type</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q17" value="d" onchange="onAnswer(17)" />
+                    <code>Cache-Control</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-17"></div>
+            </div>
+
+            <!-- Q18 -->
+            <div class="quiz-card" id="card-18">
+              <div class="quiz-number">Question 18 / 20</div>
+              <div class="quiz-question">
+                Dans Postman, à quoi servent les "Variables d'environnement" ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q18" value="a" onchange="onAnswer(18)" />
+                    À changer la langue de l'interface Postman</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q18" value="b" onchange="onAnswer(18)" />
+                    À stocker des valeurs réutilisables comme les tokens, URLs de base, sans les exposer en dur</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q18" value="c" onchange="onAnswer(18)" />
+                    À exécuter les requêtes en parallèle</label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q18" value="d" onchange="onAnswer(18)" />
+                    À générer automatiquement de la documentation</label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-18"></div>
+            </div>
+
+            <!-- Q19 -->
+            <div class="quiz-card" id="card-19">
+              <div class="quiz-number">Question 19 / 20</div>
+              <div class="quiz-question">
+                Quelle commande cURL envoie une requête GET et affiche les headers de réponse ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q19" value="a" onchange="onAnswer(19)" />
+                    <code>curl -X GET https://api.example.com</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q19" value="b" onchange="onAnswer(19)" />
+                    <code>curl --headers https://api.example.com</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q19" value="c" onchange="onAnswer(19)" />
+                    <code>curl -I https://api.example.com</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q19" value="d" onchange="onAnswer(19)" />
+                    <code>curl -H https://api.example.com</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-19"></div>
+            </div>
+
+            <!-- Q20 -->
+            <div class="quiz-card" id="card-20">
+              <div class="quiz-number">Question 20 / 20</div>
+              <div class="quiz-question">
+                Quelle commande cURL envoie un POST avec un body JSON ?
+              </div>
+              <ul class="options-list">
+                <li>
+                  <label><input type="radio" name="q20" value="a" onchange="onAnswer(20)" />
+                    <code>curl -X POST https://api.example.com -d '{"key": "value"}'</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q20" value="b" onchange="onAnswer(20)" />
+                    <code>curl --post https://api.example.com --json '{"key": "value"}'</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q20" value="c" onchange="onAnswer(20)" />
+                    <code>curl -X POST https://api.example.com -H "Content-Type: application/json" -d '{"key": "value"}'</code></label>
+                </li>
+                <li>
+                  <label><input type="radio" name="q20" value="d" onchange="onAnswer(20)" />
+                    <code>curl POST https://api.example.com body='{"key": "value"}'</code></label>
+                </li>
+              </ul>
+              <div class="feedback-msg" id="fb-20"></div>
+            </div>
+
+            <button
+              type="button"
+              class="btn-submit"
+              id="btn-submit"
+              onclick="submitQuiz()"
+            >
+              ✅ Valider mes réponses
+            </button>
+          </form>
+
+          <div class="results-panel" id="results-panel">
+            <div class="results-score-big" id="score-display">—</div>
+            <div class="results-label" id="score-pct-label">% de bonnes réponses</div>
+            <div class="results-breakdown">
+              <div class="breakdown-card">
+                <span class="bc-score" id="score-a">—</span>
+                <span class="bc-label">JSON<br />(Q1-Q7)</span>
+              </div>
+              <div class="breakdown-card">
+                <span class="bc-score" id="score-b">—</span>
+                <span class="bc-label">HTTP &amp; Codes<br />(Q8-Q14)</span>
+              </div>
+              <div class="breakdown-card">
+                <span class="bc-score" id="score-c">—</span>
+                <span class="bc-label">Auth &amp; Pratique<br />(Q15-Q20)</span>
+              </div>
+            </div>
+            <div class="results-msg" id="results-msg"></div>
+            <button type="button" class="btn-retry" onclick="retryQuiz()">
+              🔄 Recommencer
+            </button>
+          </div>
+        </div>
+
+        <div class="footer">Quiz APIs REST · S5 · PPNI 2026</div>
+      </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script>
+      // Réponses correctes
+      var correct = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "d",
+        q5: "a",
+        q6: "d",
+        q7: "b",
+        q8: "c",
+        q9: "b",
+        q10: "b",
+        q11: "b",
+        q12: "c",
+        q13: "b",
+        q14: "d",
+        q15: "b",
+        q16: "b",
+        q17: "c",
+        q18: "b",
+        q19: "c",
+        q20: "c",
+      };
+
+      // Explication courte par question
+      var explanations = {
+        q1: "JSON = JavaScript Object Notation. Format texte léger pour échanger des données structurées.",
+        q2: "true et false sont des booléens (Boolean) en JSON. Les autres types sont : string, number, array, object, null.",
+        q3: "En JSON, les clés ET les valeurs string doivent être entre guillemets doubles. Pas de guillemets simples, pas de clés nues.",
+        q4: "Les crochets [] délimitent un Array (tableau) en JSON. Les accolades {} délimitent un Object.",
+        q5: "JSON.parse() convertit une chaîne JSON en objet JS. JSON.stringify() fait l'inverse : objet → chaîne.",
+        q6: "null est le seul type JSON qui représente explicitement l'absence de valeur. undefined n'existe pas en JSON.",
+        q7: "Dans N8N, les expressions commencent par {{ et utilisent $json pour accéder aux données du nœud précédent.",
+        q8: "GET est la méthode pour lire des données. Elle est sûre (ne modifie rien) et idempotente (même résultat à chaque appel).",
+        q9: "POST crée une nouvelle ressource. La réponse est souvent 201 Created avec l'URL de la nouvelle ressource.",
+        q10: "PUT remplace la ressource entière (tous les champs doivent être envoyés). PATCH ne modifie que les champs fournis.",
+        q11: "Idempotent = même résultat peu importe le nombre d'appels. GET, PUT, DELETE sont idempotents. POST ne l'est pas.",
+        q12: "201 Created = la ressource a été créée. 200 OK = succès sans création. 204 = succès sans contenu retourné.",
+        q13: "401 = non authentifié (tu n'as pas fourni de credentials). 403 = tu es authentifié mais tu n'as pas les droits.",
+        q14: "429 Too Many Requests = tu as dépassé la limite de requêtes de l'API. Il faut attendre ou utiliser un backoff.",
+        q15: "Le standard OAuth2 utilise le header Authorization: Bearer <token>. C'est plus sécurisé que l'URL ou le body.",
+        q16: "Le rate limiting protège les serveurs des abus. Ex : max 100 requêtes/minute. Dépasser retourne un 429.",
+        q17: "Content-Type déclare le format du body envoyé. Accept déclare ce qu'on peut recevoir. Pour du JSON : application/json.",
+        q18: "Les variables d'environnement Postman ({{BASE_URL}}, {{TOKEN}}) évitent de hard-coder les valeurs sensibles.",
+        q19: "curl -I (ou --head) envoie uniquement la requête HEAD et affiche les headers de réponse sans le body.",
+        q20: "Pour POST avec JSON : -X POST (méthode), -H Content-Type (header obligatoire), -d (body). Sans Content-Type, le serveur peut rejeter la requête.",
+      };
+
+      // Sections
+      var sectionA = [1, 2, 3, 4, 5, 6, 7];
+      var sectionB = [8, 9, 10, 11, 12, 13, 14];
+      var sectionC = [15, 16, 17, 18, 19, 20];
+
+      var answered = {};
+      var submitted = false;
+
+      function onAnswer(qNum) {
+        if (submitted) return;
+        answered[qNum] = true;
+        updateProgress();
+      }
+
+      function updateProgress() {
+        var count = Object.keys(answered).length;
+        var pct = Math.round((count / 20) * 100);
+        document.getElementById("progress-text").textContent =
+          count + " / 20 questions répondues";
+        document.getElementById("progress-pct").textContent = pct + "%";
+        document.getElementById("progress-bar").style.width = pct + "%";
+      }
+
+      function submitQuiz() {
+        if (submitted) return;
+
+        var unanswered = [];
+        for (var i = 1; i <= 20; i++) {
+          if (!answered[i]) unanswered.push(i);
+        }
+        if (unanswered.length > 0) {
+          alert(
+            "⚠️ Tu n'as pas répondu à " +
+              unanswered.length +
+              " question(s). \nQuestions sans réponse : " +
+              unanswered.join(", "),
+          );
+          var card = document.getElementById("card-" + unanswered[0]);
+          if (card)
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+
+        submitted = true;
+        var total = 0;
+        var countA = 0,
+          countB = 0,
+          countC = 0;
+
+        for (var q = 1; q <= 20; q++) {
+          var name = "q" + q;
+          var chosen = document.querySelector(
+            'input[name="' + name + '"]:checked',
+          );
+          var card = document.getElementById("card-" + q);
+          var fb = document.getElementById("fb-" + q);
+          var isCorrect = chosen && chosen.value === correct[name];
+
+          var inputs = card.querySelectorAll('input[type="radio"]');
+          inputs.forEach(function (inp) {
+            inp.disabled = true;
+          });
+          card.classList.add("answered");
+
+          var labels = card.querySelectorAll("label");
+          labels.forEach(function (lbl) {
+            var inp = lbl.querySelector("input");
+            if (inp.value === correct[name]) {
+              lbl.classList.add("option-correct");
+            } else if (chosen && inp.value === chosen.value && !isCorrect) {
+              lbl.classList.add("option-wrong");
+            }
+          });
+
+          if (isCorrect) {
+            card.classList.add("correct");
+            fb.textContent = "✅ Correct ! " + explanations[name];
+            fb.classList.add("show", "ok");
+            total++;
+            if (sectionA.indexOf(q) !== -1) countA++;
+            if (sectionB.indexOf(q) !== -1) countB++;
+            if (sectionC.indexOf(q) !== -1) countC++;
+          } else {
+            card.classList.add("incorrect");
+            fb.textContent = "❌ " + explanations[name];
+            fb.classList.add("show", "ko");
+          }
+        }
+
+        var pct = Math.round((total / 20) * 100);
+        document.getElementById("score-display").textContent = total + "/20";
+        document.getElementById("score-pct-label").textContent =
+          pct + "% de bonnes réponses";
+        document.getElementById("score-a").textContent = countA + "/7";
+        document.getElementById("score-b").textContent = countB + "/7";
+        document.getElementById("score-c").textContent = countC + "/6";
+
+        var msg = "";
+        if (pct >= 90)
+          msg =
+            "🏆 Excellent ! Tu maîtrises les APIs REST et JSON. Prêt pour N8N !";
+        else if (pct >= 70)
+          msg =
+            "👍 Bon score ! Quelques points à consolider, mais les bases sont là.";
+        else if (pct >= 50)
+          msg =
+            "📖 Résultat moyen. Relis la fiche mémo APIs et retente le quiz.";
+        else
+          msg =
+            "💪 Les APIs, c'est une nouvelle syntaxe à apprivoiser ! Relis la fiche et refais le quiz.";
+
+        document.getElementById("results-msg").textContent = msg;
+        document.getElementById("results-panel").classList.add("show");
+        document.getElementById("btn-submit").disabled = true;
+        document.getElementById("btn-submit").style.opacity = "0.5";
+
+        document.getElementById("progress-bar").style.width = "100%";
+        document.getElementById("progress-text").textContent =
+          "20 / 20 questions répondues";
+        document.getElementById("progress-pct").textContent = "100%";
+
+        var scoreStr = total + "/20 (" + pct + "%)";
+        localStorage.setItem("ppni_quiz_apis_score", scoreStr);
+
+        document
+          .getElementById("results-panel")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function retryQuiz() {
+        submitted = false;
+        answered = {};
+        document.getElementById("quiz-form").reset();
+        document.getElementById("results-panel").classList.remove("show");
+        document.getElementById("btn-submit").disabled = false;
+        document.getElementById("btn-submit").style.opacity = "";
+
+        for (var q = 1; q <= 20; q++) {
+          var card = document.getElementById("card-" + q);
+          var fb = document.getElementById("fb-" + q);
+          card.classList.remove("correct", "incorrect", "answered");
+          fb.classList.remove("show", "ok", "ko");
+          fb.textContent = "";
+          var inputs = card.querySelectorAll('input[type="radio"]');
+          inputs.forEach(function (inp) {
+            inp.disabled = false;
+          });
+          var labels = card.querySelectorAll("label");
+          labels.forEach(function (lbl) {
+            lbl.classList.remove("option-correct", "option-wrong");
+          });
+        }
+
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var saved = localStorage.getItem("ppni_quiz_apis_score");
+        if (saved) {
+          console.log("Score précédent : " + saved);
+        }
+      });
+    </script>
+  </body>
+</html>

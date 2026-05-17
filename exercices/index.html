@@ -604,6 +604,71 @@
           </div>
         </div>
 
+        <!-- S5-S6 -->
+        <div class="section-box">
+          <h2>⚡ S5-S6 — Communication Tech &amp; Automatisation N8N</h2>
+          <div class="exo-grid">
+            <div class="exo-card">
+              <div class="exo-meta">
+                <span class="exo-tag s1">S5</span>
+                <span class="exo-tag interactif">Quiz</span>
+                <span class="score-chip chip-apis" id="chip-apis">Non commencé</span>
+              </div>
+              <h3>🔌 Quiz APIs REST</h3>
+              <p>
+                20 QCM sur JSON, méthodes HTTP, codes statut, authentification,
+                cURL et Postman — tout pour maîtriser les APIs.
+              </p>
+              <a
+                href="quiz-apis.html"
+                style="
+                  display: inline-block;
+                  padding: 9px 18px;
+                  background: #2980b9;
+                  color: #fff;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  text-align: center;
+                  margin-top: 4px;
+                "
+                >Faire le quiz →</a
+              >
+            </div>
+
+            <div class="exo-card">
+              <div class="exo-meta">
+                <span class="exo-tag s1">S6</span>
+                <span class="exo-tag interactif">Outil</span>
+              </div>
+              <h3>🤖 N8N — Automatisation</h3>
+              <p>
+                Plateforme d'automatisation no-code/low-code. Crée ton premier
+                workflow : Trigger → HTTP Request → traitement de données.
+              </p>
+              <a
+                href="https://n8n.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  display: inline-block;
+                  padding: 9px 18px;
+                  background: #ff6d5a;
+                  color: #fff;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  text-align: center;
+                  margin-top: 4px;
+                "
+                >Ouvrir N8N ↗</a
+              >
+            </div>
+          </div>
+        </div>
+
         <!-- À VENIR -->
         <div class="section-box">
           <h2>⏳ Prochains exercices (S7-S8)</h2>
@@ -664,6 +729,9 @@
           chip.textContent = "Exercices : " + editeurDone;
           chip.className = "score-chip done";
         }
+        var apisChip = document.querySelector(".chip-apis");
+        var apisScore = localStorage.getItem("ppni_quiz_apis_score");
+        if (apisScore && apisChip) { apisChip.textContent = "Score : " + apisScore; apisChip.className = "score-chip done"; }
       </script>
     </main>
     <script src="../js/app.js"></script>
