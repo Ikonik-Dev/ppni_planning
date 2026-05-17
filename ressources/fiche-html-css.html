@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fiche HTML/CSS/JS — Web Front-End | PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      .web-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .web-table th {
+        background: var(--accent);
+        color: white;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 12px;
+      }
+      .web-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .web-table tr:last-child td {
+        border-bottom: none;
+      }
+      .web-table tr:hover td {
+        background-color: var(--accent-subtle);
+      }
+      .web-table code {
+        background: rgba(15, 23, 42, 0.88);
+        color: #7dd3fc;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Courier New", monospace;
+        white-space: nowrap;
+      }
+      .web-table .cat {
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      .cat-html {
+        background: #e44d26;
+      }
+      .cat-css {
+        background: #264de4;
+      }
+      .cat-js {
+        background: #c9a800;
+        color: #1a1a1a;
+      }
+      .cat-flex {
+        background: #8e44ad;
+      }
+
+      .code-block {
+        background: #0f172a;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 10px 0;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        overflow-x: auto;
+        color: #e2e8f0;
+        position: relative;
+      }
+      .code-block .tag {
+        color: #f472b6;
+      }
+      .code-block .attr {
+        color: #7dd3fc;
+      }
+      .code-block .val {
+        color: #86efac;
+      }
+      .code-block .cmt {
+        color: #64748b;
+        font-style: italic;
+      }
+      .code-block .sel {
+        color: #f472b6;
+      }
+      .code-block .prop {
+        color: #7dd3fc;
+      }
+      .code-block .pval {
+        color: #86efac;
+      }
+      .code-block .kw {
+        color: #c084fc;
+      }
+      .code-block .str {
+        color: #86efac;
+      }
+      .code-block .fn {
+        color: #fbbf24;
+      }
+
+      .highlight-box {
+        background: var(--accent-subtle);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin: 12px 0;
+        line-height: 1.6;
+      }
+      .highlight-box strong {
+        color: var(--text);
+      }
+
+      /* Box Model schéma */
+      .boxmodel-demo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 16px 0;
+      }
+      .bm-margin {
+        background: rgba(234, 179, 8, 0.15);
+        border: 2px dashed rgba(234, 179, 8, 0.5);
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+        position: relative;
+      }
+      .bm-border {
+        background: rgba(239, 68, 68, 0.15);
+        border: 2px solid rgba(239, 68, 68, 0.6);
+        border-radius: 6px;
+        padding: 14px;
+      }
+      .bm-padding {
+        background: rgba(52, 211, 153, 0.15);
+        border: 2px dashed rgba(52, 211, 153, 0.5);
+        border-radius: 4px;
+        padding: 14px;
+      }
+      .bm-content {
+        background: var(--accent);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .bm-label {
+        font-size: 10px;
+        font-weight: 700;
+        position: absolute;
+        top: 4px;
+        left: 8px;
+        color: rgba(234, 179, 8, 0.8);
+      }
+
+      /* Flexbox visual */
+      .flex-demo {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        gap: 8px;
+        margin: 10px 0;
+        flex-wrap: wrap;
+      }
+      .flex-item {
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      @media print {
+        .sidebar,
+        .mobile-topbar,
+        .print-btn {
+          display: none !important;
+        }
+        .main-content {
+          padding-left: 0 !important;
+        }
+        .section-box {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="../exercices/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>🏗️ Fiche HTML / CSS / JS</h1>
+            <div class="meta">
+              Structure · Sémantique · Sélecteurs · Box Model · Flexbox ·
+              Responsive · DOM &nbsp;|&nbsp; <strong>S4 — Phase 2</strong>
+            </div>
+          </div>
+          <button class="print-btn" onclick="window.print()">
+            🖨️ Imprimer / PDF
+          </button>
+        </div>
+
+        <!-- ═══ STRUCTURE HTML MINIMALE ═══ -->
+        <div class="section-box">
+          <h2>📄 Structure HTML minimale</h2>
+          <div class="highlight-box">
+            <strong
+              >Tout fichier HTML valide doit contenir ces éléments.</strong
+            >
+            Sous VS Code, tape <code>!</code> puis Tab pour générer
+            automatiquement cette structure (Emmet).
+          </div>
+          <div class="code-block">
+            <span class="cmt">&lt;!-- Structure HTML5 minimale --&gt;</span>
+            <span class="tag">&lt;!DOCTYPE html&gt;</span>
+            <span class="tag">&lt;html</span>
+            <span class="attr">lang</span>=<span class="val">"fr"</span
+            ><span class="tag">&gt;</span>
+            <span class="tag">&lt;head&gt;</span>
+            <span class="tag">&lt;meta</span>
+            <span class="attr">charset</span>=<span class="val">"UTF-8"</span>
+            <span class="tag">/&gt;</span> <span class="tag">&lt;meta</span>
+            <span class="attr">name</span>=<span class="val">"viewport"</span>
+            <span class="attr">content</span>=<span class="val"
+              >"width=device-width, initial-scale=1"</span
+            >
+            <span class="tag">/&gt;</span>
+            <span class="tag">&lt;title&gt;</span>Titre de la page<span
+              class="tag"
+              >&lt;/title&gt;</span
+            >
+            <span class="tag">&lt;link</span>
+            <span class="attr">rel</span>=<span class="val">"stylesheet"</span>
+            <span class="attr">href</span>=<span class="val">"style.css"</span>
+            <span class="tag">/&gt;</span>
+            <span class="tag">&lt;/head&gt;</span>
+            <span class="tag">&lt;body&gt;</span>
+            <span class="cmt">&lt;!-- Contenu visible ici --&gt;</span>
+            <span class="tag">&lt;script</span>
+            <span class="attr">src</span>=<span class="val">"script.js"</span
+            ><span class="tag">&gt;&lt;/script&gt;</span>
+            <span class="tag">&lt;/body&gt;</span>
+            <span class="tag">&lt;/html&gt;</span>
+          </div>
+        </div>
+
+        <!-- ═══ BALISES SÉMANTIQUES ═══ -->
+        <div class="section-box">
+          <h2>🏛️ Balises sémantiques essentielles</h2>
+          <table class="web-table">
+            <thead>
+              <tr>
+                <th>Balise</th>
+                <th>Rôle sémantique</th>
+                <th>Exemple d'utilisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&lt;nav&gt;</code></td>
+                <td>Navigation principale du site</td>
+                <td>Menu de navigation, liens internes</td>
+              </tr>
+              <tr>
+                <td><code>&lt;header&gt;</code></td>
+                <td>En-tête de page ou de section</td>
+                <td>Logo + titre du site</td>
+              </tr>
+              <tr>
+                <td><code>&lt;main&gt;</code></td>
+                <td>Contenu principal de la page (unique)</td>
+                <td>Zone de contenu central</td>
+              </tr>
+              <tr>
+                <td><code>&lt;section&gt;</code></td>
+                <td>Section thématique avec son propre titre</td>
+                <td>Section "Nos services", "À propos"</td>
+              </tr>
+              <tr>
+                <td><code>&lt;article&gt;</code></td>
+                <td>Contenu autonome et réutilisable</td>
+                <td>Billet de blog, carte produit</td>
+              </tr>
+              <tr>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>Contenu complémentaire (sidebar)</td>
+                <td>Barre latérale, publicité</td>
+              </tr>
+              <tr>
+                <td><code>&lt;footer&gt;</code></td>
+                <td>Pied de page ou de section</td>
+                <td>Copyright, liens légaux</td>
+              </tr>
+              <tr>
+                <td><code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code></td>
+                <td>Titres hiérarchiques (1 = plus important)</td>
+                <td>1 seul h1 par page (SEO)</td>
+              </tr>
+              <tr>
+                <td><code>&lt;p&gt;</code></td>
+                <td>Paragraphe de texte</td>
+                <td>Corps de texte, descriptions</td>
+              </tr>
+              <tr>
+                <td><code>&lt;a href="..."&gt;</code></td>
+                <td>Lien hypertexte</td>
+                <td>Vers une page, un fichier, une ancre</td>
+              </tr>
+              <tr>
+                <td><code>&lt;img src="..." alt="..."&gt;</code></td>
+                <td>Image (alt = description pour malvoyants)</td>
+                <td>Photo, illustration, logo</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> /
+                  <code>&lt;li&gt;</code>
+                </td>
+                <td>Liste non ordonnée / ordonnée / élément</td>
+                <td>Menu, étapes, fonctionnalités</td>
+              </tr>
+              <tr>
+                <td><code>&lt;button&gt;</code></td>
+                <td>Bouton cliquable (à préférer aux div/a)</td>
+                <td>Action, formulaire, clic JS</td>
+              </tr>
+              <tr>
+                <td><code>&lt;div&gt;</code></td>
+                <td>Conteneur générique sans signification sémantique</td>
+                <td>Wrapper de mise en page uniquement</td>
+              </tr>
+              <tr>
+                <td><code>&lt;span&gt;</code></td>
+                <td>Conteneur inline sans signification sémantique</td>
+                <td>Cibler une portion de texte en CSS/JS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ CSS SÉLECTEURS ═══ -->
+        <div class="section-box">
+          <h2>🎨 CSS — Sélecteurs et propriétés essentielles</h2>
+          <div class="code-block">
+            <span class="cmt">/* ── Sélecteurs ── */</span>
+            <span class="sel">h1</span> { <span class="prop">color</span>:
+            <span class="pval">red</span>; }
+            <span class="cmt">/* Élément */</span>
+            <span class="sel">.ma-classe</span> {
+            <span class="prop">padding</span>: <span class="pval">16px</span>; }
+            <span class="cmt">/* Classe */</span>
+            <span class="sel">#mon-id</span> { <span class="prop">width</span>:
+            <span class="pval">100%</span>; }
+            <span class="cmt">/* ID (unique par page) */</span>
+            <span class="sel">nav a</span> { <span class="prop">color</span>:
+            <span class="pval">white</span>; }
+            <span class="cmt">/* Descendant */</span>
+            <span class="sel">.card:hover</span> {
+            <span class="prop">opacity</span>: <span class="pval">0.8</span>; }
+            <span class="cmt">/* Pseudo-classe */</span>
+            <span class="sel">*</span> { <span class="prop">box-sizing</span>:
+            <span class="pval">border-box</span>; }
+            <span class="cmt">/* Universel */</span>
+
+            <span class="cmt">/* ── Propriétés fréquentes ── */</span>
+            <span class="sel">.element</span> { <span class="prop">color</span>:
+            <span class="pval">#333</span>;
+            <span class="cmt">/* Couleur de texte */</span>
+            <span class="prop">background-color</span>:
+            <span class="pval">#fff</span>;
+            <span class="cmt">/* Couleur de fond */</span>
+            <span class="prop">font-family</span>:
+            <span class="pval">'Inter', Arial, sans-serif</span>;
+            <span class="prop">font-size</span>: <span class="pval">16px</span>;
+            <span class="cmt">/* Taille du texte */</span>
+            <span class="prop">font-weight</span>:
+            <span class="pval">600</span>;
+            <span class="cmt">/* Graisse : 400=normal, 700=bold */</span>
+            <span class="prop">line-height</span>:
+            <span class="pval">1.6</span>;
+            <span class="cmt">/* Hauteur de ligne */</span>
+            <span class="prop">text-decoration</span>:
+            <span class="pval">none</span>;
+            <span class="cmt">/* Retire le soulignement des liens */</span>
+            <span class="prop">border-radius</span>:
+            <span class="pval">8px</span>;
+            <span class="cmt">/* Arrondi des coins */</span>
+            <span class="prop">box-shadow</span>:
+            <span class="pval">0 4px 12px rgba(0,0,0,0.1)</span>;
+            <span class="prop">transition</span>:
+            <span class="pval">all 0.2s ease</span>;
+            <span class="cmt">/* Animation fluide */</span>
+            <span class="prop">cursor</span>: <span class="pval">pointer</span>;
+            <span class="cmt">/* Curseur main au survol */</span>
+            }
+          </div>
+        </div>
+
+        <!-- ═══ BOX MODEL ═══ -->
+        <div class="section-box">
+          <h2>📦 Box Model CSS</h2>
+          <div class="highlight-box">
+            <strong>Chaque élément HTML est une boîte.</strong>
+            De l'intérieur vers l'extérieur : <strong>contenu</strong> →
+            <strong>padding</strong> (espace intérieur) →
+            <strong>border</strong> (bordure) → <strong>margin</strong> (espace
+            extérieur).
+          </div>
+          <div class="boxmodel-demo">
+            <div class="bm-margin" style="position: relative">
+              <span class="bm-label">margin (jaune)</span>
+              <div class="bm-border">
+                <div class="bm-padding">
+                  <div class="bm-content">contenu</div>
+                  <div
+                    style="
+                      text-align: center;
+                      font-size: 10px;
+                      color: rgba(52, 211, 153, 0.8);
+                      margin-top: 4px;
+                    "
+                  >
+                    padding (vert)
+                  </div>
+                </div>
+                <div
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    color: rgba(239, 68, 68, 0.8);
+                    margin-top: 4px;
+                  "
+                >
+                  border (rouge)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="code-block">
+            <span class="sel">.boite</span> { <span class="prop">width</span>:
+            <span class="pval">200px</span>;
+            <span class="cmt">/* largeur du contenu */</span>
+            <span class="prop">padding</span>: <span class="pval">16px</span>;
+            <span class="cmt">/* espace intérieur (4 côtés) */</span>
+            <span class="prop">border</span>:
+            <span class="pval">2px solid #333</span>;
+            <span class="cmt">/* bordure */</span>
+            <span class="prop">margin</span>:
+            <span class="pval">24px auto</span>;
+            <span class="cmt">/* espace extérieur (auto = centré) */</span>
+            <span class="prop">box-sizing</span>:
+            <span class="pval">border-box</span>;
+            <span class="cmt">/* padding inclus dans la largeur totale */</span>
+            }
+          </div>
+        </div>
+
+        <!-- ═══ FLEXBOX ═══ -->
+        <div class="section-box">
+          <h2>🔲 Flexbox — Mise en page moderne</h2>
+          <div class="highlight-box">
+            <strong>display: flex</strong> transforme un conteneur en "flex
+            container". Ses enfants directs deviennent des "flex items"
+            alignables sur un axe horizontal ou vertical.
+          </div>
+          <div class="flex-demo" style="justify-content: space-between">
+            <div class="flex-item">Item A</div>
+            <div class="flex-item">Item B</div>
+            <div class="flex-item">Item C</div>
+          </div>
+          <div class="code-block">
+            <span class="sel">.conteneur</span> {
+            <span class="prop">display</span>: <span class="pval">flex</span>;
+            <span class="cmt">/* Active Flexbox */</span>
+            <span class="prop">flex-direction</span>:
+            <span class="pval">row</span>;
+            <span class="cmt">/* row (→) ou column (↓) */</span>
+            <span class="prop">justify-content</span>:
+            <span class="pval">space-between</span>;
+            <span class="cmt"
+              >/* Axe principal : start | end | center | space-between |
+              space-around */</span
+            >
+            <span class="prop">align-items</span>:
+            <span class="pval">center</span>;
+            <span class="cmt"
+              >/* Axe secondaire : flex-start | flex-end | center | stretch
+              */</span
+            >
+            <span class="prop">gap</span>: <span class="pval">16px</span>;
+            <span class="cmt">/* Espace entre les items */</span>
+            <span class="prop">flex-wrap</span>: <span class="pval">wrap</span>;
+            <span class="cmt">/* Retour à la ligne si manque de place */</span>
+            }
+
+            <span class="sel">.item</span> { <span class="prop">flex</span>:
+            <span class="pval">1</span>;
+            <span class="cmt"
+              >/* L'item prend toute la place disponible */</span
+            >
+            <span class="prop">flex-shrink</span>: <span class="pval">0</span>;
+            <span class="cmt">/* L'item ne rétrécit pas */</span>
+            <span class="prop">align-self</span>:
+            <span class="pval">flex-end</span>;
+            <span class="cmt">/* Override align-items pour cet item */</span>
+            }
+          </div>
+          <table class="web-table" style="margin-top: 14px">
+            <thead>
+              <tr>
+                <th>Propriété</th>
+                <th>Valeurs</th>
+                <th>Effet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>justify-content</code></td>
+                <td>
+                  <code>flex-start</code> / <code>center</code> /
+                  <code>flex-end</code> / <code>space-between</code> /
+                  <code>space-around</code>
+                </td>
+                <td>Alignement sur l'axe principal (horizontal si row)</td>
+              </tr>
+              <tr>
+                <td><code>align-items</code></td>
+                <td>
+                  <code>flex-start</code> / <code>center</code> /
+                  <code>flex-end</code> / <code>stretch</code>
+                </td>
+                <td>Alignement sur l'axe secondaire (vertical si row)</td>
+              </tr>
+              <tr>
+                <td><code>flex-direction</code></td>
+                <td>
+                  <code>row</code> / <code>column</code> /
+                  <code>row-reverse</code>
+                </td>
+                <td>Direction de l'axe principal</td>
+              </tr>
+              <tr>
+                <td><code>flex-wrap</code></td>
+                <td><code>nowrap</code> / <code>wrap</code></td>
+                <td>Retour à la ligne ou non</td>
+              </tr>
+              <tr>
+                <td><code>gap</code></td>
+                <td><code>16px</code> / <code>1rem</code></td>
+                <td>Espace entre tous les flex items</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ MEDIA QUERIES ═══ -->
+        <div class="section-box">
+          <h2>📱 Media Queries — Responsive Design</h2>
+          <div class="highlight-box">
+            <strong
+              >Une media query applique du CSS sous certaines conditions</strong
+            >
+            (taille d'écran, orientation…). C'est ce qui rend un site
+            "responsive" — adapté à tous les écrans.
+          </div>
+          <div class="code-block">
+            <span class="cmt"
+              >/* Mobile-first : styles de base = mobile, puis on ajoute pour
+              grands écrans */</span
+            >
+
+            <span class="sel">.container</span> {
+            <span class="prop">padding</span>: <span class="pval">16px</span>;
+            <span class="cmt">/* Mobile : peu de padding */</span>
+            <span class="prop">flex-direction</span>:
+            <span class="pval">column</span>;
+            <span class="cmt">/* Mobile : colonne */</span>
+            }
+
+            <span class="cmt">/* Tablette : &gt; 768px */</span>
+            <span class="kw">@media</span> (min-width:
+            <span class="pval">768px</span>) {
+            <span class="sel">.container</span> {
+            <span class="prop">padding</span>: <span class="pval">24px</span>;
+            <span class="prop">flex-direction</span>:
+            <span class="pval">row</span>; } }
+
+            <span class="cmt">/* Desktop : &gt; 1024px */</span>
+            <span class="kw">@media</span> (min-width:
+            <span class="pval">1024px</span>) {
+            <span class="sel">.container</span> {
+            <span class="prop">max-width</span>:
+            <span class="pval">1200px</span>; <span class="prop">margin</span>:
+            <span class="pval">0 auto</span>; } }
+
+            <span class="cmt"
+              >/* Ou inversement (desktop-first, max-width) */</span
+            >
+            <span class="kw">@media</span> (max-width:
+            <span class="pval">768px</span>) { <span class="sel">nav</span> {
+            <span class="prop">flex-direction</span>:
+            <span class="pval">column</span>; } }
+          </div>
+          <div class="highlight-box">
+            <strong>Breakpoints courants :</strong>
+            Mobile : &lt; 576px · Tablette : 576–768px · Laptop : 768–1024px ·
+            Desktop : &gt; 1024px. Pour tester : DevTools (F12) → Ctrl+Shift+M →
+            simulateur mobile.
+          </div>
+        </div>
+
+        <!-- ═══ JS DOM ═══ -->
+        <div class="section-box">
+          <h2>⚡ JavaScript — DOM basique</h2>
+          <div class="highlight-box">
+            <strong>DOM</strong> (Document Object Model) = représentation de la
+            page HTML en objets JavaScript. Via le DOM, JS peut lire et modifier
+            n'importe quel élément de la page en temps réel.
+          </div>
+          <div class="code-block">
+            <span class="cmt">// ── Sélectionner des éléments ──</span>
+            <span class="kw">const</span> <span class="fn">el</span> =
+            document.<span class="fn">getElementById</span>(<span class="str"
+              >'mon-id'</span
+            >); <span class="kw">const</span> <span class="fn">els</span> =
+            document.<span class="fn">querySelectorAll</span>(<span class="str"
+              >'.ma-classe'</span
+            >); <span class="cmt">// NodeList</span>
+            <span class="kw">const</span> <span class="fn">first</span> =
+            document.<span class="fn">querySelector</span>(<span class="str"
+              >'nav a'</span
+            >); <span class="cmt">// Premier résultat</span>
+
+            <span class="cmt">// ── Modifier le contenu ──</span>
+            el.<span class="fn">textContent</span> =
+            <span class="str">'Nouveau texte'</span>;
+            <span class="cmt">// Texte brut (sécurisé)</span> el.<span
+              class="fn"
+              >innerHTML</span
+            >
+            = <span class="str">'&lt;strong&gt;Texte&lt;/strong&gt;'</span>;
+            <span class="cmt">// HTML (attention XSS)</span>
+
+            <span class="cmt">// ── Modifier le style ──</span>
+            el.<span class="fn">style</span>.<span class="fn">color</span> =
+            <span class="str">'red'</span>; el.<span class="fn">style</span
+            >.<span class="fn">display</span> = <span class="str">'none'</span>;
+            el.<span class="fn">style</span>.<span class="fn">background</span>
+            = <span class="str">'#2980b9'</span>;
+
+            <span class="cmt">// ── Classes CSS ──</span>
+            el.<span class="fn">classList</span>.<span class="fn">add</span
+            >(<span class="str">'active'</span>); el.<span class="fn"
+              >classList</span
+            >.<span class="fn">remove</span>(<span class="str">'active'</span>);
+            el.<span class="fn">classList</span>.<span class="fn">toggle</span
+            >(<span class="str">'open'</span>);
+            <span class="cmt">// Ajoute ou retire</span> el.<span class="fn"
+              >classList</span
+            >.<span class="fn">contains</span>(<span class="str">'active'</span
+            >); <span class="cmt">// true/false</span>
+
+            <span class="cmt">// ── Événements ──</span>
+            el.<span class="fn">addEventListener</span>(<span class="str"
+              >'click'</span
+            >, <span class="kw">function</span>() { console.<span class="fn"
+              >log</span
+            >(<span class="str">'Cliqué !'</span>); }); el.<span class="fn"
+              >addEventListener</span
+            >(<span class="str">'input'</span>,
+            <span class="kw">function</span>(e) { console.<span class="fn"
+              >log</span
+            >(e.target.value); <span class="cmt">// Valeur saisie</span>
+            });
+
+            <span class="cmt">// ── Variables et conditions ──</span>
+            <span class="kw">let</span> compteur = <span class="pval">0</span>;
+
+            <span class="kw">function</span>
+            <span class="fn">incrementer</span>() { compteur++;
+            <span class="kw">if</span> (compteur > <span class="pval">5</span>)
+            { el.<span class="fn">style</span>.<span class="fn">color</span> =
+            <span class="str">'green'</span>; } el.<span class="fn"
+              >textContent</span
+            >
+            = compteur; }
+
+            <span class="cmt"
+              >// ── localStorage — sauvegarder dans le navigateur ──</span
+            >
+            localStorage.<span class="fn">setItem</span>(<span class="str"
+              >'score'</span
+            >, <span class="str">'18/20'</span>);
+            <span class="kw">const</span> score = localStorage.<span class="fn"
+              >getItem</span
+            >(<span class="str">'score'</span>);
+            <span class="cmt">// '18/20' ou null</span> localStorage.<span
+              class="fn"
+              >removeItem</span
+            >(<span class="str">'score'</span>);
+          </div>
+          <table class="web-table" style="margin-top: 14px">
+            <thead>
+              <tr>
+                <th>Événement</th>
+                <th>Déclencheur</th>
+                <th>Cas d'usage typique</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>click</code></td>
+                <td>Clic sur un élément</td>
+                <td>Bouton, menu, carte cliquable</td>
+              </tr>
+              <tr>
+                <td><code>input</code></td>
+                <td>Modification d'un champ texte</td>
+                <td>Validation en temps réel, recherche live</td>
+              </tr>
+              <tr>
+                <td><code>submit</code></td>
+                <td>Soumission d'un formulaire</td>
+                <td>Validation avant envoi</td>
+              </tr>
+              <tr>
+                <td><code>keydown</code></td>
+                <td>Touche pressée au clavier</td>
+                <td>Raccourcis clavier, Enter pour valider</td>
+              </tr>
+              <tr>
+                <td><code>mouseover</code></td>
+                <td>Survol d'un élément</td>
+                <td>Tooltip, effet hover JavaScript</td>
+              </tr>
+              <tr>
+                <td><code>DOMContentLoaded</code></td>
+                <td>Page HTML entièrement chargée</td>
+                <td>Initialiser des scripts après le chargement</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ CHECKLIST LIVRABLE ═══ -->
+        <div class="section-box">
+          <h2>✅ Checklist landing page S4</h2>
+          <ul class="checklist">
+            <li>
+              Structure HTML sémantique : <code>&lt;nav&gt;</code>,
+              <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+              <code>&lt;footer&gt;</code>
+            </li>
+            <li>
+              Fichier CSS séparé lié avec
+              <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>
+            </li>
+            <li>
+              Palette cohérente : 2-3 couleurs définies dans des variables CSS
+              ou réutilisées
+            </li>
+            <li>
+              Flexbox utilisé pour au moins une mise en page (nav, cards, hero)
+            </li>
+            <li>
+              Au moins 1 media query <code>@media (max-width: 768px)</code>
+            </li>
+            <li>
+              Au moins 1 interaction JavaScript (bouton, compteur, toggle)
+            </li>
+            <li>
+              Fichier <code>index.html</code> à la racine du repo (GitHub Pages
+              cherche ce fichier)
+            </li>
+            <li>
+              Textes alt sur toutes les images (<code>alt="description"</code>)
+            </li>
+            <li>Au moins 3 commits Git avec messages clairs</li>
+            <li>
+              GitHub Pages activé : Settings → Pages → Deploy from branch main
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer">Fiche HTML/CSS/JS · S4 · PPNI 2026</div>
+      </div>
+    </main>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

@@ -10,7 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-<script>(function(){var t=localStorage.getItem('ppni-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
     <link rel="stylesheet" href="../css/shared.css" />
     <style>
       .md-table {
@@ -34,7 +39,7 @@
         background-color: var(--accent-subtle);
       }
       .md-table code {
-        background: rgba(15,23,42,0.88);
+        background: rgba(15, 23, 42, 0.88);
         color: #7dd3fc;
         padding: 2px 8px;
         border-radius: 4px;
@@ -188,286 +193,422 @@
   <body>
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-brand">
-        <div class="brand-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg></div>
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
         <span class="brand-text">PPNI 2026</span>
       </div>
       <nav class="sidebar-nav">
         <a href="../index.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
           <span>Accueil</span>
         </a>
         <a href="../planning.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
           <span>Planning</span>
         </a>
         <a href="../previsionnel.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
           <span>Pr&#233;visionnel</span>
         </a>
         <a href="../previsionnel_stagiaire.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
           <span>Stagiaires</span>
         </a>
         <a href="index.html" class="nav-item active">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
           <span>Ressources</span>
         </a>
         <a href="../exercices/index.html" class="nav-item">
-          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
           <span>Exercices</span>
         </a>
       </nav>
       <div class="sidebar-footer">
-        <button class="theme-toggle" onclick="toggleTheme()" title="Changer le th&#232;me">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le th&#232;me"
+        >
           <span class="theme-icon">&#127769;</span>
         </button>
         <span class="sidebar-version">v2026</span>
       </div>
     </aside>
     <main class="main-content">
-    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
-    <header class="mobile-topbar">
-      <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-      <span class="mobile-brand">PPNI 2026</span>
-    </header>
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
 
-    <div class="page-wrapper">
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 18px;
-          flex-wrap: wrap;
-          gap: 10px;
-        "
-      >
-        <div class="doc-header" style="flex: 1; margin-bottom: 0">
-          <h1>📝 Référence Markdown</h1>
-          <div class="meta">
-            S1-S2 · GitHub README · Syntaxe + rendu côte à côte · Éditeur live
-            intégré
+      <div class="page-wrapper">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>📝 Référence Markdown</h1>
+            <div class="meta">
+              S1-S2 · GitHub README · Syntaxe + rendu côte à côte · Éditeur live
+              intégré
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap">
+            <a
+              href="index.html"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 9px 16px;
+                background: #e8eef7;
+                color: #1a3a5c;
+                border: 1px solid #c5d3e8;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: 600;
+                text-decoration: none;
+              "
+              >← Ressources</a
+            >
+            <button class="print-btn" onclick="window.print()">
+              🖨️ Imprimer / PDF
+            </button>
           </div>
         </div>
-        <div style="display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap">
-          <a
-            href="index.html"
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 6px;
-              padding: 9px 16px;
-              background: #e8eef7;
-              color: #1a3a5c;
-              border: 1px solid #c5d3e8;
-              border-radius: 8px;
-              font-size: 12px;
-              font-weight: 600;
-              text-decoration: none;
-            "
-            >← Ressources</a
-          >
-          <button class="print-btn" onclick="window.print()">
-            🖨️ Imprimer / PDF
-          </button>
-        </div>
-      </div>
 
-      <!-- INTRO -->
-      <div class="section-box">
-        <div class="falc-intro">
-          <strong>💡 Markdown, c'est quoi ?</strong>
-          Markdown est un langage de mise en forme ultra-simple. Tu écris du
-          texte avec des symboles (<code>#</code>, <code>**</code>,
-          <code>-</code>) et GitHub le convertit automatiquement en HTML mis en
-          forme. C'est le format des fichiers <code>README.md</code>, de la
-          documentation technique, et de nombreux outils de prise de notes
-          (Notion, Obsidian...).
+        <!-- INTRO -->
+        <div class="section-box">
+          <div class="falc-intro">
+            <strong>💡 Markdown, c'est quoi ?</strong>
+            Markdown est un langage de mise en forme ultra-simple. Tu écris du
+            texte avec des symboles (<code>#</code>, <code>**</code>,
+            <code>-</code>) et GitHub le convertit automatiquement en HTML mis
+            en forme. C'est le format des fichiers <code>README.md</code>, de la
+            documentation technique, et de nombreux outils de prise de notes
+            (Notion, Obsidian...).
+          </div>
         </div>
-      </div>
 
-      <!-- TABLE DE RÉFÉRENCE -->
-      <div class="section-box">
-        <h2>📖 Référence complète — Syntaxe → Rendu</h2>
-        <table class="md-table">
-          <thead>
-            <tr>
-              <th style="width: 40%">Syntaxe Markdown</th>
-              <th>Rendu obtenu</th>
-              <th style="width: 25%">Usage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code># Titre principal</code></td>
-              <td class="rendu"><h1>Titre principal</h1></td>
-              <td>1 seul par document, en haut</td>
-            </tr>
-            <tr>
-              <td><code>## Sous-titre</code></td>
-              <td class="rendu"><h2>Sous-titre</h2></td>
-              <td>Sections principales</td>
-            </tr>
-            <tr>
-              <td><code>### Sous-sous-titre</code></td>
-              <td class="rendu"><h3>Sous-sous-titre</h3></td>
-              <td>Sous-sections</td>
-            </tr>
-            <tr>
-              <td><code>**texte en gras**</code></td>
-              <td class="rendu"><strong>texte en gras</strong></td>
-              <td>Mettre en valeur un mot clé</td>
-            </tr>
-            <tr>
-              <td><code>*texte en italique*</code></td>
-              <td class="rendu"><em>texte en italique</em></td>
-              <td>Titre de livre, terme technique</td>
-            </tr>
-            <tr>
-              <td><code>~~texte barré~~</code></td>
-              <td class="rendu"><s>texte barré</s></td>
-              <td>Correction, chose annulée</td>
-            </tr>
-            <tr>
-              <td><code>`code inline`</code></td>
-              <td class="rendu"><code>code inline</code></td>
-              <td>Commande, nom de fichier, variable</td>
-            </tr>
-            <tr>
-              <td>
-                <code>- item 1<br />- item 2<br />- item 3</code>
-              </td>
-              <td class="rendu">
-                <ul>
-                  <li>item 1</li>
-                  <li>item 2</li>
-                  <li>item 3</li>
-                </ul>
-              </td>
-              <td>Liste non ordonnée (points)</td>
-            </tr>
-            <tr>
-              <td>
-                <code>1. premier<br />2. deuxième<br />3. troisième</code>
-              </td>
-              <td class="rendu">
-                <ol>
-                  <li>premier</li>
-                  <li>deuxième</li>
-                  <li>troisième</li>
-                </ol>
-              </td>
-              <td>Liste numérotée (étapes)</td>
-            </tr>
-            <tr>
-              <td><code>[texte du lien](https://url.com)</code></td>
-              <td class="rendu"><a href="#">texte du lien</a></td>
-              <td>Lien cliquable</td>
-            </tr>
-            <tr>
-              <td><code>![alt](https://url-image.png)</code></td>
-              <td class="rendu">🖼️ <em>(image affichée)</em></td>
-              <td>Insérer une image</td>
-            </tr>
-            <tr>
-              <td><code>&gt; Citation ou remarque</code></td>
-              <td class="rendu">
-                <blockquote
-                  style="
-                    border-left: 3px solid #2c6fad;
-                    padding: 4px 10px;
-                    margin: 0;
-                    background: #f5f8fc;
-                    color: #444;
-                  "
-                >
-                  Citation ou remarque
-                </blockquote>
-              </td>
-              <td>Mettre une note en valeur</td>
-            </tr>
-            <tr>
-              <td><code>---</code></td>
-              <td class="rendu">
-                <hr style="margin: 4px 0; border-color: #e0e0e0" />
-              </td>
-              <td>Ligne de séparation</td>
-            </tr>
-            <tr>
-              <td>
-                <code>| Col1 | Col2 |<br />|------|------|<br />| A | B |</code>
-              </td>
-              <td class="rendu">
-                <table style="border-collapse: collapse; font-size: 12px">
-                  <tr>
-                    <th
-                      style="background: #1a3a5c; color: #fff; padding: 3px 8px"
-                    >
-                      Col1
-                    </th>
-                    <th
-                      style="background: #1a3a5c; color: #fff; padding: 3px 8px"
-                    >
-                      Col2
-                    </th>
-                  </tr>
-                  <tr>
-                    <td style="border: 1px solid #ddd; padding: 3px 8px">A</td>
-                    <td style="border: 1px solid #ddd; padding: 3px 8px">B</td>
-                  </tr>
-                </table>
-              </td>
-              <td>Tableau structuré</td>
-            </tr>
-            <tr>
-              <td>
-                <code>```<br />code bloc<br />```</code>
-              </td>
-              <td class="rendu">
-                <pre
-                  style="
-                    background: #1e293b;
-                    color: #7dd3fc;
-                    padding: 6px 10px;
-                    border-radius: 4px;
-                    margin: 0;
-                    font-size: 11px;
-                  "
-                >
+        <!-- TABLE DE RÉFÉRENCE -->
+        <div class="section-box">
+          <h2>📖 Référence complète — Syntaxe → Rendu</h2>
+          <table class="md-table">
+            <thead>
+              <tr>
+                <th style="width: 40%">Syntaxe Markdown</th>
+                <th>Rendu obtenu</th>
+                <th style="width: 25%">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code># Titre principal</code></td>
+                <td class="rendu"><h1>Titre principal</h1></td>
+                <td>1 seul par document, en haut</td>
+              </tr>
+              <tr>
+                <td><code>## Sous-titre</code></td>
+                <td class="rendu"><h2>Sous-titre</h2></td>
+                <td>Sections principales</td>
+              </tr>
+              <tr>
+                <td><code>### Sous-sous-titre</code></td>
+                <td class="rendu"><h3>Sous-sous-titre</h3></td>
+                <td>Sous-sections</td>
+              </tr>
+              <tr>
+                <td><code>**texte en gras**</code></td>
+                <td class="rendu"><strong>texte en gras</strong></td>
+                <td>Mettre en valeur un mot clé</td>
+              </tr>
+              <tr>
+                <td><code>*texte en italique*</code></td>
+                <td class="rendu"><em>texte en italique</em></td>
+                <td>Titre de livre, terme technique</td>
+              </tr>
+              <tr>
+                <td><code>~~texte barré~~</code></td>
+                <td class="rendu"><s>texte barré</s></td>
+                <td>Correction, chose annulée</td>
+              </tr>
+              <tr>
+                <td><code>`code inline`</code></td>
+                <td class="rendu"><code>code inline</code></td>
+                <td>Commande, nom de fichier, variable</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>- item 1<br />- item 2<br />- item 3</code>
+                </td>
+                <td class="rendu">
+                  <ul>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                  </ul>
+                </td>
+                <td>Liste non ordonnée (points)</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>1. premier<br />2. deuxième<br />3. troisième</code>
+                </td>
+                <td class="rendu">
+                  <ol>
+                    <li>premier</li>
+                    <li>deuxième</li>
+                    <li>troisième</li>
+                  </ol>
+                </td>
+                <td>Liste numérotée (étapes)</td>
+              </tr>
+              <tr>
+                <td><code>[texte du lien](https://url.com)</code></td>
+                <td class="rendu"><a href="#">texte du lien</a></td>
+                <td>Lien cliquable</td>
+              </tr>
+              <tr>
+                <td><code>![alt](https://url-image.png)</code></td>
+                <td class="rendu">🖼️ <em>(image affichée)</em></td>
+                <td>Insérer une image</td>
+              </tr>
+              <tr>
+                <td><code>&gt; Citation ou remarque</code></td>
+                <td class="rendu">
+                  <blockquote
+                    style="
+                      border-left: 3px solid #2c6fad;
+                      padding: 4px 10px;
+                      margin: 0;
+                      background: #f5f8fc;
+                      color: #444;
+                    "
+                  >
+                    Citation ou remarque
+                  </blockquote>
+                </td>
+                <td>Mettre une note en valeur</td>
+              </tr>
+              <tr>
+                <td><code>---</code></td>
+                <td class="rendu">
+                  <hr style="margin: 4px 0; border-color: #e0e0e0" />
+                </td>
+                <td>Ligne de séparation</td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >| Col1 | Col2 |<br />|------|------|<br />| A | B |</code
+                  >
+                </td>
+                <td class="rendu">
+                  <table style="border-collapse: collapse; font-size: 12px">
+                    <tr>
+                      <th
+                        style="
+                          background: #1a3a5c;
+                          color: #fff;
+                          padding: 3px 8px;
+                        "
+                      >
+                        Col1
+                      </th>
+                      <th
+                        style="
+                          background: #1a3a5c;
+                          color: #fff;
+                          padding: 3px 8px;
+                        "
+                      >
+                        Col2
+                      </th>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #ddd; padding: 3px 8px">
+                        A
+                      </td>
+                      <td style="border: 1px solid #ddd; padding: 3px 8px">
+                        B
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>Tableau structuré</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>```<br />code bloc<br />```</code>
+                </td>
+                <td class="rendu">
+                  <pre
+                    style="
+                      background: #1e293b;
+                      color: #7dd3fc;
+                      padding: 6px 10px;
+                      border-radius: 4px;
+                      margin: 0;
+                      font-size: 11px;
+                    "
+                  >
 code bloc</pre
-                >
-              </td>
-              <td>Bloc de code multi-lignes</td>
-            </tr>
-            <tr>
-              <td>
-                <code>- [x] tâche faite<br />- [ ] à faire</code>
-              </td>
-              <td class="rendu">
-                <ul style="list-style: none; padding: 0; margin: 0">
-                  <li>✅ tâche faite</li>
-                  <li>☐ à faire</li>
-                </ul>
-              </td>
-              <td>Checklist interactive (GitHub)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                  >
+                </td>
+                <td>Bloc de code multi-lignes</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>- [x] tâche faite<br />- [ ] à faire</code>
+                </td>
+                <td class="rendu">
+                  <ul style="list-style: none; padding: 0; margin: 0">
+                    <li>✅ tâche faite</li>
+                    <li>☐ à faire</li>
+                  </ul>
+                </td>
+                <td>Checklist interactive (GitHub)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <!-- ÉDITEUR LIVE -->
-      <div class="section-box">
-        <h2>⚡ Éditeur Markdown live — Essaie ici !</h2>
-        <p style="font-size: 12px; color: #555; margin-bottom: 12px">
-          Écris du Markdown à gauche → le rendu s'affiche automatiquement à
-          droite.
-          <strong>Rien n'est envoyé nulle part</strong> — tout reste dans ton
-          navigateur.
-        </p>
-        <div class="live-editor">
-          <div class="editor-pane">
-            <div class="editor-pane-header">✏️ Markdown (éditable)</div>
-            <textarea id="md-input" spellcheck="false">
+        <!-- ÉDITEUR LIVE -->
+        <div class="section-box">
+          <h2>⚡ Éditeur Markdown live — Essaie ici !</h2>
+          <p style="font-size: 12px; color: #555; margin-bottom: 12px">
+            Écris du Markdown à gauche → le rendu s'affiche automatiquement à
+            droite.
+            <strong>Rien n'est envoyé nulle part</strong> — tout reste dans ton
+            navigateur.
+          </p>
+          <div class="live-editor">
+            <div class="editor-pane">
+              <div class="editor-pane-header">✏️ Markdown (éditable)</div>
+              <textarea id="md-input" spellcheck="false">
 # Mon README PPNI
 
 ## Qui suis-je ?
@@ -492,36 +633,37 @@ Je suis en formation **PPNI 2026** à Auxilia.
 - [x] Compte GitHub créé
 - [x] README rédigé
 - [ ] 3 commits effectués
-            </textarea>
-          </div>
-          <div class="editor-pane">
-            <div class="editor-pane-header" style="background: #1a3a5c">
-              👁️ Rendu (aperçu)
+            </textarea
+              >
             </div>
-            <div class="editor-pane-preview" id="md-preview"></div>
+            <div class="editor-pane">
+              <div class="editor-pane-header" style="background: #1a3a5c">
+                👁️ Rendu (aperçu)
+              </div>
+              <div class="editor-pane-preview" id="md-preview"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- STRUCTURE TYPE README -->
-      <div class="section-box">
-        <h2>📄 Structure type d'un bon README</h2>
-        <div class="module-grid" style="grid-template-columns: 1fr">
-          <div class="module-card pratique">
-            <span class="module-tag pratique">Modèle à copier-coller</span>
-            <h4>README.md pour le livrable S1-S2</h4>
-            <pre
-              style="
-                background: #0f172a;
-                color: #e2e8f0;
-                padding: 14px;
-                border-radius: 6px;
-                font-size: 12px;
-                overflow-x: auto;
-                line-height: 1.7;
-                margin-top: 10px;
-              "
-            >
+        <!-- STRUCTURE TYPE README -->
+        <div class="section-box">
+          <h2>📄 Structure type d'un bon README</h2>
+          <div class="module-grid" style="grid-template-columns: 1fr">
+            <div class="module-card pratique">
+              <span class="module-tag pratique">Modèle à copier-coller</span>
+              <h4>README.md pour le livrable S1-S2</h4>
+              <pre
+                style="
+                  background: #0f172a;
+                  color: #e2e8f0;
+                  padding: 14px;
+                  border-radius: 6px;
+                  font-size: 12px;
+                  overflow-x: auto;
+                  line-height: 1.7;
+                  margin-top: 10px;
+                "
+              >
 # [Ton prénom] — PPNI 2026
 
 > Formation numérique & informatique · Auxilia · 11 mai → 31 octobre 2026
@@ -546,81 +688,83 @@ Courte présentation : ton parcours, tes motivations, ce que tu cherches à appr
 ## 📫 Contact
 - GitHub : [@tonpseudo](https://github.com/tonpseudo)
 - Formation : PPNI 2026 · Auxilia</pre
-            >
+              >
+            </div>
           </div>
+        </div>
+
+        <div class="footer">
+          Référence Markdown · S1-S2 GitHub · PPNI 2026 &nbsp;|&nbsp;
+          <a href="index.html" style="color: inherit"
+            >← Retour aux ressources</a
+          >
         </div>
       </div>
 
-      <div class="footer">
-        Référence Markdown · S1-S2 GitHub · PPNI 2026 &nbsp;|&nbsp;
-        <a href="index.html" style="color: inherit">← Retour aux ressources</a>
-      </div>
-    </div>
+      <!-- Convertisseur Markdown minimaliste (pas de dépendance externe) -->
+      <script>
+        const input = document.getElementById("md-input");
+        const preview = document.getElementById("md-preview");
 
-    <!-- Convertisseur Markdown minimaliste (pas de dépendance externe) -->
-    <script>
-      const input = document.getElementById("md-input");
-      const preview = document.getElementById("md-preview");
+        function mdToHtml(md) {
+          return (
+            md
+              // Blocs de code (```...```)
+              .replace(/```([\s\S]*?)```/g, "<pre>$1</pre>")
+              // Code inline
+              .replace(/`([^`]+)`/g, "<code>$1</code>")
+              // Titres
+              .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+              .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+              .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+              // Gras
+              .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+              // Italique
+              .replace(/\*(.+?)\*/g, "<em>$1</em>")
+              // Barré
+              .replace(/~~(.+?)~~/g, "<s>$1</s>")
+              // Citation
+              .replace(/^&gt; (.+)$/gm, "<blockquote>$1</blockquote>")
+              .replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>")
+              // Checklist
+              .replace(/^- \[x\] (.+)$/gm, "<li>✅ $1</li>")
+              .replace(/^- \[ \] (.+)$/gm, "<li>☐ $1</li>")
+              // Listes à puces
+              .replace(/^- (.+)$/gm, "<li>$1</li>")
+              // Listes numérotées
+              .replace(/^\d+\. (.+)$/gm, "<li>$1</li>")
+              // Liens
+              .replace(
+                /\[([^\]]+)\]\(([^)]+)\)/g,
+                '<a href="$2" target="_blank" rel="noopener">$1</a>',
+              )
+              // Séparateur
+              .replace(/^---$/gm, "<hr />")
+              // Tableaux simples
+              .replace(/^\|(.+)\|$/gm, (m, row) => {
+                if (row.replace(/[\s|-]/g, "") === "") return "";
+                const cells = row.split("|").map((c) => c.trim());
+                return (
+                  "<tr>" + cells.map((c) => `<td>${c}</td>`).join("") + "</tr>"
+                );
+              })
+              // Paragraphes
+              .replace(/\n{2,}/g, "</p><p>")
+              .replace(/^(?!<[hlbpui])/gm, "")
+          );
+        }
 
-      function mdToHtml(md) {
-        return (
-          md
-            // Blocs de code (```...```)
-            .replace(/```([\s\S]*?)```/g, "<pre>$1</pre>")
-            // Code inline
-            .replace(/`([^`]+)`/g, "<code>$1</code>")
-            // Titres
-            .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-            .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-            .replace(/^# (.+)$/gm, "<h1>$1</h1>")
-            // Gras
-            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-            // Italique
-            .replace(/\*(.+?)\*/g, "<em>$1</em>")
-            // Barré
-            .replace(/~~(.+?)~~/g, "<s>$1</s>")
-            // Citation
-            .replace(/^&gt; (.+)$/gm, "<blockquote>$1</blockquote>")
-            .replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>")
-            // Checklist
-            .replace(/^- \[x\] (.+)$/gm, "<li>✅ $1</li>")
-            .replace(/^- \[ \] (.+)$/gm, "<li>☐ $1</li>")
-            // Listes à puces
-            .replace(/^- (.+)$/gm, "<li>$1</li>")
-            // Listes numérotées
-            .replace(/^\d+\. (.+)$/gm, "<li>$1</li>")
-            // Liens
-            .replace(
-              /\[([^\]]+)\]\(([^)]+)\)/g,
-              '<a href="$2" target="_blank" rel="noopener">$1</a>',
-            )
-            // Séparateur
-            .replace(/^---$/gm, "<hr />")
-            // Tableaux simples
-            .replace(/^\|(.+)\|$/gm, (m, row) => {
-              if (row.replace(/[\s|-]/g, "") === "") return "";
-              const cells = row.split("|").map((c) => c.trim());
-              return (
-                "<tr>" + cells.map((c) => `<td>${c}</td>`).join("") + "</tr>"
-              );
-            })
-            // Paragraphes
-            .replace(/\n{2,}/g, "</p><p>")
-            .replace(/^(?!<[hlbpui])/gm, "")
-        );
-      }
+        function render() {
+          const raw = input.value;
+          let html = mdToHtml(raw);
+          // Wrap li en ul si besoin
+          html = html.replace(/(<li>[\s\S]+?<\/li>)+/g, (m) => `<ul>${m}</ul>`);
+          preview.innerHTML = html;
+        }
 
-      function render() {
-        const raw = input.value;
-        let html = mdToHtml(raw);
-        // Wrap li en ul si besoin
-        html = html.replace(/(<li>[\s\S]+?<\/li>)+/g, (m) => `<ul>${m}</ul>`);
-        preview.innerHTML = html;
-      }
-
-      input.addEventListener("input", render);
-      render();
-    </script>
+        input.addEventListener("input", render);
+        render();
+      </script>
     </main>
     <script src="../js/app.js"></script>
   </body>

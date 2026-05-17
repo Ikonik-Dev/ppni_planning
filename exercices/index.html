@@ -540,32 +540,74 @@
           </div>
         </div>
 
-        <!-- À VENIR -->
+        <!-- S3-S4 -->
         <div class="section-box">
-          <h2>⏳ Prochains exercices (S3-S8)</h2>
+          <h2>🌐 S3-S4 — Réseaux & Web Front-End</h2>
           <div class="exo-grid">
-            <div class="exo-card" style="opacity: 0.6">
-              <div class="exo-meta"><span class="exo-tag s1">S3-S4</span></div>
+            <div class="exo-card">
+              <div class="exo-meta">
+                <span class="exo-tag s1">S3</span>
+                <span class="exo-tag interactif">Interactif</span>
+                <span class="score-chip" id="chip-reseaux">Non commencé</span>
+              </div>
               <h3>🌐 Quiz Réseaux</h3>
               <p>
-                IP, DNS, HTTP, ports — comprendre comment Internet fonctionne.
-                Disponible en S3.
+                20 QCM sur IP, DNS, HTTP et les ports — comprendre comment
+                Internet fonctionne. Score immédiat par section.
               </p>
-              <span style="font-size: 12px; color: #888; font-style: italic"
-                >Disponible en S3</span
+              <a
+                href="quiz-reseaux.html"
+                style="
+                  display: inline-block;
+                  padding: 9px 18px;
+                  background: #2980b9;
+                  color: #fff;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  text-align: center;
+                  margin-top: 4px;
+                "
+                >Faire le quiz →</a
               >
             </div>
-            <div class="exo-card" style="opacity: 0.6">
-              <div class="exo-meta"><span class="exo-tag s1">S5-S6</span></div>
+
+            <div class="exo-card">
+              <div class="exo-meta">
+                <span class="exo-tag s1">S4</span>
+                <span class="exo-tag interactif">Éditeur</span>
+                <span class="score-chip" id="chip-editeur">Non commencé</span>
+              </div>
               <h3>🎨 Éditeur HTML/CSS live</h3>
               <p>
-                Éditeur intégré : code à gauche, rendu à droite. Exercices
-                guidés progressifs.
+                Éditeur intégré : code à gauche, rendu en temps réel à droite. 5
+                exercices guidés progressifs.
               </p>
-              <span style="font-size: 12px; color: #888; font-style: italic"
-                >Disponible en S5</span
+              <a
+                href="editeur-html.html"
+                style="
+                  display: inline-block;
+                  padding: 9px 18px;
+                  background: #e67e22;
+                  color: #fff;
+                  border-radius: 8px;
+                  font-size: 13px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  text-align: center;
+                  margin-top: 4px;
+                "
+                >Ouvrir l'éditeur →</a
               >
             </div>
+          </div>
+        </div>
+
+        <!-- À VENIR -->
+        <div class="section-box">
+          <h2>⏳ Prochains exercices (S7-S8)</h2>
+          <div class="exo-grid">
             <div class="exo-card" style="opacity: 0.6">
               <div class="exo-meta"><span class="exo-tag s1">S7-S8</span></div>
               <h3>⚡ Défi JavaScript</h3>
@@ -607,6 +649,19 @@
         if (pwDone) {
           const chip = document.getElementById("chip-password");
           chip.textContent = "Exercice fait ✓";
+          chip.className = "score-chip done";
+        }
+
+        const reseauxScore = localStorage.getItem("ppni_quiz_reseaux_score");
+        if (reseauxScore) {
+          const chip = document.getElementById("chip-reseaux");
+          chip.textContent = "Score : " + reseauxScore;
+          chip.className = "score-chip done";
+        }
+        const editeurDone = localStorage.getItem("ppni_editeur_html_count");
+        if (editeurDone) {
+          const chip = document.getElementById("chip-editeur");
+          chip.textContent = "Exercices : " + editeurDone;
           chip.className = "score-chip done";
         }
       </script>

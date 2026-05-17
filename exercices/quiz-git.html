@@ -78,10 +78,30 @@
         transform: rotateY(180deg);
         border: 2px solid rgba(52, 211, 153, 0.45);
       }
-      .flashcard-back h3  { font-size: 15px; color: var(--text);       margin: 0 0 10px; }
-      .flashcard-back p   { font-size: 13px; color: var(--text);       margin: 0 0 8px; line-height: 1.5; }
-      .flashcard-back code { background: rgba(15,23,42,0.88); color: #7dd3fc; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-      .flashcard-back .example { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 6px; }
+      .flashcard-back h3 {
+        font-size: 15px;
+        color: var(--text);
+        margin: 0 0 10px;
+      }
+      .flashcard-back p {
+        font-size: 13px;
+        color: var(--text);
+        margin: 0 0 8px;
+        line-height: 1.5;
+      }
+      .flashcard-back code {
+        background: rgba(15, 23, 42, 0.88);
+        color: #7dd3fc;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+      .flashcard-back .example {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-style: italic;
+        margin-top: 6px;
+      }
 
       .card-controls {
         display: flex;
@@ -100,9 +120,20 @@
         cursor: pointer;
         transition: opacity 0.15s;
       }
-      .btn-prev  { background: var(--surface-2); color: var(--text); }
-      .btn-next  { background: var(--accent);    color: white; box-shadow: 0 0 12px var(--accent-glow); }
-      .btn-flip  { background: var(--accent);    color: white; box-shadow: 0 0 12px var(--accent-glow); }
+      .btn-prev {
+        background: var(--surface-2);
+        color: var(--text);
+      }
+      .btn-next {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
+      .btn-flip {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
       .btn-nav:disabled {
         opacity: 0.4;
         cursor: not-allowed;
@@ -118,8 +149,26 @@
       .self-eval.visible {
         display: flex;
       }
-      .btn-knew  { background: var(--green);  color: #0f172a; padding: 8px 18px; border: none; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
-      .btn-didnt { background: #ef4444;       color: #fff;    padding: 8px 18px; border: none; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
+      .btn-knew {
+        background: var(--green);
+        color: #0f172a;
+        padding: 8px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .btn-didnt {
+        background: #ef4444;
+        color: #fff;
+        padding: 8px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
 
       .progress-cards {
         display: flex;
@@ -128,11 +177,25 @@
         justify-content: center;
         margin-bottom: 16px;
       }
-      .progress-dot         { width: 10px; height: 10px; border-radius: 50%; background: var(--border);  transition: background 0.3s; }
-      .progress-dot.seen    { background: var(--accent); }
-      .progress-dot.knew    { background: var(--green);  }
-      .progress-dot.didnt   { background: #ef4444; }
-      .progress-dot.current { box-shadow: 0 0 0 2px var(--accent); }
+      .progress-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border);
+        transition: background 0.3s;
+      }
+      .progress-dot.seen {
+        background: var(--accent);
+      }
+      .progress-dot.knew {
+        background: var(--green);
+      }
+      .progress-dot.didnt {
+        background: #ef4444;
+      }
+      .progress-dot.current {
+        box-shadow: 0 0 0 2px var(--accent);
+      }
 
       .stat-row {
         display: flex;
@@ -147,10 +210,20 @@
         align-items: center;
         gap: 5px;
       }
-      .flashcard-back.result-knew  { background: var(--green-subtle); border-color: rgba(52,211,153,0.50); color: var(--green); }
-      .flashcard-back.result-didnt { background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.45); color: #f87171; }
+      .flashcard-back.result-knew {
+        background: var(--green-subtle);
+        border-color: rgba(52, 211, 153, 0.5);
+        color: var(--green);
+      }
+      .flashcard-back.result-didnt {
+        background: rgba(239, 68, 68, 0.12);
+        border-color: rgba(239, 68, 68, 0.45);
+        color: #f87171;
+      }
       .flashcard-back.result-knew h3,
-      .flashcard-back.result-didnt h3 { color: inherit; }
+      .flashcard-back.result-didnt h3 {
+        color: inherit;
+      }
       .btn-eval-active {
         outline: 3px solid #fff;
         outline-offset: 2px;

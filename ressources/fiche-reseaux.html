@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fiche Réseaux — IP, DNS, HTTP, Ports | PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      .net-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .net-table th {
+        background: var(--accent);
+        color: white;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 12px;
+      }
+      .net-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .net-table tr:last-child td {
+        border-bottom: none;
+      }
+      .net-table tr:hover td {
+        background-color: var(--accent-subtle);
+      }
+      .net-table code {
+        background: rgba(15, 23, 42, 0.88);
+        color: #7dd3fc;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: "Courier New", monospace;
+        white-space: nowrap;
+      }
+      .net-table .cat {
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+      .cat-ip {
+        background: #2980b9;
+      }
+      .cat-dns {
+        background: #8e44ad;
+      }
+      .cat-http {
+        background: #27ae60;
+      }
+      .cat-port {
+        background: #e67e22;
+      }
+      .cat-sec {
+        background: #e74c3c;
+      }
+
+      .cmd-block {
+        background: #0f172a;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 8px 0;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        overflow-x: auto;
+      }
+      .cmd-block .cmd {
+        color: #7dd3fc;
+        display: block;
+      }
+      .cmd-block .cmt {
+        color: #64748b;
+        font-style: italic;
+      }
+      .cmd-block .out {
+        color: #94a3b8;
+        display: block;
+        margin-left: 16px;
+      }
+
+      .schema-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+        margin: 16px 0;
+        font-size: 12px;
+      }
+      .schema-node {
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 10px 14px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--text);
+        min-width: 80px;
+      }
+      .schema-node .sub {
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--text-faint);
+        margin-top: 2px;
+      }
+      .schema-arrow {
+        padding: 0 6px;
+        color: var(--text-faint);
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .schema-node.highlight {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+      .schema-node.highlight .sub {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .highlight-box {
+        background: var(--accent-subtle);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin: 12px 0;
+        line-height: 1.6;
+      }
+      .highlight-box strong {
+        color: var(--text);
+      }
+
+      .layers-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 12px 0;
+      }
+      .layer-card {
+        border-radius: 8px;
+        padding: 12px;
+        text-align: center;
+        font-size: 12px;
+      }
+      .layer-card .layer-num {
+        font-size: 18px;
+        font-weight: 800;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .layer-card .layer-name {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .layer-card .layer-ex {
+        color: var(--text-faint);
+        font-size: 11px;
+      }
+      .layer-4 {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .layer-4 .layer-num {
+        color: #ef4444;
+      }
+      .layer-3 {
+        background: rgba(234, 179, 8, 0.1);
+        border: 1px solid rgba(234, 179, 8, 0.3);
+      }
+      .layer-3 .layer-num {
+        color: #eab308;
+      }
+      .layer-2 {
+        background: rgba(52, 211, 153, 0.1);
+        border: 1px solid rgba(52, 211, 153, 0.3);
+      }
+      .layer-2 .layer-num {
+        color: var(--green);
+      }
+      .layer-1 {
+        background: rgba(167, 139, 250, 0.1);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+      }
+      .layer-1 .layer-num {
+        color: #a78bfa;
+      }
+
+      @media print {
+        .sidebar,
+        .mobile-topbar,
+        .print-btn {
+          display: none !important;
+        }
+        .main-content {
+          padding-left: 0 !important;
+        }
+        .section-box {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="../exercices/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>🌐 Fiche Réseaux</h1>
+            <div class="meta">
+              IP · DNS · HTTP/HTTPS · Ports · Sécurité réseau · Commandes
+              terminal &nbsp;|&nbsp; <strong>S3 — Phase 2</strong>
+            </div>
+          </div>
+          <button class="print-btn" onclick="window.print()">
+            🖨️ Imprimer / PDF
+          </button>
+        </div>
+
+        <!-- ═══ MODÈLE RÉSEAU ═══ -->
+        <div class="section-box">
+          <h2>🏗️ Le modèle réseau simplifié (4 couches)</h2>
+          <p
+            style="
+              font-size: 13px;
+              color: var(--text-secondary);
+              margin-bottom: 14px;
+            "
+          >
+            Internet repose sur un modèle en couches. Chaque couche a un rôle
+            précis et communique avec les couches adjacentes. Voici une version
+            simplifiée (modèle TCP/IP) :
+          </p>
+          <div class="layers-grid">
+            <div class="layer-card layer-4">
+              <span class="layer-num">4</span>
+              <span class="layer-name">Application</span>
+              <span class="layer-ex">HTTP, HTTPS, DNS, SMTP, SSH, FTP</span>
+            </div>
+            <div class="layer-card layer-3">
+              <span class="layer-num">3</span>
+              <span class="layer-name">Transport</span>
+              <span class="layer-ex">TCP (fiable), UDP (rapide)</span>
+            </div>
+            <div class="layer-card layer-2">
+              <span class="layer-num">2</span>
+              <span class="layer-name">Internet</span>
+              <span class="layer-ex">IP (adressage), ICMP (ping)</span>
+            </div>
+            <div class="layer-card layer-1">
+              <span class="layer-num">1</span>
+              <span class="layer-name">Accès réseau</span>
+              <span class="layer-ex">Ethernet, Wi-Fi, câble physique</span>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <strong>À retenir :</strong> Quand tu envoies un e-mail, il passe
+            par toutes les couches. L'application (couche 4) construit le
+            message, TCP (couche 3) le découpe en paquets, IP (couche 2) adresse
+            chaque paquet, et le câble ou Wi-Fi (couche 1) le transporte
+            physiquement.
+          </div>
+        </div>
+
+        <!-- ═══ ADRESSAGE IP ═══ -->
+        <div class="section-box">
+          <h2>🔢 Adressage IP</h2>
+          <table class="net-table">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Explication</th>
+                <th>Exemple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-ip">IPv4</span></td>
+                <td>
+                  Adresse sur 32 bits (4 octets). ~4,3 milliards d'adresses
+                  possible. Format : 4 nombres séparés par des points, chacun
+                  entre 0 et 255.
+                </td>
+                <td><code>192.168.1.42</code></td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-ip">IPv6</span></td>
+                <td>
+                  Adresse sur 128 bits. Nécéssaire car IPv4 est épuisé. Format :
+                  8 groupes de 4 chiffres hexadécimaux.
+                </td>
+                <td><code>2001:0db8::1</code></td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-ip">IP privée</span></td>
+                <td>
+                  Utilisée uniquement sur un réseau local (LAN). Non routable
+                  sur Internet. Plages réservées : 10.x.x.x, 172.16-31.x.x,
+                  192.168.x.x
+                </td>
+                <td><code>192.168.1.1</code> à <code>192.168.1.254</code></td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-ip">IP publique</span></td>
+                <td>
+                  Adresse visible sur Internet. Attribuée par ton FAI (Orange,
+                  SFR…). Partagée entre tous les appareils de ton réseau via le
+                  NAT.
+                </td>
+                <td><code>82.123.45.67</code></td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-ip">Masque</span></td>
+                <td>
+                  Définit quelle partie de l'IP identifie le réseau (vs l'hôte).
+                  Ex : /24 = 255.255.255.0 → 256 adresses dans le réseau.
+                </td>
+                <td><code>255.255.255.0</code> (/24)</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-ip">Passerelle</span></td>
+                <td>
+                  L'adresse IP du routeur. C'est la "sortie" du réseau local
+                  vers Internet. Souvent la première IP du réseau.
+                </td>
+                <td><code>192.168.1.1</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box" style="margin-top: 12px">
+            <strong>TCP vs UDP :</strong>
+            <strong>TCP</strong> (Transmission Control Protocol) = livraison
+            garantie, avec accusé de réception. Utilisé pour le web, les
+            e-mails, SSH. Plus lent mais fiable. <strong>UDP</strong> (User
+            Datagram Protocol) = rapide mais sans garantie. Utilisé pour le
+            streaming vidéo, les jeux en ligne, le DNS.
+          </div>
+        </div>
+
+        <!-- ═══ DNS ═══ -->
+        <div class="section-box">
+          <h2>🔍 DNS — Domain Name System</h2>
+          <div class="highlight-box">
+            <strong>Le DNS, c'est l'annuaire d'Internet.</strong>
+            Quand tu tapes <code>github.com</code>, ton ordinateur ne sait pas
+            quelle adresse IP contacter. Il demande à un serveur DNS qui lui
+            répond : "github.com → 140.82.121.4".
+          </div>
+
+          <h3 style="font-size: 14px; margin: 16px 0 10px">
+            Les 4 étapes de la résolution DNS
+          </h3>
+          <div class="schema-wrapper">
+            <div class="schema-node highlight">
+              Ton ordi
+              <span class="sub">Cache DNS vide ?</span>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-node">
+              Résolveur FAI
+              <span class="sub">Serveur DNS local</span>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-node">
+              DNS Racine
+              <span class="sub">13 serveurs mondiaux</span>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-node">
+              DNS TLD
+              <span class="sub">.com, .fr, .org…</span>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-node highlight">
+              DNS Autorité
+              <span class="sub">IP finale</span>
+            </div>
+          </div>
+
+          <table class="net-table" style="margin-top: 14px">
+            <thead>
+              <tr>
+                <th>Serveur DNS public</th>
+                <th>IP</th>
+                <th>Opérateur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Google DNS</td>
+                <td><code>8.8.8.8</code> / <code>8.8.4.4</code></td>
+                <td>Google</td>
+              </tr>
+              <tr>
+                <td>Cloudflare DNS</td>
+                <td><code>1.1.1.1</code> / <code>1.0.0.1</code></td>
+                <td>Cloudflare (le plus rapide)</td>
+              </tr>
+              <tr>
+                <td>OpenDNS</td>
+                <td><code>208.67.222.222</code></td>
+                <td>Cisco</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ HTTP/HTTPS ═══ -->
+        <div class="section-box">
+          <h2>🌍 HTTP / HTTPS — Le protocole du Web</h2>
+          <div class="highlight-box">
+            <strong>HTTP</strong> = HyperText Transfer Protocol. La "langue" que
+            ton navigateur et le serveur parlent. <strong>HTTPS</strong> = HTTP
+            + TLS (chiffrement). Toutes les données sont chiffrées de bout en
+            bout. Sur un site HTTPS, même ton FAI ne peut pas lire ce que tu
+            envoies.
+          </div>
+
+          <h3 style="font-size: 14px; margin: 16px 0 10px">
+            Codes de réponse HTTP essentiels
+          </h3>
+          <table class="net-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Signification</th>
+                <th>Exemple d'utilisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>200 OK</code></td>
+                <td>Succès — la ressource est retournée</td>
+                <td>Page web chargée normalement</td>
+              </tr>
+              <tr>
+                <td><code>201 Created</code></td>
+                <td>Ressource créée avec succès (souvent après un POST)</td>
+                <td>Compte créé sur un site</td>
+              </tr>
+              <tr>
+                <td><code>301 Moved Permanently</code></td>
+                <td>Redirection permanente vers une nouvelle URL</td>
+                <td>http:// redirigé vers https://</td>
+              </tr>
+              <tr>
+                <td><code>304 Not Modified</code></td>
+                <td>Ressource en cache, pas besoin de retélécharger</td>
+                <td>Image déjà en cache navigateur</td>
+              </tr>
+              <tr>
+                <td><code>400 Bad Request</code></td>
+                <td>Requête malformée — le serveur ne comprend pas</td>
+                <td>Paramètre manquant dans un formulaire</td>
+              </tr>
+              <tr>
+                <td><code>401 Unauthorized</code></td>
+                <td>Authentification requise — non identifié</td>
+                <td>Accès à une API sans token</td>
+              </tr>
+              <tr>
+                <td><code>403 Forbidden</code></td>
+                <td>Identifié mais pas les droits nécessaires</td>
+                <td>Accéder à un fichier protégé</td>
+              </tr>
+              <tr>
+                <td><code>404 Not Found</code></td>
+                <td>Ressource introuvable à cette URL</td>
+                <td>Page supprimée ou URL mal tapée</td>
+              </tr>
+              <tr>
+                <td><code>500 Internal Server Error</code></td>
+                <td>Le serveur a planté à cause d'une erreur interne</td>
+                <td>Bug dans le code côté serveur</td>
+              </tr>
+              <tr>
+                <td><code>503 Service Unavailable</code></td>
+                <td>
+                  Serveur temporairement indisponible (surcharge, maintenance)
+                </td>
+                <td>Site en maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight-box" style="margin-top: 12px">
+            <strong>Méthodes HTTP fréquentes :</strong>
+            <strong>GET</strong> = demander une ressource (ne modifie rien) ·
+            <strong>POST</strong> = envoyer des données (formulaires, login) ·
+            <strong>PUT/PATCH</strong> = modifier une ressource ·
+            <strong>DELETE</strong> = supprimer une ressource
+          </div>
+        </div>
+
+        <!-- ═══ PORTS ═══ -->
+        <div class="section-box">
+          <h2>🚪 Ports courants</h2>
+          <p
+            style="
+              font-size: 13px;
+              color: var(--text-secondary);
+              margin-bottom: 12px;
+            "
+          >
+            Un port est un numéro entre 0 et 65535 qui identifie un service sur
+            un serveur. L'adresse IP identifie la machine, le port identifie
+            l'application.
+          </p>
+          <table class="net-table">
+            <thead>
+              <tr>
+                <th>Port</th>
+                <th>Protocole</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>20/21</code></td>
+                <td><span class="cat cat-port">FTP</span></td>
+                <td>Transfert de fichiers (non chiffré)</td>
+              </tr>
+              <tr>
+                <td><code>22</code></td>
+                <td><span class="cat cat-sec">SSH</span></td>
+                <td>Connexion distante sécurisée au terminal d'un serveur</td>
+              </tr>
+              <tr>
+                <td><code>25 / 587</code></td>
+                <td><span class="cat cat-port">SMTP</span></td>
+                <td>Envoi d'e-mails (25 = serveur à serveur, 587 = client)</td>
+              </tr>
+              <tr>
+                <td><code>53</code></td>
+                <td><span class="cat cat-dns">DNS</span></td>
+                <td>Résolution de noms de domaine (UDP et TCP)</td>
+              </tr>
+              <tr>
+                <td><code>80</code></td>
+                <td><span class="cat cat-http">HTTP</span></td>
+                <td>Web non chiffré — navigateur vers serveur web</td>
+              </tr>
+              <tr>
+                <td><code>110 / 993</code></td>
+                <td><span class="cat cat-port">POP3 / IMAPS</span></td>
+                <td>Réception d'e-mails (993 = IMAP sécurisé)</td>
+              </tr>
+              <tr>
+                <td><code>143 / 993</code></td>
+                <td><span class="cat cat-port">IMAP</span></td>
+                <td>Consultation d'e-mails sur serveur</td>
+              </tr>
+              <tr>
+                <td><code>443</code></td>
+                <td><span class="cat cat-sec">HTTPS</span></td>
+                <td>
+                  Web chiffré (TLS) — le standard actuel pour tous les sites
+                </td>
+              </tr>
+              <tr>
+                <td><code>3389</code></td>
+                <td><span class="cat cat-port">RDP</span></td>
+                <td>Bureau à distance Windows (Remote Desktop Protocol)</td>
+              </tr>
+              <tr>
+                <td><code>8080 / 8443</code></td>
+                <td><span class="cat cat-port">HTTP-alt</span></td>
+                <td>
+                  Ports alternatifs pour serveurs HTTP/HTTPS de développement
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ═══ COMMANDES TERMINAL ═══ -->
+        <div class="section-box">
+          <h2>💻 Commandes réseau essentielles (Windows)</h2>
+
+          <h3
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              margin: 14px 0 6px;
+              color: var(--text);
+            "
+          >
+            📡 ping — Tester la connectivité
+          </h3>
+          <div class="cmd-block">
+            <span class="cmd">ping google.com</span>
+            <span class="cmt"># Envoie 4 paquets ICMP, mesure la latence</span>
+            <span class="out"
+              >Réponse de 142.250.75.78 : octets=32 temps=12 ms TTL=113</span
+            >
+            <span class="cmd" style="margin-top: 8px">ping 8.8.8.8 -n 10</span>
+            <span class="cmt"># Envoie 10 paquets (au lieu de 4)</span>
+          </div>
+
+          <h3
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              margin: 14px 0 6px;
+              color: var(--text);
+            "
+          >
+            🗺️ tracert — Tracer le chemin des paquets
+          </h3>
+          <div class="cmd-block">
+            <span class="cmd">tracert google.com</span>
+            <span class="cmt"
+              ># Affiche chaque routeur traversé et sa latence</span
+            >
+            <span class="out"> 1 &lt;1 ms 192.168.1.1 [Box Internet]</span>
+            <span class="out"> 2 10 ms 10.x.x.x [FAI]</span>
+            <span class="out"> 3 15 ms 142.250.x.x [Google]</span>
+          </div>
+
+          <h3
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              margin: 14px 0 6px;
+              color: var(--text);
+            "
+          >
+            🔍 nslookup — Résolution DNS manuelle
+          </h3>
+          <div class="cmd-block">
+            <span class="cmd">nslookup github.com</span>
+            <span class="out">Nom : github.com Adresse : 140.82.121.4</span>
+            <span class="cmd" style="margin-top: 8px"
+              >nslookup github.com 1.1.1.1</span
+            >
+            <span class="cmt"
+              ># Utilise le DNS Cloudflare (1.1.1.1) pour la résolution</span
+            >
+          </div>
+
+          <h3
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              margin: 14px 0 6px;
+              color: var(--text);
+            "
+          >
+            ⚙️ ipconfig — Configuration réseau
+          </h3>
+          <div class="cmd-block">
+            <span class="cmd">ipconfig</span>
+            <span class="cmt"># Affiche les IPs de toutes les interfaces</span>
+            <span class="cmd" style="margin-top: 8px">ipconfig /all</span>
+            <span class="cmt"
+              ># Version complète : MAC, DHCP, DNS, passerelle</span
+            >
+            <span class="cmd" style="margin-top: 8px">ipconfig /flushdns</span>
+            <span class="cmt"
+              ># Vide le cache DNS (utile si un site ne se charge plus)</span
+            >
+          </div>
+
+          <h3
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              margin: 14px 0 6px;
+              color: var(--text);
+            "
+          >
+            🔌 netstat — Connexions actives
+          </h3>
+          <div class="cmd-block">
+            <span class="cmd">netstat -an</span>
+            <span class="cmt"
+              ># Affiche toutes les connexions et ports en écoute</span
+            >
+            <span class="cmd" style="margin-top: 8px"
+              >netstat -an | findstr :443</span
+            >
+            <span class="cmt"
+              ># Filtrer : voir les connexions HTTPS actives</span
+            >
+          </div>
+        </div>
+
+        <!-- ═══ SÉCURITÉ ═══ -->
+        <div class="section-box">
+          <h2>🔒 Sécurité réseau — Points clés</h2>
+          <table class="net-table">
+            <thead>
+              <tr>
+                <th>Menace / Concept</th>
+                <th>Explication</th>
+                <th>Protection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cat cat-sec">Man-in-the-Middle</span></td>
+                <td>
+                  Un attaquant s'intercale entre toi et le serveur pour
+                  lire/modifier le trafic. Fréquent sur Wi-Fi public non
+                  sécurisé.
+                </td>
+                <td>Utiliser HTTPS uniquement · Activer un VPN</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">DNS Spoofing</span></td>
+                <td>
+                  Falsifier la réponse DNS pour rediriger vers un faux site (ex:
+                  faux site bancaire).
+                </td>
+                <td>
+                  Utiliser DNS over HTTPS (DoH) · DNS de confiance (1.1.1.1)
+                </td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">Port Scanning</span></td>
+                <td>
+                  Scanner les ports ouverts d'une machine pour trouver des
+                  services vulnérables. Outil courant : nmap.
+                </td>
+                <td>Fermer les ports inutiles · Pare-feu bien configuré</td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-port">Pare-feu</span></td>
+                <td>
+                  Filtre le trafic entrant et sortant selon des règles (port, IP
+                  source, protocole). Peut être logiciel (Windows Defender) ou
+                  matériel (routeur).
+                </td>
+                <td>
+                  Activer le pare-feu Windows · Règles strictes en entreprise
+                </td>
+              </tr>
+              <tr>
+                <td><span class="cat cat-sec">VPN</span></td>
+                <td>
+                  Tunnel chiffré entre ton appareil et un serveur VPN. Masque
+                  ton IP réelle et chiffre tout ton trafic, même sur Wi-Fi
+                  public.
+                </td>
+                <td>Utiliser un VPN de confiance sur réseaux publics</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footer">Fiche Réseaux · S3 · PPNI 2026</div>
+      </div>
+    </main>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

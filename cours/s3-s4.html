@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cours S3-S4 — Réseaux &amp; Web Front-End | PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("ppni-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      h4[style*="#1a3a5c"] {
+        color: var(--text) !important;
+      }
+      a[href][style*="#1a3a5c"] {
+        color: var(--text) !important;
+        border-color: var(--border) !important;
+        background: var(--surface-2) !important;
+      }
+      a[href][style*="#e8eef7"] {
+        color: var(--text) !important;
+        border-color: var(--border) !important;
+        background: var(--surface-2) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          </svg>
+        </div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" /></svg
+          ></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" /></svg
+          ></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+              <line x1="2" y1="20" x2="22" y2="20" /></svg
+          ></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+          ></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="../ressources/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              /></svg
+          ></span>
+          <span>Ressources</span>
+        </a>
+        <a href="../exercices/index.html" class="nav-item">
+          <span class="nav-icon"
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              />
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              /></svg
+          ></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button
+          class="theme-toggle"
+          onclick="toggleTheme()"
+          title="Changer le thème"
+        >
+          <span class="theme-icon">🌙</span>
+        </button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <!-- ═══ HEADER ═══ -->
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div class="doc-header" style="flex: 1; margin-bottom: 0">
+            <h1>🌐 S3-S4 — Réseaux &amp; Web Front-End</h1>
+            <div class="meta">
+              <strong>Phase 2 — Réseaux &amp; Création Web</strong>
+              &nbsp;|&nbsp; 25 mai → 5 juin 2026 — 2 semaines &nbsp;|&nbsp; 21h
+              de formation &nbsp;|&nbsp;
+              <strong>Niveau : Initiation → Débutant</strong>
+              &nbsp;|&nbsp; Méthode : 70% Pratique · 20% Collaboration · 10%
+              Théorie
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              flex-shrink: 0;
+              align-self: flex-start;
+              flex-wrap: wrap;
+            "
+          >
+            <a
+              href="../previsionnel_stagiaire.html"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 9px 16px;
+                background: #e8eef7;
+                color: #1a3a5c;
+                border: 1px solid #c5d3e8;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: 600;
+                text-decoration: none;
+              "
+              >← Retour au prévisionnel</a
+            >
+            <button class="print-btn" onclick="window.print()">
+              🖨️ Imprimer / PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- ═══ RÉSUMÉ OBJECTIFS ═══ -->
+        <div class="axes-summary">
+          <div class="axe-card phase1">
+            <h3>🎯 Objectif S3-S4</h3>
+            <p>
+              À la fin de ces 2 semaines, chaque stagiaire comprend
+              <strong>comment fonctionne Internet</strong> (IP, DNS, HTTP,
+              ports), sait créer une page web HTML/CSS/JS et l'a
+              <strong>publiée en ligne sur GitHub Pages</strong>.
+            </p>
+          </div>
+          <div class="axe-card phase2-axe1">
+            <h3>📦 Livrable attendu (S4)</h3>
+            <p>
+              Une landing page HTML/CSS/JS responsive · Publiée sur GitHub Pages
+              (URL publique) · Au moins 1 media query · Au moins 1 interaction
+              JS · 3 commits minimum avec messages clairs · Lien partagé avec le
+              formateur.
+            </p>
+          </div>
+          <div class="axe-card phase2-axe2">
+            <h3>📐 Méthode 70-20-10</h3>
+            <p>
+              <strong>70%</strong> — Ateliers pratiques, manipulation directe,
+              construction réelle.<br />
+              <strong>20%</strong> — Travail en binôme, revue croisée,
+              discussion collective.<br />
+              <strong>10%</strong> — Notions théoriques clés, schémas, fiches
+              synthèse.
+            </p>
+          </div>
+        </div>
+
+        <!-- ═══ SOMMAIRE ═══ -->
+        <div class="section-box">
+          <h2>📋 Plan des 2 semaines</h2>
+          <div class="cours-sommaire">
+            <h3>Arborescence du cours</h3>
+            <ol>
+              <li>
+                <a href="#s3-lundi"
+                  >S3 — Lundi 25 mai (7h) · Réseaux : IP, DNS, HTTP, ports + TP
+                  terminal</a
+                >
+              </li>
+              <li>
+                <a href="#s3-vendredi"
+                  >S3 — Vendredi 29 mai (3,5h) · Révision réseau + Quiz + Intro
+                  Web</a
+                >
+              </li>
+              <li>
+                <a href="#s4-lundi"
+                  >S4 — Lundi 1 juin (7h) · HTML/CSS/JS : créer sa première page
+                  web</a
+                >
+              </li>
+              <li>
+                <a href="#s4-vendredi"
+                  >S4 — Vendredi 5 juin (3,5h) · Livrable : landing page sur
+                  GitHub Pages</a
+                >
+              </li>
+              <li>
+                <a href="#livrable">Livrable S3-S4 — Critères de validation</a>
+              </li>
+              <li><a href="#ressources">Ressources &amp; supports</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ═══ S3 — LUNDI 25 MAI ═══ -->
+        <!-- ══════════════════════════════════ -->
+        <div class="section-box" id="s3-lundi">
+          <h2>🟢 S3 · Lundi 25 mai — 09h00 → 17h00 (7h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong
+                >🌐 Cette semaine : comprendre Internet de l'intérieur.</strong
+              >
+              Internet n'est pas magique. C'est un réseau de milliards
+              d'appareils qui se parlent en suivant des règles précises. Quand
+              tu tapes une URL, dix choses invisibles se passent en quelques
+              millisecondes. Aujourd'hui, on ouvre le capot.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Retour S1-S2 + Intro réseau — vocabulaire de base</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔌 Séquence 3.1 — Qu'est-ce qu'un réseau ?</h3>
+            <p class="section-meta">
+              Durée : 1h30 — Vocabulaire + schéma + manipulation
+            </p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Vocabulaire réseau essentiel</h4>
+                <ul>
+                  <li>
+                    <strong>Adresse IP</strong> : identifiant unique d'un
+                    appareil (ex: 192.168.1.1)
+                  </li>
+                  <li>
+                    <strong>DNS</strong> : annuaire qui traduit google.com →
+                    142.250.75.78
+                  </li>
+                  <li>
+                    <strong>Protocole</strong> : règles communes pour se
+                    comprendre
+                  </li>
+                  <li>
+                    <strong>Paquet</strong> : fragment de donnée envoyé sur le
+                    réseau
+                  </li>
+                  <li>
+                    <strong>Client / Serveur</strong> : celui qui demande /
+                    celui qui répond
+                  </li>
+                  <li>
+                    <strong>Routeur</strong> : aiguilleur qui choisit le chemin
+                    des paquets
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Schéma du réseau + observer sa propre IP</h4>
+                <ul>
+                  <li>
+                    Dessiner au tableau : ordinateur → box → routeur → Internet
+                    → serveur
+                  </li>
+                  <li>
+                    Terminal : <code>ipconfig</code> (Windows) ou
+                    <code>ifconfig</code> (Mac/Linux) pour voir son IP locale
+                  </li>
+                  <li>
+                    Navigateur : aller sur <em>whatismyip.com</em> pour voir son
+                    IP publique
+                  </li>
+                  <li>Comparer : IP locale ≠ IP publique — pourquoi ?</li>
+                </ul>
+                <span class="duree">⏱ 45 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Discussion : ce qu'on croyait savoir</h4>
+                <ul>
+                  <li>Qui a déjà vu une adresse IP ? Dans quel contexte ?</li>
+                  <li>
+                    Qu'est-ce qui se passe selon vous quand vous tapez une URL ?
+                  </li>
+                  <li>Construction collective du schéma réseau</li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Protocoles HTTP/HTTPS, DNS, TCP/IP — la langue d'Internet</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>📡 Séquence 3.2 — Protocoles fondamentaux</h3>
+            <p class="section-meta">Durée : 2h — 3 protocoles + DevTools</p>
+            <div class="falc-intro">
+              <strong>💡 Idée clé :</strong>
+              Un protocole, c'est une langue commune. HTTP, c'est la langue que
+              ton navigateur et le serveur utilisent pour se parler. DNS, c'est
+              l'annuaire qui traduit les noms en adresses. TLS/HTTPS, c'est
+              l'enveloppe cachetée qui protège ce qu'ils se disent.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>HTTP, DNS, TCP/IP — comment ça s'articule</h4>
+                <ul>
+                  <li>
+                    <strong>TCP/IP</strong> : protocole de transport — découpe
+                    et reconstitue les paquets
+                  </li>
+                  <li>
+                    <strong>DNS</strong> : requête → résolution → IP du serveur
+                  </li>
+                  <li>
+                    <strong>HTTP</strong> : GET (demander) / POST (envoyer) /
+                    codes réponse
+                  </li>
+                  <li>
+                    <strong>HTTPS = HTTP + TLS</strong> : toutes les données
+                    sont chiffrées
+                  </li>
+                  <li>
+                    Codes HTTP importants : 200 (OK), 301 (redirection), 404
+                    (non trouvé), 500 (erreur serveur)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Inspecter le trafic avec DevTools</h4>
+                <ul>
+                  <li>Ouvrir Chrome/Firefox → F12 → onglet "Réseau"</li>
+                  <li>
+                    Aller sur <em>example.com</em> → observer les requêtes
+                  </li>
+                  <li>
+                    Identifier : méthode (GET), statut (200), type (document,
+                    js, css, img)
+                  </li>
+                  <li>
+                    Comparer <em>http://neverssl.com</em> (HTTP) vs
+                    <em>https://github.com</em> (HTTPS)
+                  </li>
+                  <li>
+                    Voir le certificat TLS d'un site (cliquer sur le cadenas)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 70 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Discussion : HTTP vs HTTPS — pourquoi ça compte</h4>
+                <ul>
+                  <li>
+                    Scénario : login sur un site HTTP — que voit un attaquant ?
+                  </li>
+                  <li>
+                    Pourquoi les navigateurs affichent un avertissement sur HTTP
+                    ?
+                  </li>
+                  <li>Vote : qui avait déjà fait attention au cadenas ?</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >Ports, pare-feu, Wi-Fi public — les portes du réseau</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🚪 Séquence 3.3 — Ports et sécurité réseau</h3>
+            <p class="section-meta">
+              Durée : 1h40 — Table des ports + scénario Wi-Fi
+            </p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Ports et pare-feu</h4>
+                <ul>
+                  <li>
+                    <strong>Port 22</strong> — SSH (accès distant sécurisé)
+                  </li>
+                  <li><strong>Port 80</strong> — HTTP</li>
+                  <li><strong>Port 443</strong> — HTTPS</li>
+                  <li><strong>Port 25 / 587</strong> — SMTP (e-mail)</li>
+                  <li>
+                    <strong>Port 3389</strong> — RDP (Bureau à distance Windows)
+                  </li>
+                  <li>
+                    <strong>Pare-feu</strong> : filtre les connexions selon port
+                    + IP + règles
+                  </li>
+                  <li>
+                    <strong>URL complète</strong> :
+                    <code>https://site.com:443/page?q=test</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Table des ports + analyse d'URL</h4>
+                <ul>
+                  <li>
+                    Compléter une fiche : 10 ports à associer à leurs protocoles
+                  </li>
+                  <li>
+                    Décomposer 5 URL en : schéma / hôte / port (implicite) /
+                    chemin / paramètres
+                  </li>
+                  <li>
+                    Trouver le port d'écoute d'un service local :
+                    <code>netstat -an | findstr LISTEN</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 65 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Scénario : Wi-Fi public au café</h4>
+                <ul>
+                  <li>
+                    Mise en situation : tu travailles dans un café, Wi-Fi ouvert
+                  </li>
+                  <li>
+                    Discussion : quels sont les risques ? (sniffing,
+                    man-in-the-middle)
+                  </li>
+                  <li>
+                    Solutions : VPN, sites HTTPS only, ne pas saisir de mots de
+                    passe
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 4 : 15h00 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">15h00 – 17h00</span>
+            <span class="seance-info"
+              >TP réseau — explorer son réseau avec le terminal</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🖥️ Séquence 3.4 — TP terminal réseau</h3>
+            <p class="section-meta">
+              Durée : 2h — 4 commandes réseau essentielles
+            </p>
+            <div class="falc-intro">
+              <strong>🛠️ Objectif :</strong>
+              Utiliser 4 commandes réseau dans le terminal pour observer le
+              réseau en temps réel. Pas de magie — juste des outils que tout
+              technicien numérique doit connaître.
+            </div>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>4 commandes à maîtriser</h4>
+                <ul>
+                  <li>
+                    <code>ping google.com</code> — tester la connectivité +
+                    latence
+                  </li>
+                  <li>
+                    <code>tracert google.com</code> (Windows) /
+                    <code>traceroute</code> (Mac/Linux) — tracer le chemin des
+                    paquets
+                  </li>
+                  <li>
+                    <code>nslookup github.com</code> — résolution DNS manuelle
+                  </li>
+                  <li>
+                    <code>ipconfig /all</code> (Windows) — voir toute la
+                    configuration réseau
+                  </li>
+                  <li>
+                    Observer la différence de latence :
+                    <code>ping 8.8.8.8</code> vs <code>ping 192.168.1.1</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Comparer les résultats en binôme</h4>
+                <ul>
+                  <li>Chaque binôme trace le chemin vers un site différent</li>
+                  <li>Combien de sauts entre votre machine et le serveur ?</li>
+                  <li>Présentation de 2 min : "Notre chemin vers [site]"</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Lire les résultats</h4>
+                <ul>
+                  <li>
+                    TTL (Time To Live) : nombre de sauts restants avant abandon
+                    du paquet
+                  </li>
+                  <li>
+                    ms (millisecondes) : latence — &lt; 20ms = excellente, &gt;
+                    200ms = lent
+                  </li>
+                  <li>* * * = nœud qui ne répond pas au ping (pare-feu)</li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- ═══ S3 — VENDREDI 29 MAI ═══ -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="section-box" id="s3-vendredi">
+          <h2>🔵 S3 · Vendredi 29 mai — 09h00 → 15h00 (3,5h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>📌 L'objectif de ce vendredi :</strong>
+              Valider les acquis réseau avec le quiz interactif, comprendre
+              comment le Web s'appuie sur le réseau, et préparer le terrain pour
+              HTML/CSS. On pose la passerelle entre "comment ça marche" et
+              "comment on construit".
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Quiz réseaux interactif + correction collective</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>✅ Séquence 3.5 — Quiz de révision réseau</h3>
+            <p class="section-meta">Durée : 1h30</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Quiz réseaux interactif</h4>
+                <ul>
+                  <li>
+                    Ouvrir :
+                    <a href="../exercices/quiz-reseaux.html"
+                      >exercices/quiz-reseaux.html</a
+                    >
+                  </li>
+                  <li>
+                    20 QCM répartis en 3 sections : IP, DNS/HTTP, Ports &amp;
+                    Sécurité
+                  </li>
+                  <li>Durée estimée : 15-20 minutes</li>
+                  <li>Résultats immédiats avec correction par section</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Correction et discussion collective</h4>
+                <ul>
+                  <li>Revoir ensemble les questions les plus ratées</li>
+                  <li>Chaque stagiaire explique à voix haute une réponse</li>
+                  <li>Clarification des concepts encore flous</li>
+                </ul>
+                <span class="duree">⏱ 35 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Points de consolidation</h4>
+                <ul>
+                  <li>Les 3 choses à retenir de S3 (IP, DNS, HTTPS)</li>
+                  <li>Ce qu'on utilise tous les jours sans le savoir</li>
+                  <li>
+                    Fiche mémo :
+                    <a href="../ressources/fiche-reseaux.html"
+                      >ressources/fiche-reseaux.html</a
+                    >
+                  </li>
+                </ul>
+                <span class="duree">⏱ 30 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >Comment le Web fonctionne vraiment — HTML = squelette d'une
+              page</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🌍 Séquence 3.6 — Du réseau au Web</h3>
+            <p class="section-meta">Durée : 2h</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Les 3 langages du Web</h4>
+                <ul>
+                  <li>
+                    <strong>HTML</strong> — le squelette (structure et contenu)
+                  </li>
+                  <li>
+                    <strong>CSS</strong> — l'habit (couleurs, mise en page,
+                    animations)
+                  </li>
+                  <li>
+                    <strong>JavaScript</strong> — les muscles (interactions,
+                    dynamisme)
+                  </li>
+                  <li>
+                    Le navigateur = machine qui lit ces 3 fichiers et affiche le
+                    résultat
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>"Afficher la source" — décortiquer une vraie page</h4>
+                <ul>
+                  <li>
+                    Sur n'importe quel site : clic droit → "Afficher la source"
+                    (Ctrl+U)
+                  </li>
+                  <li>
+                    Identifier : <code>&lt;html&gt;</code>,
+                    <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>,
+                    <code>&lt;h1&gt;</code>, <code>&lt;a href&gt;</code>
+                  </li>
+                  <li>
+                    DevTools → onglet "Éléments" : survoler le DOM, voir les
+                    styles CSS associés
+                  </li>
+                  <li>
+                    Modifier une couleur ou un texte en direct dans DevTools
+                    (non permanent)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 70 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>À ton avis, combien de lignes de code ?</h4>
+                <ul>
+                  <li>
+                    Estimer : combien de lignes pour faire la page d'accueil de
+                    Google ?
+                  </li>
+                  <li>
+                    Réponse surprenante : plusieurs milliers (CSS + JS + HTML)
+                  </li>
+                  <li>
+                    Discussion : à quoi sert d'apprendre HTML/CSS si les sites
+                    sont si complexes ?
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >Débriefing S3 + preview S4 + défi optionnel</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🔮 Séquence 3.7 — Clôture S3 et projection</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Exercice de réflexion</h4>
+                <ul>
+                  <li>
+                    Rédiger dans son README GitHub une section "Ce que j'ai
+                    appris sur les réseaux"
+                  </li>
+                  <li>
+                    Committer avec un message clair ("Ajouter section réseaux
+                    S3")
+                  </li>
+                  <li>
+                    Explorer :
+                    <a href="../ressources/fiche-reseaux.html"
+                      >fiche mémo réseaux</a
+                    >
+                  </li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Tour de table de clôture S3</h4>
+                <ul>
+                  <li>
+                    Ce que j'ai appris cette semaine (1 phrase par stagiaire)
+                  </li>
+                  <li>Ce qui m'a le plus surpris</li>
+                  <li>Question pour la semaine prochaine</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Preview S4 : HTML/CSS/JS</h4>
+                <ul>
+                  <li>
+                    Semaine prochaine : créer sa première page web de A à Z
+                  </li>
+                  <li>
+                    Défi optionnel week-end : lire
+                    <a href="../ressources/fiche-html-css.html"
+                      >la fiche HTML/CSS</a
+                    >
+                  </li>
+                  <li>
+                    Objectif vendredi 5 juin : ta page web en ligne sur GitHub
+                    Pages
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- ═══ S4 — LUNDI 1 JUIN ═══ -->
+        <!-- ══════════════════════════════════ -->
+        <div class="section-box" id="s4-lundi">
+          <h2>🟢 S4 · Lundi 1 juin — 09h00 → 17h00 (7h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🏗️ Cette semaine : construire le Web.</strong>
+              Tu sais maintenant comment Internet transporte l'information.
+              Aujourd'hui, tu apprends à créer cette information toi-même : une
+              vraie page web, avec ton style, tes couleurs, ton contenu. À la
+              fin de vendredi, elle sera visible en ligne par n'importe qui.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >HTML — structure sémantique d'une page web</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🏛️ Séquence 4.1 — HTML : le squelette</h3>
+            <p class="section-meta">Durée : 1h30</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Structure HTML minimale</h4>
+                <ul>
+                  <li>
+                    <code>&lt;!DOCTYPE html&gt;</code> — déclaration du type de
+                    fichier
+                  </li>
+                  <li>
+                    <code>&lt;html lang="fr"&gt;</code> — racine du document
+                  </li>
+                  <li>
+                    <code>&lt;head&gt;</code> — métadonnées (title, charset,
+                    CSS)
+                  </li>
+                  <li><code>&lt;body&gt;</code> — contenu visible</li>
+                  <li>
+                    Balises sémantiques : <code>&lt;nav&gt;</code>,
+                    <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+                    <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>
+                  </li>
+                  <li>
+                    Balises de contenu : <code>&lt;h1&gt;-&lt;h6&gt;</code>,
+                    <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>,
+                    <code>&lt;img&gt;</code>, <code>&lt;ul&gt;</code>,
+                    <code>&lt;li&gt;</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Créer sa première page dans VS Code</h4>
+                <ul>
+                  <li>
+                    Créer un fichier <code>index.html</code> dans un nouveau
+                    dossier
+                  </li>
+                  <li>
+                    Taper la structure minimale (ou utiliser Emmet :
+                    <code>!</code> + Tab)
+                  </li>
+                  <li>
+                    Ajouter : un titre H1, un paragraphe, une liste de 3
+                    éléments, un lien
+                  </li>
+                  <li>
+                    Ouvrir dans le navigateur (double-clic sur le fichier)
+                  </li>
+                  <li>Observer le rendu + Inspecter dans DevTools</li>
+                </ul>
+                <span class="duree">⏱ 60 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Décrire une page à l'oral</h4>
+                <ul>
+                  <li>Chaque stagiaire choisit un site web connu</li>
+                  <li>
+                    Il décrit à l'oral la structure HTML probable (sans regarder
+                    le code)
+                  </li>
+                  <li>Un autre stagiaire vérifie avec "Afficher la source"</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >CSS — sélecteurs, box model, couleurs, typographie</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🎨 Séquence 4.2 — CSS : habiller la structure</h3>
+            <p class="section-meta">Durée : 2h — Théorie + éditeur live</p>
+            <div class="falc-intro">
+              <strong>💡 CSS, c'est quoi ?</strong>
+              Une règle CSS dit : "Tous les éléments <code>h1</code>
+              doivent être bleus, en police Inter, taille 32px, avec 20px
+              d'espace en dessous." CSS donne un style à ta structure HTML.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Sélecteurs et box model</h4>
+                <ul>
+                  <li>
+                    <strong>Sélecteur élément</strong> :
+                    <code>h1 { color: red; }</code>
+                  </li>
+                  <li>
+                    <strong>Sélecteur classe</strong> :
+                    <code>.card { padding: 16px; }</code>
+                  </li>
+                  <li>
+                    <strong>Sélecteur ID</strong> :
+                    <code>#nav { background: #fff; }</code>
+                  </li>
+                  <li>
+                    <strong>Box model</strong> : content → padding → border →
+                    margin (de l'intérieur vers l'extérieur)
+                  </li>
+                  <li>
+                    Propriétés essentielles : <code>color</code>,
+                    <code>background</code>, <code>font-size</code>,
+                    <code>font-family</code>, <code>border-radius</code>,
+                    <code>box-shadow</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Exercices dans l'éditeur HTML live</h4>
+                <ul>
+                  <li>
+                    Ouvrir :
+                    <a href="../exercices/editeur-html.html"
+                      >exercices/editeur-html.html</a
+                    >
+                  </li>
+                  <li>Exercice 1 : modifier couleurs, tailles de texte</li>
+                  <li>
+                    Exercice 2 : créer une carte avec box-shadow et
+                    border-radius
+                  </li>
+                  <li>
+                    Exercice 3 : ajouter un lien stylé (sans soulignement, avec
+                    hover)
+                  </li>
+                  <li>
+                    Appliquer ensuite sur son propre
+                    <code>index.html</code> local
+                  </li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Mon style préféré</h4>
+                <ul>
+                  <li>
+                    Chaque binôme choisit une palette de couleurs (2 couleurs
+                    principales)
+                  </li>
+                  <li>
+                    Justifier le choix (accessibilité, contraste, identité)
+                  </li>
+                  <li>Formateur montre un outil : <em>coolors.co</em></li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE DÉJEUNER -->
+          <div
+            style="
+              background-color: var(--surface-2);
+              text-align: center;
+              padding: 10px;
+              font-style: italic;
+              color: var(--text-faint);
+              font-size: 12px;
+            "
+          >
+            🍽️ Pause déjeuner — 12h30 → 13h20
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >Flexbox + Responsive design — s'adapter à tous les écrans</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>📱 Séquence 4.3 — Flexbox et responsive</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Flexbox en 5 minutes</h4>
+                <ul>
+                  <li>
+                    <code>display: flex</code> — active flexbox sur un conteneur
+                  </li>
+                  <li>
+                    <code>flex-direction</code> : row (horizontal) ou column
+                    (vertical)
+                  </li>
+                  <li>
+                    <code>justify-content</code> : alignement sur l'axe
+                    principal
+                  </li>
+                  <li>
+                    <code>align-items</code> : alignement sur l'axe secondaire
+                  </li>
+                  <li>
+                    <code>gap</code> : espace entre les éléments flexibles
+                  </li>
+                  <li>
+                    <strong>Media queries</strong> :
+                    <code>@media (max-width: 768px) { ... }</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Navbar responsive dans l'éditeur live</h4>
+                <ul>
+                  <li>
+                    Exercice 4 dans l'éditeur : navbar horizontale en desktop
+                  </li>
+                  <li>
+                    Ajouter une media query pour passer en vertical sous 768px
+                  </li>
+                  <li>
+                    Tester avec DevTools → simulateur mobile (Ctrl+Shift+M)
+                  </li>
+                  <li>Appliquer sur sa page <code>index.html</code> locale</li>
+                </ul>
+                <span class="duree">⏱ 75 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Tester sur "mobile"</h4>
+                <ul>
+                  <li>
+                    Chaque stagiaire teste la page d'un camarade en mode mobile
+                    (DevTools)
+                  </li>
+                  <li>
+                    Identifier : qu'est-ce qui casse ? Qu'est-ce qui fonctionne
+                    bien ?
+                  </li>
+                  <li>1 amélioration suggérée par camarade</li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 4 : 15h00 - 17h00 -->
+          <div class="seance-header">
+            <span class="seance-badge lundi">15h00 – 17h00</span>
+            <span class="seance-info"
+              >JavaScript — interactions utilisateur et manipulation du
+              DOM</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>⚡ Séquence 4.4 — JavaScript : donner vie à la page</h3>
+            <p class="section-meta">Durée : 2h</p>
+            <div class="falc-intro">
+              <strong>💡 JS, c'est quoi concrètement ?</strong>
+              Quand tu cliques sur un bouton et quelque chose se passe sans
+              recharger la page — c'est JavaScript. Quand un menu s'ouvre, qu'un
+              formulaire se valide, qu'une notification apparaît — c'est JS.
+              C'est le langage vivant du Web.
+            </div>
+            <div class="module-grid">
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>JS essentiel — 5 concepts</h4>
+                <ul>
+                  <li>
+                    <strong>Variable</strong> :
+                    <code>const nom = "Alice";</code>
+                  </li>
+                  <li>
+                    <strong>Fonction</strong> :
+                    <code>function direBonjour() { ... }</code>
+                  </li>
+                  <li>
+                    <strong>Sélectionner un élément</strong> :
+                    <code>document.getElementById("btn")</code>
+                  </li>
+                  <li>
+                    <strong>Modifier le contenu</strong> :
+                    <code>element.textContent = "Nouveau texte"</code>
+                  </li>
+                  <li>
+                    <strong>Écouter un clic</strong> :
+                    <code>btn.addEventListener("click", fonction)</code>
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Exercice 5 — Bouton interactif</h4>
+                <ul>
+                  <li>
+                    Dans l'éditeur live : un bouton qui change le texte d'un
+                    paragraphe au clic
+                  </li>
+                  <li>
+                    Aller plus loin : changer la couleur de fond de la page
+                  </li>
+                  <li>Bonus : compteur de clics qui s'incrémente</li>
+                  <li>
+                    Intégrer cet élément dans sa page
+                    <code>index.html</code> locale
+                  </li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Discussion : JS dans la vraie vie</h4>
+                <ul>
+                  <li>
+                    Citer 3 interactions du quotidien qui utilisent JS (menu
+                    hamburger, like, validation de formulaire…)
+                  </li>
+                  <li>
+                    Pourquoi désactiver JS dans le navigateur casse la plupart
+                    des sites ?
+                  </li>
+                </ul>
+                <span class="duree">⏱ 20 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════ -->
+        <!-- ═══ S4 — VENDREDI 5 JUIN ═══ -->
+        <!-- ════════════════════════════════════ -->
+        <div class="section-box" id="s4-vendredi">
+          <h2>🔵 S4 · Vendredi 5 juin — 09h00 → 15h00 (3,5h)</h2>
+
+          <div class="cours-section">
+            <div class="falc-intro">
+              <strong>🏁 Jour du livrable !</strong>
+              Ce vendredi est dédié à la construction et au déploiement de ta
+              landing page sur GitHub Pages. À 12h30, tu enverras une URL
+              publique au formateur — et n'importe qui dans le monde pourra voir
+              ta page web.
+            </div>
+          </div>
+
+          <!-- SÉANCE 1 : 09h00 - 10h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">09h00 – 10h30</span>
+            <span class="seance-info"
+              >Construction de la landing page — guidée étape par étape</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🏗️ Séquence 4.5 — Ma landing page</h3>
+            <p class="section-meta">Durée : 1h30 — Guidé collectivement</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Structure minimale d'une landing page</h4>
+                <ul>
+                  <li>
+                    <strong>Nav</strong> : logo + liens de navigation (Flexbox)
+                  </li>
+                  <li>
+                    <strong>Hero</strong> : section principale avec titre
+                    accrocheur + sous-titre
+                  </li>
+                  <li>
+                    <strong>Section contenu</strong> : 3 cartes ou 3 points
+                    forts (Flexbox/Grid)
+                  </li>
+                  <li><strong>Footer</strong> : nom, contact, lien GitHub</li>
+                  <li>
+                    CSS : palette de 2-3 couleurs, typographie cohérente,
+                    responsive
+                  </li>
+                  <li>
+                    JS : au moins 1 interaction (menu mobile, animation,
+                    compteur…)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Entraide et revue rapide</h4>
+                <ul>
+                  <li>
+                    Ceux qui ont terminé la structure aident ceux qui bloquent
+                  </li>
+                  <li>
+                    Le formateur circule et donne un retour rapide à chaque
+                    stagiaire
+                  </li>
+                </ul>
+                <span class="duree">⏱ 10 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 2 : 10h30 - 12h30 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">10h30 – 12h30</span>
+            <span class="seance-info"
+              >GitHub Pages — déployer sa page en ligne</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🚀 Séquence 4.6 — Mise en ligne sur GitHub Pages</h3>
+            <p class="section-meta">Durée : 2h — Déploiement pas à pas</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Du fichier local à l'URL publique</h4>
+                <ul>
+                  <li>
+                    Créer un nouveau repo GitHub :
+                    <code>ppni-landing-page</code> (public)
+                  </li>
+                  <li>
+                    Committer et pusher les fichiers HTML/CSS/JS via GitHub
+                    Desktop
+                  </li>
+                  <li>
+                    Settings → Pages → Source : <code>main</code> branch →
+                    <code>/ (root)</code>
+                  </li>
+                  <li>
+                    Attendre 2-3 minutes → URL générée :
+                    <code>https://username.github.io/ppni-landing-page/</code>
+                  </li>
+                  <li>
+                    Vérifier sur mobile et sur un autre ordinateur que la page
+                    s'affiche
+                  </li>
+                  <li>Envoyer l'URL au formateur avant 12h30</li>
+                </ul>
+                <span class="duree">⏱ 80 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Visiter les pages des camarades</h4>
+                <ul>
+                  <li>
+                    Chaque stagiaire partage son URL dans le chat de groupe
+                  </li>
+                  <li>
+                    Chacun visite au moins 2 pages de camarades depuis son
+                    téléphone
+                  </li>
+                  <li>
+                    Retour sur la table : "J'ai aimé le…" / "Une idée
+                    d'amélioration…"
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Comment GitHub Pages fonctionne</h4>
+                <ul>
+                  <li>
+                    GitHub Pages = serveur statique gratuit (pas de backend, pas
+                    de base de données)
+                  </li>
+                  <li>
+                    À chaque push sur <code>main</code> : redéploiement
+                    automatique en ~1 min
+                  </li>
+                  <li>
+                    HTTPS activé automatiquement (certificat TLS gratuit Let's
+                    Encrypt)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 15 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SÉANCE 3 : 13h20 - 15h00 -->
+          <div class="seance-header">
+            <span class="seance-badge vendredi">13h20 – 15h00</span>
+            <span class="seance-info"
+              >Présentations flash + bilan S3-S4 + preview S5-S6</span
+            >
+          </div>
+          <div class="cours-section">
+            <h3>🏆 Séquence 4.7 — Clôture et projection</h3>
+            <p class="section-meta">Durée : 1h40</p>
+            <div class="module-grid">
+              <div class="module-card pratique">
+                <span class="module-tag pratique">70% — Pratique</span>
+                <h4>Présentation flash (2 min par stagiaire)</h4>
+                <ul>
+                  <li>Ouvrir sa landing page à l'écran</li>
+                  <li>
+                    Présenter : "Voici ma page, j'ai choisi ce thème parce que…
+                    Le plus dur a été… J'ai appris à…"
+                  </li>
+                  <li>Montrer le repo GitHub avec l'historique des commits</li>
+                </ul>
+                <span class="duree">⏱ 50 min</span>
+              </div>
+              <div class="module-card collaboration">
+                <span class="module-tag collaboration"
+                  >20% — Collaboration</span
+                >
+                <h4>Bilan collectif S3-S4</h4>
+                <ul>
+                  <li>
+                    Tour de table : 1 chose apprise + 1 chose que je veux
+                    approfondir
+                  </li>
+                  <li>
+                    Vote : quel sujet S5-S6 préférez-vous ? (cybersécurité
+                    avancée, web, autre)
+                  </li>
+                  <li>Formateur : axes d'orientation pour la suite</li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+              <div class="module-card theorie">
+                <span class="module-tag theorie">10% — Théorie</span>
+                <h4>Feedback formateur + preview S5-S6</h4>
+                <ul>
+                  <li>
+                    Retour individuel écrit sur la landing page (grille de
+                    validation)
+                  </li>
+                  <li>
+                    Preview S5-S6 : votre orientation commence — réseau avancé
+                    ou web interactif
+                  </li>
+                  <li>
+                    Défi optionnel : améliorer la landing page ce week-end
+                    (animations CSS, section portfolio)
+                  </li>
+                </ul>
+                <span class="duree">⏱ 25 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ LIVRABLE FINAL ═══ -->
+        <div class="section-box" id="livrable">
+          <h2>🚩 Livrable S3-S4 — Critères de validation</h2>
+          <div class="cours-section">
+            <p class="section-meta">
+              À compléter par le stagiaire puis validé par le formateur — Date
+              limite : Vendredi 5 juin, 12h30
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+                margin-top: 8px;
+              "
+            >
+              <div>
+                <h4
+                  style="
+                    font-size: 12px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #1a3a5c;
+                  "
+                >
+                  ✅ Réseaux (S3)
+                </h4>
+                <ul class="checklist">
+                  <li>Je sais expliquer ce qu'est une adresse IP (IPv4)</li>
+                  <li>
+                    Je sais ce que fait le DNS (traduire un nom de domaine en
+                    IP)
+                  </li>
+                  <li>Je connais la différence entre HTTP et HTTPS</li>
+                  <li>Je sais à quoi servent les ports 80, 443 et 22</li>
+                  <li>
+                    J'ai utilisé ping, tracert et nslookup dans le terminal
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  style="
+                    font-size: 12px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #1a3a5c;
+                  "
+                >
+                  ✅ Web Front-End (S4)
+                </h4>
+                <ul class="checklist">
+                  <li>
+                    Ma page utilise une structure HTML sémantique (nav, main,
+                    footer)
+                  </li>
+                  <li>Le CSS inclut au moins 1 media query responsive</li>
+                  <li>La page contient au moins 1 interaction JavaScript</li>
+                  <li>
+                    Le repo GitHub contient au moins 3 commits avec messages
+                    clairs
+                  </li>
+                  <li>
+                    La page est publiée sur GitHub Pages (URL publique
+                    accessible)
+                  </li>
+                  <li>Lien GitHub Pages envoyé au formateur avant 12h30</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ RESSOURCES ═══ -->
+        <div class="section-box" id="ressources">
+          <h2>📚 Ressources &amp; Supports S3-S4</h2>
+          <div class="ressource-grid">
+            <div class="ressource-card">
+              <h4>🌐 Fiche mémo Réseaux</h4>
+              <p>
+                IP, DNS, HTTP, ports, commandes terminal. Format imprimable A4.
+              </p>
+              <a href="../ressources/fiche-reseaux.html">Ouvrir la fiche →</a>
+            </div>
+            <div class="ressource-card">
+              <h4>🏗️ Fiche mémo HTML/CSS/JS</h4>
+              <p>
+                Balises essentielles, sélecteurs CSS, Flexbox, media queries,
+                DOM basique.
+              </p>
+              <a href="../ressources/fiche-html-css.html">Ouvrir la fiche →</a>
+            </div>
+            <div class="ressource-card">
+              <h4>🌐 Quiz Réseaux interactif</h4>
+              <p>
+                20 QCM — IP, DNS, HTTP, ports et sécurité. Résultats immédiats.
+              </p>
+              <a href="../exercices/quiz-reseaux.html">Faire le quiz →</a>
+            </div>
+            <div class="ressource-card">
+              <h4>🎨 Éditeur HTML/CSS live</h4>
+              <p>
+                5 exercices guidés dans l'éditeur. Rendu temps réel. Aucune
+                installation.
+              </p>
+              <a href="../exercices/editeur-html.html">Ouvrir l'éditeur →</a>
+            </div>
+            <div class="ressource-card">
+              <h4>📖 MDN Web Docs</h4>
+              <p>
+                La référence HTML/CSS/JS en français. La bible du développeur
+                web.
+              </p>
+              <a
+                href="https://developer.mozilla.org/fr/"
+                target="_blank"
+                rel="noopener"
+                >Consulter MDN →</a
+              >
+            </div>
+            <div class="ressource-card">
+              <h4>🎨 Coolors.co</h4>
+              <p>
+                Générateur de palettes de couleurs harmonieuses. Parfait pour
+                choisir ses couleurs CSS.
+              </p>
+              <a href="https://coolors.co" target="_blank" rel="noopener"
+                >Ouvrir Coolors →</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          Cours S3-S4 · PPNI 2026 &nbsp;|&nbsp;
+          <a href="../previsionnel_stagiaire.html" style="color: inherit"
+            >← Retour au prévisionnel</a
+          >
+        </div>
+      </div>
+    </main>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

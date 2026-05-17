@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Éditeur HTML/CSS live — PPNI 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>(function(){var t=localStorage.getItem('ppni-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="stylesheet" href="../css/shared.css" />
+    <style>
+      /* ── Layout éditeur ── */
+      .editor-layout {
+        display: flex;
+        gap: 0;
+        height: calc(100vh - 220px);
+        min-height: 440px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      /* Panneau gauche : exercices */
+      .exercises-panel {
+        width: 220px;
+        flex-shrink: 0;
+        background: var(--surface-2);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .exercises-panel h3 {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-faint);
+        padding: 14px 14px 8px;
+        margin: 0;
+      }
+      .exo-btn {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        border-left: 3px solid transparent;
+        padding: 10px 14px;
+        text-align: left;
+        cursor: pointer;
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-family: inherit;
+        line-height: 1.4;
+        transition: all 0.15s;
+      }
+      .exo-btn:hover { background: var(--accent-subtle); color: var(--text); }
+      .exo-btn.active {
+        border-left-color: var(--accent);
+        background: var(--accent-subtle);
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .exo-btn .exo-num {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text-faint);
+        display: block;
+        margin-bottom: 2px;
+      }
+      .exo-btn.done .exo-num::after { content: ' ✓'; color: var(--green); }
+
+      /* Panneau central : éditeur code */
+      .code-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        border-right: 1px solid var(--border);
+      }
+      .panel-header {
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 14px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-faint);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+      }
+      .panel-header .dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+      .dot-red { background: #ef4444; }
+      .dot-yellow { background: #f59e0b; }
+      .dot-green { background: var(--green); }
+
+      #code-editor {
+        flex: 1;
+        width: 100%;
+        resize: none;
+        border: none;
+        outline: none;
+        padding: 14px;
+        font-family: 'Courier New', 'Fira Code', monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        background: #0f172a;
+        color: #e2e8f0;
+        overflow-y: auto;
+        tab-size: 2;
+      }
+      html[data-theme="light"] #code-editor {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+
+      /* Panneau droite : preview */
+      .preview-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      #preview-frame {
+        flex: 1;
+        width: 100%;
+        border: none;
+        background: white;
+      }
+
+      /* Toolbar exercice */
+      .exo-info-bar {
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin-bottom: 14px;
+        font-size: 13px;
+      }
+      .exo-info-bar h4 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+      .exo-info-bar p { color: var(--text-secondary); margin: 0 0 8px; }
+      .exo-hint {
+        font-size: 11px;
+        color: var(--text-faint);
+        cursor: pointer;
+        user-select: none;
+      }
+      .exo-hint:hover { color: var(--accent); }
+      .hint-content {
+        display: none;
+        margin-top: 8px;
+        padding: 10px 12px;
+        background: var(--surface-2);
+        border-radius: 6px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        font-family: monospace;
+        white-space: pre-wrap;
+        line-height: 1.5;
+      }
+      .hint-content.show { display: block; }
+
+      .done-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--green);
+        color: #0f172a;
+        border: none;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: all 0.15s;
+      }
+      .done-btn:hover { filter: brightness(1.1); }
+      .done-btn.marked {
+        background: var(--surface-2);
+        color: var(--green);
+        border: 1px solid var(--green);
+      }
+
+      /* Score chips */
+      .progress-chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-faint);
+      }
+      .chip {
+        padding: 3px 10px;
+        border-radius: 100px;
+        font-size: 11px;
+        font-weight: 600;
+        background: var(--surface-2);
+        color: var(--text-faint);
+        border: 1px solid var(--border);
+      }
+      .chip.done { background: rgba(52,211,153,0.15); color: var(--green); border-color: rgba(52,211,153,0.3); }
+
+      @media (max-width: 768px) {
+        .exercises-panel { display: none; }
+        .editor-layout { height: 70vh; }
+        #code-editor { font-size: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg></div>
+        <span class="brand-text">PPNI 2026</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../index.html" class="nav-item">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span>Accueil</span>
+        </a>
+        <a href="../planning.html" class="nav-item">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span>Planning</span>
+        </a>
+        <a href="../previsionnel.html" class="nav-item">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+          <span>Prévisionnel</span>
+        </a>
+        <a href="../previsionnel_stagiaire.html" class="nav-item">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span>Stagiaires</span>
+        </a>
+        <a href="../ressources/index.html" class="nav-item">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span>Ressources</span>
+        </a>
+        <a href="index.html" class="nav-item active">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+          <span>Exercices</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème"><span class="theme-icon">🌙</span></button>
+        <span class="sidebar-version">v2026</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
+      <header class="mobile-topbar">
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <span class="mobile-brand">PPNI 2026</span>
+      </header>
+
+      <div class="page-wrapper">
+        <div class="doc-header">
+          <h1>🎨 Éditeur HTML/CSS live</h1>
+          <div class="meta">
+            <strong>S4 — Phase 2</strong> &nbsp;|&nbsp; 5 exercices guidés &nbsp;|&nbsp; Code à gauche · Rendu temps réel à droite
+          </div>
+        </div>
+
+        <!-- Progression -->
+        <div class="progress-chips" id="progress-chips">
+          <span style="font-weight:600;color:var(--text);">Progression :</span>
+          <span class="chip" id="chip-0">Exo 1</span>
+          <span class="chip" id="chip-1">Exo 2</span>
+          <span class="chip" id="chip-2">Exo 3</span>
+          <span class="chip" id="chip-3">Exo 4</span>
+          <span class="chip" id="chip-4">Exo 5</span>
+        </div>
+
+        <!-- Bande d'info exercice actif -->
+        <div class="exo-info-bar" id="exo-info-bar">
+          <h4 id="exo-title">Chargement...</h4>
+          <p id="exo-desc"></p>
+          <div>
+            <button class="done-btn" id="btn-done" onclick="markDone()">✓ Marquer comme fait</button>
+            <span class="exo-hint" onclick="toggleHint()">💡 Voir un indice</span>
+          </div>
+          <div class="hint-content" id="hint-content"></div>
+        </div>
+
+        <!-- Éditeur principal -->
+        <div class="editor-layout">
+          <!-- Liste des exercices -->
+          <div class="exercises-panel">
+            <h3>Exercices</h3>
+            <button class="exo-btn" id="exo-nav-0" onclick="loadExercise(0)">
+              <span class="exo-num">Exercice 1</span>
+              Mon premier titre
+            </button>
+            <button class="exo-btn" id="exo-nav-1" onclick="loadExercise(1)">
+              <span class="exo-num">Exercice 2</span>
+              Changer les couleurs
+            </button>
+            <button class="exo-btn" id="exo-nav-2" onclick="loadExercise(2)">
+              <span class="exo-num">Exercice 3</span>
+              Carte de visite
+            </button>
+            <button class="exo-btn" id="exo-nav-3" onclick="loadExercise(3)">
+              <span class="exo-num">Exercice 4</span>
+              Navbar responsive
+            </button>
+            <button class="exo-btn" id="exo-nav-4" onclick="loadExercise(4)">
+              <span class="exo-num">Exercice 5</span>
+              Bouton interactif JS
+            </button>
+          </div>
+
+          <!-- Code -->
+          <div class="code-panel">
+            <div class="panel-header">
+              <span>
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                &nbsp;index.html
+              </span>
+              <span style="font-size:10px;">Tab = 2 espaces &nbsp;|&nbsp; Auto-rendu</span>
+            </div>
+            <textarea
+              id="code-editor"
+              spellcheck="false"
+              autocorrect="off"
+              autocapitalize="off"
+              oninput="updatePreview()"
+              onkeydown="handleTab(event)"
+              placeholder="<!-- Tape ton HTML ici... -->"></textarea>
+          </div>
+
+          <!-- Preview -->
+          <div class="preview-panel">
+            <div class="panel-header">
+              <span>Rendu en temps réel</span>
+              <button onclick="refreshPreview()" style="background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:11px;" title="Rafraîchir">🔄</button>
+            </div>
+            <iframe id="preview-frame" sandbox="allow-scripts" title="Rendu HTML"></iframe>
+          </div>
+        </div>
+
+        <div class="footer">Éditeur HTML/CSS live · S4 · PPNI 2026</div>
+      </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script>
+      // ── Exercices ──────────────────────────────────────────────────────
+      var exercises = [
+        {
+          title: "Exercice 1 — Mon premier titre et paragraphe",
+          desc: "Modifie le titre H1 pour mettre ton prénom. Change la couleur du titre en bleu (#2980b9) et augmente la taille du paragraphe à 16px. Ajoute une deuxième ligne de texte.",
+          hint: "h1 { color: #2980b9; }\np  { font-size: 16px; }",
+          code: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma première page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      /* Essaie de changer cette couleur ! */
+    }
+
+    p {
+      font-size: 14px;
+      /* Essaie de changer la taille ! */
+    }
+  </style>
+</head>
+<body>
+  <h1>Bonjour, monde !</h1>
+  <p>Mon premier paragraphe HTML.</p>
+  <!-- Ajoute un deuxième paragraphe ici -->
+</body>
+</html>`
+        },
+        {
+          title: "Exercice 2 — Changer les couleurs et la typo",
+          desc: "Change la couleur de fond de la page. Mets une police différente. Ajoute une liste <ul> avec 3 compétences que tu souhaites apprendre.",
+          hint: "body {\n  background-color: #1a1a2e;\n  color: #eee;\n  font-family: 'Georgia', serif;\n}",
+          code: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Couleurs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    /* Ajoute ici des styles pour une liste */
+  </style>
+</head>
+<body>
+  <h1>Mes compétences à acquérir</h1>
+  <p>Je suis en formation PPNI 2026.</p>
+
+  <!-- Ajoute une liste <ul> avec 3 <li> ici -->
+
+</body>
+</html>`
+        },
+        {
+          title: "Exercice 3 — Carte de visite",
+          desc: "Crée une carte de visite centrée sur la page avec : ton nom en titre H2, ton rôle en sous-titre, et un lien vers ton profil GitHub. Ajoute border-radius et box-shadow pour arrondir la carte.",
+          hint: ".card {\n  max-width: 320px;\n  margin: 60px auto;\n  padding: 28px;\n  background: #fff;\n  border-radius: 16px;\n  box-shadow: 0 4px 24px rgba(0,0,0,0.12);\n  text-align: center;\n}",
+          code: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma carte de visite</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card {
+      /* Ajoute : max-width, margin auto, padding, background, border-radius, box-shadow */
+    }
+
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+    }
+
+    .card .role {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 8px 20px;
+      background: #2980b9;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Ton Nom</h2>
+    <p class="role">Stagiaire PPNI 2026</p>
+    <a href="https://github.com">Mon GitHub →</a>
+  </div>
+</body>
+</html>`
+        },
+        {
+          title: "Exercice 4 — Navbar responsive",
+          desc: "Crée une barre de navigation horizontale avec Flexbox. Elle doit afficher les liens côte à côte en desktop et passer en colonne sous 600px. Utilise une media query.",
+          hint: "@media (max-width: 600px) {\n  nav {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n}",
+          code: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navbar responsive</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background: #1a1a2e;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    /* Ajoute ici une media query @media (max-width: 600px) */
+
+    .hero {
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .hero h1 { font-size: 32px; margin-bottom: 12px; }
+    .hero p { color: #666; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="nav-logo">MonSite</span>
+    <ul class="nav-links">
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">À propos</a></li>
+      <li><a href="#">Projets</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <h1>Bienvenue !</h1>
+    <p>Réduis la fenêtre pour voir le responsive.</p>
+  </div>
+</body>
+</html>`
+        },
+        {
+          title: "Exercice 5 — Bouton interactif JavaScript",
+          desc: "Ajoute un compteur de clics : un bouton qui incrémente un compteur affiché sur la page. Bonus : quand le compteur dépasse 5, change la couleur du texte en vert.",
+          hint: "const btn = document.getElementById('monBouton');\nconst affichage = document.getElementById('compteur');\nlet n = 0;\nbtn.addEventListener('click', function() {\n  n++;\n  affichage.textContent = n;\n  if (n > 5) affichage.style.color = 'green';\n});",
+          code: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Compteur JS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f0f4f8;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #compteur {
+      font-size: 64px;
+      font-weight: 800;
+      color: #2980b9;
+      margin-bottom: 24px;
+      transition: color 0.3s;
+    }
+
+    button {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    button:hover {
+      background: #1a6a9a;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <h2>Combien de fois as-tu cliqué ?</h2>
+  <div id="compteur">0</div>
+  <button id="monBouton">Cliquez-moi !</button>
+
+  <script>
+    // Récupère les éléments
+    const btn = document.getElementById('monBouton');
+    const affichage = document.getElementById('compteur');
+    let n = 0;
+
+    // Écoute le clic
+    btn.addEventListener('click', function() {
+      // Incrémente le compteur
+      n++;
+      // Met à jour l'affichage
+      affichage.textContent = n;
+
+      // Bonus : change la couleur à partir de 5 clics
+      // if (n >= 5) { affichage.style.color = '...'; }
+    });
+  </script>
+</body>
+</html>`
+        }
+      ];
+
+      // ── État ────────────────────────────────────────────────────────────
+      var currentExo = 0;
+      var doneExos = [];
+
+      // ── Init ────────────────────────────────────────────────────────────
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load saved progress
+        var saved = localStorage.getItem('ppni_editeur_html_done');
+        if (saved) {
+          try { doneExos = JSON.parse(saved); } catch(e) { doneExos = []; }
+        }
+        updateChips();
+        loadExercise(0);
+      });
+
+      function loadExercise(idx) {
+        if (idx < 0 || idx >= exercises.length) return;
+        currentExo = idx;
+
+        var exo = exercises[idx];
+        document.getElementById('exo-title').textContent = exo.title;
+        document.getElementById('exo-desc').textContent = exo.desc;
+        document.getElementById('hint-content').textContent = exo.hint;
+        document.getElementById('hint-content').classList.remove('show');
+        document.getElementById('code-editor').value = exo.code;
+        updatePreview();
+
+        // Update nav buttons
+        for (var i = 0; i < exercises.length; i++) {
+          var btn = document.getElementById('exo-nav-' + i);
+          btn.classList.remove('active');
+          if (doneExos.indexOf(i) !== -1) btn.classList.add('done');
+          else btn.classList.remove('done');
+        }
+        document.getElementById('exo-nav-' + idx).classList.add('active');
+
+        // Update done button
+        var doneBtn = document.getElementById('btn-done');
+        if (doneExos.indexOf(idx) !== -1) {
+          doneBtn.textContent = '✓ Fait !';
+          doneBtn.classList.add('marked');
+        } else {
+          doneBtn.textContent = '✓ Marquer comme fait';
+          doneBtn.classList.remove('marked');
+        }
+      }
+
+      function updatePreview() {
+        var code = document.getElementById('code-editor').value;
+        var frame = document.getElementById('preview-frame');
+        frame.srcdoc = code;
+      }
+
+      function refreshPreview() {
+        updatePreview();
+      }
+
+      function handleTab(e) {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          var ta = e.target;
+          var start = ta.selectionStart;
+          var end = ta.selectionEnd;
+          ta.value = ta.value.substring(0, start) + '  ' + ta.value.substring(end);
+          ta.selectionStart = ta.selectionEnd = start + 2;
+          updatePreview();
+        }
+      }
+
+      function toggleHint() {
+        var hint = document.getElementById('hint-content');
+        hint.classList.toggle('show');
+      }
+
+      function markDone() {
+        var btn = document.getElementById('btn-done');
+        var idx = doneExos.indexOf(currentExo);
+        if (idx === -1) {
+          doneExos.push(currentExo);
+          btn.textContent = '✓ Fait !';
+          btn.classList.add('marked');
+        } else {
+          doneExos.splice(idx, 1);
+          btn.textContent = '✓ Marquer comme fait';
+          btn.classList.remove('marked');
+        }
+        updateChips();
+        saveDone();
+        // Update nav button
+        var navBtn = document.getElementById('exo-nav-' + currentExo);
+        if (doneExos.indexOf(currentExo) !== -1) navBtn.classList.add('done');
+        else navBtn.classList.remove('done');
+      }
+
+      function updateChips() {
+        for (var i = 0; i < exercises.length; i++) {
+          var chip = document.getElementById('chip-' + i);
+          if (doneExos.indexOf(i) !== -1) chip.classList.add('done');
+          else chip.classList.remove('done');
+        }
+      }
+
+      function saveDone() {
+        localStorage.setItem('ppni_editeur_html_done', JSON.stringify(doneExos));
+        // Update global score display
+        var countDone = doneExos.length;
+        localStorage.setItem('ppni_editeur_html_count', countDone + '/5');
+      }
+    </script>
+  </body>
+</html>
