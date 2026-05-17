@@ -17,6 +17,17 @@
       })();
     </script>
     <link rel="stylesheet" href="../css/shared.css" />
+    <!-- CodeMirror 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-ocean.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
     <style>
       /* ── Layout éditeur ── */
       .editor-layout {
@@ -123,25 +134,18 @@
         background: var(--green);
       }
 
-      #code-editor {
+      /* CodeMirror remplace le textarea */
+      #code-editor { display: none; }
+      .CodeMirror {
         flex: 1;
-        width: 100%;
-        resize: none;
-        border: none;
-        outline: none;
-        padding: 14px;
-        font-family: "Courier New", "Fira Code", monospace;
+        height: 0; /* flex override : la hauteur est dictée par flex */
+        font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
         font-size: 13px;
         line-height: 1.6;
-        background: #0f172a;
-        color: #e2e8f0;
-        overflow-y: auto;
-        tab-size: 2;
       }
-      html[data-theme="light"] #code-editor {
-        background: #1e293b;
-        color: #e2e8f0;
-      }
+      .CodeMirror-scroll { height: 100%; }
+      .CodeMirror-gutters { background: #0f172a; border-right: 1px solid #1e293b; }
+      .CodeMirror-linenumber { color: #475569; font-size: 11px; }
 
       /* Panneau droite : preview */
       .preview-panel {
@@ -246,7 +250,10 @@
         cursor: pointer;
         transition: all 0.15s;
       }
-      .chip:hover { border-color: var(--accent); color: var(--accent); }
+      .chip:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
       .chip.active {
         background: var(--accent-subtle);
         color: var(--accent);
@@ -517,19 +524,9 @@
                 <span class="dot dot-green"></span>
                 &nbsp;index.html
               </span>
-              <span style="font-size: 10px"
-                >Tab = 2 espaces &nbsp;|&nbsp; Auto-rendu</span
-              >
+              <span style="font-size: 10px">Coloration syntaxique &nbsp;|&nbsp; Auto-rendu</span>
             </div>
-            <textarea
-              id="code-editor"
-              spellcheck="false"
-              autocorrect="off"
-              autocapitalize="off"
-              oninput="updatePreview()"
-              onkeydown="handleTab(event)"
-              placeholder="<!-- Tape ton HTML ici... -->"
-            ></textarea>
+            <textarea id="code-editor"></textarea>
           </div>
 
           <!-- Preview -->
@@ -570,282 +567,248 @@
           title: "Exercice 1 — Mon premier titre et paragraphe",
           desc: "Modifie le titre H1 pour mettre ton prénom. Change la couleur du titre en bleu (#2980b9) et augmente la taille du paragraphe à 16px. Ajoute une deuxième ligne de texte.",
           hint: "h1 { color: #2980b9; }\np  { font-size: 16px; }",
-          code: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Ma première page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #333;
-      /* Essaie de changer cette couleur ! */
-    }
-
-    p {
-      font-size: 14px;
-      /* Essaie de changer la taille ! */
-    }
-  </style>
-</head>
-<body>
-  <h1>Bonjour, monde !</h1>
-  <p>Mon premier paragraphe HTML.</p>
-  <!-- Ajoute un deuxième paragraphe ici -->
-</body>
-</html>`,
+          code: [
+            '<!DOCTYPE html>',
+            '<html lang="fr">',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <title>Ma première page</title>',
+            '  <style>',
+            '    body {',
+            '      font-family: Arial, sans-serif;',
+            '      padding: 20px;',
+            '    }',
+            '    h1 {',
+            '      color: #333;',
+            '      /* Essaie de changer cette couleur ! */',
+            '    }',
+            '    p {',
+            '      font-size: 14px;',
+            '      /* Essaie de changer la taille ! */',
+            '    }',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <h1>Bonjour, monde !</h1>',
+            '  <p>Mon premier paragraphe HTML.</p>',
+            '  <!-- Ajoute un deuxième paragraphe ici -->',
+            '</body>',
+            '</html>'
+          ].join('\n'),
         },
         {
           title: "Exercice 2 — Changer les couleurs et la typo",
           desc: "Change la couleur de fond de la page. Mets une police différente. Ajoute une liste <ul> avec 3 compétences que tu souhaites apprendre.",
           hint: "body {\n  background-color: #1a1a2e;\n  color: #eee;\n  font-family: 'Georgia', serif;\n}",
-          code: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Couleurs</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-      padding: 30px;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    /* Ajoute ici des styles pour une liste */
-  </style>
-</head>
-<body>
-  <h1>Mes compétences à acquérir</h1>
-  <p>Je suis en formation PPNI 2026.</p>
-
-  <!-- Ajoute une liste <ul> avec 3 <li> ici -->
-
-</body>
-</html>`,
+          code: [
+            '<!DOCTYPE html>',
+            '<html lang="fr">',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <title>Couleurs</title>',
+            '  <style>',
+            '    body {',
+            '      font-family: Arial, sans-serif;',
+            '      background-color: #f0f0f0;',
+            '      color: #333;',
+            '      padding: 30px;',
+            '    }',
+            '    h1 { font-size: 28px; }',
+            '    /* Ajoute ici des styles pour une liste */',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <h1>Mes compétences à acquérir</h1>',
+            '  <p>Je suis en formation PPNI 2026.</p>',
+            '',
+            '  <!-- Ajoute une liste <ul> avec 3 <li> ici -->',
+            '',
+            '</body>',
+            '</html>'
+          ].join('\n'),
         },
         {
           title: "Exercice 3 — Carte de visite",
           desc: "Crée une carte de visite centrée sur la page avec : ton nom en titre H2, ton rôle en sous-titre, et un lien vers ton profil GitHub. Ajoute border-radius et box-shadow pour arrondir la carte.",
           hint: ".card {\n  max-width: 320px;\n  margin: 60px auto;\n  padding: 28px;\n  background: #fff;\n  border-radius: 16px;\n  box-shadow: 0 4px 24px rgba(0,0,0,0.12);\n  text-align: center;\n}",
-          code: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Ma carte de visite</title>
-  <style>
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 0;
-    }
-
-    .card {
-      /* Ajoute : max-width, margin auto, padding, background, border-radius, box-shadow */
-    }
-
-    .card h2 {
-      margin: 0 0 6px;
-      font-size: 22px;
-    }
-
-    .card .role {
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .card a {
-      display: inline-block;
-      padding: 8px 20px;
-      background: #2980b9;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>Ton Nom</h2>
-    <p class="role">Stagiaire PPNI 2026</p>
-    <a href="https://github.com">Mon GitHub →</a>
-  </div>
-</body>
-</html>`,
+          code: [
+            '<!DOCTYPE html>',
+            '<html lang="fr">',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <title>Ma carte de visite</title>',
+            '  <style>',
+            '    body {',
+            '      font-family: Arial, sans-serif;',
+            '      background: #f0f4f8;',
+            '      margin: 0;',
+            '      padding: 0;',
+            '    }',
+            '    .card {',
+            '      /* Ajoute : max-width, margin auto, padding, background,',
+            '         border-radius, box-shadow */',
+            '    }',
+            '    .card h2 { margin: 0 0 6px; font-size: 22px; }',
+            '    .card .role { color: #666; font-size: 14px; margin-bottom: 16px; }',
+            '    .card a {',
+            '      display: inline-block;',
+            '      padding: 8px 20px;',
+            '      background: #2980b9;',
+            '      color: white;',
+            '      border-radius: 8px;',
+            '      text-decoration: none;',
+            '      font-size: 13px;',
+            '      font-weight: 600;',
+            '    }',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <div class="card">',
+            '    <h2>Ton Nom</h2>',
+            '    <p class="role">Stagiaire PPNI 2026</p>',
+            '    <a href="https://github.com">Mon GitHub →</a>',
+            '  </div>',
+            '</body>',
+            '</html>'
+          ].join('\n'),
         },
         {
           title: "Exercice 4 — Navbar responsive",
           desc: "Crée une barre de navigation horizontale avec Flexbox. Elle doit afficher les liens côte à côte en desktop et passer en colonne sous 600px. Utilise une media query.",
           hint: "@media (max-width: 600px) {\n  nav {\n    flex-direction: column;\n    align-items: flex-start;\n  }\n}",
-          code: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Navbar responsive</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    nav {
-      background: #1a1a2e;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: white; }
-
-    /* Ajoute ici une media query @media (max-width: 600px) */
-
-    .hero {
-      padding: 60px 24px;
-      text-align: center;
-    }
-
-    .hero h1 { font-size: 32px; margin-bottom: 12px; }
-    .hero p { color: #666; font-size: 16px; }
-  </style>
-</head>
-<body>
-  <nav>
-    <span class="nav-logo">MonSite</span>
-    <ul class="nav-links">
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">À propos</a></li>
-      <li><a href="#">Projets</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-  <div class="hero">
-    <h1>Bienvenue !</h1>
-    <p>Réduis la fenêtre pour voir le responsive.</p>
-  </div>
-</body>
-</html>`,
+          code: [
+            '<!DOCTYPE html>',
+            '<html lang="fr">',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+            '  <title>Navbar responsive</title>',
+            '  <style>',
+            '    * { box-sizing: border-box; margin: 0; padding: 0; }',
+            '    body { font-family: Arial, sans-serif; }',
+            '    nav {',
+            '      background: #1a1a2e;',
+            '      padding: 0 24px;',
+            '      display: flex;',
+            '      align-items: center;',
+            '      justify-content: space-between;',
+            '      height: 56px;',
+            '    }',
+            '    .nav-logo { color: white; font-weight: 700; font-size: 16px; }',
+            '    .nav-links { display: flex; gap: 24px; list-style: none; }',
+            '    .nav-links a { color: #aaa; text-decoration: none; font-size: 14px; }',
+            '    .nav-links a:hover { color: white; }',
+            '    /* Ajoute ici une media query @media (max-width: 600px) */',
+            '    .hero { padding: 60px 24px; text-align: center; }',
+            '    .hero h1 { font-size: 32px; margin-bottom: 12px; }',
+            '    .hero p { color: #666; font-size: 16px; }',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <nav>',
+            '    <span class="nav-logo">MonSite</span>',
+            '    <ul class="nav-links">',
+            '      <li><a href="#">Accueil</a></li>',
+            '      <li><a href="#">À propos</a></li>',
+            '      <li><a href="#">Projets</a></li>',
+            '      <li><a href="#">Contact</a></li>',
+            '    </ul>',
+            '  </nav>',
+            '  <div class="hero">',
+            '    <h1>Bienvenue !</h1>',
+            '    <p>Réduis la fenêtre pour voir le responsive.</p>',
+            '  </div>',
+            '</body>',
+            '</html>'
+          ].join('\n'),
         },
         {
           title: "Exercice 5 — Bouton interactif JavaScript",
           desc: "Ajoute un compteur de clics : un bouton qui incrémente un compteur affiché sur la page. Bonus : quand le compteur dépasse 5, change la couleur du texte en vert.",
           hint: "const btn = document.getElementById('monBouton');\nconst affichage = document.getElementById('compteur');\nlet n = 0;\nbtn.addEventListener('click', function() {\n  n++;\n  affichage.textContent = n;\n  if (n > 5) affichage.style.color = 'green';\n});",
-          code: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Compteur JS</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      background: #f0f4f8;
-    }
-
-    h2 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    #compteur {
-      font-size: 64px;
-      font-weight: 800;
-      color: #2980b9;
-      margin-bottom: 24px;
-      transition: color 0.3s;
-    }
-
-    button {
-      padding: 14px 32px;
-      font-size: 16px;
-      font-weight: 700;
-      background: #2980b9;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    button:hover {
-      background: #1a6a9a;
-      transform: translateY(-2px);
-    }
-  </style>
-</head>
-<body>
-  <h2>Combien de fois as-tu cliqué ?</h2>
-  <div id="compteur">0</div>
-  <button id="monBouton">Cliquez-moi !</button>
-
-  <script>
-    // Récupère les éléments
-    const btn = document.getElementById('monBouton');
-    const affichage = document.getElementById('compteur');
-    let n = 0;
-
-    // Écoute le clic
-    btn.addEventListener('click', function() {
-      // Incrémente le compteur
-      n++;
-      // Met à jour l'affichage
-      affichage.textContent = n;
-
-      // Bonus : change la couleur à partir de 5 clics
-      // if (n >= 5) { affichage.style.color = '...'; }
-    });
-  <\/script>
-</body>
-</html>`,
+          code: [
+            '<!DOCTYPE html>',
+            '<html lang="fr">',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <title>Compteur JS</title>',
+            '  <style>',
+            '    body {',
+            '      font-family: Arial, sans-serif;',
+            '      display: flex;',
+            '      flex-direction: column;',
+            '      align-items: center;',
+            '      justify-content: center;',
+            '      min-height: 100vh;',
+            '      margin: 0;',
+            '      background: #f0f4f8;',
+            '    }',
+            '    h2 { font-size: 20px; margin-bottom: 20px; color: #333; }',
+            '    #compteur {',
+            '      font-size: 64px;',
+            '      font-weight: 800;',
+            '      color: #2980b9;',
+            '      margin-bottom: 24px;',
+            '      transition: color 0.3s;',
+            '    }',
+            '    button {',
+            '      padding: 14px 32px;',
+            '      font-size: 16px;',
+            '      font-weight: 700;',
+            '      background: #2980b9;',
+            '      color: white;',
+            '      border: none;',
+            '      border-radius: 12px;',
+            '      cursor: pointer;',
+            '    }',
+            '    button:hover { background: #1a6a9a; }',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <h2>Combien de fois as-tu cliqué ?</h2>',
+            '  <div id="compteur">0</div>',
+            '  <button id="monBouton">Cliquez-moi !</button>',
+            '',
+            '  <script>',
+            "    const btn = document.getElementById('monBouton');",
+            "    const affichage = document.getElementById('compteur');",
+            '    let n = 0;',
+            "    btn.addEventListener('click', function() {",
+            '      n++;',
+            '      affichage.textContent = n;',
+            '      // Bonus : décommente la ligne suivante !',
+            "      // if (n > 5) affichage.style.color = 'green';",
+            '    });',
+            '  <\/script>',
+            '</body>',
+            '</html>'
+          ].join('\n'),
         },
       ];
 
       // ── État ────────────────────────────────────────────────────────────
       var currentExo = 0;
       var doneExos = [];
+      var editor;
 
       // ── Init ────────────────────────────────────────────────────────────
       document.addEventListener("DOMContentLoaded", function () {
+        // Init CodeMirror
+        editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+          mode: "htmlmixed",
+          theme: "material-ocean",
+          lineNumbers: true,
+          indentUnit: 2,
+          tabSize: 2,
+          indentWithTabs: false,
+          lineWrapping: true,
+          autoCloseTags: true,
+          autoCloseBrackets: true,
+          matchBrackets: true,
+          extraKeys: { "Ctrl-/": "toggleComment" }
+        });
+        editor.on("change", function () { updatePreview(); });
+
         // Load saved progress
         var saved = localStorage.getItem("ppni_editeur_html_done");
         if (saved) {
@@ -868,7 +831,8 @@
         document.getElementById("exo-desc").textContent = exo.desc;
         document.getElementById("hint-content").textContent = exo.hint;
         document.getElementById("hint-content").classList.remove("show");
-        document.getElementById("code-editor").value = exo.code;
+        editor.setValue(exo.code);
+        editor.clearHistory();
         updatePreview();
 
         // Update nav buttons
@@ -889,29 +853,17 @@
           doneBtn.textContent = "✓ Marquer comme fait";
           doneBtn.classList.remove("marked");
         }
+        updateChips();
       }
 
       function updatePreview() {
-        var code = document.getElementById("code-editor").value;
+        var code = editor ? editor.getValue() : "";
         var frame = document.getElementById("preview-frame");
         frame.srcdoc = code;
       }
 
       function refreshPreview() {
         updatePreview();
-      }
-
-      function handleTab(e) {
-        if (e.key === "Tab") {
-          e.preventDefault();
-          var ta = e.target;
-          var start = ta.selectionStart;
-          var end = ta.selectionEnd;
-          ta.value =
-            ta.value.substring(0, start) + "  " + ta.value.substring(end);
-          ta.selectionStart = ta.selectionEnd = start + 2;
-          updatePreview();
-        }
       }
 
       function toggleHint() {
@@ -943,8 +895,10 @@
         for (var i = 0; i < exercises.length; i++) {
           var chip = document.getElementById("chip-" + i);
           if (doneExos.indexOf(i) !== -1) chip.classList.add("done");
-          else chip.classList.remove("done");          if (i === currentExo) chip.classList.add('active');
-          else chip.classList.remove('active');        }
+          else chip.classList.remove("done");
+          if (i === currentExo) chip.classList.add("active");
+          else chip.classList.remove("active");
+        }
       }
 
       function saveDone() {
